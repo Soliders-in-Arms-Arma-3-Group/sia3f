@@ -3,5 +3,8 @@ class SIA_FrameworkSettings {
 	class AttributeCategories {
 		#include "MissionInfo.cpp"
 		#include "ArsenalOptions.cpp"
+		#include "RadioOptions.cpp"
+		#include "aceActionOptions.cpp"
+		#include "briefingSettings.cpp"
 	};
 };

@@ -41,19 +41,19 @@ class SIA_ArsenalOptions {
 			defaultValue = "2";
 			class Values {
 				class SIA_ArsenalOptions_haveKATMedical_Full {
-					text = "FULL";
+					name = "FULL";
 					default = 1;
 					value = 2;
 				};
 
 				class SIA_ArsenalOptions_haveKATMedical_Limited {
-					text = "LIMITED";
+					name = "LIMITED";
 					value = 1;
 				};
 
 				class SIA_ArsenalOptions_haveKATMedical_None {
-					text = "NONE";
-					value - 0;
+					name = "NONE";
+					value = 0;
 				};
 			};
 		};
