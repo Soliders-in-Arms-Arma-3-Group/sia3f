@@ -1,27 +1,27 @@
-class SIA_briefingSettings {
+class GVAR(briefingSettings) {
 	collapsed = 1;
 	displayName = "Briefing Additional Settings";
 	class Attributes {
-		class SIA_briefingSettings_briefORBAT {
+		class GVAR(briefORBAT) {
 			displayName = "ORBAT Briefing";
 			tooltip = "Add ORBAT information to briefing.";
-			property = "SIA_briefORBAT";
+			property = QGVAR(briefORBAT);
 			control = "Checkbox";
 			defaultValue = true;
 		};
 
-		class SIA_briefingSettings_briefWeather {
+		class GVAR(briefWeather) {
 			displayName = "Weather Briefing";
 			tooltip = "Add weather report to briefing.";
-			property = "SIA_briefWeather";
+			property = QGVAR(briefWeather);
 			control = "Checkbox";
 			defaultValue = true;
 		};
 
-		class SIA_briefingSettings_briefLoadout {
+		class GVAR(briefLoadout) {
 			displayName = "Loadout Information";
 			tooltip = "Add loadout information to briefing.";
-			property = "SIA_briefLoadout";
+			property = QGVAR(briefLoadout);
 			control = "Checkbox";
 			defaultValue = true;
 		};

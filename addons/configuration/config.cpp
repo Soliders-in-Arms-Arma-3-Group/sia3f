@@ -1,9 +1,16 @@
+#include "script_component.hpp"
+
 class CfgPatches {
-	class SIA_3DEN_Configuration {
+	class ADDON {
+		name = COMPONENT_NAME;
 		units[] = {};
 		weapons[] = {};
-		requiredVersion = 1.0; // ToDo (and for all other configs): find correct version number.  Could either put latest game version or actually find what function uses the latest game version and use that.
+		requiredVersion = REQUIRED_VERSION; // ToDo (and for all other configs): find correct version number.  Could either put latest game version or actually find what function uses the latest game version and use that.
 		requiredAddons[] = { 3DEN };
+		author = "Soldiers in Arms";
+		authors[] = { "Siege", "McKendrick" };
+		url = "https://github.com/Soliders-in-Arms-Arma-3-Group";
+		VERSION_CONFIG;
 		is3DENmod = 1;
 	};
 };

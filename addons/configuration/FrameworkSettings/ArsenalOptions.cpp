@@ -1,58 +1,57 @@
-class SIA_ArsenalOptions {
+class GVAR(arsenalOptions) {
 	collapsed = 1;
 	displayName = "Arsenal Options";
 	class Attributes {
-		class SIA_ArsenalOptions_arsenalEnabled {
+		class GVAR(arsenalEnabled) {
 			displayName = "Arsenal Enabled";
-			property = "SIA_arsenalEnabled";
+			property = QGVAR(arsenalEnabled);
 			control = "Checkbox";
-			expression = "_this setVariable ['%s',_value];";
 			defaultValue = true;
 		};
 
-		class SIA_ArsenalOptions_disableArsenalOnRespawn {
+		class GVAR(disableArsenalOnRespawn) {
 			displayName = "Disable Arsenal On Respawn";
 			tooltip = "Currently no functionality.";
-			property = "SIA_disableArsenalOnRespawn";
+			property = QGVAR(disableArsenalOnRespawn);
 			control = "Checkbox";
 			defaultValue = false;
 		};
 
-		class SIA_ArsenalOptions_haveBasics {
+		class GVAR(haveBasics) {
 			displayName = "Have Basics";
 			tooltip = "Add basic items such as compasses, maps, and bandages.";
-			property = "SIA_haveBasics";
+			property = QGVAR(haveBasics);
 			control = "Checkbox";
 			defaultValue = true;
 		};
 
-		class SIA_ArsenalOptions_haveCTab {
+		class GVAR(haveCTab) {
 			displayName = "Have CTab";
 			tooltip = "Add CTab items such as the helmet cam and rugged tablet.";
-			property = "SIA_haveCTab";
+			property = QGVAR(haveCTab);
 			control = "Checkbox";
 			defaultValue = true;
 		};
 
-		class SIA_ArsenalOptions_haveKATMedical {
+		class GVAR(haveKATMedical) {
 			displayName = "KAT Medical Availability";
-			property = "SIA_haveKATMedical";
+			property = QGVAR(haveKATMedical);
 			control = "COMBO";
 			typeName = "NUMBER";
 			defaultValue = "2";
 			class Values {
-				class SIA_ArsenalOptions_haveKATMedical_Full {
+				class GVAR(haveKATMedical_Full) {
 					name = "FULL";
 					default = 1;
 					value = 2;
 				};
 
-				class SIA_ArsenalOptions_haveKATMedical_Limited {
+				class GVAR(haveKATMedical_Limited) {
 					name = "LIMITED";
 					value = 1;
 				};
 
-				class SIA_ArsenalOptions_haveKATMedical_None {
+				class GVAR(haveKATMedical_None) {
 					name = "NONE";
 					value = 0;
 				};

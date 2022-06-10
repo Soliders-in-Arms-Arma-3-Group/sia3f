@@ -3,33 +3,33 @@ class display3DEN { // https://community.bistudio.com/wiki/Eden_Editor:_Configur
 	class Controls {
 		class MenuStrip: ctrlMenuStrip {
 			class Items {
-				items[] += { "SIA_FrameworkFolder" };
-				class SIA_FrameworkFolder {
+				items[] += { QGVAR(frameworkFolder) };
+				class GVAR(frameworkFolder) {
 					text = "SIA Mission Framework";
-					items[] = { "SIA_MissionSettings", "SIA_ImportExportFolder", "SIA_FrameworkMeta" };
+					items[] = { QGVAR(missionSettings), QGVAR(importExportFolder), QGVAR(frameworkMeta) };
 				};
-				class SIA_MissionSettings {
-					text = "Mission Settings"; // Item text
-					action = "edit3DENMissionAttributes 'SIA_FrameworkSettings';";
-                    opensNewWindow = 1; // Adds ... to the name of the menu entry, indicating the user that a new window will be opened.
+				class GVAR(missionSettings) {
+					text = "Mission Settings";
+					action = QUOTE(edit3DENMissionAttributes QQGVAR(frameworkSettings);); // not sure if this will work
+                    opensNewWindow = 1;
 				};
 
-				class SIA_ImportExportFolder {
+				class GVAR(importExportFolder) {
 					text = "Import/Export Mission Settings";
-					items[] = { "SIA_Import", "SIA_Export" };
+					items[] = { QGVAR(import), QGVAR(export) };
 				};
 
-				class SIA_Import {
+				class GVAR(import) {
 					text = "Import Mission Settings";
 				};
 
-				class SIA_Export {
+				class GVAR(export) {
 					text = "Export Mission Settings";
 				};
 
-				class SIA_FrameworkMeta {
+				class GVAR(frameworkMeta) {
 					text = "Framework Version 0.1.0";
-					weblink = "https://github.com/Soliders-in-Arms-Arma-3-Group/SIA_3DEN_framework";
+					weblink = "https://github.com/Soliders-in-Arms-Arma-3-Group/sia3f";
 					opensNewWindow = 1;
 				};
 			};

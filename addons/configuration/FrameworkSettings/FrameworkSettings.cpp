@@ -1,4 +1,4 @@
-class SIA_FrameworkSettings {
+class GVAR(frameworkSettings) {
 	displayName = "SIA Framework Settings";
 	class AttributeCategories {
 		#include "MissionInfo.cpp"

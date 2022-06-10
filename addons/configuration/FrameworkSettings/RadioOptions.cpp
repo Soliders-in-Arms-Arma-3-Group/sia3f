@@ -1,22 +1,22 @@
-class SIA_ACRERadioOptions {
+class GVAR(ACRERadioOptions) {
 	collapsed = 1;
 	displayName = "ACRE Radio Options";
 	class Attributes {
-		class SIA_ACRERadioOptions_acreEnabled {
+		class GVAR(acreEnabled) {
 			displayName = "ACRE Enabled";
-			property = "SIA_acreEnabled";
+			property = QGVAR(acreEnabled);
 			control = "Checkbox";
 			defaultValue = true;
 		};
 
-		class SIA_ACRERadioOptions_personalRadio {
+		class GVAR(personalRadio) {
 			displayName = "Personal Radio";
-			property = "SIA_personalRadio";
+			property = QGVAR(personalRadio);
 			control = "COMBO";
 			typeName = "NUMBER";
 			defaultValue = "0";
 			class Values {
-				class SIA_ACRERadioOptions_personalRadio_PRC343 {
+				class GVAR(personalRadio_PRC343) {
 					name = "AN/PRC-343";
 					default = 1;
 					value = 0;
@@ -24,39 +24,39 @@ class SIA_ACRERadioOptions {
 			};
 		};
 
-		class SIA_ACRERadioOptions_handheldRadio {
+		class GVAR(handheldRadio) {
 			displayName = "Handheld Radio";
-			property = "SIA_handheldRadio";
+			property = QGVAR(handheldRadio);
 			control = "COMBO";
 			typeName = "NUMBER";
 			defaultValue = "0";
 			class Values {
-				class SIA_ACRERadioOptions_handheldRadio_PRC152 {
+				class GVAR(handheldRadio_PRC152) {
 					name = "AN/PRC-152";
 					default = 1;
 					value = 0;
 				};
-				class SIA_ACRERadioOptions_handheldRadio_PRC148 {
+				class GVAR(handheldRadio_PRC148) {
 					name = "AN/PRC-148";
 					value = 1;
 				};
 			};
 		};
 
-		class SIA_ACRERadioOptions_manpackRadio {
+		class GVAR(manpackRadio) {
 			displayName = "Manpack Radio";
-			property = "SIA_manpackRadio";
+			property = QGVAR(manpackRadio);
 			control = "COMBO";
 			typeName = "NUMBER";
 			defaultValue = "0";
 			class Values {
-				class SIA_ACRERadioOptions_manpackRadio_PRC177F {
+				class GVAR(manpackRadio_PRC177F) {
 					name = "AN/PRC-177F";
 					default = 1;
 					value = 0;
 				};
 
-				class SIA_ACRERadioOptions_manpackRadio_PRC77 {
+				class GVAR(manpackRadio_PRC77) {
 					name = "AN/PRC-77";
 					value = 1;
 				};

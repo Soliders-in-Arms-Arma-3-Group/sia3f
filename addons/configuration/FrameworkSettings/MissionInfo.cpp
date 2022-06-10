@@ -1,55 +1,55 @@
-class SIA_MissionInfo {
+class GVAR(missionInfo) {
 	collapsed = 0;
 	displayName = "Mission Info";
 	class Attributes {
-		class SIA_MissionInfo_missionLocationName {
+		class GVAR(missionLocationName) {
 			displayName = "Mission Location Name";
-			property = "SIA_missionLocationName";
+			property = QGVAR(missionLocationName);
 			control = "Edit";
 			defaultValue = "''";
 		};
 
-		class SIA_MissionInfo_bluforFactionName {
+		class GVAR(bluforFactionName) {
 			displayName = "Blufor Faction Name";
-			property = "SIA_bluforFactionName";
+			property = QGVAR(bluforFactionName);
 			control = "Edit";
 			defaultValue = "''";
 		};
 
-		class SIA_MissionInfo_indepFactionName {
+		class GVAR(indepFactionName) {
 			displayName = "Independent Faction Name";
-			property = "SIA_indepFactionName";
+			property = QGVAR(indepFactionName);
 			control = "Edit";
 			defaultValue = "''";
 		};
 
-		class SIA_MissionInfo_opforFactionName {
+		class GVAR(opforFactionName) {
 			displayName = "Opfor Faction Name";
-			property = "SIA_opforFactionName";
+			property = QGVAR(opforFactionName);
 			control = "Edit";
 			defaultValue = "''";
 		};
 
-		class SIA_MissionInfo_showStatusHint {
+		class GVAR(showStatusHint) {
 			displayName = "Show Status Hint";
 			tooltip = "Toggle persistent info display.";
-			property = "SIA_showStatusHint";
+			property = QGVAR(showStatusHint);
 			control = "Checkbox";
 			defaultValue = true;
 		};
 
-		class SIA_MissionInfo_showIntroText {
+		class GVAR(showIntroText) {
 			displayName = "Show Intro Text";
 			tooltip = "Show cinematic intro text on mission start.";
-			property = "SIA_showIntroText";
+			property = QGVAR(showIntroText);
 			control = "Checkbox";
 			defaultValue = true;
 		};
 
-		class SIA_MissionInfo_showReplay {
+		class GVAR(showReplay) {
 			displayName = "Show Replay";
 			tooltip = "Record and playback the mission using the GRAD Replay system.";
-			property = "SIA_showReplay";
+			property = QGVAR(showReplay);
 			control = "Checkbox";
 			defaultValue = true;
 		};
