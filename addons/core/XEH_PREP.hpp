@@ -1,1 +1,1 @@
-PREP(myFunction)
+PREP(test);
