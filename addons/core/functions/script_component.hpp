@@ -1,1 +1,1 @@
-#include "z\SIA_3DEN_framework\addons\Framework_Core\script_component.hpp"
+#include "\z\sia3f\addons\core\script_component.hpp"

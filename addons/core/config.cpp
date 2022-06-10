@@ -2,13 +2,15 @@
 
 class CfgPatches {
 	class ADDON {
-		name = "SIA 3DEN Core Handlers";
-		author = "McKendrick";
-		
+		name = COMPONENT_NAME;		
 		units[] = {};
 		weapons[] = {};
-		requiredVersion = 1.0;
+		requiredVersion = REQUIRED_VERSION;
 		requiredAddons[] = { SIA_Framework_Handlers };
+		author = "Soldiers in Arms";
+		authors[] = { "McKendrick", "Siege" };
+		url = "https://github.com/Soliders-in-Arms-Arma-3-Group";
+		VERSION_CONFIG;
 	};
 };
 
