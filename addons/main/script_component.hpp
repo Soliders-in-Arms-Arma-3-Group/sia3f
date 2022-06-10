@@ -1,6 +1,6 @@
 #define COMPONENT main
 #define COMPONENT_BEAUTIFIED Main
-#include "\z\SIA_3DEN_framework\addons\main\script_mod.hpp"
+#include "\z\sia3f\addons\main\script_mod.hpp"
 
 // #define DEBUG_MODE_FULL
 // #define DISABLE_COMPILE_CACHE
@@ -14,4 +14,4 @@
     #define DEBUG_SETTINGS DEBUG_SETTINGS_MAIN
 #endif
 
-#include "\z\SIA_3DEN_framework\addons\main\script_macros.hpp"
+#include "\z\sia3f\addons\main\script_macros.hpp"
