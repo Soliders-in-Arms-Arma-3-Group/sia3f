@@ -57,7 +57,7 @@ if sys.platform == "win32":
     import winreg
 
 ######## GLOBALS #########
-project = "@SIA_3DEN_framework"
+project = "@sia3f"
 project_version = "0.0.1"
 arma3tools_path = ""
 work_drive = ""

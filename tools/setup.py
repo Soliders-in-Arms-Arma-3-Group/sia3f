@@ -3,7 +3,7 @@
 # Modified by Siege to remove the ACE build dependency because I see no need for it.
 
 #######################
-#  SIA_3DEN_framework Setup Script  #
+#  sia3f Setup Script  #
 #######################
 
 import os
@@ -15,21 +15,21 @@ import winreg
 
 ######## GLOBALS #########
 MAINDIR = "z"
-PROJECTDIR = "SIA_3DEN_framework"
+PROJECTDIR = "sia3f"
 ##########################
 
 def main():
     FULLDIR = "{}\\{}".format(MAINDIR,PROJECTDIR)
     print("""
   ######################################
-  # SIA_3DEN_framework Development Environment Setup #
+  # sia3f Development Environment Setup #
   ######################################
 
-  This script will create your SIA_3DEN_framework dev environment for you.
+  This script will create your sia3f dev environment for you.
 
-  This script will create two hard links on your system, both pointing to your SIA_3DEN_framework project folder:
-    [Arma 3 installation directory]\\{} => SIA_3DEN_framework project folder
-    P:\\{}                              => SIA_3DEN_framework project folder
+  This script will create two hard links on your system, both pointing to your sia3f project folder:
+    [Arma 3 installation directory]\\{} => sia3f project folder
+    P:\\{}                              => sia3f project folder
     """.format(FULLDIR,FULLDIR))
     print("\n")
 
