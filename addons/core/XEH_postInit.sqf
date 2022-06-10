@@ -1,4 +1,3 @@
 #include "script_component.hpp"
 
-[] call FUNC(myFunction);
-
+// [] call FUNC(myFunction);
