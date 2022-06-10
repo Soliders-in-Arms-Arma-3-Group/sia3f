@@ -6,6 +6,7 @@ class SIA_ArsenalOptions {
 			displayName = "Arsenal Enabled";
 			property = "SIA_arsenalEnabled";
 			control = "Checkbox";
+			expression = "_this setVariable ['%s',_value];";
 			defaultValue = true;
 		};
 
