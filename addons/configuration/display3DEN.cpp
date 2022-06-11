@@ -10,7 +10,7 @@ class display3DEN { // https://community.bistudio.com/wiki/Eden_Editor:_Configur
 				};
 				class GVAR(missionSettings) {
 					text = "Mission Settings";
-					action = QUOTE(edit3DENMissionAttributes QQGVAR(frameworkSettings);); // not sure if this will work
+					action = QUOTE(edit3DENMissionAttributes QQGVAR(frameworkSettings););
                     opensNewWindow = 1;
 				};
 

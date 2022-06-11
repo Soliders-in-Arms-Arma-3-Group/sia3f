@@ -36,7 +36,7 @@ THEME_ALPHA
 ### THEME_COLOR
 Gets a .hpp formatted array of the user defined GUI colors.  Intended for use in .hpp files when defining colors for a GUI.  By default, will return ``{0.13,0.54,0.21,0.8}``.  No parameters.
 
-Example:
+Example (relevant code marked by  ``!``):
 ```hpp
 // in someGUI.hpp
 #include "script_component.hpp"
@@ -54,5 +54,19 @@ class GVAR(someGUI) {
 		};
 	};
 };
+```
+***
+
+### PREP(fncName)
+Originally from CBA and modified for the ACE 3 mod, which is where it was stolen from.  Loads and caches a function for later use with the ``FUNC``<!-- ToDo: add link to macro --> macro.
+
+Parameters: ``fncName``: the function name
+
+Example for a function named ``exampleFunction`` in the ``tree`` module.
+```hpp
+// XEH_PREP.hpp, included in XEH_preInit.sqf
+
+PREP(exampleFunction);
+// Will prep the file located at \addons\tree\functions\fnc_exampleFunction.sqf
 ```
 ***
