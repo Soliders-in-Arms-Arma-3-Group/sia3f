@@ -18,7 +18,7 @@ Default returns:
 
 Example:
 ```
-THEME_RGB_R
+GUI_THEME_RGB_R
 // Returns user-customized GUI red value or 0.13 if one does not exist.
 ```
 ***
@@ -28,15 +28,15 @@ Get user defined GUI alpha (transparency) value where a higher value is less tra
 
 Example:
 ```
-THEME_ALPHA
+GUI_THEME_ALPHA
 // Returns user-customized GUI alpha value or 0.8 if one does not exist.
 ```
 ***
 
-### THEME_COLOR
+### GUI_THEME_COLOR
 Gets a .hpp formatted array of the user defined GUI colors.  Intended for use in .hpp files when defining colors for a GUI.  By default, will return ``{0.13,0.54,0.21,0.8}``.  No parameters.
 
-Example (relevant code marked by  ``!``):
+Example (relevant code marked by  ``!``, everything else is for context):
 ```hpp
 // in someGUI.hpp
 #include "script_component.hpp"
