@@ -1,10 +1,10 @@
-# SIA_main
+# main
 
 Backbone of other components, defining most of the commonly used macros.  Highly recommended, if not required, for use with CBA macros.
-<br></br>
-## Custom Macro Definitions
 
-Custom macros not imported from CBA are defined here.  Some may be similar, if not identical, to the ones used in the [ACE mod](https://github.com/acemod/ACE3).
+## Macro Definitions
+
+Custom macros not imported from CBA are defined here.
 ***
 
 ### GUI_THEME_RGB_<R/G/B>
