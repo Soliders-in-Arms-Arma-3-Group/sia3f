@@ -1,8 +1,15 @@
+#include "script_component.hpp"
+
 class CfgPatches {
 	class SIA_Framework_ACE {
+		name = COMPONENT_NAME;
 		units[] = {};
 		weapons[] = {};
-		requiredVersion = 1.0;
-		requiredAddons[] = { SIA_Framework_Handlers /* ToDo: ACE addons */ };
+		requiredVersion = REQUIRED_VERSION;
+		requiredAddons[] = { "sia3f_handlers" };
+		author = "Soldiers in Arms";
+		authors[] = { "" };
+		url = "https://github.com/Soliders-in-Arms-Arma-3-Group";
+		VERSION_CONFIG;
 	};
 };
