@@ -6,7 +6,7 @@ class CfgPatches {
 		units[] = {};
 		weapons[] = {};
 		requiredVersion = REQUIRED_VERSION;
-		requiredAddons[] = { SIA_Framework_Handlers };
+		requiredAddons[] = { "sia3f_handlers" };
 		author = "Soldiers in Arms";
 		authors[] = { "McKendrick", "Siege" };
 		url = "https://github.com/Soliders-in-Arms-Arma-3-Group";

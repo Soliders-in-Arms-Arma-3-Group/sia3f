@@ -1,4 +1,4 @@
 #include "script_component.hpp"
 
-diag_log text format ["test"];
-systemChat str ["Hello world!", QUOTE(ADDON)];
+diag_log "blah blah blah";
+diag_log GET_CONFIG(arsenalEnabled);
