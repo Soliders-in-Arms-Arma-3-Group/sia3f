@@ -57,6 +57,17 @@ class GVAR(someGUI) {
 ```
 ***
 
+### GET_CONFIG(var1)
+Gets the [mission config value](https://community.bistudio.com/wiki/getMissionConfigValue) of a variable.  Intended for use to get the framework settings set in the Eden Editor.
+
+Parameters: ``var``: the variable name to be fetched from the mission config.
+
+Example for the ``Arsenal Enabled`` checkbox in the SIA Framework Settings.  In this example, the checkbox is checked.
+```sqf
+private _arsenalEnabled = GET_CONFIG(arsenalEnabled);
+// _arsenalEnabled == true
+```
+
 ### PREP(fncName)
 Originally from CBA and modified for the ACE 3 mod, which is where it was stolen from.  Loads and caches a function for later use with the ``FUNC``<!-- ToDo: add link to macro --> macro.
 
