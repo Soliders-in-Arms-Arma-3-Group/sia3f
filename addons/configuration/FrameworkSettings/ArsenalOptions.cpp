@@ -2,13 +2,6 @@ class GVAR(arsenalOptions) {
 	collapsed = 1;
 	displayName = "Arsenal Options";
 	class Attributes {
-		class GVAR(arsenalEnabled) {
-			displayName = "Arsenal Enabled";
-			property = QGVAR(arsenalEnabled);
-			control = "Checkbox";
-			defaultValue = true;
-		};
-
 		class GVAR(disableArsenalOnRespawn) {
 			displayName = "Disable Arsenal On Respawn";
 			tooltip = "Currently no functionality.";

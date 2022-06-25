@@ -14,7 +14,6 @@
 
 #define GET_CONFIG(var1) (getMissionConfigValue QEGVAR(configuration,var1))
 
-
 // from ACE 3
 #ifdef DISABLE_COMPILE_CACHE
     #undef PREP

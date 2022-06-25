@@ -21,6 +21,10 @@ class GVAR(ACRERadioOptions) {
 					default = 1;
 					value = 0;
 				};
+				class GVAR(personalRadio_888S) {
+					name = "Beofeng 888S";
+					value = 1;
+				};
 			};
 		};
 
