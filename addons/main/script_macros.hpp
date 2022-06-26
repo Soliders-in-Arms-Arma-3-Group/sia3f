@@ -13,6 +13,7 @@
 #define GUI_THEME_COLOR {GUI_THEME_RGB_R,GUI_THEME_RGB_G,GUI_THEME_RGB_B,GUI_THEME_ALPHA}
 
 #define GET_CONFIG(var1) (getMissionConfigValue QEGVAR(configuration,var1))
+#define GET_CONFIG_DEFAULT(var,default) (getMissionConfigValue [QEGVAR(configuration,var1), default])
 
 // from ACE 3
 #ifdef DISABLE_COMPILE_CACHE

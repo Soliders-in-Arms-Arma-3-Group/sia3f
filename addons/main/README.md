@@ -69,6 +69,18 @@ private _arsenalEnabled = GET_CONFIG(arsenalEnabled);
 ```
 ***
 
+### GET_CONFIG_DEFAULT(var,default)
+Same as the ``GET_CONFIG`` macro, but returns the ``default`` value is ``var`` is undefined.
+
+Parameters: ``var``: the variable name to be fetched from the mission config. ``default``: the default value to return is ``var`` is undefined.
+
+Example for the ``personalRadio`` listbox.  In this example, the mission maker did not touch this value, so it was never defined in the mission.sqm file.
+```sqf
+private _personalRadioClassname = ["ACRE_PRC343", "ACRE_BF888S"] select GET_CONFIG(personalRadio,0);
+// _personalRadioClassname == "ACRE_PRC343"
+```
+***
+
 ### PREP(fncName)
 Originally from CBA and modified for the ACE 3 mod, which is where it was stolen from.  Loads and caches a function for later use with the ``FUNC``<!-- ToDo: add link to macro --> macro.
 
