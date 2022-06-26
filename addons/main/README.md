@@ -70,7 +70,7 @@ private _arsenalEnabled = GET_CONFIG(arsenalEnabled);
 ***
 
 ### GET_CONFIG_DEFAULT(var,default)
-Same as the ``GET_CONFIG`` macro, but returns the ``default`` value is ``var`` is undefined.
+Same as the ``GET_CONFIG`` macro, but returns the ``default`` value if ``var`` is undefined.
 
 Parameters: ``var``: the variable name to be fetched from the mission config. ``default``: the default value to return is ``var`` is undefined.
 
