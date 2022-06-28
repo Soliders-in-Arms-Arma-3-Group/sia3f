@@ -1,13 +1,5 @@
 #include "script_component.hpp"
 
-#define HEX_PINK "#FEAAAA"
-#define HEX_RED "#B21A00"
-#define HEX_GREEN "#AAFEAA"
-#define HEX_BLUE "#AAAAFE"
-#define HEX_YELLOW "#FEFEAA"
-#define HEX_WHITE "#FFFFFF"
-#define HEX_KOROMIKO "#FFB84C" // yellow/orange color
-
 /*
  * Authors: F3 (http://www.ferstaberinde.com/f3/en/), McKendrick
  * Adds loadout information of player and team to briefing.
