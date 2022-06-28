@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 
 #define HEX_PINK "#FEAAAA"
-#define HEX_RED "#FEAAAA"
+#define HEX_RED "#B21A00"
 #define HEX_GREEN "#AAFEAA"
 #define HEX_BLUE "#AAAAFE"
 #define HEX_YELLOW "#FEFEAA"
@@ -146,7 +146,7 @@ private _array = [
 	};
 
 	private _teamColor = switch (assignedTeam _x) do {
-		case "RED": { HEX_RED };
+		case "RED": { HEX_PINK };
 		case "GREEN": { HEX_GREEN };
 		case "BLUE": { HEX_BLUE };
 		case "YELLOW": { HEX_YELLOW };
