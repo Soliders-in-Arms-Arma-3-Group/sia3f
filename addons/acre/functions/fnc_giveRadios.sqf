@@ -14,8 +14,8 @@
  * call sia3f_acre_fnc_giveRadios
 */
 
-if (!GET_CONFIG(acreEnabled) || !isServer) exitWith {
-	LOG("fnc_giveRadios: acre not enabled or script run on client machine.");
+if (!GET_CONFIG(acreEnabled) || !isServer || !("@ACRE2" call EFUNC(core,checkModPresence))) exitWith {
+	LOG("fnc_giveRadios: acre not enabled/loaded or script run on client machine.");
 }; // Exit if not server or if ACRE is disabled.
 LOG("fnc_giveRadios started.");
 
