@@ -21,7 +21,7 @@ if (!isNil QGVAR(loadoutInfo)) then { player removeDiaryRecord ["Diary", GVAR(lo
 if (!isNil QGVAR(loadoutInfoTeam)) then { player removeDiaryRecord ["Diary", GVAR(loadoutInfoteam)] };
 
 // Local function to set the proper magazine count.
-private f3_fnc_wepMags = {
+f3_fnc_wepMags = {
 	params [
 		["_weapon", "", [""]],
 		["_mags", [], [[]]]
@@ -51,7 +51,7 @@ private f3_fnc_wepMags = {
 };
 
 // Local function to get the name and picture of a weapon/item
-private f3_fnc_name = {
+f3_fnc_name = {
 	params [
 		["_name", "", [""]],
 		["_type", "CfgWeapons", [""]],
@@ -74,7 +74,7 @@ private f3_fnc_name = {
 		getText (configFile >> _type >> _name >> "displayName")
 	]
 };
-private f3_fnc_nameShort = {
+f3_fnc_nameShort = {
 	params [
 		["_name", "", [""]], 
 		["_type", "CfgWeapons", [""]],
@@ -84,7 +84,7 @@ private f3_fnc_nameShort = {
 };
 
 // Local function to format the text for magazine counts
-private f3_fnc_magArrText = {
+f3_fnc_magArrText = {
 	params [
 		["_magArr", [], [[]]]
 	];
@@ -94,7 +94,7 @@ private f3_fnc_magArrText = {
 	""
 };
 
-private f3_fnc_loadoutDataToText = {
+f3_fnc_loadoutDataToText = {
 	params [
 		["_full", true, [true]],
 		["_wepItems", [], [[]]],
@@ -208,7 +208,7 @@ private f3_fnc_loadoutDataToText = {
 	_textShrt
 };
 
-private f3_fnc_getLoadout = {
+f3_fnc_getLoadout = {
 	params [
 		["_unit", player, [objNull]],
 		["_full", true, [true]]
@@ -259,7 +259,7 @@ private f3_fnc_getLoadout = {
 	[_full, _wepItems, _mags, _items, _items_assigned, _bp, _bpLoad, _weps] call f3_fnc_loadoutDataToText
 };
 
-private _text_notice = "NOTE: The loadout shown below is only accurate at mission start.<br /><br />";
+private _text_notice = "NOTE: The loadout shown below is only accurate till mission start.<br /><br />";
 
 // ====================================================================================
 // Wait for the briefing script to finish, so that the loadout appears at the top.
