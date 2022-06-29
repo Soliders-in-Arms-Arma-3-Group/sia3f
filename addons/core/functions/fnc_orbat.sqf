@@ -81,5 +81,5 @@ private _contentArr = [];
 	_contentArr pushBack "<br />"; // Add extra line break after each group.
 } forEach _allGroupsWithPlayers;
 
-_content = _contentArr joinString "";
-GVAR(orbat) = player createDiaryRecord ["Diary", ["ORBAT", "<execute expression='call " + QFUNC(orbat) + ";'>Refresh</execute><br></br><br></br>" + _str]]; // Add ORBAT text to diary along with "Refresh" button.
+private _content = _contentArr joinString "";
+GVAR(orbat) = player createDiaryRecord ["Diary", ["ORBAT", "<execute expression='call " + QFUNC(orbat) + ";'>Refresh</execute><br></br><br></br>" + _content]]; // Add ORBAT text to diary along with "Refresh" button.

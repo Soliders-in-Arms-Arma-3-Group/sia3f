@@ -14,8 +14,8 @@
  * call sia3f_acre_fnc_giveRadios
 */
 
-if (!GET_CONFIG(acreEnabled) || !isServer) exitWith {
-	LOG("fnc_giveRadios: acre not enabled or script run on client machine.");
+if (!GET_CONFIG(acreEnabled) || !isServer || !("@ACRE2" call EFUNC(core,checkModPresence))) exitWith {
+	LOG("fnc_giveRadios: acre not enabled/loaded or script run on client machine.");
 }; // Exit if not server or if ACRE is disabled.
 LOG("fnc_giveRadios started.");
 
@@ -35,6 +35,6 @@ TRACE_3("Radio classnames",_personalRadioClassname,_handheldRadioClassname,_manp
 	if (!([_player, _personalRadioClassname] call BIS_fnc_hasItem)) then { _player addItem _personalRadioClassname };
 	if (_role in _rolesWithHandheldRadio && !([_player, _handheldRadioClassname] call BIS_fnc_hasItem)) then { _player addItem _handheldRadioClassname };
 	if (_role in _rolesManpackRadio && !([_player, _manpackRadioClassname] call BIS_fnc_hasItem)) then { _player addItem _manpackRadioClassname };
-} forEach BIS_fnc_listPlayers;
+} forEach call BIS_fnc_listPlayers;
 
 INFO("fnc_giveRadios executed.");
