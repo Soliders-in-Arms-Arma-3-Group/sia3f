@@ -8,7 +8,6 @@
 #define HEX_WHITE "#FFFFFF"
 #define HEX_SECONDARY "#666666" // gray
 #define HEX_HEADER "#FFB84C" // yellow/orange color, aka "Koromiko"
-#define HEX_PRIMARY HEX_WHITE
 #define FONT_HEADER "PuristaMedium"
 #define FONT_PRIMARY "PuristaLight"
 #define FONT_SECONDARY "PuristaSemibold"
@@ -59,20 +58,20 @@ _hour = if (_hour + _timezoneOffset < 0) then [{ _hour + _timezoneOffset + 24}, 
 _txtTime = text (([(_hour + ((_systemTime select 4) / 60)), "HH:MM"] call BIS_fnc_timeToString) + " " + _timezoneName);
 _txtTime setAttributes ["align", "right", "font", FONT_HEADER];
 
-private _txt3 = text "CTab:";
-_txt3 setAttributes ["align", "left", "color", HEX_SECONDARY, "font", FONT_PRIMARY];
-private _txt4 = text toUpper (str GET_CONFIG(haveCTab));
-_txt4 setAttributes ["align", "right", "color", HEX_SECONDARY, "font", FONT_PRIMARY];
+private _txtCtab = text "CTab:";
+_txtCtab setAttributes ["align", "left", "color", HEX_SECONDARY, "font", FONT_PRIMARY];
+private _txtCtabStatus = text toUpper (str GET_CONFIG(haveCTab));
+_txtCtabStatus setAttributes ["align", "right", "color", HEX_SECONDARY, "font", FONT_PRIMARY];
 
 private _txtArsenal = text "Arsenals:";
 _txtArsenal setAttributes ["align", "left", "color", HEX_SECONDARY, "font", FONT_PRIMARY];
 private _txtArsenalEnabled = text toUpper (str GET_CONFIG(arsenalEnabled));
 _txtArsenalEnabled setAttributes ["align", "right", "color", HEX_SECONDARY, "font", FONT_PRIMARY];
 
-private _txt5 = text "Radios:";
-_txt5 setAttributes ["align", "left", "color", HEX_SECONDARY, "font", FONT_PRIMARY];
-private _txt6 = text toUpper (str GET_CONFIG(acreEnabled));
-_txt6 setAttributes ["align", "right", "color", HEX_SECONDARY, "font", FONT_PRIMARY];
+private _txtRadios = text "Radios:";
+_txtRadios setAttributes ["align", "left", "color", HEX_SECONDARY, "font", FONT_PRIMARY];
+private _txtRadiosEnabled = text toUpper (str GET_CONFIG(acreEnabled));
+_txtRadiosEnabled setAttributes ["align", "right", "color", HEX_SECONDARY, "font", FONT_PRIMARY];
 
 private _txtKAT = text "KAT Medical:";
 _txtKAT setAttributes ["align", "left", "color", HEX_SECONDARY, "font", FONT_PRIMARY];
@@ -110,9 +109,9 @@ private _array = [
 	lineBreak,
 	_txtArsenal, _txtArsenalEnabled,
 	lineBreak,
-	_txt3,  _txt4,
+	_txtCtab,  _txtCtabStatus,
 	lineBreak,
-	_txt5, _txt6,
+	_txtRadios, _txtRadiosEnabled,
 	lineBreak,
 	_txtKAT, _txtKATState,
 	lineBreak,
