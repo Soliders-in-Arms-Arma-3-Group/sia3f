@@ -1,5 +1,9 @@
 PREP(checkModPresence);
 PREP(hint);
 PREP(loadoutNotes);
+PREP(loadoutNotesDataToText);
+PREP(loadoutNotesGetLoadout);
+PREP(loadoutNotesName);
+PREP(loadoutNotesWepMags);
 PREP(orbat);
 PREP(teleportToSquad);
