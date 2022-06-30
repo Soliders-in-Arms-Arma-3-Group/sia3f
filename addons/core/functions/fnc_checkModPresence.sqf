@@ -2,10 +2,10 @@
 
 /*
  * Author: Siege
- * Checks if a mod is currently loaded. Might be moved to another module for organization.
+ * Checks if a mod is currently loaded.
  * 
  * Arguments:
- * 0: Mod to check (e.g, this mod would be "@sia3f", CBA would be "@CBA_A3") <STRING>
+ * 0: Mod to check (i.e, this mod would be "@sia3f", CBA would be "@CBA_A3") <STRING>
  *
  * Return Value:
  * True if mod is loaded, False if not <BOOL>
@@ -21,4 +21,5 @@ private _hasMod = false; // exitWith doesn't work in the forEach context, so can
 	if (_x # 1 == _addon) exitWith { _hasMod = true; };
 } forEach getLoadedModsInfo;
 
+TRACE_2("checkModPresence returned",_addon,_hasMod);
 _hasMod
