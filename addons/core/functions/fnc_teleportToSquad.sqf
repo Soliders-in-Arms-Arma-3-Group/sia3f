@@ -11,7 +11,7 @@
  * None
  *
  * Example:
- * call sia3f_core_fnc_teleportToSquad
+ * spawn sia3f_core_fnc_teleportToSquad
 */
 
 if (!hasInterface) exitWith {}; // Exit if not a player.

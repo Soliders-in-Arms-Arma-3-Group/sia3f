@@ -6,16 +6,15 @@
 #define HEX_BLUE "#AAAAFE"
 #define HEX_YELLOW "#FEFEAA"
 #define HEX_WHITE "#FFFFFF"
-#define HEX_GRAY "#666666"
+#define HEX_SECONDARY "#666666" // gray
 #define HEX_HEADER "#FFB84C" // yellow/orange color, aka "Koromiko"
 #define HEX_PRIMARY HEX_WHITE
-#define HEX_SECONDARY HEX_GRAY
 #define FONT_HEADER "PuristaMedium"
 #define FONT_PRIMARY "PuristaLight"
 #define FONT_SECONDARY "PuristaSemibold"
 
 /*
- * Authors: McKendrick
+ * Author: McKendrick
  * Formats and displays information about the current mission in the form of a hint.
  *
  * Arguments:
@@ -77,7 +76,7 @@ _txt6 setAttributes ["align", "right", "color", HEX_SECONDARY, "font", FONT_PRIM
 
 private _txtKAT = text "KAT Medical:";
 _txtKAT setAttributes ["align", "left", "color", HEX_SECONDARY, "font", FONT_PRIMARY];
-private _txtKATState = text toUpper GVAR(haveKATMedical);
+private _txtKATState = text toUpper GET_CONFIG(haveKATMedical);
 _txtKATState setAttributes ["align", "right", "color", HEX_SECONDARY, "font", FONT_PRIMARY];
 
 private _txtFaction = text "Faction:";
@@ -94,7 +93,7 @@ private _txtGroup = text "Group:";
 _txtGroup setAttributes ["align", "left", "font", FONT_SECONDARY, "color", HEX_HEADER];
 private _txtGroupName = text (groupId (group player));
 _txtGroupName setAttributes ["align", "right", "font", FONT_SECONDARY, "color", HEX_HEADER];
-private _groupMembers =  (units group player) apply {name _x};
+private _groupMembers = (units group player) apply {name _x};
 private _txtGroupMembers = "";
 
 private _array = [
@@ -109,13 +108,13 @@ private _array = [
 	_txtSystemTime, _txtTime,
 	lineBreak,
 	lineBreak,
-	_txtArsenal,_txtArsenalEnabled,
+	_txtArsenal, _txtArsenalEnabled,
 	lineBreak,
 	_txt3,  _txt4,
 	lineBreak,
 	_txt5, _txt6,
 	lineBreak,
-	_txtKAT,_txtKATState,
+	_txtKAT, _txtKATState,
 	lineBreak,
 	lineBreak,
 	_txtFaction, _txtFactionName,
@@ -134,15 +133,15 @@ private _array = [
 	private _roleColor = '';
 
 	if (_role != "") then { // If roleDescription is set, then truncate. Else use config name.
-		_role = (_role splitString "@") select 0
+		_role = (_role splitString "@") select 0;
 	} else {
-		_role = getText (configFile >> "CfgVehicles" >> (typeOf _x) >> "displayName")
+		_role = getText (configFile >> "CfgVehicles" >> (typeOf _x) >> "displayName");
 	};
 
 	if (_x == player) then { // Set color of player's name to tan.
-		_roleColor = '#B21A00'
+		_roleColor = HEX_RED;
 	} else {
-		_roleColor = '#ffffff'
+		_roleColor = HEX_WHITE;
 	};
 
 	private _teamColor = switch (assignedTeam _x) do {
@@ -153,8 +152,8 @@ private _array = [
 		default { HEX_WHITE };
 	};
 
-	private _rankIcon = image ("\A3\Ui_F\Data\GUI\Cfg\Ranks\"+ (rank _x) + "_gs.paa"); // Get icon of units' rank from config.
-	_rankIcon setAttributes ["align","left","size","0.8","color", _teamColor];
+	private _rankIcon = image ("\A3\Ui_F\Data\GUI\Cfg\Ranks\" + (rank _x) + "_gs.paa"); // Get icon of units' rank from config.
+	_rankIcon setAttributes ["align", "left", "size", "0.8", "color", _teamColor];
 	_array pushBack _rankIcon;
 
 	private _txt = text (" " + name _x);
