@@ -1,5 +1,5 @@
-#define COMPONENT handlers
-#define COMPONENT_BEAUTIFIED Handlers
+#define COMPONENT misc_items
+#define COMPONENT_BEAUTIFIED Misc Items
 #include "\z\sia3f\addons\main\script_mod.hpp"
 
 // #define DEBUG_MODE_FULL

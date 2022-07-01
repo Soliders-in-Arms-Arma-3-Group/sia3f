@@ -11,7 +11,7 @@
  * None
  *
  * Example:
- * call sia3f_acre_fnc_giveRadios
+ * call sia3f_radio_fnc_giveRadios
 */
 
 if (!GET_CONFIG(acreEnabled) || !isServer || !("@ACRE2" call EFUNC(core,checkModPresence))) exitWith {

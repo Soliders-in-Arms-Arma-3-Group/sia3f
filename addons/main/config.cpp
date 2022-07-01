@@ -6,7 +6,7 @@ class CfgPatches {
 		units[] = {};
 		weapons[] = {};
 		requiredVersion = REQUIRED_VERSION;
-		requiredAddons[] = { "cba_main" };
+		requiredAddons[] = { "cba_main", "sia3f_main" };
 		author = "Soldiers in Arms";
 		authors[] = { "Siege" };
 		url = "https://github.com/Soliders-in-Arms-Arma-3-Group";

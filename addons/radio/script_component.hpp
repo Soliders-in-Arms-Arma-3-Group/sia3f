@@ -1,5 +1,5 @@
-#define COMPONENT ctab
-#define COMPONENT_BEAUTIFIED CTab
+#define COMPONENT radio
+#define COMPONENT_BEAUTIFIED Radio
 #include "\z\sia3f\addons\main\script_mod.hpp"
 
 // #define DEBUG_MODE_FULL
