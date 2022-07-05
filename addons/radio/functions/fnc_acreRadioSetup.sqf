@@ -1,8 +1,9 @@
 #include "script_component.hpp"
 
-#define GET_HASH profileNamespace getVariable [QGVAR(ACREDefaultSpatial),\
-		["ACRE_PRC343", "ACRE_PRC148", "ACRE_PRC152", "ACRE_PRC77", "ACRE_PRC117F"] createHashMapFromArray ["RIGHT", "LEFT", "LEFT", "LEFT", "LEFT"]\ // If player has no default settings, then load a blank template.
-	] // Load player's current default spatial settings.
+#define GET_HASH profileNamespace getVariable [\
+	QGVAR(ACREDefaultSpatial), \
+	["ACRE_PRC343", "ACRE_PRC148", "ACRE_PRC152", "ACRE_PRC77", "ACRE_PRC117F"] createHashMapFromArray ["RIGHT", "LEFT", "LEFT", "LEFT", "LEFT"] \
+] // Load player's current default spatial settings.
 
 /*
  * Author: McKendrick
