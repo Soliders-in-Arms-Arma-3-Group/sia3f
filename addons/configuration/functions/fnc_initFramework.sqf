@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 
 #define ADD_OBJ _addedEntities pushBack create3DENEntity
-#define SET_CONFIG(var,value) QGVAR(frameworkSettings) set3DENMissionAttributes [QGVAR(var), value];
+#define SET_CONFIG(var,value) QGVAR(frameworkSettings) set3DENMissionAttribute [QGVAR(var), value]
 
 /*
  * Author: Siege
