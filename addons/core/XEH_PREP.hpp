@@ -1,4 +1,6 @@
 PREP(checkModPresence);
+PREP(exitAFK);
+PREP(goAFK);
 PREP(hint);
 PREP(loadoutNotes);
 PREP(loadoutNotesDataToText);
