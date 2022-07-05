@@ -10,6 +10,7 @@
  * Return Value:
  * True if mod is loaded, False if not <BOOL>
  *
+ * Example:
  * "@sia3f" call sia3f_core_fnc_checkModPresence
 */
 
