@@ -35,3 +35,5 @@ This will define all of the variables that can be used with ``GET_CONFIG(var)``.
 |briefORBAT|ORBAT Briefing|If checked, adds ORBAT information to the briefing.|Boolean|True|
 |briefWeather|Weather Briefing|If checked, adds a weather report to the briefing.|Boolean|True|
 |briefLoadout|Loadout Information|If checked, adds loadout information to the briefing.|Boolean|True|
+|**Objects**|
+|isArsenal|Is Arsenal|If checked, makes the object an arsenal.|Boolean|False|
