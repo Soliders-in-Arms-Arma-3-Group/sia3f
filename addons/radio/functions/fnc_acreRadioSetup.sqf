@@ -25,7 +25,7 @@
  * ["setRadioDefaultSpatial", ["ACRE_PRC152", "LEFT"]] spawn sia3f_radio_fnc_ACRERadioSetup
 */
 
-if (!GET_CONFIG(acreEnabled) || !hasInterface || !("@ACRE2" call EFUNC(core,checkModPresence))) exitWith {}; // Exit if not player or if ACRE is disabled/not loaded.
+if (!GET_CONFIG(acreEnabled,true) || !hasInterface || !("@ACRE2" call EFUNC(core,checkModPresence))) exitWith {}; // Exit if not player or if ACRE is disabled/not loaded.
 waitUntil { ([] call acre_api_fnc_isInitialized) }; // Wait until player's radios are initialized.
 
 private _hasRadio = [player] call acre_api_fnc_hasRadio;

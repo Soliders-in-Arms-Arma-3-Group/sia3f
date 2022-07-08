@@ -26,7 +26,7 @@
  * call sia3f_core_fnc_hint
 */
 
-if (!GET_CONFIG(showStatusHint) || !hasInterface) exitWith {}; // Exit if not a player or if player has disabled status hint.
+if (!GET_CONFIG(showStatusHint,true) || !hasInterface) exitWith {}; // Exit if not a player or if player has disabled status hint.
 
 private _systemTime = systemTimeUTC; // Cache System's current time.
 
@@ -60,22 +60,22 @@ _txtTime setAttributes ["align", "right", "font", FONT_HEADER];
 
 private _txtCtab = text "CTab:";
 _txtCtab setAttributes ["align", "left", "color", HEX_SECONDARY, "font", FONT_PRIMARY];
-private _txtCtabStatus = text toUpper (str GET_CONFIG(haveCTab));
+private _txtCtabStatus = text toUpper (str GET_CONFIG(haveCTab,true));
 _txtCtabStatus setAttributes ["align", "right", "color", HEX_SECONDARY, "font", FONT_PRIMARY];
 
 private _txtArsenal = text "Arsenals:";
 _txtArsenal setAttributes ["align", "left", "color", HEX_SECONDARY, "font", FONT_PRIMARY];
-private _txtArsenalEnabled = text toUpper (str GET_CONFIG(arsenalEnabled));
+private _txtArsenalEnabled = text toUpper (str true); // ToDo: check for any arsenals
 _txtArsenalEnabled setAttributes ["align", "right", "color", HEX_SECONDARY, "font", FONT_PRIMARY];
 
 private _txtRadios = text "Radios:";
 _txtRadios setAttributes ["align", "left", "color", HEX_SECONDARY, "font", FONT_PRIMARY];
-private _txtRadiosEnabled = text toUpper (str GET_CONFIG(acreEnabled));
+private _txtRadiosEnabled = text toUpper (str GET_CONFIG(acreEnabled,true));
 _txtRadiosEnabled setAttributes ["align", "right", "color", HEX_SECONDARY, "font", FONT_PRIMARY];
 
 private _txtKAT = text "KAT Medical:";
 _txtKAT setAttributes ["align", "left", "color", HEX_SECONDARY, "font", FONT_PRIMARY];
-private _txtKATState = text toUpper GET_CONFIG(haveKATMedical);
+private _txtKATState = text (["NONE", "LIMITED", "FULL"] select (GET_CONFIG(haveKATMedical,2)));
 _txtKATState setAttributes ["align", "right", "color", HEX_SECONDARY, "font", FONT_PRIMARY];
 
 private _txtFaction = text "Faction:";

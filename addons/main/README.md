@@ -57,20 +57,8 @@ class GVAR(someGUI) {
 ```
 ***
 
-### GET_CONFIG(var)
-Gets the [mission config value](https://community.bistudio.com/wiki/getMissionConfigValue) of a variable.  Intended for use to get the framework settings set in the Eden Editor.
-
-Parameters: ``var``: the variable name to be fetched from the mission config.
-
-Example for the ``Arsenal Enabled`` checkbox in the SIA Framework Settings.  In this example, the checkbox is checked.
-```sqf
-private _arsenalEnabled = GET_CONFIG(arsenalEnabled);
-// _arsenalEnabled == true
-```
-***
-
-### GET_CONFIG_DEFAULT(var,default)
-Same as the ``GET_CONFIG`` macro, but returns the ``default`` value if ``var`` is undefined.
+### GET_CONFIG(var,default)
+Gets the [mission config value](https://community.bistudio.com/wiki/getMissionConfigValue) of a variable, returning the ``default`` value if ``var`` is undefined.  Intended for use to get the framework settings set in the Eden Editor.
 
 Parameters: ``var``: the variable name to be fetched from the mission config. ``default``: the default value to return is ``var`` is undefined.
 

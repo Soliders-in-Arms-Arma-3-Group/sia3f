@@ -22,7 +22,7 @@
  * call sia3f_core_fnc_orbat
 */
 
-if (!hasInterface || !GET_CONFIG(briefOrbat)) exitWith {}; // Exit if not a player.
+if (!hasInterface || !GET_CONFIG(briefOrbat,true)) exitWith {}; // Exit if not a player.
 
 if (!isNil QGVAR(orbat)) then { player removeDiaryRecord ["Diary", GVAR(orbat)] }; // If diary entry already exists, then erase it.
 

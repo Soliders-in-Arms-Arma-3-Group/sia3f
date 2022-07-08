@@ -14,7 +14,7 @@
  * call sia3f_core_fnc_loadoutNotes
 */
 
-if (!hasInterface || !GET_CONFIG(briefLoadout)) exitWith {}; // Exit if not a player.
+if (!hasInterface || !GET_CONFIG(briefLoadout,true)) exitWith {}; // Exit if not a player.
 
 // Remove old info page if there is one.
 if (!isNil QGVAR(loadoutInfo)) then { player removeDiaryRecord ["Diary", GVAR(loadoutInfo)] };
