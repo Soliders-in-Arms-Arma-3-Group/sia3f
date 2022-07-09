@@ -44,7 +44,7 @@ class Cfg3DEN {
 						tooltip = "The unit's role (e.g, ""Rifleman"").  Only needs to be defined on playable units.";
 						property = QGVAR(role);
 						control = "Edit";
-						expression = "_this setVariable ['%s',_value];";
+						expression = "_this setVariable ['%s',_value,true];";
 						typeName = "STRING";
 						defaultValue = "''";
 
