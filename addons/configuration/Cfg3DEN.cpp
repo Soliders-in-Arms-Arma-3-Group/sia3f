@@ -22,6 +22,10 @@ class Cfg3DEN {
 						tooltip = "Check if this object is meant to be an arsenal.";
 						property = QGVAR(isArsenal);
 						control = "Checkbox";
+						expression = QUOTE(
+							if (isNil QQGVAR(arsenals)) then { GVAR(arsenals) = []; };
+							GVAR(arsenals) pushBack _this;
+						);
 						defaultValue = false;
 
 						// condition should be objectSimulated && !objectControllable && !logicModule

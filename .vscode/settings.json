@@ -3,6 +3,15 @@
 	"cSpell.words": [
 		"Beofeng",
 		"Koromiko",
-		"QFUNC"
+		"GVAR",
+		"QGVAR",
+		"QQGVAR",
+		"EGVAR",
+		"QEGVAR",
+		"QQEGVAR",
+		"FUNC",
+		"QFUNC",
+		"EFUNC",
+		"QEFUNC"
 	]
 }
