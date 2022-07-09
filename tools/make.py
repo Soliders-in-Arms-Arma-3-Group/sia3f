@@ -72,7 +72,7 @@ dssignfile = ""
 prefix = ""
 pbo_name_prefix = ""
 signature_blacklist = []
-importantFiles = ["mod.cpp", "README.md", "LICENSE", "logo_SIA_3DEN_framework_ca.paa"]
+importantFiles = ["mod.cpp", "README.md", "LICENSE", "extras\images\\ace_button_img.jpg", "extras\images\logo_sia3f_tiny.paa", "extras\images\logo_sia3f.paa"]
 versionFiles = ["mod.cpp", "README.md"]
 
 ciBuild = False # Used for CI builds
