@@ -37,3 +37,5 @@ This will define all of the variables that can be used with ``GET_CONFIG(var)``.
 |briefLoadout|Loadout Information|If checked, adds loadout information to the briefing.|Boolean|True|
 |**Objects**|
 |isArsenal|Is Arsenal|If checked, makes the object an arsenal.|Boolean|False|
+|isButton|Is Button|If checked, makes the object a button.|Boolean|False|
+|role|Is Arsenal|The unit's role (e.g, "Rifleman").  Only needs to be defined on playable units.|String|""|

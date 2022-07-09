@@ -27,6 +27,30 @@ class Cfg3DEN {
 						// condition should be objectSimulated && !objectControllable && !logicModule
 						condition = "objectSimulated * (1 - objectControllable) * (1 - logicModule)"; // https://community.bistudio.com/wiki/Eden_Editor:_Configuring_Attributes#Condition
 					};
+
+					class GVAR(isButton) {
+						displayName = "Is Button";
+						tooltip = "Check if this object is meant to be a button.";
+						property = QGVAR(isButton);
+						control = "Checkbox";
+						defaultValue = false;
+
+						// condition should be objectSimulated && !objectControllable && !logicModule
+						condition = "objectSimulated * (1 - objectControllable) * (1 - logicModule)"; // https://community.bistudio.com/wiki/Eden_Editor:_Configuring_Attributes#Condition
+					};
+
+					class GVAR(role) {
+						displayName = "Role";
+						tooltip = "The unit's role (e.g, ""Rifleman"").  Only needs to be defined on playable units.";
+						property = QGVAR(role);
+						control = "Edit";
+						expression = "_this setVariable ['%s',_value];";
+						typeName = "STRING";
+						defaultValue = "''";
+
+						// only units should have this attribute
+						condition = "objectControllable";
+					};
 				};
 			};
 		};
