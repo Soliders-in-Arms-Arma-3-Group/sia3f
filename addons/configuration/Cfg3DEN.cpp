@@ -8,6 +8,7 @@ Note: attributes are not set until edited by the user.  Not just opening the
 class Cfg3DEN {
 	class Mission { // https://community.bistudio.com/wiki/Eden_Editor:_Configuring_Attributes#Scenario
 		#include "FrameworkSettings\FrameworkSettings.cpp"
+		#include "Briefing\Briefing.cpp"
 	};
 
 	class Object {
