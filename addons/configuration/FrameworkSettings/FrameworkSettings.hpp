@@ -1,11 +1,11 @@
 class GVAR(frameworkSettings) {
 	displayName = "SIA Framework Settings";
 	class AttributeCategories {
-		#include "missionInfo.cpp"
-		#include "briefingText.cpp"
-		#include "arsenalOptions.cpp"
-		#include "radioOptions.cpp"
-		#include "aceActionOptions.cpp"
-		#include "briefingSettings.cpp"
+		#include "missionInfo.hpp"
+		#include "briefingText.hpp"
+		#include "arsenalOptions.hpp"
+		#include "radioOptions.hpp"
+		#include "aceActionOptions.hpp"
+		#include "briefingSettings.hpp"
 	};
 };
