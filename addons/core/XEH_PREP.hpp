@@ -1,3 +1,4 @@
+PREP(briefing);
 PREP(checkModPresence);
 PREP(exitAFK);
 PREP(goAFK);
