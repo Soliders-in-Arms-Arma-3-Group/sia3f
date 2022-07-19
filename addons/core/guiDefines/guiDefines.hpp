@@ -319,10 +319,5 @@ class RscButton
 
 /// Controls
 
-class GVAR(goAFK) {
-	#include goAFK.hpp
-};
-
-class GVAR(TPD) {
-	#include TPD.hpp
-};
+#include goAFK.hpp
+#include TPD.hpp
