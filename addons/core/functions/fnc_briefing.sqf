@@ -14,17 +14,11 @@
  * call sia3f_core_fnc_briefing
 */
 
-private _situationText = GET_CONFIG(situationTabText,"");
-private _missionText = GET_CONFIG(missionTabText,"");
-private _executionText = GET_CONFIG(execTabText,"");
-private _supportText = GET_CONFIG(supportTabText,"");
-private _signalText = GET_CONFIG(signalTabText,"");
-
-{
-	// ToDo: auto html formatting
-} forEach [situationText, missionText, executionText, supportText, signalText];
-
-systemChat str getMissionConfigValue ["sia3f_configuration_execTabText", "Not working!"];
+private _situationText = [GET_CONFIG(situationTabText,"")] call FUNC(formatBriefing);
+private _missionText = [GET_CONFIG(missionTabText,"")] call FUNC(formatBriefing);
+private _executionText = [GET_CONFIG(execTabText,"")] call FUNC(formatBriefing);
+private _supportText = [GET_CONFIG(supportTabText,"")] call FUNC(formatBriefing);
+private _signalText = [GET_CONFIG(signalTabText,"")] call FUNC(formatBriefing);
 
 player createDiaryRecord ["Diary", [GET_CONFIG(signalTabName,"Signal"), _signalText]];
 player createDiaryRecord ["Diary", [GET_CONFIG(supportTabName,"Support"), _supportText]];
