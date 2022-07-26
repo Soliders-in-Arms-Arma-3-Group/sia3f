@@ -54,4 +54,4 @@ player addEventHandler ["Respawn", {
 	if (_unit getVariable [QGVAR(isAFK), false]) then {
 		call FUNC(exitAFK);
 	};
-}]
+}];
