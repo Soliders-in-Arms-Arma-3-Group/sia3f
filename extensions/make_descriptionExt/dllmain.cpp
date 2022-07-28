@@ -34,14 +34,14 @@ int __stdcall RVExtensionArgs(char* output, int outputSize, const char* function
 	{
 		sstream << argv[i];
 	}
-	std::string filePath = sstream.str().substr(1, sstream.str().length() - 2);
-	filePath.append("description.ext");
+	std::string filePath = sstream.str().substr(1, sstream.str().length() - 2); // remove leading/trailing quotations
+	filePath.append("description.ext"); // file name
 	
 	// create file and insert content
-	std::ofstream file(filePath);
-	file << "respawnOnStart = -1;\n";
+	std::ofstream file(filePath); // create file
+	file << "respawnOnStart = -1;\n"; // file content (\n is a new line)
 	file.close();
 
-	strncpy_s(output, outputSize, filePath.c_str(), _TRUNCATE);
+	strncpy_s(output, outputSize, filePath.c_str(), _TRUNCATE); // return file path because why not
 	return 0;
 }
