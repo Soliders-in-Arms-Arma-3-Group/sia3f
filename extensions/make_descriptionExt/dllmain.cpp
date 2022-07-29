@@ -5,8 +5,7 @@
 #include <iostream>
 #include <fstream>
 
-extern "C"
-{
+extern "C" {
 	//--- Called by Engine on extension load 
 	__declspec (dllexport) void __stdcall RVExtensionVersion(char* output, int outputSize);
 
@@ -21,13 +20,11 @@ void __stdcall RVExtensionVersion(char* output, int outputSize) {
 	strncpy_s(output, outputSize, "make_descriptionExt v0.1", _TRUNCATE);
 }
 
-void __stdcall RVExtension(char* output, int outputSize, const char* filePath)
-{
+void __stdcall RVExtension(char* output, int outputSize, const char* filePath) {
 	strncpy_s(output, outputSize, "Syntax Error - Use format STRING callExtension ARRAY.", _TRUNCATE);
 }
 
-int __stdcall RVExtensionArgs(char* output, int outputSize, const char* function, const char** argv, int argc)
-{
+int __stdcall RVExtensionArgs(char* output, int outputSize, const char* function, const char** argv, int argc) {
 	// generate filepath string from input array
 	std::stringstream sstream;
 	for (int i = 0; i < argc; i++)
