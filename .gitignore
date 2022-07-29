@@ -14,3 +14,4 @@ extensions/builds/*.exp
 extensions/builds/*.lib
 extensions/builds/*.pdb
 extensions/*/BuildShit
+extensions/*/.vs
