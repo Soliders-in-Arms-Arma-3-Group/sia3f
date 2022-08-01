@@ -320,4 +320,3 @@ class RscButton
 /// Controls
 
 #include "goAFK.hpp"
-#include "TPD.hpp"
