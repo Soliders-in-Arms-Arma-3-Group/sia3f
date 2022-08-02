@@ -6,17 +6,19 @@ class display3DEN { // https://community.bistudio.com/wiki/Eden_Editor:_Configur
 				items[] += { QGVAR(frameworkFolder) };
 				class GVAR(frameworkFolder) {
 					text = "SIA Mission Framework";
-					items[] = { QGVAR(missionSettings), QGVAR(init), QGVAR(importExportFolder), QGVAR(frameworkMeta) };
+					items[] = { QGVAR(missionSettings), QGVAR(briefingSetup), QGVAR(importExportFolder), QGVAR(frameworkMeta) };
 				};
+
 				class GVAR(missionSettings) {
 					text = "Mission Settings";
 					action = QUOTE(edit3DENMissionAttributes QQGVAR(frameworkSettings););
                     opensNewWindow = 1;
 				};
-
-				class GVAR(init) {
-					text = "Initialize Framework";
-					action = QUOTE(call FUNC(initFramework););
+ 
+				class GVAR(briefingSetup) {
+					text = "Configure Briefing";
+					action = QUOTE(edit3DENMissionAttributes QQGVAR(briefing););
+					opensNewWindow = 1;
 				};
 
 				class GVAR(importExportFolder) {
