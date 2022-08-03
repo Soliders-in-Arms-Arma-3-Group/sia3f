@@ -78,7 +78,7 @@ if (!isNil QEGVAR(configuration,arsenals)) then {
 
 if (!isNil QEGVAR(configuration,buttons)) then {
 	if (GET_CONFIG(enableTPMenu,true)) then {
-		["enableGlobalMessage", false] call TPD_fnc_teleport; // Disable global message
+		["enableGlobalMessage", false] call FUNC(teleport); // Disable global message
 		{
 			["addActions", [_x]] call TPD_fnc_teleport; 
 			_x setObjectTextureGlobal [0, "sia_f\images\ace_button_img.paa"];

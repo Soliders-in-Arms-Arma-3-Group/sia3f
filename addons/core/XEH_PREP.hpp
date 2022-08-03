@@ -10,4 +10,5 @@ PREP(loadoutNotesGetLoadout);
 PREP(loadoutNotesName);
 PREP(loadoutNotesWepMags);
 PREP(orbat);
+PREP(teleport);
 PREP(teleportToSquad);
