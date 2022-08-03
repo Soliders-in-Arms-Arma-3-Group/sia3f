@@ -8,3 +8,10 @@ texHeaders.bin
 *.lnk
 Thumbs.db
 ArmaScriptCompiler.exe
+
+# VS extraneous build shit
+extensions/builds/*.exp
+extensions/builds/*.lib
+extensions/builds/*.pdb
+extensions/*/BuildShit
+extensions/*/.vs
