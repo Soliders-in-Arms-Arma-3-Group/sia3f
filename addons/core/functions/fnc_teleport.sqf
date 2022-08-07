@@ -112,15 +112,16 @@ switch (_mode) do {
 		if !(_parameters isEqualTypeAll objNull) exitWith { diag_log "TPD: Actions could not be added. Only pass objects to the function!" };
 		_parameters apply {
 
-      //Modified by McKendrick
-      // vvvv
-		  if ("@ace" call FUNC(checkModPresence)) then { 
-        private _action = ["TPD", "Open Teleport Menu", "\a3\modules_f_curator\data\portraitobjectivemove_ca.paa", { [] spawn { findDisplay 46 createDisplay "TPD_Teleport" } }, { true }] call ace_interact_menu_fnc_createAction;
-        [_x, 0, ["ACE_MainActions"], _action, true] remoteExecCall ["ace_interact_menu_fnc_addActionToObject"];
-      } else {
-        [_x, ["<img image='\a3\modules_f_curator\data\portraitobjectivemove_ca.paa'/> Select Teleport Location", { findDisplay 46 createDisplay "TPD_Teleport" }, nil, 6, true, true, "", "true", 4]] remoteExec ["addAction", 0, _x];
-      };
-      // ^^^^
+		//Modified by McKendrick
+		// vvvv
+		if ("@ace" call FUNC(checkModPresence)) then { 
+			private _action = ["TPD", "Open Teleport Menu", "\a3\modules_f_curator\data\portraitobjectivemove_ca.paa", { [] spawn { findDisplay 46 createDisplay "TPD_Teleport" } }, { true }] call ace_interact_menu_fnc_createAction;
+			[_x, 0, ["ACE_MainActions"], _action, true] remoteExecCall ["ace_interact_menu_fnc_addActionToObject"];
+		} else {
+			[_x, ["<img image='\a3\modules_f_curator\data\portraitobjectivemove_ca.paa'/> Select Teleport Location", { findDisplay 46 createDisplay "TPD_Teleport" }, nil, 6, true, true, "", "true", 4]] remoteExec ["addAction", 0, _x];
+		};
+		// ^^^^
+
 		};
 	};
 
