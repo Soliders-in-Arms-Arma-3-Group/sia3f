@@ -9,6 +9,7 @@ class Cfg3DEN {
 	class Mission { // https://community.bistudio.com/wiki/Eden_Editor:_Configuring_Attributes#Scenario
 		#include "FrameworkSettings\FrameworkSettings.hpp"
 		#include "Briefing\Briefing.hpp"
+		#include "hiddenConfigValues.hpp"
 	};
 
 	class Object {

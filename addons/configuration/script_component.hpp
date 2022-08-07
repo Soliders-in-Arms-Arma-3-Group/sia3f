@@ -15,3 +15,6 @@
 #endif
 
 #include "\z\sia3f\addons\main\script_macros.hpp"
+
+
+#define SET_CONFIG(section,var,value) QGVAR(section) set3DENMissionAttribute [QGVAR(var), value]

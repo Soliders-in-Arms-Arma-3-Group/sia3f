@@ -2,9 +2,10 @@
 
 Handles all functionality in the Eden Editor.  Work in progress.
 
-# Config Definitions
+## Config Definitions
 This will define all of the variables that can be used with ``GET_CONFIG(var)``.  The following table lists the variable name, in-game name, description , and type of  every config value.  Ordered in the same way it is in-game.
 
+``frameworkSettings`` section:
 |Variable Name|In Game Name|Description|Type|Default Value|
 |-------------|------------|-----------|----|-------------|
 |**Mission Info**|
@@ -39,3 +40,21 @@ This will define all of the variables that can be used with ``GET_CONFIG(var)``.
 |isArsenal|Is Arsenal|If checked, makes the object an arsenal.|Boolean|False|
 |isButton|Is Button|If checked, makes the object a button.|Boolean|False|
 |role|Is Arsenal|The unit's role (e.g, "Rifleman").  Only needs to be defined on playable units.|String|""|
+
+``hiddenConfigValues`` section:
+|Variable Name|Description|Type|Default Value|
+|-------------|-----------|----|-------------|
+|**Initialization Values**|
+|frameworkInit|Should only be true if the ``initFramework`` function has been executed successfully.|Boolean|False|
+
+## Macro Definitions
+This module's custom macros are defined here.  They cannot be used outside of this module.
+
+### SET_CONFIG(section,var,value)
+Sets the [mission config value](https://community.bistudio.com/wiki/set3DENMissionAttribute) of a variable.
+
+|Parameter|Description|
+|-|-|
+|section|The section that the config value belongs to.  As of the time of writing, this parameter can be either ``frameworkSettings`` or ``hiddenConfigValues``.|
+|var|The config value to set.  See the tables above for valid values.|
+|value|The value to set to ``var``.
