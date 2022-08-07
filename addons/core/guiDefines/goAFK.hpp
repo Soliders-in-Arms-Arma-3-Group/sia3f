@@ -1,5 +1,5 @@
 class GVAR(goAFK) {
-	onUnload = "[] spawn sia_f_fnc_exitAFK;";
+	onUnload = QUOTE(call FUNC(goAFK));
 	idd = 3289;
 	class controls {
 		class AFK_background: RscPicture
@@ -49,7 +49,7 @@ class GVAR(goAFK) {
 		{
 			idc = 1601;
 			colorBackgroundActive[] = {0,0,0,0.7};
-			action = "closeDialog 2; [player] spawn sia_f_fnc_teleportToSquad;";
+			action = QUOTE(closeDialog 2; spawn FUNC(teleportToSquad););
 
 			text = "Exit & TP"; //--- ToDo: Localize;
 			x = 0.510312 * safezoneW + safezoneX;

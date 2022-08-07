@@ -136,4 +136,3 @@ switch (_mode) do {
 		[2, 0.05, _newPos] call BIS_fnc_mapAnimAdd;
 	};
 };
-
