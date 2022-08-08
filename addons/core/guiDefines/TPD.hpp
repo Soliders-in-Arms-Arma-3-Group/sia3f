@@ -5,10 +5,10 @@
 #define DIALOG_W 80
 #define DIALOG_Y (safezoneY + 2 * CTRL_DEFAULT_H)
 
-class TPD_Teleport
+class GVAR(TPD_Teleport)
 {
 	idd = -1;
-	onLoad = "uiNamespace setVariable ['TPD_Display', _this select 0];['onLoad', nil, _this select 0] spawn sia3f_core_fnc_teleport";
+	onLoad = QUOTE(uiNamespace setVariable [ARR_2(QQGVAR(TPD_Display), _this select 0)];['onLoad', nil, _this select 0] spawn FUNC(teleport));
 	class ControlsBackground
 	{
 		class Headline: ctrlStaticTitle
@@ -44,13 +44,13 @@ class TPD_Teleport
 			y = DIALOG_Y + 66 * GRID_H;
 			w = DIALOG_W / 3 * GRID_W - 2 * GRID_W;
 			h = CTRL_DEFAULT_H;
-			onButtonClick = "['teleport', nil, _this select 0] spawn sia3f_core_fnc_teleport";
+			onButtonClick = QUOTE(['teleport', nil, _this select 0] spawn FUNC(teleport));
 		};
 		class Preview: Teleport
 		{
 			text = "PREVIEW";
 			x = 0.5 + DIALOG_W / 3 * GRID_W - DIALOG_W / 2 * GRID_W + GRID_W;
-			onButtonClick = "['previewPosition', nil, _this select 0] call sia3f_core_fnc_teleport";
+			onButtonClick = QUOTE(['previewPosition', nil, _this select 0] call FUNC(teleport));
 		};
 		class Close: Teleport
 		{

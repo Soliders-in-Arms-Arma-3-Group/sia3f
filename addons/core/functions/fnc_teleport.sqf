@@ -46,9 +46,9 @@ params ["_mode", "_parameters"];
 
 switch (_mode) do {
 	case "onLoad": {
-		private _display = uiNamespace getVariable ["TPD_Display", displayNull];
+		private _display = uiNamespace getVariable [QGVAR(TPD_Display), displayNull];
 		private _ctrlLB = LB;
-		private _customLocs = missionNamespace getVariable ["TDP_CustomLocations", []];
+		private _customLocs = missionNamespace getVariable [QGVAR(TDP_CustomLocations), []];
 		while { !isNull _display } do {
 			lbClear _ctrlLB;
 			((units side player) select {alive _x && _x != player && isPlayer _x && vehicle _x == _x}) apply {
@@ -73,7 +73,7 @@ switch (_mode) do {
 	};
 
 	case "teleport": {
-		private _display = uiNamespace getVariable ["TPD_Display", displayNull];
+		private _display = uiNamespace getVariable [QGVAR(TPD_Display), displayNull];
 		private _newPos = LB lbData (lbCurSel LB);
 
 		//Exit if nothing was selected or position could not be retrieved
@@ -93,7 +93,7 @@ switch (_mode) do {
 		2 fadeSound 1;
 
 		//MP Message
-		if (missionNamespace getVariable ["TDP_EnableGlobalMessage", false]) then
+		if (missionNamespace getVariable [QGVAR(TDP_EnableGlobalMessage), false]) then
 		{
 			[[side player, "HQ"], format ["%1 arrived in the AO.", name player]] remoteExec ["sideChat"];
 		};
@@ -101,11 +101,11 @@ switch (_mode) do {
 
 	case "enableGlobalMessage": {
 		if !(_parameters isEqualType true) exitWith { diag_log "TPD: Global message state could not be set. Only pass BOOLEAN to the function!" };
-		missionNamespace setVariable ["TDP_EnableGlobalMessage", _parameters, true];
+		missionNamespace setVariable [QGVAR(TDP_EnableGlobalMessage), _parameters, true];
 	};
 
 	case "setCustomLocations": {
-		missionNamespace setVariable ["TDP_CustomLocations", _parameters, true];
+		missionNamespace setVariable [QGVAR(TDP_CustomLocations), _parameters, true];
 	};
 
 	case "addActions": {
@@ -115,10 +115,10 @@ switch (_mode) do {
 		//Modified by McKendrick
 		// vvvv
 		if ("@ace" call FUNC(checkModPresence)) then { 
-			private _action = ["TPD", "Open Teleport Menu", "\a3\modules_f_curator\data\portraitobjectivemove_ca.paa", { [] spawn { findDisplay 46 createDisplay "TPD_Teleport" } }, { true }] call ace_interact_menu_fnc_createAction;
+			private _action = ["TPD", "Open Teleport Menu", "\a3\modules_f_curator\data\portraitobjectivemove_ca.paa", { [] spawn { findDisplay 46 createDisplay QGVAR(TPD_Teleport) } }, { true }] call ace_interact_menu_fnc_createAction;
 			[_x, 0, ["ACE_MainActions"], _action, true] remoteExecCall ["ace_interact_menu_fnc_addActionToObject"];
 		} else {
-			[_x, ["<img image='\a3\modules_f_curator\data\portraitobjectivemove_ca.paa'/> Select Teleport Location", { findDisplay 46 createDisplay "TPD_Teleport" }, nil, 6, true, true, "", "true", 4]] remoteExec ["addAction", 0, _x];
+			[_x, ["<img image='\a3\modules_f_curator\data\portraitobjectivemove_ca.paa'/> Select Teleport Location", { findDisplay 46 createDisplay QGVAR(TPD_Teleport) }, nil, 6, true, true, "", "true", 4]] remoteExec ["addAction", 0, _x];
 		};
 		// ^^^^
 
@@ -126,7 +126,7 @@ switch (_mode) do {
 	};
 
 	case "previewPosition": {
-		private _display = uiNamespace getVariable ["TPD_Display", displayNull];
+		private _display = uiNamespace getVariable [QGVAR(TPD_Display), displayNull];
 		private _newPos = LB lbData (lbCurSel LB);
 
 		//Exit if nothing was selected or position could not be retrieved
