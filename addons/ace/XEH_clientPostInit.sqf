@@ -1,7 +1,13 @@
 #include "script_component.hpp"
 // should behave identically to initPlayerLocal
 
-/* ACE3 Interactions */
+
+//! NOTE:
+//!		The entirety of this has been commented out because it has improper macro usage (see GET_CONFIG documentation) and code that throws errors, which might cover up other error messages.
+//!		Obviously, once these issues are fixed please uncomment the code and delete this comment block.
+//!		There were also a few in-line comments that will need to be removed: line 145, 152, 155
+
+/* ACE3 Interactions */ /*
 private ["_action", "_statement"];
 
 // =======================================================================================
@@ -136,15 +142,16 @@ _action = ["standby", "Stand By", "\A3\ui_f\data\IGUI\Cfg\simpleTasks\types\wait
 _action = ["missionStart", "Start Mission", "\A3\ui_f\data\IGUI\Cfg\simpleTasks\types\getin_ca.paa", {}, { !GVAR(missionStarted) }] call ace_interact_menu_fnc_createAction;
 [["ACE_ZeusActions"], _action] call ace_interact_menu_fnc_addActionToZeus;
 
-_action = ["missionStartConfirm", "Confirm", "", { /*[[player], "sia_f\startMission.sqf"] remoteExec ["execVM", 2]*/ }, { !GVAR(missionStarted) }] call ace_interact_menu_fnc_createAction; // To-do: Link to start mission
+_action = ["missionStartConfirm", "Confirm", "", { /*[[player], "sia_f\startMission.sqf"] remoteExec ["execVM", 2]*/ /*}, { !GVAR(missionStarted) }] call ace_interact_menu_fnc_createAction; // To-do: Link to start mission
 [["ACE_ZeusActions", "missionStart"], _action] call ace_interact_menu_fnc_addActionToZeus;
 
 // End Mission Action + Confirmation
 _action = ["missionEnd", "End Mission", "\A3\ui_f\data\IGUI\Cfg\simpleTasks\types\getOut_ca.paa", {}, { GVAR(missionStarted) }] call ace_interact_menu_fnc_createAction;
 [["ACE_ZeusActions"], _action] call ace_interact_menu_fnc_addActionToZeus;
 
-_action = ["missionEndWin", "Win", "", { /*[[true, (side group player)],"sia_f\endMission.sqf"] remoteExec ["execVM", 2]*/ }, { GVAR(missionStarted) }] call ace_interact_menu_fnc_createAction; // To-do: Link to end mission
+_action = ["missionEndWin", "Win", "", { /*[[true, (side group player)],"sia_f\endMission.sqf"] remoteExec ["execVM", 2]*/ /*}, { GVAR(missionStarted) }] call ace_interact_menu_fnc_createAction; // To-do: Link to end mission
 [["ACE_ZeusActions", "missionEnd"], _action] call ace_interact_menu_fnc_addActionToZeus;
 
-_action = ["missionEndLose", "Lose", "", { /*[[false, (side group player)],"sia_f\endMission.sqf"] remoteExec ["execVM", 2]*/ }, { GVAR(missionStarted) }] call ace_interact_menu_fnc_createAction;
+_action = ["missionEndLose", "Lose", "", { /*[[false, (side group player)],"sia_f\endMission.sqf"] remoteExec ["execVM", 2]*/ /*}, { GVAR(missionStarted) }] call ace_interact_menu_fnc_createAction;
 [["ACE_ZeusActions", "missionEnd"], _action] call ace_interact_menu_fnc_addActionToZeus;
+*/
