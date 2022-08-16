@@ -15,5 +15,4 @@ class CfgPatches {
 };
 
 #include "CfgEventHandlers.hpp"
-#include "CfgNotifications.hpp"
 #include "guiDefines\guiDefines.hpp"
