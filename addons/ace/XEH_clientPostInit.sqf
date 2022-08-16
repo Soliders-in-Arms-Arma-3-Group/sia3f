@@ -129,19 +129,21 @@ _action = [QGVAR(safeStart_phaseStandby), "Stand By", "\A3\ui_f\data\IGUI\Cfg\si
 [["ACE_ZeusActions", QGVAR(safeStart_phase)], _action] call ace_interact_menu_fnc_addActionToZeus;
 [(typeOf player), 1, ["ACE_SelfActions", QGVAR(siaActions), QGVAR(safeStart_phase)], _action] call ace_interact_menu_fnc_addActionToClass;
 
+/
+
 // Start Mission Action + Confirmation
 _action = [QGVAR(safeStart_missionStart), "Start Mission", "\A3\ui_f\data\IGUI\Cfg\simpleTasks\types\getin_ca.paa", {}, { !GVAR(missionStarted) }] call ace_interact_menu_fnc_createAction;
 [["ACE_ZeusActions"], _action] call ace_interact_menu_fnc_addActionToZeus;
 
-_action = [QGVAR(safeStart_missionStartConfirm), "Confirm", "", { /*[[player], "sia_f\startMission.sqf"] remoteExec ["execVM", 2]*/ }, { !GVAR(missionStarted) }] call ace_interact_menu_fnc_createAction; // To-do: Link to start mission
+_action = [QGVAR(safeStart_missionStartConfirm), "Confirm", "", {}, { !GVAR(missionStarted) }] call ace_interact_menu_fnc_createAction; // To-do: Link to start mission
 [["ACE_ZeusActions", QGVAR(safeStart_missionStart)], _action] call ace_interact_menu_fnc_addActionToZeus;
 
 // End Mission Action + Confirmation
 _action = [QGVAR(safeStart_missionEnd), "End Mission", "\A3\ui_f\data\IGUI\Cfg\simpleTasks\types\getOut_ca.paa", {}, { GVAR(missionStarted) }] call ace_interact_menu_fnc_createAction;
 [["ACE_ZeusActions"], _action] call ace_interact_menu_fnc_addActionToZeus;
 
-_action = [QGVAR(safeStart_missionEndWin), "Win", "", { /*[[true, (side group player)],"sia_f\endMission.sqf"] remoteExec ["execVM", 2]*/ }, { GVAR(missionStarted) }] call ace_interact_menu_fnc_createAction; // To-do: Link to end mission
+_action = [QGVAR(safeStart_missionEndWin), "Win", "", {}, { GVAR(missionStarted) }] call ace_interact_menu_fnc_createAction; // To-do: Link to end mission
 [["ACE_ZeusActions", QGVAR(safeStart_missionEnd)], _action] call ace_interact_menu_fnc_addActionToZeus;
 
-_action = [QGVAR(safeStart_missionEndLose), "Lose", "", { /*[[false, (side group player)],"sia_f\endMission.sqf"] remoteExec ["execVM", 2]*/ }, { GVAR(missionStarted) }] call ace_interact_menu_fnc_createAction;
+_action = [QGVAR(safeStart_missionEndLose), "Lose", "", {}, { GVAR(missionStarted) }] call ace_interact_menu_fnc_createAction; // To-do: Link to end mission
 [["ACE_ZeusActions", QGVAR(safeStart_missionEnd)], _action] call ace_interact_menu_fnc_addActionToZeus;
