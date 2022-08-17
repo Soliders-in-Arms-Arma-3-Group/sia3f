@@ -15,15 +15,17 @@
  * call sia3f_radio_fnc_giveRadios
 */
 
+if (!GET_CONFIG(acreEnabled,true) || !("@ACRE2" call EFUNC(core,checkModPresence))) exitWith {
+	LOG("fnc_setRadioChannel: acre not enabled/loaded.");
+};
+
 params [
 	["_channel", 1, [0]],
 	["_radioType", "", [""]]
 ];
 
-if ("@ACRE2" call FUNC(checkModPresence)) then {
-	waitUntil { ([] call acre_api_fnc_isInitialized) }; // Wait until player's radios are initialized.
-	private _radioId = [_radioType] call acre_api_fnc_getRadioByType
-	[_radioId, _channel] call acre_api_fnc_setRadioChannel;
-};
+waitUntil { ([] call acre_api_fnc_isInitialized) }; // Wait until player's radios are initialized.
+private _radioId = [_radioType] call acre_api_fnc_getRadioByType;
+[_radioId, _channel] call acre_api_fnc_setRadioChannel;
 
-// To-do: TFAR implementation.
+// ToDo: TFAR implementation.
