@@ -3,7 +3,7 @@
 Handles all functionality in the Eden Editor.  Work in progress.
 
 ## Config Definitions
-This will define all of the variables that can be used with ``GET_CONFIG(var)``.  The following table lists the variable name, in-game name, description , and type of  every config value.  Ordered in the same way it is in-game.
+This will define all of the variables that can be used with ``GET_CONFIG(var,default)``.  The following table lists the variable name, in-game name, description , and type of  every config value.  Ordered in the same way it is in-game.
 
 ``frameworkSettings`` section:
 |Variable Name|In Game Name|Description|Type|Default Value|

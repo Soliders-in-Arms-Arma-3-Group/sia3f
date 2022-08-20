@@ -96,6 +96,42 @@
 #define MB_BUTTON_USER    4
 
 
+//Eden base controls
+class ctrlButton;
+class ctrlButtonCancel;
+class ctrlButtonClose;
+class ctrlButtonCollapseAll;
+class ctrlButtonExpandAll;
+class ctrlButtonOK;
+class ctrlButtonPictureKeepAspect;
+class ctrlButtonSearch;
+class ctrlCheckbox;
+class ctrlCombo;
+class ctrlControlsGroup;
+class ctrlControlsGroupNoScrollbars;
+class ctrlEdit;
+class ctrlEditMulti;
+class ctrlListNBox;
+class ctrlListbox;
+class ctrlMenu;
+// class ctrlMenuStrip;
+class ctrlProgress;
+class ctrlStatic;
+class ctrlStaticBackground;
+class ctrlStaticBackgroundDisable;
+class ctrlStaticBackgroundDisableTiles;
+class ctrlStaticFooter;
+class ctrlStaticFrame;
+class ctrlStaticPicture;
+class ctrlStaticPictureKeepAspect;
+class ctrlStaticTitle;
+class ctrlStructuredText;
+class ctrlToolbox;
+class ctrlToolboxPictureKeepAspect;
+class ctrlTree;
+class ctrlXSliderH;
+class scrollbar;
+
 ///////////////////////////////////////////////////////////////////////////
 /// Base Classes
 ///////////////////////////////////////////////////////////////////////////
