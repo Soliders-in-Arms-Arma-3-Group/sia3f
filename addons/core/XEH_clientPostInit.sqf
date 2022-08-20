@@ -7,8 +7,6 @@ player addEventHandler ["Killed", {
 	GVAR(deathLoadout) = getUnitLoadout _unit;
 	GVAR(lastGroup) = group _unit;
 
-	if ("@ACRE2" call FUNC(checkModPresence)) then { GVAR(mpttRadioList) = [] call acre_api_fnc_getMultiPushToTalkAssignment; };
-
 	if ("@ace" call FUNC(checkModPresence)) then {
 		GVAR(hadEarplugsIn) = [_unit] call ace_hearing_fnc_hasEarPlugsIn; 
 		[_unit, 4] call ace_medical_treatment_fnc_setTriageStatus; // Set player's corpse triage to "Deceased"
@@ -42,13 +40,6 @@ player addEventHandler ["Respawn", {
 	// Failsafe add _unit to old group
 	private _grp = GVAR(lastGroup);
 	if (group _unit != _grp) then { _unit joinSilent _grp };
-
-	// Restore ACRE PTT Assignment
-	if ("@ACRE2" call FUNC(checkModPresence)) then {
-		waitUntil { ([] call acre_api_fnc_isInitialized) };
-		["loadRadioDefaultSpatials", []] spawn EFUNC(radio,ACRERadioSetup);
-		["reorderRadioMPTT", [GVAR(personalRadio)]] spawn EFUNC(radio,ACRERadioSetup);
-	};
 
 	// Exit _unit from AFK if still set as AFK
 	if (_unit getVariable [QGVAR(isAFK), false]) then {

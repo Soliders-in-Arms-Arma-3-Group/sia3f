@@ -39,7 +39,7 @@ _txtHeader setAttributes ["color", HEX_HEADER, "size", "1.4", "font", FONT_SECON
 private _txtSetup = text "Current Phase:";
 _txtSetup setAttributes ["align", "left", "font", FONT_HEADER];
 
-private _txtSetupPhase = text GVAR(setupPhase);
+private _txtSetupPhase = text (missionNamespace getVariable ["safeStart_phase", ""]);
 _txtSetupPhase setAttributes ["align", "right", "font", FONT_HEADER];
 
 private _txtLocation = text (GVAR(missionLocationName) + "     " + str (date select 1) + "-" + str (date select 2) + "-" + str (date select 0) + "     " + ([daytime, "HH:MM"] call BIS_fnc_timeToString));
