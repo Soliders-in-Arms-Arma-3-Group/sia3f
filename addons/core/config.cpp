@@ -15,4 +15,4 @@ class CfgPatches {
 };
 
 #include "CfgEventHandlers.hpp"
-#include "guiDefines\guiDefines.hpp"
+#include "guiControls.hpp"

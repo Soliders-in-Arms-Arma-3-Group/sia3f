@@ -12,7 +12,7 @@ _action = [QGVAR(siaActions), " SIA Options", "sia_f\images\sia_tiny.paa", {}, {
 [(typeOf player), 1, ["ACE_SelfActions"], _action] call ace_interact_menu_fnc_addActionToClass;
 
 // Go AFK
-if GET_CONFIG(enableGoAFK) then {
+if GET_CONFIG(enableGoAFK,true) then {
 	private _action = ["SIA_AFK", "Go AFK", "\A3\Ui_F\Data\IGUI\Cfg\simpleTasks\types\wait_ca.paa", { [] spawn sia_f_fnc_goAFK }, { !(player getVariable [QGVAR(isAFK), false]) }] call ace_interact_menu_fnc_createAction;
 	[(typeOf player), 1, ["ACE_SelfActions", QGVAR(siaActions)], _action] call ace_interact_menu_fnc_addActionToClass;
 };
@@ -48,18 +48,18 @@ _action = [QGVAR(MusicUnmute), "Unmute All Music", "", { 1 fadeMusic 0.5 }, { mu
 // Arsenal/Button Actions
 
 // Teleport to Squad
-if (!isNil QGVAR(ACEButtons) && GET_CONFIG(enableTPToSquad)) then {
+if (!isNil QGVAR(ACEButtons) && GET_CONFIG(enableTPToSquad,true)) then {
 	_action = ["TpSquad", "Teleport to Squad", "\A3\Ui_F\Data\IGUI\Cfg\simpleTasks\types\meet_ca.paa", { [_this select 1] spawn sia_f_fnc_teleportToSquad }, { true }] call ace_interact_menu_fnc_createAction;
 	{ [_x, 0, ["ACE_MainActions"], _action, true] call ace_interact_menu_fnc_addActionToObject } forEach sia_f_ACEButtons;
 };
 
 // Manage Loadouts
-if GET_CONFIG(enableManageKit) then {
+if GET_CONFIG(enableManageKit,true) then {
 	_statement = {
 		player setVariable [QGVAR(savedLoadout), getUnitLoadout player];
 		hint "Kit saved. Will be loaded on respawn.";
 	};
-	_action = [QGVAR(kit) "Save/Manage Kit", "\A3\Ui_F\Data\IGUI\Cfg\Actions\gear_ca.paa", _statement, { true }] call ace_interact_menu_fnc_createAction;
+	_action = [QGVAR(kit), "Save/Manage Kit", "\A3\Ui_F\Data\IGUI\Cfg\Actions\gear_ca.paa", _statement, { true }] call ace_interact_menu_fnc_createAction;
 	{ [_x, 0, ["ACE_MainActions"], _action, true] call ace_interact_menu_fnc_addActionToObject; } forEach (GVAR(ACEButtons) + GVAR(arsenals));
 
 	_action = [QGVAR(kitSave), "Save Current Kit", "\A3\Ui_F\Data\GUI\Rsc\RscDisplayArcadeMap\icon_save_ca.paa", _statement, { true }] call ace_interact_menu_fnc_createAction;
@@ -73,7 +73,7 @@ if GET_CONFIG(enableManageKit) then {
 };
 
 // Update Loadout Info
-if (GET_CONFIG(enableLoadoutInfo) && GET_CONFIG(briefLoadout)) then {
+if (GET_CONFIG(enableLoadoutInfo,true) && GET_CONFIG(briefLoadout,true)) then {
 	_action = [QGVAR(loadoutNotesRefresh), "Update Team Loadout Info", "\A3\Ui_F\Data\IGUI\Cfg\simpleTasks\types\documents_ca.paa", {
 		call FUNC(loadoutNotes);
 		[] spawn {
@@ -129,7 +129,6 @@ _action = [QGVAR(safeStart_phaseStandby), "Stand By", "\A3\ui_f\data\IGUI\Cfg\si
 [["ACE_ZeusActions", QGVAR(safeStart_phase)], _action] call ace_interact_menu_fnc_addActionToZeus;
 [(typeOf player), 1, ["ACE_SelfActions", QGVAR(siaActions), QGVAR(safeStart_phase)], _action] call ace_interact_menu_fnc_addActionToClass;
 
-/
 
 // Start Mission Action + Confirmation
 _action = [QGVAR(safeStart_missionStart), "Start Mission", "\A3\ui_f\data\IGUI\Cfg\simpleTasks\types\getin_ca.paa", {}, { !GVAR(missionStarted) }] call ace_interact_menu_fnc_createAction;

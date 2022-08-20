@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 // should behave identically to initPlayerLocal
 
-if (!"@ACRE2" call FUNC(checkModPresence)) exitWith {}; // exit if ACRE not loaded
+if (!GET_CONFIG(acreEnabled,true) || !("@ACRE2" call EFUNC(core,checkModPresence))) exitWith {}; // exit if ACRE not loaded
 
 [((group player) getVariable [QGVAR(radioChannel), 1]), GVAR(personalRadio)] spawn FUNC(setRadioChannel);
 
