@@ -1,4 +1,6 @@
 #include "script_component.hpp"
+
+#define SAFESTART_HINT_REFRESH 30; 
 // basically initServer.sqf
 
 GVAR(startTime) = date;
@@ -88,7 +90,6 @@ if (!isNil QEGVAR(configuration,buttons)) then {
 
 /* Safe Start */
 
-#define SAFESTART_HINT_REFRESH 30; 
 if (GET_CONFIG(showStatusHint,true)) then {
     [] spawn {
         while { !GVAR(missionStarted) } do {
