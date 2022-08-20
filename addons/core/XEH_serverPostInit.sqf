@@ -80,8 +80,20 @@ if (!isNil QEGVAR(configuration,buttons)) then {
 	if (GET_CONFIG(enableTPMenu,true)) then {
 		["enableGlobalMessage", false] call FUNC(teleport); // Disable global message
 		{
-			["addActions", [_x]] call TPD_fnc_teleport; 
+			["addActions", [_x]] call FUNC(teleport); 
 			_x setObjectTextureGlobal [0, "sia_f\images\ace_button_img.paa"];
 		} forEach EGVAR(configuration,buttons); // Add 'Teleport Menu' to objects
 	};
+};
+
+/* Safe Start */
+
+#define SAFESTART_HINT_REFRESH 30; 
+if (GET_CONFIG(showStatusHint,true)) then {
+    [] spawn {
+        while { !GVAR(missionStarted) } do {
+            remoteExec [FUNC(hint)];
+            sleep SAFESTART_HINT_REFRESH;
+        };
+    };
 };
