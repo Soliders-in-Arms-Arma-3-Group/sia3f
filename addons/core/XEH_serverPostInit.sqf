@@ -6,7 +6,7 @@
 GVAR(startTime) = date;
 setTimeMultiplier 0.1;
 
-missionNamespace setVariable [QGVAR(setupPhase), "Waiting", true];
+missionNamespace setVariable [QGVAR(safeStart_phase), "Waiting", true];
 missionNamespace setVariable [QGVAR(missionStarted), false, true];
 
 if (!isNil QEGVAR(configuration,arsenals)) then {
@@ -93,7 +93,7 @@ if (!isNil QEGVAR(configuration,buttons)) then {
 if (GET_CONFIG(showStatusHint,true)) then {
     [] spawn {
         while { !GVAR(missionStarted) } do {
-            remoteExec [FUNC(hint)];
+            remoteExec [QFUNC(hint)];
             sleep SAFESTART_HINT_REFRESH;
         };
     };
