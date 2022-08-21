@@ -46,4 +46,4 @@ sleep TIMEOUT;
 
 if (!alive player) exitWith {};
 
-createDialog "dialogAFK" // open exit dialog
+createDialog QGVAR(goAFK); // open exit dialog

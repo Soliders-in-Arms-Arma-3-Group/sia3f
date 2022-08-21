@@ -13,6 +13,17 @@ $[1.063,["sia3f",[[0,0,1,1],0.025,0.04,"GUI_GRID"],2,0,0],[1200,"sia3f_backgroun
 */
 
 class GVAR(editRole) {
+	/*
+	code for testing if you feel the inclination
+
+	private _disp = findDisplay 313 createDisplay "sia3f_configuration_editRole";
+	private _lbCtrl = _disp displayCtrl 1500;
+	_lbCtrl lbAdd "test";
+	_lbCtrl lbAdd "Hierarchy Bad";
+	_lbCtrl lbAdd "pee pee poo poo";
+	_lbCtrl lbAdd "your mother";
+	*/
+
 	idd = 8501; // hopefully unique number as to not cause problems in the unlikely event that another GUI is open at the same time.
 
 	class controls {
