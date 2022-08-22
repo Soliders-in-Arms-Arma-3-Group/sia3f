@@ -10,9 +10,9 @@ This will define all of the variables that can be used with ``GET_CONFIG(var,def
 |-------------|------------|-----------|----|-------------|
 |**Mission Info**|
 |missionLocationName|Mission Location Name|The location of the mission.  Used in persistent hint and intro text scroll.|String|""|
-|bluforFactionName|Blufor Faction Name|The Blufor side's name (e.g, US Army).  Used in persistent hint and intro text scroll.|String|""|
-|indepFactionName|Independent Faction Name|The Independent side's name (e.g, Altis Armed Forces).  Used in persistent hint and intro text scroll.|String|""|
-|opforFactionName|Opfor Faction Name|The Opfor side's name (e.g, Kazerghastan Royal Guard).  Used in persistent hint and intro text scroll.|String|""|
+|westFactionName|Blufor Faction Name|The Blufor side's name (e.g, US Army).  Used in persistent hint and intro text scroll.|String|""|
+|independentFactionName|Independent Faction Name|The Independent side's name (e.g, Altis Armed Forces).  Used in persistent hint and intro text scroll.|String|""|
+|eastFactionName|Opfor Faction Name|The Opfor side's name (e.g, Kazerghastan Royal Guard).  Used in persistent hint and intro text scroll.|String|""|
 |showStatusHint|Show Status Hint|If checked, the status hint will be shown by default.  If not, the status hint will be hidden by default.  Either way, it can still be toggled by the player.|Boolean|True|
 |showIntroText|Show Intro Text|Shows intro text if checked, does not if it is not checked.|Boolean|True|
 |showReplay|Show Replay|Option to show the replay with GRAD replay.  The OCAP recording will always be saved, however.  Note that this option may be removed in the future.|Boolean|True|

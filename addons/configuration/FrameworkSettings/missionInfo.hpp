@@ -9,23 +9,23 @@ class GVAR(missionInfo) {
 			defaultValue = "''";
 		};
 
-		class GVAR(bluforFactionName) {
+		class GVAR(westFactionName) {
 			displayName = "Blufor Faction Name";
-			property = QGVAR(bluforFactionName);
+			property = QGVAR(westFactionName);
 			control = "Edit";
 			defaultValue = "''";
 		};
 
-		class GVAR(indepFactionName) {
+		class GVAR(independentFactionName) {
 			displayName = "Independent Faction Name";
-			property = QGVAR(indepFactionName);
+			property = QGVAR(independentFactionName);
 			control = "Edit";
 			defaultValue = "''";
 		};
 
-		class GVAR(opforFactionName) {
+		class GVAR(eastFactionName) {
 			displayName = "Opfor Faction Name";
-			property = QGVAR(opforFactionName);
+			property = QGVAR(eastFactionName);
 			control = "Edit";
 			defaultValue = "''";
 		};
