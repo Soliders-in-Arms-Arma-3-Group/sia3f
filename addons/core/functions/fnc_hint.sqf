@@ -39,7 +39,7 @@ _txtHeader setAttributes ["color", HEX_HEADER, "size", "1.4", "font", FONT_SECON
 private _txtSetup = text "Current Phase:";
 _txtSetup setAttributes ["align", "left", "font", FONT_HEADER];
 
-private _txtSetupPhase = text (missionNamespace getVariable ["safeStart_phase", "Waiting"]);
+private _txtSetupPhase = text (missionNamespace getVariable [QGVAR(safeStart_phase), "Waiting"]);
 _txtSetupPhase setAttributes ["align", "right", "font", FONT_HEADER];
 
 private _txtLocation = text (GET_CONFIG(missionLocationName, worldName) + "     " + str (date select 1) + "-" + str (date select 2) + "-" + str (date select 0) + "     " + ([daytime, "HH:MM"] call BIS_fnc_timeToString));
@@ -57,28 +57,6 @@ _hour = if (_hour + _timezoneOffset < 0) then [{ _hour + _timezoneOffset + 24}, 
 
 _txtTime = text (([(_hour + ((_systemTime select 4) / 60)), "HH:MM"] call BIS_fnc_timeToString) + " " + _timezoneName);
 _txtTime setAttributes ["align", "right", "font", FONT_HEADER];
-
-/* ToDo: Replace with meaningful information.
-private _txtCtab = text "CTab:";
-_txtCtab setAttributes ["align", "left", "color", HEX_SECONDARY, "font", FONT_PRIMARY];
-private _txtCtabStatus = text toUpper (str GET_CONFIG(haveCTab,true));
-_txtCtabStatus setAttributes ["align", "right", "color", HEX_SECONDARY, "font", FONT_PRIMARY];
-
-private _txtArsenal = text "Arsenals:";
-_txtArsenal setAttributes ["align", "left", "color", HEX_SECONDARY, "font", FONT_PRIMARY];
-private _txtArsenalEnabled = text toUpper (str true); // ToDo: check for any arsenals
-_txtArsenalEnabled setAttributes ["align", "right", "color", HEX_SECONDARY, "font", FONT_PRIMARY];
-
-private _txtRadios = text "Radios:";
-_txtRadios setAttributes ["align", "left", "color", HEX_SECONDARY, "font", FONT_PRIMARY];
-private _txtRadiosEnabled = text toUpper (str GET_CONFIG(acreEnabled,true));
-_txtRadiosEnabled setAttributes ["align", "right", "color", HEX_SECONDARY, "font", FONT_PRIMARY];
-
-private _txtKAT = text "KAT Medical:";
-_txtKAT setAttributes ["align", "left", "color", HEX_SECONDARY, "font", FONT_PRIMARY];
-private _txtKATState = text (["NONE", "LIMITED", "FULL"] select (GET_CONFIG(haveKATMedical,2)));
-_txtKATState setAttributes ["align", "right", "color", HEX_SECONDARY, "font", FONT_PRIMARY];
-*/
 
 private _txtFaction = text "Faction:";
 _txtFaction setAttributes ["align", "left", "font", FONT_PRIMARY];
@@ -115,17 +93,6 @@ private _array = [
 	_txtSetup, _txtSetupPhase,
 	lineBreak,
 	_txtSystemTime, _txtTime,
-	/*
-	lineBreak,
-	lineBreak,
-	_txtArsenal, _txtArsenalEnabled,
-	lineBreak,
-	_txtCtab,  _txtCtabStatus,
-	lineBreak,
-	_txtRadios, _txtRadiosEnabled,
-	lineBreak,
-	_txtKAT, _txtKATState,
-	*/
 	lineBreak,
 	lineBreak,
 	_txtFaction, _txtFactionName,

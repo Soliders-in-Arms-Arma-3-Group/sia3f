@@ -95,7 +95,7 @@ if ((player getVariable ["role", ""]) == "pltco") then { [(typeOf player), 1, ["
 _action = [QGVAR(safeStart_phaseBriefUpper), "Upper-level Brief", "\A3\ui_f\data\IGUI\Cfg\simpleTasks\types\whiteboard_ca.paa", {
 	[QGVAR(safeStart_phase), ["The upper-level brief is commencing!", "\A3\ui_f\data\IGUI\Cfg\simpleTasks\types\whiteboard_ca.paa"]] remoteExec ["BIS_fnc_showNotification"];
 	
-	missionNamespace setVariable ["safeStart_phase", "Upper-level Briefing", true];
+	missionNamespace setVariable [QGVAR(safeStart_phase), "Upper-level Briefing", true];
 	
 }, { !GVAR(missionStarted) }] call ace_interact_menu_fnc_createAction;
 [["ACE_ZeusActions", QGVAR(safeStart_phase)], _action] call ace_interact_menu_fnc_addActionToZeus;
@@ -103,28 +103,28 @@ _action = [QGVAR(safeStart_phaseBriefUpper), "Upper-level Brief", "\A3\ui_f\data
 
 _action = [QGVAR(safeStart_phaseBriefLower), "Lower-level Brief", "\A3\ui_f\data\IGUI\Cfg\simpleTasks\types\whiteboard_ca.paa", {
 	[QGVAR(safeStart_phase), ["The lower-level brief is commencing!", "\A3\ui_f\data\IGUI\Cfg\simpleTasks\types\whiteboard_ca.paa"]] remoteExec ["BIS_fnc_showNotification"];
-	missionNamespace setVariable ["safeStart_phase", "Lower-level Briefing", true];
+	missionNamespace setVariable [QGVAR(safeStart_phase), "Lower-level Briefing", true];
 }, { !GVAR(missionStarted) }] call ace_interact_menu_fnc_createAction;
 [["ACE_ZeusActions", QGVAR(safeStart_phase)], _action] call ace_interact_menu_fnc_addActionToZeus;
 [(typeOf player), 1, ["ACE_SelfActions", QGVAR(siaActions), QGVAR(safeStart_phase)], _action] call ace_interact_menu_fnc_addActionToClass;
 
 _action = [QGVAR(safeStart_phaseKit), "Kit Up", "\A3\ui_f\data\IGUI\Cfg\simpleTasks\types\rearm_ca.paa", {
 	[QGVAR(safeStart_phase), ["Time to kit up!", "\A3\ui_f\data\IGUI\Cfg\simpleTasks\types\rearm_ca.paa"]] remoteExec ["BIS_fnc_showNotification"];
-	missionNamespace setVariable ["safeStart_phase", "Kitting Up", true];
+	missionNamespace setVariable [QGVAR(safeStart_phase), "Kitting Up", true];
 }, { !GVAR(missionStarted) }] call ace_interact_menu_fnc_createAction;
 [["ACE_ZeusActions", QGVAR(safeStart_phase)], _action] call ace_interact_menu_fnc_addActionToZeus;
 [(typeOf player), 1, ["ACE_SelfActions", QGVAR(siaActions), QGVAR(safeStart_phase)], _action] call ace_interact_menu_fnc_addActionToClass;
 
 _action = [QGVAR(safeStart_phaseMount), "Mount Up", "\A3\ui_f\data\IGUI\Cfg\HoldActions\holdAction_loadDevice_ca.paa", {
 	[QGVAR(safeStart_phase), ["Time to mount up!", "\A3\ui_f\data\IGUI\Cfg\HoldActions\holdAction_loadDevice_ca.paa"]] remoteExec ["BIS_fnc_showNotification"];
-	missionNamespace setVariable ["safeStart_phase", "Mounting Up", true];
+	missionNamespace setVariable [QGVAR(safeStart_phase), "Mounting Up", true];
 }, { !GVAR(missionStarted) }] call ace_interact_menu_fnc_createAction;
 [["ACE_ZeusActions", QGVAR(safeStart_phase)], _action] call ace_interact_menu_fnc_addActionToZeus;
 [(typeOf player), 1, ["ACE_SelfActions", QGVAR(siaActions), QGVAR(safeStart_phase)], _action] call ace_interact_menu_fnc_addActionToClass;
 
 _action = [QGVAR(safeStart_phaseStandby), "Stand By", "\A3\ui_f\data\IGUI\Cfg\simpleTasks\types\wait_ca.paa", {
 	[QGVAR(safeStart_phase), ["Stand By", "\A3\ui_f\data\IGUI\Cfg\simpleTasks\types\wait_ca.paa"]] remoteExec ["BIS_fnc_showNotification"];
-	missionNamespace setVariable ["safeStart_phase", "Standing By", true];
+	missionNamespace setVariable [QGVAR(safeStart_phase), "Standing By", true];
 }, { !GVAR(missionStarted) }] call ace_interact_menu_fnc_createAction;
 [["ACE_ZeusActions", QGVAR(safeStart_phase)], _action] call ace_interact_menu_fnc_addActionToZeus;
 [(typeOf player), 1, ["ACE_SelfActions", QGVAR(siaActions), QGVAR(safeStart_phase)], _action] call ace_interact_menu_fnc_addActionToClass;
