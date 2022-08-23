@@ -6,7 +6,7 @@ class display3DEN { // https://community.bistudio.com/wiki/Eden_Editor:_Configur
 				items[] += { QGVAR(frameworkFolder) };
 				class GVAR(frameworkFolder) {
 					text = "SIA Mission Framework";
-					items[] = { QGVAR(missionSettings), QGVAR(briefingSetup), QGVAR(init), QGVAR(importExportFolder), QGVAR(frameworkMeta) };
+					items[] = { QGVAR(missionSettings), QGVAR(briefingSetup), QGVAR(init), /*QGVAR(importExportFolder),*/ QGVAR(rolesFolder), QGVAR(frameworkMeta) };
 				};
 
 				class GVAR(missionSettings) {
@@ -37,6 +37,23 @@ class display3DEN { // https://community.bistudio.com/wiki/Eden_Editor:_Configur
 
 				class GVAR(export) {
 					text = "Export Mission Settings";
+				};
+
+				class GVAR(rolesFolder) {
+					text = "Role Configuration";
+					items[] = { QGVAR(roleCreate), QGVAR(roleEdit) };
+				};
+
+				class GVAR(roleCreate) {
+					text = "Create Roles";
+					action = "";
+                    opensNewWindow = 1;
+				};
+
+				class GVAR(roleEdit) {
+					text = "Edit Roles";
+					action = QUOTE(call FUNC(spawnEditRoles));
+                    opensNewWindow = 1;
 				};
 
 				class GVAR(frameworkMeta) {

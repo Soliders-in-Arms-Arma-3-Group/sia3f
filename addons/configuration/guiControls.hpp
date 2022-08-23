@@ -1,5 +1,121 @@
 #include "\z\sia3f\addons\main\guiDefines.hpp"
 
+/* Create Role GUI Editor save:
+$[1.063,["sia3f",[[0,0,1,1],0.025,0.04,"GUI_GRID"],2,0,0],[1200,"sia3f_background",[1,"#(argb,8,8,3)color(0,0,0,0.5)",["0.37625 * safezoneW + safezoneX","0.423 * safezoneH + safezoneY","0.2475 * safezoneW","0.176 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],[1201,"sia3f_title",[1,"#(argb,8,8,3)color(0.77,0.51,0.08,0.5)",["0.37625 * safezoneW + safezoneX","0.39 * safezoneH + safezoneY","0.2475 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],[1000,"sia3f_titleText",[1,"Role Creator",["0.37625 * safezoneW + safezoneX","0.39 * safezoneH + safezoneY","0.242344 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],[1500,"sia3f_roleSelect",[1,"",["0.381406 * safezoneW + safezoneX","0.434 * safezoneH + safezoneY","0.103125 * safezoneW","0.154 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],[1601,"sia3f_delete",[1,"",["0.494844 * safezoneW + safezoneX","0.566 * safezoneH + safezoneY","0.118594 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],[1009,"sia3f_deleteText",[1,"Delete Selected/Named Role",["0.494844 * safezoneW + safezoneX","0.566 * safezoneH + safezoneY","0.118594 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],[1602,"sia3f_cancel",[1,"",["0.37625 * safezoneW + safezoneX","0.61 * safezoneH + safezoneY","0.061875 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],[1010,"sia3f_cancelText",[1,"CANCEL",["0.37625 * safezoneW + safezoneX","0.61 * safezoneH + safezoneY","0.0567187 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],[1400,"sia3f_roleName",[1,"",["0.494844 * safezoneW + safezoneX","0.456 * safezoneH + safezoneY","0.118594 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],[1001,"sia3f_roleNameText",[1,"Role Name:",["0.489687 * safezoneW + safezoneX","0.434 * safezoneH + safezoneY","0.118594 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],[1600,"sia3f_create",[1,"",["0.551562 * safezoneW + safezoneX","0.5 * safezoneH + safezoneY","0.061875 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],[1002,"sia3f_createText",[1,"Create Role",["0.551562 * safezoneW + safezoneX","0.5 * safezoneH + safezoneY","0.0567187 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]]]
+*/
+
+class GVAR(createRole) {
+	idd = 8502;
+
+	class controls {
+		class sia3f_background: RscPicture
+		{
+			idc = 1200;
+			text = "#(argb,8,8,3)color(0,0,0,0.5)";
+			x = 0.37625 * safezoneW + safezoneX;
+			y = 0.423 * safezoneH + safezoneY;
+			w = 0.2475 * safezoneW;
+			h = 0.176 * safezoneH;
+		};
+		class sia3f_title: RscPicture
+		{
+			idc = 1201;
+			text = "#(argb,8,8,3)color(0.77,0.51,0.08,0.5)";
+			x = 0.37625 * safezoneW + safezoneX;
+			y = 0.39 * safezoneH + safezoneY;
+			w = 0.2475 * safezoneW;
+			h = 0.022 * safezoneH;
+		};
+		class sia3f_titleText: RscText
+		{
+			idc = 1000;
+			text = "Role Creator"; //--- ToDo: Localize;
+			x = 0.37625 * safezoneW + safezoneX;
+			y = 0.39 * safezoneH + safezoneY;
+			w = 0.242344 * safezoneW;
+			h = 0.022 * safezoneH;
+		};
+		class sia3f_roleSelect: RscListbox
+		{
+			idc = 1500;
+			x = 0.381406 * safezoneW + safezoneX;
+			y = 0.434 * safezoneH + safezoneY;
+			w = 0.103125 * safezoneW;
+			h = 0.154 * safezoneH;
+		};
+		class sia3f_delete: RscButton
+		{
+			idc = 1601;
+			x = 0.494844 * safezoneW + safezoneX;
+			y = 0.566 * safezoneH + safezoneY;
+			w = 0.118594 * safezoneW;
+			h = 0.022 * safezoneH;
+		};
+		class sia3f_deleteText: RscText
+		{
+			idc = 1009;
+			text = "Delete Selected/Named Role"; //--- ToDo: Localize;
+			style = "0x02";
+			x = 0.494844 * safezoneW + safezoneX;
+			y = 0.566 * safezoneH + safezoneY;
+			w = 0.118594 * safezoneW;
+			h = 0.022 * safezoneH;
+		};
+		class sia3f_cancel: RscButton
+		{
+			idc = 1602;
+			x = 0.37625 * safezoneW + safezoneX;
+			y = 0.61 * safezoneH + safezoneY;
+			w = 0.061875 * safezoneW;
+			h = 0.022 * safezoneH;
+		};
+		class sia3f_cancelText: RscText
+		{
+			idc = 1010;
+			text = "CANCEL"; //--- ToDo: Localize;
+			x = 0.37625 * safezoneW + safezoneX;
+			y = 0.61 * safezoneH + safezoneY;
+			w = 0.0567187 * safezoneW;
+			h = 0.022 * safezoneH;
+		};
+		class sia3f_roleName: RscEdit
+		{
+			idc = 1400;
+			x = 0.494844 * safezoneW + safezoneX;
+			y = 0.456 * safezoneH + safezoneY;
+			w = 0.118594 * safezoneW;
+			h = 0.022 * safezoneH;
+		};
+		class sia3f_roleNameText: RscText
+		{
+			idc = 1001;
+			text = "Role Name:"; //--- ToDo: Localize;
+			x = 0.489687 * safezoneW + safezoneX;
+			y = 0.434 * safezoneH + safezoneY;
+			w = 0.118594 * safezoneW;
+			h = 0.022 * safezoneH;
+		};
+		class sia3f_create: RscButton
+		{
+			idc = 1600;
+			x = 0.551562 * safezoneW + safezoneX;
+			y = 0.5 * safezoneH + safezoneY;
+			w = 0.061875 * safezoneW;
+			h = 0.022 * safezoneH;
+		};
+		class sia3f_createText: RscText
+		{
+			idc = 1002;
+			text = "Create Role"; //--- ToDo: Localize;
+			style = "0x02";
+			x = 0.551562 * safezoneW + safezoneX;
+			y = 0.5 * safezoneH + safezoneY;
+			w = 0.0567187 * safezoneW;
+			h = 0.022 * safezoneH;
+		};
+	};
+};
+
 /* Edit Role GUI Editor saves:
 https://discord.com/channels/689674061366034435/690255520728350720/1006033427247669342 (dropdown on top)
 
@@ -82,6 +198,7 @@ class GVAR(editRole) {
 		{
 			idc = 1002;
 			text = "Edit Additional Items"; //--- ToDo: Localize;
+			style = "0x02";
 			x = 0.5 * safezoneW + safezoneX;
 			y = 0.401 * safezoneH + safezoneY;
 			w = 0.108281 * safezoneW;

@@ -1,1 +1,2 @@
 PREP(initFramework);
+PREP(spawnEditRoles);
