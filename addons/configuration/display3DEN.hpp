@@ -46,13 +46,13 @@ class display3DEN { // https://community.bistudio.com/wiki/Eden_Editor:_Configur
 
 				class GVAR(roleCreate) {
 					text = "Create Roles";
-					action = "";
+					action = QUOTE(call FUNC(spawnCreateRoles););
                     opensNewWindow = 1;
 				};
 
 				class GVAR(roleEdit) {
 					text = "Edit Roles";
-					action = QUOTE(call FUNC(spawnEditRoles));
+					action = QUOTE(call FUNC(spawnEditRoles););
                     opensNewWindow = 1;
 				};
 

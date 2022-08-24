@@ -2,7 +2,7 @@
 
 /*
  * Author: Siege
- * Creates the Role Editor GUI.
+ * Creates the Role Creator GUI.
  *
  * Arguments:
  * None
@@ -11,13 +11,12 @@
  * None
  *
  * Example:
- * call sia3f_configuration_fnc_spawnEditRoles
+ * call sia3f_configuration_fnc_spawnCreateRoles
 */
 
-private _display = (findDisplay 313) createDisplay QGVAR(editRole);
+private _display = (findDisplay 313) createDisplay QGVAR(createRole);
 private _lbCtrl = _display displayCtrl 1500;
 
 {
 	_lbCtrl lbAdd _x;
-	// ToDo: load role settings
 } forEach GVAR(roles);
