@@ -64,6 +64,7 @@ class GVAR(createRole) {
 		class sia3f_cancel: RscButton
 		{
 			idc = 1602;
+			action = "closeDialog 2";
 			x = 0.37625 * safezoneW + safezoneX;
 			y = 0.61 * safezoneH + safezoneY;
 			w = 0.061875 * safezoneW;
@@ -173,6 +174,7 @@ class GVAR(editRole) {
 		class GVAR(editRole_roleSelect): RscListbox
 		{
 			idc = 1500;
+			onLBSelChanged = QUOTE(_this call FUNC(roleChangedEditRoles););
 			x = 0.381406 * safezoneW + safezoneX;
 			y = 0.39 * safezoneH + safezoneY;
 			w = 0.103125 * safezoneW;
@@ -285,6 +287,7 @@ class GVAR(editRole) {
 		class GVAR(editRole_ok): RscButton
 		{
 			idc = 1601;
+			action = QUOTE(call FUNC(saveEditRoles););
 			x = 0.561875 * safezoneW + safezoneX;
 			y = 0.687 * safezoneH + safezoneY;
 			w = 0.061875 * safezoneW;
@@ -302,6 +305,7 @@ class GVAR(editRole) {
 		class GVAR(editRole_cancel): RscButton
 		{
 			idc = 1602;
+			action = "closeDialog 2";
 			x = 0.37625 * safezoneW + safezoneX;
 			y = 0.687 * safezoneH + safezoneY;
 			w = 0.061875 * safezoneW;
