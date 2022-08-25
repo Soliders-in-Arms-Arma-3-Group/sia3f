@@ -16,7 +16,10 @@
  * call sia3f_core_fnc_goAFK
 */
 
-if (!hasInterface) exitWith {};
+if (!hasInterface) exitWith {
+	LOG("fnc_goAFK.sqf ran on server.");
+};
+
 LOG("fnc_goAFK.sqf has started.");
 
 private _unit = player; // ToDo: replace with param & execute func on server
@@ -39,14 +42,12 @@ if ("@ace" call FUNC(checkModPresence)) then {
 	[objNull, _unit] call ace_medical_treatment_fnc_fullHeal;
 };
 _unit setVariable [QGVAR(isAFK), true];
-MESSAGE_WITH_TITLE("player has been fully healed and set to AFK.", "/z/sia3f/addons/core/functions/fnc_goAFK.sqf:37-41");
+LOG("fnc_goAFK.sqf: player fully healed and set to AFK.");
 
 [(name _unit + " is now AFK.")] remoteExec ["systemChat"]; // "<player> is now AFK" system chat message.
 5 cutText ["You are now AFK\nYou may exit in " + (str TIMEOUT) + " seconds.", "PLAIN", -1, true];
-MESSAGE_WITH_TITLE("5 second cutscene has completed.", "/z/sia3f/addons/core/functions/fnc_goAFK.sqf:45");
 
 sleep TIMEOUT;
-MESSAGE_WITH_TITLE("sleep TIMEOUT has completed.", "/z/sia3f/addons/core/functions/fnc_goAFK.sqf:46");
 
 if (!alive player) exitWith {};
 
