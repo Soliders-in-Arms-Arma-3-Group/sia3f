@@ -14,7 +14,10 @@
  * call sia3f_core_fnc_goAFK
 */
 
-if (!hasInterface) exitWith {};
+if (!hasInterface) exitWith {
+	LOG("fnc_exitAFK.sqf ran on server.");
+};
+
 LOG("fnc_exitAFK.sqf started.");
 
 private _unit = player; // ToDo: replace with param & execute func on server
@@ -24,6 +27,7 @@ private _unit = player; // ToDo: replace with param & execute func on server
 if ("@ace" call FUNC(checkModPresence)) then {
 	private _serializedMedStatus = _unit getVariable [QGVAR(serializedMedStatus), "{}"];
 	[_unit, _serializedMedStatus] call ace_medical_fnc_deserializeState;
+	TRACE_2("Player, player ACE3 serialized medical status.", _unit, _serializedMedStatus);
 };
 LOG("fnc_exitAFK.sqf deserialized player.");
 
