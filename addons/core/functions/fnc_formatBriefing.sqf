@@ -24,6 +24,7 @@
 params [
 	["_str", "", [""]]
 ];
+TRACE_1("input string", _str);
 
 LOG("fnc_formatBriefing.sqf started.");
 
@@ -47,12 +48,16 @@ private _strArr = _str splitString "";
 {
 	if (_x == _newlineChar) then {
 		_strArr set [_forEachIndex, "<br></br>"];
+		TRACE_1("forEach index var", _forEachIndex);
 		// diag_log _strArr;
 		LOG("fnc_formatBriefing.sqf formatted a new line");
 	};
 } forEach _strArr; // there should be a more efficient way to do this than iterating through the entire array, which could possibly have thousands of indexes elements.
 
 // ToDo: colors, bold, images?, etc.
-_strArr joinString "";
+private _returnStr = _strArr joinString "";
+TRACE_1("string returned", _returnStr);
+
+return _returnStr;
 
 INFO("fnc_formatBriefing.sqf fully executed.");
