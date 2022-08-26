@@ -37,6 +37,7 @@ class GVAR(editRole) {
 		class GVAR(roleSelect): RscListbox
 		{
 			idc = 1500;
+			onLBSelChanged = QUOTE((_this # 1) call FUNC(refreshEditRoles));
 			x = 0.381406 * safezoneW + safezoneX;
 			y = 0.313 * safezoneH + safezoneY;
 			w = 0.108281 * safezoneW;

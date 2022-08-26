@@ -1,4 +1,5 @@
+PREP(createRole);
 PREP(initFramework);
-PREP(refreshEditRoles);
-PREP(saveEditRoles);
+PREP(refreshEditRolesGUI);
+PREP(saveRole);
 PREP(spawnEditRoles);
