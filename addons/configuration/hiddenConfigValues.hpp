@@ -2,9 +2,9 @@ class GVAR(hiddenConfigValues) {
 	displayName = "You shouldn't be seeing this";
 
 	class AttributeCategories {
-		class GVAR(initializationValues) {
+		class GVAR(internalValues) {
 			collapsed = 0;
-			displayName = "Initialization Values";
+			displayName = "Internal Values";
 
 			class Attributes {
 				class GVAR(frameworkInit) {
@@ -12,6 +12,12 @@ class GVAR(hiddenConfigValues) {
 					property = QGVAR(frameworkInit);
 					control = "Checkbox";
 					defaultValue = false;
+				};
+
+				class GVAR(roles) {
+					displayName = "Roles";
+					property = QGVAR(roles);
+					defaultValue = createHashMap;
 				};
 			};
 		};

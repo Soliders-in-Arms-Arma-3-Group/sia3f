@@ -22,6 +22,6 @@ if (("sia3f_configuration_hiddenConfigValues" get3DENMissionAttribute "sia3f_con
 private _callback = "make_descriptionExt" callExtension ["", [getMissionPath ""]];
 // ToDo: log callback, check for success and notify player if it fails.
 
-["SIA Mission Framework Initialization Complete!"] call BIS_fnc_3DENNotification;
-
 SET_CONFIG(hiddenConfigValues,frameworkInit,true);
+do3DENAction "MissionSave";
+["SIA Mission Framework Initialization Complete!"] call BIS_fnc_3DENNotification;

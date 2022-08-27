@@ -20,5 +20,10 @@ params [
 
 if (_roleName == "") exitWith {};
 
+private _roles = GET_CONFIG(roles,createHashMap);
+
 // create role, value array is [isMedic, isEngineer, hasHandheldRadio, hasManpackRadio, additionalItems]
-GVAR(roles) set [_roleName, [false, false, false, false, []]];
+_roles set [_roleName, [false, false, false, false, []]];
+SET_CONFIG(hiddenConfigValues,roles,_roles);
+do3DENAction "MissionSave";
+[-1] call FUNC(refreshEditRolesGUI);

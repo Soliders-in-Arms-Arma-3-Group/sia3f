@@ -18,4 +18,20 @@ params [
 	["_index", 0, [0]]
 ];
 
+if (floor _index != _index) exitWith {
+	// error, index must be an integer
+};
+
 private _lbCtrl = (findDisplay 8501) displayCtrl 1500;
+
+lbClear _lbCtrl;
+{
+	_lbCtrl lbAdd _x;
+	// systemChat str _y;
+} forEach GET_CONFIG(roles,createHashMap);
+lbSort _lbCtrl;
+
+if (_index < 0) then {
+	_index = lbSize _lbCtrl + _index;
+};
+_lbCtrl lbSetCurSel _index; // ToDo: find a way to select the new index without firing the 'onLbSelChanged' event handler, like lbSetCurSel does.

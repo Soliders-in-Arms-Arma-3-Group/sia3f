@@ -17,7 +17,4 @@
 private _display = (findDisplay 313) createDisplay QGVAR(editRole);
 private _lbCtrl = _display displayCtrl 1500;
 
-{
-	_lbCtrl lbAdd _x;
-	// ToDo: load role settings
-} forEach GVAR(roles);
+[0] call FUNC(refreshEditRolesGUI);

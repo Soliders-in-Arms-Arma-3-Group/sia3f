@@ -203,6 +203,7 @@ class GVAR(editRole) {
 		class GVAR(createRole): RscButton
 		{
 			idc = 1603;
+			action = QUOTE([ctrlText ((findDisplay 8501) displayCtrl 1400)] call FUNC(createRole));
 			x = 0.556719 * safezoneW + safezoneX;
 			y = 0.39 * safezoneH + safezoneY;
 			w = 0.061875 * safezoneW;

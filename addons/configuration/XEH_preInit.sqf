@@ -4,9 +4,11 @@ ADDON = false;
 
 #include "XEH_PREP.hpp"
 
-GVAR(roles) = createHashMap;
-GVAR(roles) set ["some role", [true, false, true, false, []]];
-GVAR(roles) set ["some OP role", [true, true, true, true, []]];
-GVAR(roles) set ["some rifleman role", [false, false, false, false, []]];
+GVAR(roles) = GET_CONFIG(roles,createHashMap);
+if (GVAR(roles) isEqualTo createHashMap) then {
+	GVAR(roles) set ["default", [false, false, false, false, []]];
+	SET_CONFIG(hiddenConfigValues,roles,GVAR(roles));
+	do3DENAction "MissionSave";
+};
 
 ADDON = true;

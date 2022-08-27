@@ -51,7 +51,7 @@ This will define all of the variables that can be used with ``GET_CONFIG(var,def
 This module's custom macros are defined here.  They cannot be used outside of this module.
 
 ### SET_CONFIG(section,var,value)
-Sets the [mission config value](https://community.bistudio.com/wiki/set3DENMissionAttribute) of a variable.
+Sets the [mission config value](https://community.bistudio.com/wiki/set3DENMissionAttribute) of a variable.  Should be followed by ``do3DENAction "MissionSave";`` in order to actually save the value.  Using ``GET_CONFIG`` on the variable without first saving will return the old value.
 
 |Parameter|Description|
 |-|-|
