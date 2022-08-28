@@ -88,4 +88,11 @@ class Cfg3DEN {
 			};
 		};
 	};
+
+	class EventHandlers {
+		class GVAR(EdenEH) {
+			OnMissionLoad = QUOTE(GVAR(missionLoaded) = true;);
+			OnMissionNew = QUOTE(GVAR(missionLoaded) = false;);
+		};
+	};
 };

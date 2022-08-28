@@ -37,7 +37,7 @@ class GVAR(editRole) {
 		class GVAR(roleSelect): RscListbox
 		{
 			idc = 1500;
-			onLBSelChanged = QUOTE((_this # 1) call FUNC(refreshEditRoles));
+			onLBSelChanged = QUOTE([ARR_2(_this # 1, false)] call FUNC(refreshEditRolesGUI));
 			x = 0.381406 * safezoneW + safezoneX;
 			y = 0.313 * safezoneH + safezoneY;
 			w = 0.108281 * safezoneW;
@@ -150,6 +150,7 @@ class GVAR(editRole) {
 		class GVAR(ok): RscButton
 		{
 			idc = 1601;
+			action = QUOTE(call FUNC(saveRole););
 			x = 0.561875 * safezoneW + safezoneX;
 			y = 0.687 * safezoneH + safezoneY;
 			w = 0.061875 * safezoneW;
@@ -167,7 +168,7 @@ class GVAR(editRole) {
 		class GVAR(cancel): RscButton
 		{
 			idc = 1602;
-			action = "closeDialog 2;";
+			action = "(findDisplay 8501) closeDisplay 2;";
 			x = 0.37625 * safezoneW + safezoneX;
 			y = 0.687 * safezoneH + safezoneY;
 			w = 0.061875 * safezoneW;
