@@ -14,7 +14,5 @@
  * call sia3f_configuration_fnc_spawnEditRoles
 */
 
-private _display = (findDisplay 313) createDisplay QGVAR(editRole);
-private _lbCtrl = _display displayCtrl 1500;
-
+(findDisplay 313) createDisplay QGVAR(editRole);
 [0] call FUNC(refreshEditRolesGUI);
