@@ -267,7 +267,7 @@ class GVAR(additionalItemsEditor) {
 		{
 			idc = 1000;
 
-			text = "Additional Items Editor: ROLE_NAME"; //--- ToDo: Localize;
+			text = "Additional Items Editor: ROLE_NAME";
 			x = 0.355625 * safezoneW + safezoneX;
 			y = 0.291 * safezoneH + safezoneY;
 			w = 0.283594 * safezoneW;
@@ -290,15 +290,13 @@ class GVAR(additionalItemsEditor) {
 		};
 		class sia3f_itemsBackground: ctrlStatic
 		{
-			idc = 1002;
-			text = "#(argb,8,8,3)color(1,1,1,0.1)"; //--- ToDo: Localize;
+			idc = -1;
+			// text = "#(argb,8,8,3)color(1,1,1,0.1)"; ToDo: delete if colorBackground works instead
 			x = 0.360781 * safezoneW + safezoneX;
 			y = 0.445 * safezoneH + safezoneY;
 			w = 0.278437 * safezoneW;
 			h = 0.198 * safezoneH;
-			colorText[] = {1,1,1,1};
-			colorBackground[] = {0,0,0,0.5};
-			sizeEx = 4.32 * (1 / (getResolution select 3)) * pixelGrid * 0.5 * GUI_GRID_H;
+			colorBackground[] = {1,1,1,0.1};
 		};
 		class sia3f_items: RscListBox
 		{
@@ -319,7 +317,7 @@ class GVAR(additionalItemsEditor) {
 			idc = 1501;
 			font = "RobotoCondensedBold";
 
-			text = "-"; //--- ToDo: Localize;
+			text = "-";
 			x = -0.11875 * safezoneW + safezoneX;
 			y = -0.325 * safezoneH + safezoneY;
 			w = 0.0117188 * safezoneW;
@@ -330,7 +328,7 @@ class GVAR(additionalItemsEditor) {
 			idc = 1502;
 			font = "RobotoCondensedBold";
 
-			text = "+"; //--- ToDo: Localize;
+			text = "+";
 			x = -0.11875 * safezoneW + safezoneX;
 			y = -0.325 * safezoneH + safezoneY;
 			w = 0.0117188 * safezoneW;
@@ -349,31 +347,31 @@ class GVAR(additionalItemsEditor) {
 		{
 			idc = 1606;
 
-			text = "IMPORT"; //--- ToDo: Localize;
+			text = "IMPORT";
 			x = 0.474219 * safezoneW + safezoneX;
 			y = 0.654 * safezoneH + safezoneY;
 			w = 0.0515625 * safezoneW;
 			h = 0.022 * safezoneH;
 			colorBackground[] = {0,0,0,0.6};
-			tooltip = "Export current items list as an array for use in scripts"; //--- ToDo: Localize;
+			tooltip = "Import items list array from clipboard (should be the same format as export)";
 		};
 		class sia3f_export: RscButton
 		{
 			idc = 1607;
 
-			text = "EXPORT"; //--- ToDo: Localize;
+			text = "EXPORT";
 			x = 0.530937 * safezoneW + safezoneX;
 			y = 0.654 * safezoneH + safezoneY;
 			w = 0.0515625 * safezoneW;
 			h = 0.022 * safezoneH;
 			colorBackground[] = {0,0,0,0.6};
-			tooltip = "Export current items list as an array for use in scripts"; //--- ToDo: Localize;
+			tooltip = "Export current items list as an array for use in scripts";
 		};
 		class sia3f_clear: RscButton
 		{
 			idc = 1608;
 
-			text = "CLEAR"; //--- ToDo: Localize;
+			text = "CLEAR";
 			x = 0.587656 * safezoneW + safezoneX;
 			y = 0.654 * safezoneH + safezoneY;
 			w = 0.0515625 * safezoneW;
@@ -383,24 +381,23 @@ class GVAR(additionalItemsEditor) {
 		class sia3f_addCompatible: RscButton
 		{
 			idc = 1606;
-			text = "Add Compatible Items"; //--- ToDo: Localize;
+			text = "Add Compatible Items";
 			x = 0.54125 * safezoneW + safezoneX;
 			y = 0.335 * safezoneH + safezoneY;
 			w = 0.0976563 * safezoneW;
 			h = 0.0166667 * safezoneH;
 			colorBackground[] = {0,0,0,0.5};
-			tooltip = "Will automatically add compatible attachments or magazines (based on selected category) for all weapons in current items list"; //--- ToDo: Localize;
+			tooltip = "Will automatically add compatible attachments or magazines (based on selected category) for all weapons in current items list";
 			sizeEx = 4 * (pixelH * pixelGrid * 0.5) * GUI_GRID_H;
 		};
 		class sia3f_itemsText: RscText
 		{
 			idc = 1004;
-			text = "Items"; //--- ToDo: Localize;
+			text = "Items";
 			x = 0.360781 * safezoneW + safezoneX;
 			y = 0.335 * safezoneH + safezoneY;
 			w = 0.103125 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
-
 	};
 };
