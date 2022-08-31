@@ -1,6 +1,9 @@
+PREP(additionalItemsAddItems);
+PREP(additionalItemsCategory);
 PREP(createRole);
 PREP(deleteRole);
 PREP(initFramework);
 PREP(refreshEditRolesGUI);
 PREP(saveRole);
+PREP(scanConfig);
 PREP(spawnEditRoles);
