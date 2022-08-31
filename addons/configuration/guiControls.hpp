@@ -9,7 +9,7 @@ class GVAR(editRole) {
 	class controls {
 		class GVAR(background): RscPicture
 		{
-			idc = 1200;
+			idc = -1;
 			text = "#(argb,8,8,3)color(0,0,0,0.5)";
 			x = 0.37625 * safezoneW + safezoneX;
 			y = 0.302 * safezoneH + safezoneY;
@@ -18,7 +18,7 @@ class GVAR(editRole) {
 		};
 		class GVAR(title): RscPicture
 		{
-			idc = 1201;
+			idc = -1;
 			text = "#(argb,8,8,3)color(0.77,0.51,0.08,0.5)";
 			x = 0.37625 * safezoneW + safezoneX;
 			y = 0.269 * safezoneH + safezoneY;
@@ -27,7 +27,7 @@ class GVAR(editRole) {
 		};
 		class GVAR(titleText): RscText
 		{
-			idc = 1000;
+			idc = -1;
 			text = "Role Editor";
 			x = 0.37625 * safezoneW + safezoneX;
 			y = 0.269 * safezoneH + safezoneY;
@@ -61,7 +61,7 @@ class GVAR(editRole) {
 		};
 		class GVAR(additionalItemsText): RscText
 		{
-			idc = 1002;
+			idc = -1;
 			text = "Edit Additional Items";
 			style = "0x02";
 			x = 0.505156 * safezoneW + safezoneX;
@@ -71,7 +71,7 @@ class GVAR(editRole) {
 		};
 		class GVAR(aceOptionsText): RscText
 		{
-			idc = 1003;
+			idc = -1;
 			text = "ACE Options";
 			x = 0.494844 * safezoneW + safezoneX;
 			y = 0.423 * safezoneH + safezoneY;
@@ -88,7 +88,7 @@ class GVAR(editRole) {
 		};
 		class GVAR(isMedicText): RscText
 		{
-			idc = 1004;
+			idc = -1;
 			text = "Is Medic";
 			x = 0.510312 * safezoneW + safezoneX;
 			y = 0.456 * safezoneH + safezoneY;
@@ -97,7 +97,7 @@ class GVAR(editRole) {
 		};
 		class GVAR(isEngineerText): RscText
 		{
-			idc = 1005;
+			idc = -1;
 			text = "Is Engineer";
 			x = 0.510312 * safezoneW + safezoneX;
 			y = 0.489 * safezoneH + safezoneY;
@@ -106,7 +106,7 @@ class GVAR(editRole) {
 		};
 		class GVAR(radioOptionsText): RscText
 		{
-			idc = 1006;
+			idc = -1;
 			text = "ACRE/TFAR Options";
 			x = 0.494844 * safezoneW + safezoneX;
 			y = 0.522 * safezoneH + safezoneY;
@@ -131,7 +131,7 @@ class GVAR(editRole) {
 		};
 		class GVAR(hasHandheldRadioText): RscText
 		{
-			idc = 1007;
+			idc = -1;
 			text = "Has Handheld Radio";
 			x = 0.510312 * safezoneW + safezoneX;
 			y = 0.555 * safezoneH + safezoneY;
@@ -140,7 +140,7 @@ class GVAR(editRole) {
 		};
 		class GVAR(hasManpackRadioText): RscText
 		{
-			idc = 1008;
+			idc = -1;
 			text = "Has Manpack Radio";
 			x = 0.510312 * safezoneW + safezoneX;
 			y = 0.588 * safezoneH + safezoneY;
@@ -158,7 +158,7 @@ class GVAR(editRole) {
 		};
 		class GVAR(okText): RscText
 		{
-			idc = 1009;
+			idc = -1;
 			text = "OK";
 			x = 0.561875 * safezoneW + safezoneX;
 			y = 0.687 * safezoneH + safezoneY;
@@ -176,7 +176,7 @@ class GVAR(editRole) {
 		};
 		class GVAR(cancelText): RscText
 		{
-			idc = 1010;
+			idc = -1;
 			text = "CANCEL";
 			x = 0.37625 * safezoneW + safezoneX;
 			y = 0.687 * safezoneH + safezoneY;
@@ -194,7 +194,7 @@ class GVAR(editRole) {
 		};
 		class GVAR(roleNameText): RscText
 		{
-			idc = 1001;
+			idc = -1;
 			text = "Role Name:";
 			x = 0.489688 * safezoneW + safezoneX;
 			y = 0.313 * safezoneH + safezoneY;
@@ -212,7 +212,7 @@ class GVAR(editRole) {
 		};
 		class GVAR(createRoleText): RscText
 		{
-			idc = 1011;
+			idc = -1;
 			text = "Create Role";
 			x = 0.556719 * safezoneW + safezoneX;
 			y = 0.39 * safezoneH + safezoneY;
@@ -230,7 +230,7 @@ class GVAR(editRole) {
 		};
 		class GVAR(deleteRoleText): RscText
 		{
-			idc = 1012;
+			idc = -1;
 			text = "Delete Role";
 			x = 0.494844 * safezoneW + safezoneX;
 			y = 0.39 * safezoneH + safezoneY;
