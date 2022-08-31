@@ -7,7 +7,7 @@ class GVAR(editRole) {
 	idd = 8501; // hopefully unique number as to not cause problems in the unlikely event that another GUI is open at the same time.
 
 	class controls {
-		class GVAR(background): RscPicture
+		class background: RscPicture
 		{
 			idc = -1;
 			text = "#(argb,8,8,3)color(0,0,0,0.5)";
@@ -16,7 +16,7 @@ class GVAR(editRole) {
 			w = 0.2475 * safezoneW;
 			h = 0.374 * safezoneH;
 		};
-		class GVAR(title): RscPicture
+		class title: RscPicture
 		{
 			idc = -1;
 			text = "#(argb,8,8,3)color(0.77,0.51,0.08,0.5)";
@@ -25,7 +25,7 @@ class GVAR(editRole) {
 			w = 0.2475 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
-		class GVAR(titleText): RscText
+		class titleText: RscText
 		{
 			idc = -1;
 			text = "Role Editor";
@@ -34,7 +34,7 @@ class GVAR(editRole) {
 			w = 0.242344 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
-		class GVAR(roleSelect): RscListbox
+		class roleSelect: RscListbox
 		{
 			idc = 1500;
 			onLBSelChanged = QUOTE([ARR_2(_this # 1, false)] call FUNC(refreshEditRolesGUI));
@@ -43,7 +43,7 @@ class GVAR(editRole) {
 			w = 0.108281 * safezoneW;
 			h = 0.352 * safezoneH;
 		};
-		class GVAR(isMedic): RscCheckbox
+		class isMedic: RscCheckbox
 		{
 			idc = 2801;
 			x = 0.494844 * safezoneW + safezoneX;
@@ -51,7 +51,7 @@ class GVAR(editRole) {
 			w = 0.0154688 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
-		class GVAR(additionalItems): RscButton
+		class additionalItems: RscButton
 		{
 			idc = 1600;
 			x = 0.5 * safezoneW + safezoneX;
@@ -59,7 +59,7 @@ class GVAR(editRole) {
 			w = 0.118594 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
-		class GVAR(additionalItemsText): RscText
+		class additionalItemsText: RscText
 		{
 			idc = -1;
 			text = "Edit Additional Items";
@@ -69,7 +69,7 @@ class GVAR(editRole) {
 			w = 0.108281 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
-		class GVAR(aceOptionsText): RscText
+		class aceOptionsText: RscText
 		{
 			idc = -1;
 			text = "ACE Options";
@@ -78,7 +78,7 @@ class GVAR(editRole) {
 			w = 0.118594 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
-		class GVAR(isEngineer): RscCheckbox
+		class isEngineer: RscCheckbox
 		{
 			idc = 2802;
 			x = 0.494844 * safezoneW + safezoneX;
@@ -86,7 +86,7 @@ class GVAR(editRole) {
 			w = 0.0154688 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
-		class GVAR(isMedicText): RscText
+		class isMedicText: RscText
 		{
 			idc = -1;
 			text = "Is Medic";
@@ -95,7 +95,7 @@ class GVAR(editRole) {
 			w = 0.108281 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
-		class GVAR(isEngineerText): RscText
+		class isEngineerText: RscText
 		{
 			idc = -1;
 			text = "Is Engineer";
@@ -104,7 +104,7 @@ class GVAR(editRole) {
 			w = 0.108281 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
-		class GVAR(radioOptionsText): RscText
+		class radioOptionsText: RscText
 		{
 			idc = -1;
 			text = "ACRE/TFAR Options";
@@ -113,7 +113,7 @@ class GVAR(editRole) {
 			w = 0.118594 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
-		class GVAR(hasHandheldRadio): RscCheckbox
+		class hasHandheldRadio: RscCheckbox
 		{
 			idc = 2803;
 			x = 0.494844 * safezoneW + safezoneX;
@@ -121,7 +121,7 @@ class GVAR(editRole) {
 			w = 0.0154688 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
-		class GVAR(hasManpackRadio): RscCheckbox
+		class hasManpackRadio: RscCheckbox
 		{
 			idc = 2804;
 			x = 0.494844 * safezoneW + safezoneX;
@@ -129,7 +129,7 @@ class GVAR(editRole) {
 			w = 0.0154688 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
-		class GVAR(hasHandheldRadioText): RscText
+		class hasHandheldRadioText: RscText
 		{
 			idc = -1;
 			text = "Has Handheld Radio";
@@ -138,7 +138,7 @@ class GVAR(editRole) {
 			w = 0.108281 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
-		class GVAR(hasManpackRadioText): RscText
+		class hasManpackRadioText: RscText
 		{
 			idc = -1;
 			text = "Has Manpack Radio";
@@ -147,7 +147,7 @@ class GVAR(editRole) {
 			w = 0.108281 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
-		class GVAR(ok): RscButton
+		class okButton: RscButton
 		{
 			idc = 1601;
 			action = QUOTE(call FUNC(saveRole););
@@ -156,7 +156,7 @@ class GVAR(editRole) {
 			w = 0.061875 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
-		class GVAR(okText): RscText
+		class okButtonText: RscText
 		{
 			idc = -1;
 			text = "OK";
@@ -165,7 +165,7 @@ class GVAR(editRole) {
 			w = 0.0567187 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
-		class GVAR(cancel): RscButton
+		class cancelButton: RscButton
 		{
 			idc = 1602;
 			action = "(findDisplay 8501) closeDisplay 2;";
@@ -174,7 +174,7 @@ class GVAR(editRole) {
 			w = 0.061875 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
-		class GVAR(cancelText): RscText
+		class cancelButtonText: RscText
 		{
 			idc = -1;
 			text = "CANCEL";
@@ -183,7 +183,7 @@ class GVAR(editRole) {
 			w = 0.0567187 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
-		class GVAR(roleName): ctrlEdit
+		class roleName: ctrlEdit
 		{
 			idc = 1400;
 			text = "Role Name...";
@@ -192,7 +192,7 @@ class GVAR(editRole) {
 			w = 0.12375 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
-		class GVAR(roleNameText): RscText
+		class roleNameText: RscText
 		{
 			idc = -1;
 			text = "Role Name:";
@@ -201,7 +201,7 @@ class GVAR(editRole) {
 			w = 0.128906 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
-		class GVAR(createRole): RscButton
+		class createRole: RscButton
 		{
 			idc = 1603;
 			action = QUOTE([ctrlText ((findDisplay 8501) displayCtrl 1400)] call FUNC(createRole););
@@ -210,7 +210,7 @@ class GVAR(editRole) {
 			w = 0.061875 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
-		class GVAR(createRoleText): RscText
+		class createRoleText: RscText
 		{
 			idc = -1;
 			text = "Create Role";
@@ -219,7 +219,7 @@ class GVAR(editRole) {
 			w = 0.0567187 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
-		class GVAR(deleteRole): RscButton
+		class deleteRole: RscButton
 		{
 			idc = 1604;
 			action = QUOTE([ctrlText ((findDisplay 8501) displayCtrl 1400)] call FUNC(deleteRole););
@@ -228,7 +228,7 @@ class GVAR(editRole) {
 			w = 0.0567187 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
-		class GVAR(deleteRoleText): RscText
+		class deleteRoleText: RscText
 		{
 			idc = -1;
 			text = "Delete Role";
@@ -245,7 +245,7 @@ class GVAR(editRole) {
 class GVAR(additionalItemsEditor) {
 	idd = 8502;
 	class controls {
-		class sia3f_background: RscPicture
+		class background: RscPicture
 		{
 			idc = -1;
 			text = "#(argb,8,8,3)color(0.075,0.075,0.075,0.8)";
@@ -254,7 +254,7 @@ class GVAR(additionalItemsEditor) {
 			w = 0.28875 * safezoneW;
 			h = 0.363 * safezoneH;
 		};
-		class sia3f_title: RscPicture
+		class title: RscPicture
 		{
 			idc = -1;
 			text = "#(argb,8,8,3)color(0.77,0.51,0.08,0.75)";
@@ -263,7 +263,7 @@ class GVAR(additionalItemsEditor) {
 			w = 0.28875 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
-		class sia3f_titleText: RscText
+		class titleText: RscText
 		{
 			idc = 1000;
 
@@ -273,7 +273,7 @@ class GVAR(additionalItemsEditor) {
 			w = 0.283594 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
-		class sia3f_category: ctrlToolboxPictureKeepAspect
+		class category: ctrlToolboxPictureKeepAspect
 		{
 			idc = 2300;
 			rows = 2;
@@ -289,7 +289,7 @@ class GVAR(additionalItemsEditor) {
 			colorBackground[] = {0,0,0,0.5};
 			sizeEx = 4.32 * (1 / (getResolution select 3)) * pixelGrid * 0.5 * GUI_GRID_H * GUI_GRID_H;
 		};
-		class sia3f_itemsBackground: ctrlStatic
+		class itemsBackground: ctrlStatic
 		{
 			idc = -1;
 			// text = "#(argb,8,8,3)color(1,1,1,0.1)"; ToDo: delete if colorBackground works instead
@@ -299,7 +299,7 @@ class GVAR(additionalItemsEditor) {
 			h = 0.198 * safezoneH;
 			colorBackground[] = {1,1,1,0.1};
 		};
-		class sia3f_items: ctrlListNBox
+		class items: ctrlListNBox
 		{
 			idc = 1500;
 			idcLeft = 1501;
@@ -313,7 +313,7 @@ class GVAR(additionalItemsEditor) {
 			w = 0.278437 * safezoneW;
 			h = 0.198 * safezoneH;
 		};
-		class sia3f_arrowLeft: RscButton
+		class arrowLeft: RscButton
 		{
 			idc = 1501;
 			font = "RobotoCondensedBold";
@@ -324,7 +324,7 @@ class GVAR(additionalItemsEditor) {
 			w = 0.0117188 * safezoneW;
 			h = 0.0208333 * safezoneH;
 		};
-		class sia3f_arrowRight: RscButton
+		class arrowRight: RscButton
 		{
 			idc = 1502;
 			font = "RobotoCondensedBold";
@@ -335,7 +335,7 @@ class GVAR(additionalItemsEditor) {
 			w = 0.0117188 * safezoneW;
 			h = 0.0208333 * safezoneH;
 		};
-		class sia3f_searchBar: RscEdit
+		class searchBar: RscEdit
 		{
 			idc = 1401;
 
@@ -353,63 +353,7 @@ class GVAR(additionalItemsEditor) {
 			w = 0.0928125 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
-		class sia3f_import: RscButton
-		{
-			idc = 1606;
-
-			text = "IMPORT";
-			x = 0.474219 * safezoneW + safezoneX;
-			y = 0.654 * safezoneH + safezoneY;
-			w = 0.0515625 * safezoneW;
-			h = 0.022 * safezoneH;
-			colorBackground[] = {0,0,0,0.6};
-			tooltip = "Import items list array from clipboard (should be the same format as export)";
-		};
-		class sia3f_export: RscButton
-		{
-			idc = 1607;
-
-			text = "EXPORT";
-			x = 0.530937 * safezoneW + safezoneX;
-			y = 0.654 * safezoneH + safezoneY;
-			w = 0.0515625 * safezoneW;
-			h = 0.022 * safezoneH;
-			colorBackground[] = {0,0,0,0.6};
-			tooltip = "Export current items list as an array for use in scripts";
-		};
-		class sia3f_clear: RscButton
-		{
-			idc = 1608;
-
-			text = "CLEAR";
-			x = 0.587656 * safezoneW + safezoneX;
-			y = 0.654 * safezoneH + safezoneY;
-			w = 0.0515625 * safezoneW;
-			h = 0.022 * safezoneH;
-			colorBackground[] = {0,0,0,0.6};
-		};
-		class sia3f_addCompatible: RscButton
-		{
-			idc = 1609;
-			text = "Add Compatible Items";
-			x = 0.54125 * safezoneW + safezoneX;
-			y = 0.335 * safezoneH + safezoneY;
-			w = 0.0976563 * safezoneW;
-			h = 0.0166667 * safezoneH;
-			colorBackground[] = {0,0,0,0.5};
-			tooltip = "Will automatically add compatible attachments or magazines (based on selected category) for all weapons in current items list";
-			sizeEx = 4 * (pixelH * pixelGrid * 0.5);
-		};
-		class sia3f_itemsText: RscText
-		{
-			idc = -1;
-			text = "Items";
-			x = 0.360781 * safezoneW + safezoneX;
-			y = 0.332 * safezoneH + safezoneY;
-			w = 0.103125 * safezoneW;
-			h = 0.022 * safezoneH;
-		};
-		class sia3f_searchButton: RscButton
+		class searchButton: RscButton
 		{
 			idc = 1610;
 			action = QUOTE( \
@@ -424,7 +368,7 @@ class GVAR(additionalItemsEditor) {
 			w = 0.0117188 * safezoneW;
 			h = 0.0208333 * safezoneH;
 		};
-		class sia3f_searchButtonImage: RscPicture
+		class searchButtonImage: RscPicture
 		{
 			idc = -1;
 			text = "\a3\Ui_f\data\GUI\RscCommon\RscButtonSearch\search_start_ca.paa";
@@ -433,7 +377,63 @@ class GVAR(additionalItemsEditor) {
 			w = 0.0117188 * safezoneW;
 			h = 0.0208333 * safezoneH;
 		};
-		class sia3f_OK: RscButton
+		class import: RscButton
+		{
+			idc = 1606;
+
+			text = "IMPORT";
+			x = 0.474219 * safezoneW + safezoneX;
+			y = 0.654 * safezoneH + safezoneY;
+			w = 0.0515625 * safezoneW;
+			h = 0.022 * safezoneH;
+			colorBackground[] = {0,0,0,0.6};
+			tooltip = "Import items list array from clipboard (should be the same format as export)";
+		};
+		class export: RscButton
+		{
+			idc = 1607;
+
+			text = "EXPORT";
+			x = 0.530937 * safezoneW + safezoneX;
+			y = 0.654 * safezoneH + safezoneY;
+			w = 0.0515625 * safezoneW;
+			h = 0.022 * safezoneH;
+			colorBackground[] = {0,0,0,0.6};
+			tooltip = "Export current items list as an array for use in scripts";
+		};
+		class clear: RscButton
+		{
+			idc = 1608;
+
+			text = "CLEAR";
+			x = 0.587656 * safezoneW + safezoneX;
+			y = 0.654 * safezoneH + safezoneY;
+			w = 0.0515625 * safezoneW;
+			h = 0.022 * safezoneH;
+			colorBackground[] = {0,0,0,0.6};
+		};
+		class addCompatible: RscButton
+		{
+			idc = 1609;
+			text = "Add Compatible Items";
+			x = 0.54125 * safezoneW + safezoneX;
+			y = 0.335 * safezoneH + safezoneY;
+			w = 0.0976563 * safezoneW;
+			h = 0.0166667 * safezoneH;
+			colorBackground[] = {0,0,0,0.5};
+			tooltip = "Will automatically add compatible attachments or magazines (based on selected category) for all weapons in current items list";
+			sizeEx = 4 * (pixelH * pixelGrid * 0.5);
+		};
+		class itemsText: RscText
+		{
+			idc = -1;
+			text = "Items";
+			x = 0.360781 * safezoneW + safezoneX;
+			y = 0.332 * safezoneH + safezoneY;
+			w = 0.103125 * safezoneW;
+			h = 0.022 * safezoneH;
+		};
+		class Ok: RscButton
 		{
 			idc = 1607;
 			x = 0.5825 * safezoneW + safezoneX;
@@ -441,7 +441,7 @@ class GVAR(additionalItemsEditor) {
 			w = 0.061875 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
-		class sia3f_OKText: RscText
+		class OkText: RscText
 		{
 			idc = 1004;
 			text = "OK"; //--- ToDo: Localize;
@@ -450,7 +450,7 @@ class GVAR(additionalItemsEditor) {
 			w = 0.0567187 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
-		class sia3f_cancel: RscButton
+		class cancel: RscButton
 		{
 			idc = 1608;
 			action = "(findDisplay 8502) closeDisplay 2;"
@@ -459,7 +459,7 @@ class GVAR(additionalItemsEditor) {
 			w = 0.061875 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
-		class sia3f_cancelText: RscText
+		class cancelText: RscText
 		{
 			idc = 1005;
 			text = "CANCEL"; //--- ToDo: Localize;
