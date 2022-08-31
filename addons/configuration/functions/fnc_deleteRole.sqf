@@ -11,7 +11,7 @@
  * None
  *
  * Example:
- * call sia3f_configuration_fnc_deleteRole
+ * ["unneeded role"] call sia3f_configuration_fnc_deleteRole
 */
 
 params [

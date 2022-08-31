@@ -11,7 +11,7 @@
  * None
  *
  * Example:
- * call sia3f_configuration_fnc_createRole
+ * ["rifleman"] call sia3f_configuration_fnc_createRole
 */
 
 params [
