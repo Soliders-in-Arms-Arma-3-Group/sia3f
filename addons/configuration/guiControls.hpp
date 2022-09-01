@@ -240,10 +240,13 @@ class GVAR(editRole) {
 	};
 };
 
-// $[1.063,["sia3f",[[0,0,1,1],0.025,0.04,"GUI_GRID"],2,0,0],[1200,"sia3f_background",[1,"#(argb,8,8,3)color(0.075,0.075,0.075,0.8)",["0.355624 * safezoneW + safezoneX","0.324 * safezoneH + safezoneY","0.28875 * safezoneW","0.363 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],[1201,"sia3f_title",[1,"#(argb,8,8,3)color(0.77,0.51,0.08,0.75)",["0.355625 * safezoneW + safezoneX","0.291 * safezoneH + safezoneY","0.28875 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],[1000,"sia3f_titleText",[1,"Additional Items Editor: ROLE_NAME",["0.355625 * safezoneW + safezoneX","0.291 * safezoneH + safezoneY","0.283594 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],["idc = 1000;"]],[1001,"sia3f_category: ctrlToolboxPictureKeepAspect",[1,"",["0.360781 * safezoneW + safezoneX","0.357 * safezoneH + safezoneY","0.278437 * safezoneW","0.088 * safezoneH"],[1,1,1,1],[0,0,0,0.5],[-1,-1,-1,-1],"","4.32 * (1 / (getResolution select 3)) * pixelGrid * 0.5 * GUI_GRID_H"],["idc = 2300;","rows = 2;","columns = 12;","strings[] = {|\a3\Ui_F_Curator\Data\RscCommon\RscAttributeInventory\filter_0_ca.paa|,|\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\PrimaryWeapon_ca.paa|,|\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\SecondaryWeapon_ca.paa|,|\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Handgun_ca.paa|,|\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\ItemOptic_ca.paa|,|\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\ItemAcc_ca.paa|,|\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\ItemMuzzle_ca.paa|,|\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\ItemBipod_ca.paa|,|\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\CargoMagAll_ca.paa|,|\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Headgear_ca.paa|,|\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Uniform_ca.paa|,|\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Vest_ca.paa|,|\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Backpack_ca.paa|,|\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Goggles_ca.paa|,|\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\NVGs_ca.paa|,|\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Binoculars_ca.paa|,|\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Map_ca.paa|,|\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Compass_ca.paa|,|\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Radio_ca.paa|,|\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Watch_ca.paa|,|\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\GPS_ca.paa|,|\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\CargoThrow_ca.paa|,|\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\CargoPut_ca.paa|,|\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\CargoMisc_ca.paa|};"]],[1002,"sia3f_itemsBackground: ctrlStatic",[1,"#(argb,8,8,3)color(1,1,1,0.1)",["0.360781 * safezoneW + safezoneX","0.445 * safezoneH + safezoneY","0.278437 * safezoneW","0.198 * safezoneH"],[1,1,1,1],[0,0,0,0.5],[-1,-1,-1,-1],"","4.32 * (1 / (getResolution select 3)) * pixelGrid * 0.5"],[]],[1003,"sia3f_items: RscListBox",[1,"",["0.360781 * safezoneW + safezoneX","0.445 * safezoneH + safezoneY","0.278437 * safezoneW","0.198 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],["idc = 1500;","idcLeft = 1501;","idcRight = 1502;","drawSideArrows = 1;","disableOverflow = 1;","columns[] = {0.05,0.15,0.85};"]],[1600,"sia3f_arrowLeft",[1,"-",["-0.11875 * safezoneW + safezoneX","-0.325 * safezoneH + safezoneY","0.0117188 * safezoneW","0.0208333 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],["idc = 1501;","font = |RobotoCondensedBold|;"]],[1601,"sia3f_arrowRight",[1,"+",["-0.11875 * safezoneW + safezoneX","-0.325 * safezoneH + safezoneY","0.0117188 * safezoneW","0.0208333 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],["idc = 1502;","font = |RobotoCondensedBold|;"]],[1602,"sia3f_searchButton",[1,"\a3\Ui_f\data\GUI\RscCommon\RscButtonSearch\search_start_ca.paa",["0.360781 * safezoneW + safezoneX","0.654 * safezoneH + safezoneY","0.0117188 * safezoneW","0.0208333 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],["idc = 1605;"]],[1400,"sia3f_searchBar",[1,"",["0.37625 * safezoneW + safezoneX","0.654 * safezoneH + safezoneY","0.0928125 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],["idc = 1401;"]],[1603,"sia3f_import",[1,"IMPORT",["0.474219 * safezoneW + safezoneX","0.654 * safezoneH + safezoneY","0.0515625 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[0,0,0,0.6],[-1,-1,-1,-1],"Export current items list as an array for use in scripts","-1"],["idc = 1606;"]],[1604,"sia3f_export",[1,"EXPORT",["0.530937 * safezoneW + safezoneX","0.654 * safezoneH + safezoneY","0.0515625 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[0,0,0,0.6],[-1,-1,-1,-1],"Export current items list as an array for use in scripts","-1"],["idc = 1607;"]],[1605,"sia3f_clear",[1,"CLEAR",["0.587656 * safezoneW + safezoneX","0.654 * safezoneH + safezoneY","0.0515625 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[0,0,0,0.6],[-1,-1,-1,-1],"","-1"],["idc = 1608;"]],[1606,"sia3f_addCompatible",[1,"Add Compatible Items",["0.54125 * safezoneW + safezoneX","0.335 * safezoneH + safezoneY","0.0976563 * safezoneW","0.0166667 * safezoneH"],[-1,-1,-1,-1],[0,0,0,0.5],[-1,-1,-1,-1],"Will automatically add compatible attachments or magazines (based on selected category) for all weapons in current items list","4 * (pixelH * pixelGrid * 0.5)"],[]],[1607,"sia3f_OK",[1,"",["0.5825 * safezoneW + safezoneX","0.698 * safezoneH + safezoneY","0.061875 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],[1608,"sia3f_cancel",[1,"",["0.355625 * safezoneW + safezoneX","0.698 * safezoneH + safezoneY","0.061875 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],[1004,"sia3f_OKText",[1,"OK",["0.5825 * safezoneW + safezoneX","0.698 * safezoneH + safezoneY","0.0567187 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],[1005,"sia3f_cancelText",[1,"CANCEL",["0.355625 * safezoneW + safezoneX","0.698 * safezoneH + safezoneY","0.0567187 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]]]
 
+// $[1.063,["sia3f",[[0,0,1,1],0.025,0.04,"GUI_GRID"],2,0,0],[1200,"sia3f_background",[1,"#(argb,8,8,3)color(0.075,0.075,0.075,0.8)",["0.355624 * safezoneW + safezoneX","0.324 * safezoneH + safezoneY","0.28875 * safezoneW","0.363 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],[1201,"sia3f_title",[1,"#(argb,8,8,3)color(0.77,0.51,0.08,0.75)",["0.355625 * safezoneW + safezoneX","0.291 * safezoneH + safezoneY","0.28875 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],[1000,"sia3f_titleText",[1,"Additional Items Editor: ROLE_NAME",["0.355625 * safezoneW + safezoneX","0.291 * safezoneH + safezoneY","0.283594 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],["idc = 1000;"]],[1001,"sia3f_category: ctrlToolboxPictureKeepAspect",[1,"",["0.360781 * safezoneW + safezoneX","0.357 * safezoneH + safezoneY","0.278437 * safezoneW","0.088 * safezoneH"],[1,1,1,1],[0,0,0,0.5],[-1,-1,-1,-1],"","4.32 * (1 / (getResolution select 3)) * pixelGrid * 0.5 * GUI_GRID_H"],["idc = 2300;","rows = 2;","columns = 12;","strings[] = {|\a3\Ui_F_Curator\Data\RscCommon\RscAttributeInventory\filter_0_ca.paa|,|\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\PrimaryWeapon_ca.paa|,|\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\SecondaryWeapon_ca.paa|,|\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Handgun_ca.paa|,|\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\ItemOptic_ca.paa|,|\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\ItemAcc_ca.paa|,|\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\ItemMuzzle_ca.paa|,|\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\ItemBipod_ca.paa|,|\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\CargoMagAll_ca.paa|,|\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Headgear_ca.paa|,|\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Uniform_ca.paa|,|\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Vest_ca.paa|,|\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Backpack_ca.paa|,|\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Goggles_ca.paa|,|\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\NVGs_ca.paa|,|\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Binoculars_ca.paa|,|\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Map_ca.paa|,|\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Compass_ca.paa|,|\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Radio_ca.paa|,|\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Watch_ca.paa|,|\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\GPS_ca.paa|,|\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\CargoThrow_ca.paa|,|\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\CargoPut_ca.paa|,|\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\CargoMisc_ca.paa|};"]],[1002,"sia3f_itemsBackground: ctrlStatic",[1,"#(argb,8,8,3)color(1,1,1,0.1)",["0.360781 * safezoneW + safezoneX","0.445 * safezoneH + safezoneY","0.278437 * safezoneW","0.198 * safezoneH"],[1,1,1,1],[0,0,0,0.5],[-1,-1,-1,-1],"","4.32 * (1 / (getResolution select 3)) * pixelGrid * 0.5"],[]],[1003,"sia3f_items: RscListBox",[1,"",["0.360781 * safezoneW + safezoneX","0.445 * safezoneH + safezoneY","0.278437 * safezoneW","0.198 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],["idc = 1500;","idcLeft = 1501;","idcRight = 1502;","drawSideArrows = 1;","disableOverflow = 1;","columns[] = {0.05,0.15,0.85};"]],[1600,"sia3f_arrowLeft",[1,"-",["-0.11875 * safezoneW + safezoneX","-0.325 * safezoneH + safezoneY","0.0117188 * safezoneW","0.0208333 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],["idc = 1501;","font = |RobotoCondensedBold|;"]],[1601,"sia3f_arrowRight",[1,"+",["-0.11875 * safezoneW + safezoneX","-0.325 * safezoneH + safezoneY","0.0117188 * safezoneW","0.0208333 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],["idc = 1502;","font = |RobotoCondensedBold|;"]],[1602,"sia3f_searchButton",[1,"\a3\Ui_f\data\GUI\RscCommon\RscButtonSearch\search_start_ca.paa",["0.360781 * safezoneW + safezoneX","0.654 * safezoneH + safezoneY","0.0117188 * safezoneW","0.0208333 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],["idc = 1605;"]],[1400,"sia3f_searchBar",[1,"",["0.37625 * safezoneW + safezoneX","0.654 * safezoneH + safezoneY","0.0928125 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],["idc = 1401;"]],[1603,"sia3f_import",[1,"IMPORT",["0.474219 * safezoneW + safezoneX","0.654 * safezoneH + safezoneY","0.0515625 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[0,0,0,0.6],[-1,-1,-1,-1],"Export current items list as an array for use in scripts","-1"],["idc = 1606;"]],[1604,"sia3f_export",[1,"EXPORT",["0.530937 * safezoneW + safezoneX","0.654 * safezoneH + safezoneY","0.0515625 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[0,0,0,0.6],[-1,-1,-1,-1],"Export current items list as an array for use in scripts","-1"],["idc = 1607;"]],[1605,"sia3f_clear",[1,"CLEAR",["0.587656 * safezoneW + safezoneX","0.654 * safezoneH + safezoneY","0.0515625 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[0,0,0,0.6],[-1,-1,-1,-1],"","-1"],["idc = 1608;"]],[1606,"sia3f_addCompatible",[1,"Add Compatible Items",["0.54125 * safezoneW + safezoneX","0.335 * safezoneH + safezoneY","0.0976563 * safezoneW","0.0166667 * safezoneH"],[-1,-1,-1,-1],[0,0,0,0.5],[-1,-1,-1,-1],"Will automatically add compatible attachments or magazines (based on selected category) for all weapons in current items list","4 * (pixelH * pixelGrid * 0.5)"],[]],[1607,"sia3f_OK",[1,"",["0.5825 * safezoneW + safezoneX","0.698 * safezoneH + safezoneY","0.061875 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],[1608,"sia3f_cancel",[1,"",["0.355625 * safezoneW + safezoneX","0.698 * safezoneH + safezoneY","0.061875 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],[1004,"sia3f_OKText",[1,"OK",["0.5825 * safezoneW + safezoneX","0.698 * safezoneH + safezoneY","0.0567187 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],[1005,"sia3f_cancelText",[1,"CANCEL",["0.355625 * safezoneW + safezoneX","0.698 * safezoneH + safezoneY","0.0567187 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]]]
 class GVAR(additionalItemsEditor) {
+	// this GUI is taken and modified from mharis001 - ACE3 (addons/arsenal/Cfg3DEN.hpp >> Attributes >> ace_arsenal_attribute)
 	idd = 8502;
+	onKeyDown = QUOTE([_this # 1] call FUNC(additionalItemsKeyDown););
+
 	class controls {
 		class background: RscPicture
 		{
@@ -278,7 +281,32 @@ class GVAR(additionalItemsEditor) {
 			idc = 2300;
 			rows = 2;
 			columns = 12;
-			strings[] = {"\a3\Ui_F_Curator\Data\RscCommon\RscAttributeInventory\filter_0_ca.paa","\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\PrimaryWeapon_ca.paa","\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\SecondaryWeapon_ca.paa","\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Handgun_ca.paa","\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\ItemOptic_ca.paa","\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\ItemAcc_ca.paa","\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\ItemMuzzle_ca.paa","\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\ItemBipod_ca.paa","\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\CargoMagAll_ca.paa","\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Headgear_ca.paa","\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Uniform_ca.paa","\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Vest_ca.paa","\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Backpack_ca.paa","\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Goggles_ca.paa","\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\NVGs_ca.paa","\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Binoculars_ca.paa","\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Map_ca.paa","\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Compass_ca.paa","\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Radio_ca.paa","\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Watch_ca.paa","\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\GPS_ca.paa","\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\CargoThrow_ca.paa","\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\CargoPut_ca.paa","\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\CargoMisc_ca.paa"};
+			strings[] = {
+				"\a3\Ui_F_Curator\Data\RscCommon\RscAttributeInventory\filter_0_ca.paa",
+				"\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\PrimaryWeapon_ca.paa",
+				"\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\SecondaryWeapon_ca.paa",
+				"\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Handgun_ca.paa",
+				"\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\ItemOptic_ca.paa",
+				"\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\ItemAcc_ca.paa",
+				"\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\ItemMuzzle_ca.paa",
+				"\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\ItemBipod_ca.paa",
+				"\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\CargoMagAll_ca.paa",
+				"\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Headgear_ca.paa",
+				"\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Uniform_ca.paa",
+				"\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Vest_ca.paa",
+				"\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Backpack_ca.paa",
+				"\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Goggles_ca.paa",
+				"\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\NVGs_ca.paa",
+				"\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Binoculars_ca.paa",
+				"\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Map_ca.paa",
+				"\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Compass_ca.paa",
+				"\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Radio_ca.paa",
+				"\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Watch_ca.paa",
+				"\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\GPS_ca.paa",
+				"\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\CargoThrow_ca.paa",
+				"\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\CargoPut_ca.paa",
+				"\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\CargoMisc_ca.paa"
+			};
 			onToolBoxSelChanged = QUOTE((_this # 1) call FUNC(additionalItemsCategory););
 
 			x = 0.360781 * safezoneW + safezoneX;
@@ -287,12 +315,10 @@ class GVAR(additionalItemsEditor) {
 			h = 0.088 * safezoneH;
 			colorText[] = {1,1,1,1};
 			colorBackground[] = {0,0,0,0.5};
-			sizeEx = 4.32 * (1 / (getResolution select 3)) * pixelGrid * 0.5 * GUI_GRID_H * GUI_GRID_H;
 		};
 		class itemsBackground: ctrlStatic
 		{
 			idc = -1;
-			// text = "#(argb,8,8,3)color(1,1,1,0.1)"; ToDo: delete if colorBackground works instead
 			x = 0.360781 * safezoneW + safezoneX;
 			y = 0.445 * safezoneH + safezoneY;
 			w = 0.278437 * safezoneW;
@@ -308,15 +334,25 @@ class GVAR(additionalItemsEditor) {
 			disableOverflow = 1;
 			columns[] = {0.05,0.15,0.85};
 
+			onLBDblClick = QUOTE( \
+				params ['_listbox', '_row']; \
+				private _classname = _listbox lnbData [_row, 1]; \
+				private _addItem = !(_classname in (uiNamespace getVariable [ARR_2(QQGVAR(roleItems),[])])); \
+				[_addItem] call FUNC(additionalItemsSelect); \
+			);
+			onSetFocus = QUOTE(uiNamespace setVariable [ARR_2(QQGVAR(listboxHasFocus),true)];);
+			onKillFocus = QUOTE(uiNamespace setVariable [ARR_2(QQGVAR(listboxHasFocus),false)];);
+
 			x = 0.360781 * safezoneW + safezoneX;
 			y = 0.445 * safezoneH + safezoneY;
 			w = 0.278437 * safezoneW;
 			h = 0.198 * safezoneH;
 		};
-		class arrowLeft: RscButton
+		class arrowLeft: ctrlButton
 		{
 			idc = 1501;
 			font = "RobotoCondensedBold";
+			action = QUOTE([false] call FUNC(additionalItemsSelect););
 
 			text = "−";
 			x = -0.11875 * safezoneW + safezoneX;
@@ -324,10 +360,11 @@ class GVAR(additionalItemsEditor) {
 			w = 0.0117188 * safezoneW;
 			h = 0.0208333 * safezoneH;
 		};
-		class arrowRight: RscButton
+		class arrowRight: ctrlButton
 		{
 			idc = 1502;
 			font = "RobotoCondensedBold";
+			action = QUOTE([true] call FUNC(additionalItemsSelect););
 
 			text = "+";
 			x = -0.11875 * safezoneW + safezoneX;
@@ -353,7 +390,7 @@ class GVAR(additionalItemsEditor) {
 			w = 0.0928125 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
-		class searchButton: RscButton
+		class searchButton: ctrlButton
 		{
 			idc = 1610;
 			action = QUOTE( \
@@ -377,10 +414,10 @@ class GVAR(additionalItemsEditor) {
 			w = 0.0117188 * safezoneW;
 			h = 0.0208333 * safezoneH;
 		};
-		class import: RscButton
+		class import: ctrlButton
 		{
 			idc = 1606;
-
+			action = QUOTE(call FUNC(additionalItemsImport););
 			text = "IMPORT";
 			x = 0.474219 * safezoneW + safezoneX;
 			y = 0.654 * safezoneH + safezoneY;
@@ -389,10 +426,10 @@ class GVAR(additionalItemsEditor) {
 			colorBackground[] = {0,0,0,0.6};
 			tooltip = "Import items list array from clipboard (should be the same format as export)";
 		};
-		class export: RscButton
+		class export: ctrlButton
 		{
 			idc = 1607;
-
+			action = QUOTE(copyToClipboard str (uiNamespace getVariable [ARR_2(QQGVAR(roleItems),[])]););
 			text = "EXPORT";
 			x = 0.530937 * safezoneW + safezoneX;
 			y = 0.654 * safezoneH + safezoneY;
@@ -401,10 +438,10 @@ class GVAR(additionalItemsEditor) {
 			colorBackground[] = {0,0,0,0.6};
 			tooltip = "Export current items list as an array for use in scripts";
 		};
-		class clear: RscButton
+		class clear: ctrlButton
 		{
 			idc = 1608;
-
+			action = QUOTE(call FUNC(additionalItemsClear););
 			text = "CLEAR";
 			x = 0.587656 * safezoneW + safezoneX;
 			y = 0.654 * safezoneH + safezoneY;
@@ -412,16 +449,20 @@ class GVAR(additionalItemsEditor) {
 			h = 0.022 * safezoneH;
 			colorBackground[] = {0,0,0,0.6};
 		};
-		class addCompatible: RscButton
+		class addCompatible: ctrlButton
 		{
 			idc = 1609;
 			text = "Add Compatible Items";
+			tooltip = "Will automatically add compatible attachments or magazines (based on selected category) for all weapons in current items list";
+			style = "0x02";
+			font = "RobotoCondensedLight";
+			action = QUOTE(call FUNC(additionalItemsAddCompatible););
+
 			x = 0.54125 * safezoneW + safezoneX;
 			y = 0.335 * safezoneH + safezoneY;
 			w = 0.0976563 * safezoneW;
 			h = 0.0166667 * safezoneH;
 			colorBackground[] = {0,0,0,0.5};
-			tooltip = "Will automatically add compatible attachments or magazines (based on selected category) for all weapons in current items list";
 			sizeEx = 4 * (pixelH * pixelGrid * 0.5);
 		};
 		class itemsText: RscText
@@ -433,9 +474,10 @@ class GVAR(additionalItemsEditor) {
 			w = 0.103125 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
-		class Ok: RscButton
+		class Ok: ctrlButton
 		{
 			idc = 1607;
+			action = QUOTE(call FUNC(additionalItemsSave););
 			x = 0.5825 * safezoneW + safezoneX;
 			y = 0.698 * safezoneH + safezoneY;
 			w = 0.061875 * safezoneW;
@@ -444,16 +486,17 @@ class GVAR(additionalItemsEditor) {
 		class OkText: RscText
 		{
 			idc = 1004;
-			text = "OK"; //--- ToDo: Localize;
+			text = "OK";
+			action = QUOTE(call FUNC(additionalItemsSave););
 			x = 0.5825 * safezoneW + safezoneX;
 			y = 0.698 * safezoneH + safezoneY;
 			w = 0.0567187 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
-		class cancel: RscButton
+		class cancel: ctrlButton
 		{
 			idc = 1608;
-			action = "(findDisplay 8502) closeDisplay 2;"
+			action = "(findDisplay 8502) closeDisplay 2;";
 			x = 0.355625 * safezoneW + safezoneX;
 			y = 0.698 * safezoneH + safezoneY;
 			w = 0.061875 * safezoneW;
@@ -462,7 +505,7 @@ class GVAR(additionalItemsEditor) {
 		class cancelText: RscText
 		{
 			idc = 1005;
-			text = "CANCEL"; //--- ToDo: Localize;
+			text = "CANCEL";
 			x = 0.355625 * safezoneW + safezoneX;
 			y = 0.698 * safezoneH + safezoneY;
 			w = 0.0567187 * safezoneW;
