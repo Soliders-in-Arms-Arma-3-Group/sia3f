@@ -10,16 +10,16 @@ class GVAR(editRole) {
 		class background: RscPicture
 		{
 			idc = -1;
-			text = "#(argb,8,8,3)color(0,0,0,0.5)";
+			text = "#(argb,8,8,3)color(0.075,0.075,0.075,0.8)";
 			x = 0.37625 * safezoneW + safezoneX;
 			y = 0.302 * safezoneH + safezoneY;
 			w = 0.2475 * safezoneW;
-			h = 0.374 * safezoneH;
+			h = 0.418 * safezoneH;
 		};
 		class title: RscPicture
 		{
 			idc = -1;
-			text = "#(argb,8,8,3)color(0.77,0.51,0.08,0.5)";
+			text = "#(argb,8,8,3)color(0.77,0.51,0.08,0.75)";
 			x = 0.37625 * safezoneW + safezoneX;
 			y = 0.269 * safezoneH + safezoneY;
 			w = 0.2475 * safezoneW;
@@ -34,39 +34,31 @@ class GVAR(editRole) {
 			w = 0.242344 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
-		class roleSelect: RscListbox
+		class roleSelect: RscListBox
 		{
 			idc = 1500;
 			onLBSelChanged = QUOTE([ARR_2(_this # 1, false)] call FUNC(refreshEditRolesGUI));
 			x = 0.381406 * safezoneW + safezoneX;
 			y = 0.313 * safezoneH + safezoneY;
 			w = 0.108281 * safezoneW;
-			h = 0.352 * safezoneH;
+			h = 0.396 * safezoneH;
 		};
-		class isMedic: RscCheckbox
+		class isMedic: RscCheckBox
 		{
 			idc = 2801;
 			x = 0.494844 * safezoneW + safezoneX;
-			y = 0.456 * safezoneH + safezoneY;
-			w = 0.0154688 * safezoneW;
+			y = 0.467 * safezoneH + safezoneY;
+			w = 0.0154689 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
-		class additionalItems: RscButton
+		class additionalItems: ctrlButton
 		{
 			idc = 1600;
-			x = 0.5 * safezoneW + safezoneX;
-			y = 0.632 * safezoneH + safezoneY;
-			w = 0.118594 * safezoneW;
-			h = 0.022 * safezoneH;
-		};
-		class additionalItemsText: RscText
-		{
-			idc = -1;
-			text = "Edit Additional Items";
-			style = "0x02";
-			x = 0.505156 * safezoneW + safezoneX;
-			y = 0.632 * safezoneH + safezoneY;
-			w = 0.108281 * safezoneW;
+
+			text = "Edit Additional Items"; //--- ToDo: Localize;
+			x = 0.494844 * safezoneW + safezoneX;
+			y = 0.643 * safezoneH + safezoneY;
+			w = 0.12375 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
 		class aceOptionsText: RscText
@@ -74,16 +66,16 @@ class GVAR(editRole) {
 			idc = -1;
 			text = "ACE Options";
 			x = 0.494844 * safezoneW + safezoneX;
-			y = 0.423 * safezoneH + safezoneY;
+			y = 0.434 * safezoneH + safezoneY;
 			w = 0.118594 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
-		class isEngineer: RscCheckbox
+		class isEngineer: RscCheckBox
 		{
 			idc = 2802;
 			x = 0.494844 * safezoneW + safezoneX;
-			y = 0.489 * safezoneH + safezoneY;
-			w = 0.0154688 * safezoneW;
+			y = 0.5 * safezoneH + safezoneY;
+			w = 0.0154689 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
 		class isMedicText: RscText
@@ -91,7 +83,7 @@ class GVAR(editRole) {
 			idc = -1;
 			text = "Is Medic";
 			x = 0.510312 * safezoneW + safezoneX;
-			y = 0.456 * safezoneH + safezoneY;
+			y = 0.467 * safezoneH + safezoneY;
 			w = 0.108281 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
@@ -100,7 +92,7 @@ class GVAR(editRole) {
 			idc = -1;
 			text = "Is Engineer";
 			x = 0.510312 * safezoneW + safezoneX;
-			y = 0.489 * safezoneH + safezoneY;
+			y = 0.5 * safezoneH + safezoneY;
 			w = 0.108281 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
@@ -109,24 +101,24 @@ class GVAR(editRole) {
 			idc = -1;
 			text = "ACRE/TFAR Options";
 			x = 0.494844 * safezoneW + safezoneX;
-			y = 0.522 * safezoneH + safezoneY;
+			y = 0.533 * safezoneH + safezoneY;
 			w = 0.118594 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
-		class hasHandheldRadio: RscCheckbox
+		class hasHandheldRadio: RscCheckBox
 		{
 			idc = 2803;
 			x = 0.494844 * safezoneW + safezoneX;
-			y = 0.555 * safezoneH + safezoneY;
-			w = 0.0154688 * safezoneW;
+			y = 0.566 * safezoneH + safezoneY;
+			w = 0.0154689 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
-		class hasManpackRadio: RscCheckbox
+		class hasManpackRadio: RscCheckBox
 		{
 			idc = 2804;
 			x = 0.494844 * safezoneW + safezoneX;
-			y = 0.588 * safezoneH + safezoneY;
-			w = 0.0154688 * safezoneW;
+			y = 0.599 * safezoneH + safezoneY;
+			w = 0.0154689 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
 		class hasHandheldRadioText: RscText
@@ -134,7 +126,7 @@ class GVAR(editRole) {
 			idc = -1;
 			text = "Has Handheld Radio";
 			x = 0.510312 * safezoneW + safezoneX;
-			y = 0.555 * safezoneH + safezoneY;
+			y = 0.566 * safezoneH + safezoneY;
 			w = 0.108281 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
@@ -143,16 +135,16 @@ class GVAR(editRole) {
 			idc = -1;
 			text = "Has Manpack Radio";
 			x = 0.510312 * safezoneW + safezoneX;
-			y = 0.588 * safezoneH + safezoneY;
+			y = 0.599 * safezoneH + safezoneY;
 			w = 0.108281 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
-		class okButton: RscButton
+		class okButton: ctrlButton
 		{
 			idc = 1601;
 			action = QUOTE(call FUNC(saveRole););
 			x = 0.561875 * safezoneW + safezoneX;
-			y = 0.687 * safezoneH + safezoneY;
+			y = 0.731 * safezoneH + safezoneY;
 			w = 0.061875 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
@@ -161,16 +153,16 @@ class GVAR(editRole) {
 			idc = -1;
 			text = "OK";
 			x = 0.561875 * safezoneW + safezoneX;
-			y = 0.687 * safezoneH + safezoneY;
+			y = 0.731 * safezoneH + safezoneY;
 			w = 0.0567187 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
-		class cancelButton: RscButton
+		class cancelButton: ctrlButton
 		{
 			idc = 1602;
 			action = "(findDisplay 8501) closeDisplay 2;";
 			x = 0.37625 * safezoneW + safezoneX;
-			y = 0.687 * safezoneH + safezoneY;
+			y = 0.731 * safezoneH + safezoneY;
 			w = 0.061875 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
@@ -179,7 +171,7 @@ class GVAR(editRole) {
 			idc = -1;
 			text = "CANCEL";
 			x = 0.37625 * safezoneW + safezoneX;
-			y = 0.687 * safezoneH + safezoneY;
+			y = 0.731 * safezoneH + safezoneY;
 			w = 0.0567187 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
@@ -196,45 +188,39 @@ class GVAR(editRole) {
 		{
 			idc = -1;
 			text = "Role Name:";
-			x = 0.489688 * safezoneW + safezoneX;
+			x = 0.489687 * safezoneW + safezoneX;
 			y = 0.313 * safezoneH + safezoneY;
-			w = 0.128906 * safezoneW;
+			w = 0.12375 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
-		class createRole: RscButton
+		class createRole: ctrlButton
 		{
 			idc = 1603;
 			action = QUOTE([ctrlText ((findDisplay 8501) displayCtrl 1400)] call FUNC(createRole););
+			text = "Create Role";
 			x = 0.556719 * safezoneW + safezoneX;
 			y = 0.39 * safezoneH + safezoneY;
 			w = 0.061875 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
-		class createRoleText: RscText
-		{
-			idc = -1;
-			text = "Create Role";
-			x = 0.556719 * safezoneW + safezoneX;
-			y = 0.39 * safezoneH + safezoneY;
-			w = 0.0567187 * safezoneW;
-			h = 0.022 * safezoneH;
-		};
-		class deleteRole: RscButton
+		class deleteRole: ctrlButton
 		{
 			idc = 1604;
 			action = QUOTE([ctrlText ((findDisplay 8501) displayCtrl 1400)] call FUNC(deleteRole););
+			text = "Delete Role";
 			x = 0.494844 * safezoneW + safezoneX;
 			y = 0.39 * safezoneH + safezoneY;
 			w = 0.0567187 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
-		class deleteRoleText: RscText
+		class editPresets: ctrlButton
 		{
-			idc = -1;
-			text = "Delete Role";
+			idc = 1605;
+			action = QUOTE(true);
+			text = "Edit Presets";
 			x = 0.494844 * safezoneW + safezoneX;
-			y = 0.39 * safezoneH + safezoneY;
-			w = 0.0515625 * safezoneW;
+			y = 0.687 * safezoneH + safezoneY;
+			w = 0.12375 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
 	};
