@@ -262,7 +262,7 @@ class GVAR(additionalItemsEditor) {
 			idc = -1;
 			text = "#(argb,8,8,3)color(0.77,0.51,0.08,0.75)";
 			x = 0.355625 * safezoneW + safezoneX;
-			y = 0.291 * safezoneH + safezoneY;
+			y = 0.297 * safezoneH + safezoneY;
 			w = 0.28875 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
@@ -272,7 +272,7 @@ class GVAR(additionalItemsEditor) {
 
 			text = "Additional Items Editor: ROLE_NAME";
 			x = 0.355625 * safezoneW + safezoneX;
-			y = 0.291 * safezoneH + safezoneY;
+			y = 0.297 * safezoneH + safezoneY;
 			w = 0.283594 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
@@ -469,7 +469,7 @@ class GVAR(additionalItemsEditor) {
 		{
 			idc = -1;
 			text = "Items";
-			x = 0.360781 * safezoneW + safezoneX;
+			x = 0.357 * safezoneW + safezoneX;
 			y = 0.332 * safezoneH + safezoneY;
 			w = 0.103125 * safezoneW;
 			h = 0.022 * safezoneH;
@@ -479,7 +479,7 @@ class GVAR(additionalItemsEditor) {
 			idc = 1607;
 			action = QUOTE(call FUNC(additionalItemsSave););
 			x = 0.5825 * safezoneW + safezoneX;
-			y = 0.698 * safezoneH + safezoneY;
+			y = 0.69 * safezoneH + safezoneY;
 			w = 0.061875 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
@@ -489,7 +489,7 @@ class GVAR(additionalItemsEditor) {
 			text = "OK";
 			action = QUOTE(call FUNC(additionalItemsSave););
 			x = 0.5825 * safezoneW + safezoneX;
-			y = 0.698 * safezoneH + safezoneY;
+			y = 0.69 * safezoneH + safezoneY;
 			w = 0.0567187 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
@@ -498,7 +498,7 @@ class GVAR(additionalItemsEditor) {
 			idc = 1608;
 			action = "(findDisplay 8502) closeDisplay 2;";
 			x = 0.355625 * safezoneW + safezoneX;
-			y = 0.698 * safezoneH + safezoneY;
+			y = 0.69 * safezoneH + safezoneY;
 			w = 0.061875 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
@@ -507,7 +507,7 @@ class GVAR(additionalItemsEditor) {
 			idc = 1005;
 			text = "CANCEL";
 			x = 0.355625 * safezoneW + safezoneX;
-			y = 0.698 * safezoneH + safezoneY;
+			y = 0.69 * safezoneH + safezoneY;
 			w = 0.0567187 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
