@@ -1,0 +1,21 @@
+name = "Soldiers-in-Arms-3DEN-Framework"
+prefix = "sia3f"
+author = "Soldiers-in-Arms"
+files = [
+    "*.dll",
+    "*.so",
+    "mod.cpp",
+    "README.md",
+    "extras/images/*.paa",
+    "LICENSE",
+]
+
+key_name = "{{prefix}}_{{version}}"
+authority = "{{prefix}}_{{version}}-{{git \"id 8\"}}"
+
+releasebuild = [
+    "@zip sia3f_{{semver.major}}.{{semver.minor}}.{{semver.patch}}"
+]
+
+[header_exts]
+version= "{{git \"id 8\"}}"

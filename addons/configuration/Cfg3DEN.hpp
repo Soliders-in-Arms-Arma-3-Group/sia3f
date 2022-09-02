@@ -17,16 +17,15 @@ class Cfg3DEN {
 			class GVAR(objectSettings) {
 				displayName = "SIA Framework";
 				collapsed = 0;
-
 				class Attributes {
 					class GVAR(isArsenal) {
 						displayName = "Is Arsenal";
-						tooltip = "Check if this object is meant to be an arsenal.";
+						tooltip = "Check if this object is meant to be an arsenal";
 						property = QGVAR(isArsenal);
 						control = "Checkbox";
-						expression = QUOTE(
-							if (isNil QQGVAR(arsenals)) then { GVAR(arsenals) = []; };
-							GVAR(arsenals) pushBack _this;
+						expression = QUOTE( \
+							if (isNil QQGVAR(arsenals)) then { GVAR(arsenals) = []; }; \
+							GVAR(arsenals) pushBack _this; \
 						);
 						defaultValue = false;
 
@@ -36,9 +35,10 @@ class Cfg3DEN {
 
 					class GVAR(isButton) {
 						displayName = "Is Button";
-						tooltip = "Check if this object is meant to be a button.";
+						tooltip = "Check if this object is meant to be a button";
 						property = QGVAR(isButton);
 						control = "Checkbox";
+						expression = QUOTE(true); // ToDo
 						defaultValue = false;
 
 						// condition should be objectSimulated && !objectControllable && !logicModule
@@ -47,10 +47,10 @@ class Cfg3DEN {
 
 					class GVAR(role) {
 						displayName = "Role";
-						tooltip = "The unit's role (e.g, ""Rifleman"").  Only needs to be defined on playable units.";
+						tooltip = "The unit's role (e.g, ""Rifleman""); Only needs to be defined on playable units";
 						property = QGVAR(role);
 						control = "Edit";
-						expression = "_this setVariable ['%s',_value,true];";
+						expression = QUOTE(_this setVariable [ARR_3('%s',_value,true)];);
 						typeName = "STRING";
 						defaultValue = "''";
 
