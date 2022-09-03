@@ -216,7 +216,7 @@ class GVAR(editRole) {
 		class editPresets: ctrlButton
 		{
 			idc = 1605;
-			action = QUOTE(true);
+			action = QUOTE(call FUNC(editPresetsSpawn));
 			text = "Edit Presets";
 			x = 0.494844 * safezoneW + safezoneX;
 			y = 0.687 * safezoneH + safezoneY;
@@ -497,5 +497,14 @@ class GVAR(additionalItemsEditor) {
 			w = 0.0567187 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
+	};
+};
+
+
+class GVAR(editPresets) {
+	idd = 8503;
+
+	class controls {
+
 	};
 };

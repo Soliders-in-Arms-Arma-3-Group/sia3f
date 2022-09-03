@@ -14,7 +14,6 @@
  * call sia3f_configuration_fnc_additionalItemsSpawn
  */
 
-diag_log _this;
 params [
 	["_role", "", [""]]
 ];
