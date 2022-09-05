@@ -29,3 +29,17 @@ SET_CONFIG(hiddenConfigValues,roles,_hash);
 do3DENAction "MissionSave";
 
 (findDisplay 8502) closeDisplay 1;
+
+// reopen role editor
+call FUNC(editRolesSpawn);
+private _lbCtrl = (findDisplay 8501) displayCtrl 1500;
+private _index = 0;
+
+for "_i" from 0 to (lbSize _lbCtrl - 1) do {
+	private _text = _lbCtrl lbText _i;
+	if (_text == _role) exitWith {
+		_index = _i;
+	};
+};
+
+[_index] call FUNC(editRolesRefresh);

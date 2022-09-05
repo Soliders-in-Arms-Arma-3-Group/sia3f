@@ -23,7 +23,7 @@ TRACE_1("additionalItemsCategory params",_index);
 uiNamespace setVariable [QGVAR(additionalItemsCategory), _index];
 
 // Show add compatible items button when category is attachments or magazines
-private _button = (findDisplay 8502) displayCtrl 1609;
+private _button = (findDisplay 8502) displayCtrl 1610;
 private _enable = _index in [4, 5, 6, 7, 8];
 _button ctrlEnable _enable;
 _button ctrlShow _enable;

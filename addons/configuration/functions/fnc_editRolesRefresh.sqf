@@ -14,7 +14,7 @@
  * None
  *
  * Example:
- * [0, false] call sia3f_configuration_fnc_roleChangedEditRoles
+ * [0, false] call sia3f_configuration_fnc_editRolesRefresh
 */
 
 params [

@@ -11,7 +11,7 @@
  * None
  *
  * Example:
- * ["rifleman"] call sia3f_configuration_fnc_createRole
+ * ["rifleman"] call sia3f_configuration_fnc_editRolesCreateRole
 */
 
 params [
@@ -30,4 +30,4 @@ if (_roleName in _roles) exitWith {
 _roles set [_roleName, [false, false, false, false, []]];
 SET_CONFIG(hiddenConfigValues,roles,_roles);
 do3DENAction "MissionSave";
-[-1] call FUNC(refreshEditRolesGUI);
+[-1] call FUNC(editRolesRefresh);

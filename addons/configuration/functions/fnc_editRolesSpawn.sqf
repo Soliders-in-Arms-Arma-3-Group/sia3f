@@ -11,8 +11,8 @@
  * None
  *
  * Example:
- * call sia3f_configuration_fnc_spawnEditRoles
+ * call sia3f_configuration_fnc_editRolesSpawn
 */
 
 (findDisplay 313) createDisplay QGVAR(editRole);
-[0] call FUNC(refreshEditRolesGUI);
+[0] call FUNC(editRolesRefresh);

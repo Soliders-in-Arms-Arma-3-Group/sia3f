@@ -13,7 +13,7 @@
  * None
  *
  * Example:
- * call sia3f_configuration_fnc_saveEditRoles
+ * call sia3f_configuration_fnc_editRolesSaveRole
 */
 
 private _lbCtrl = CTRL(1500);
