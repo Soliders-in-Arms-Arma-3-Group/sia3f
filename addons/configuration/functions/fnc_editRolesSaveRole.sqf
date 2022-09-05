@@ -23,9 +23,8 @@ if (_index == -1) exitWith {
 	// nothing is selected
 };
 
-private _hash = GET_CONFIG(roles,createHashMap);
+private _roles = uiNamespace getVariable [QGVAR(roles), createHashMap];
 private _role = _lbCtrl lbText _index;
 
-_hash set [_role, [cbChecked CTRL(2801), cbChecked CTRL(2802), cbChecked CTRL(2803), cbChecked CTRL(2804), []]]; // ToDo: additional items update
-SET_CONFIG(hiddenConfigValues,roles,_hash);
-do3DENAction "MissionSave";
+_roles set [_role, [cbChecked CTRL(2801), cbChecked CTRL(2802), cbChecked CTRL(2803), cbChecked CTRL(2804), []]];
+uiNamespace setVariable [QGVAR(roles), _roles];

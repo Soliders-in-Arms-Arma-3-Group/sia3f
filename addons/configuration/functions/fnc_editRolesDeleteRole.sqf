@@ -24,13 +24,12 @@ if (_roleName == "default") exitWith {
 	systemChat "Cannot delete the default role.";
 };
 
-private _roles = GET_CONFIG(roles,createHashMap);
+private _roles = uiNamespace getVariable [QGVAR(roles), createHashMap];
 
 if !(_roleName in _roles) exitWith {
 	systemChat "Invalid role name";
 };
 _roles deleteAt _roleName;
 
-SET_CONFIG(hiddenConfigValues,roles,_roles);
-do3DENAction "MissionSave";
+uiNamespace setVariable [QGVAR(roles), _roles];
 [-1] call FUNC(refreshEditRolesGUI);

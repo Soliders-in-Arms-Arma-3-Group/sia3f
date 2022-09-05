@@ -2,6 +2,7 @@
 
 class GVAR(editRole) {
 	idd = 8501; // hopefully unique number as to not cause problems in the unlikely event that another GUI is open at the same time.
+	onUnload = QUOTE(uiNamespace setVariable [ARR_2(QQGVAR(roles),nil)];);
 
 	class controls {
 		class background: RscPicture
@@ -43,6 +44,7 @@ class GVAR(editRole) {
 		class isMedic: RscCheckBox
 		{
 			idc = 2801;
+			onCheckedChanged = QUOTE(call FUNC(editRolesSaveRole););
 			x = 0.494844 * safezoneW + safezoneX;
 			y = 0.467 * safezoneH + safezoneY;
 			w = 0.0154689 * safezoneW;
@@ -73,6 +75,7 @@ class GVAR(editRole) {
 		class isEngineer: RscCheckBox
 		{
 			idc = 2802;
+			onCheckedChanged = QUOTE(call FUNC(editRolesSaveRole););
 			x = 0.494844 * safezoneW + safezoneX;
 			y = 0.5 * safezoneH + safezoneY;
 			w = 0.0154689 * safezoneW;
@@ -108,6 +111,7 @@ class GVAR(editRole) {
 		class hasHandheldRadio: RscCheckBox
 		{
 			idc = 2803;
+			onCheckedChanged = QUOTE(call FUNC(editRolesSaveRole););
 			x = 0.494844 * safezoneW + safezoneX;
 			y = 0.566 * safezoneH + safezoneY;
 			w = 0.0154689 * safezoneW;
@@ -116,6 +120,7 @@ class GVAR(editRole) {
 		class hasManpackRadio: RscCheckBox
 		{
 			idc = 2804;
+			onCheckedChanged = QUOTE(call FUNC(editRolesSaveRole););
 			x = 0.494844 * safezoneW + safezoneX;
 			y = 0.599 * safezoneH + safezoneY;
 			w = 0.0154689 * safezoneW;
@@ -142,7 +147,12 @@ class GVAR(editRole) {
 		class okButton: ctrlButton
 		{
 			idc = 1601;
-			action = QUOTE(call FUNC(editRolesSaveRole); (findDisplay 8501) closeDisplay 2;);
+			action = QUOTE( \
+				private _hash = uiNamespace getVariable [ARR_2(QQGVAR(roles), createHashMap)]; \
+				QQGVAR(hiddenConfigValues) set3DENMissionAttribute [ARR_2(QQGVAR(roles), _hash)]; \
+				do3DENAction ""MissionSave""; \
+				(findDisplay 8501) closeDisplay 2; \
+			);
 			x = 0.561875 * safezoneW + safezoneX;
 			y = 0.731 * safezoneH + safezoneY;
 			w = 0.061875 * safezoneW;

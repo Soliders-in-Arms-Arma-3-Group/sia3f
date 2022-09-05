@@ -27,7 +27,11 @@ if (floor _index != _index) exitWith {
 };
 
 private _lbCtrl = CTRL(1500);
-private _roles = GET_CONFIG(roles,createHashMap);
+private _roles = uiNamespace getVariable [QGVAR(roles), GET_CONFIG(roles,createHashMap)];
+
+if (_roles isEqualTo createHashMap) then {
+	_roles set ["default", [false, false, false, false, []]]; // for new/unsaved missions
+};
 
 lbClear _lbCtrl;
 {
@@ -48,3 +52,5 @@ CTRL(2801) cbSetChecked (_roleValues # 0); // isMedic
 CTRL(2802) cbSetChecked (_roleValues # 1); // isEngineer
 CTRL(2803) cbSetChecked (_roleValues # 2); // hasHandheld
 CTRL(2804) cbSetChecked (_roleValues # 3); // hasManpack
+
+uiNamespace setVariable [QGVAR(roles), _roles]; // needed if the GET_CONFIG thing is used on _roles initialization; there might be a better solution

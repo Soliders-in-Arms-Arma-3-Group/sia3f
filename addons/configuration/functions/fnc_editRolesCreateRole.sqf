@@ -20,7 +20,7 @@ params [
 
 if (_roleName == "") exitWith {};
 
-private _roles = GET_CONFIG(roles,createHashMap);
+private _roles = uiNamespace getVariable [QGVAR(roles), createHashMap];
 
 if (_roleName in _roles) exitWith {
 	systemChat "Cannot create role, role already exists.";
@@ -28,6 +28,5 @@ if (_roleName in _roles) exitWith {
 
 // create role, value array is [isMedic, isEngineer, hasHandheldRadio, hasManpackRadio, additionalItems]
 _roles set [_roleName, [false, false, false, false, []]];
-SET_CONFIG(hiddenConfigValues,roles,_roles);
-do3DENAction "MissionSave";
+uiNamespace setVariable [QGVAR(roles), _roles];
 [-1] call FUNC(editRolesRefresh);
