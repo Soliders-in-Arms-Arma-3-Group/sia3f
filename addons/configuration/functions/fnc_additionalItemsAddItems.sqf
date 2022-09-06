@@ -107,7 +107,6 @@ private _config = switch (true) do {
 		_listbox lnbSetPicture [[_index, 0], _picture];
 		_listbox lbSetTooltip [_index * (count lnbGetColumnsPosition _listbox), _x];
 		_listbox lnbSetColor [[_index, 1], [1, 1, 1, _alpha]];
-		_listbox lnbSetColor [[_index, 2], [1, 1, 1, _alpha]];
 	};
 } forEach _categoryItems;
 

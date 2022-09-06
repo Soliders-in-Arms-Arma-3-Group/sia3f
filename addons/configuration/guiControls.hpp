@@ -2,7 +2,10 @@
 
 class GVAR(editRole) {
 	idd = 8501; // hopefully unique number as to not cause problems in the unlikely event that another GUI is open at the same time.
-	onUnload = QUOTE(uiNamespace setVariable [ARR_2(QQGVAR(roles),nil)];);
+	onUnload = QUOTE( \
+		uiNamespace setVariable [ARR_2(QQGVAR(roles),nil)]; \
+		uiNamespace setVariable [ARR_2(QQGVAR(groups),nil)]; \
+	);
 
 	class controls {
 		class background: RscPicture
@@ -148,8 +151,10 @@ class GVAR(editRole) {
 		{
 			idc = 1601;
 			action = QUOTE( \
-				private _hash = uiNamespace getVariable [ARR_2(QQGVAR(roles), createHashMap)]; \
-				QQGVAR(hiddenConfigValues) set3DENMissionAttribute [ARR_2(QQGVAR(roles), _hash)]; \
+				private _rolesHash = uiNamespace getVariable [ARR_2(QQGVAR(roles), createHashMap)]; \
+				private _groupsHash = uiNamespace getVariable [ARR_2(QQGVAR(groups), createHashMap)]; \
+				QQGVAR(hiddenConfigValues) set3DENMissionAttribute [ARR_2(QQGVAR(roles), _rolesHash)]; \
+				QQGVAR(hiddenConfigValues) set3DENMissionAttribute [ARR_2(QQGVAR(groups), _groupsHash)]; \
 				do3DENAction ""MissionSave""; \
 				(findDisplay 8501) closeDisplay 2; \
 			);
@@ -223,11 +228,11 @@ class GVAR(editRole) {
 			w = 0.0567187 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
-		class editPresets: ctrlButton
+		class editGroups: ctrlButton
 		{
 			idc = 1605;
-			action = QUOTE(call FUNC(editPresetsSpawn));
-			text = "Edit Presets";
+			action = QUOTE(call FUNC(editGroupsSpawn));
+			text = "Edit Groups (aka Presets)";
 			x = 0.494844 * safezoneW + safezoneX;
 			y = 0.687 * safezoneH + safezoneY;
 			w = 0.12375 * safezoneW;
@@ -509,6 +514,7 @@ class GVAR(additionalItemsEditor) {
 
 class GVAR(editGroups) {
 	idd = 8503;
+	onKeyDown = QUOTE([_this # 1] call FUNC(editGroupsKeyDown););
 
 	class controls {
 		class background: RscPicture
@@ -541,7 +547,7 @@ class GVAR(editGroups) {
 		class groupSelect: RscListBox
 		{
 			idc = 1500;
-			onLBSelChanged = QUOTE(true); // change and update group
+			onLBSelChanged = QUOTE([ARR_2(_this # 1, false)] call FUNC(editGroupsRefresh));
 
 			x = 0.381406 * safezoneW + safezoneX;
 			y = 0.313 * safezoneH + safezoneY;
@@ -551,15 +557,14 @@ class GVAR(editGroups) {
 		class okButton: ctrlButton
 		{
 			idc = 1613;
-			action = QUOTE(true); // save, close, and return to editRole
-
+			action = QUOTE( \
+				(findDisplay 8503) closeDisplay 1; \
+				call FUNC(editRolesSpawn); \
+			);
 			x = 0.561875 * safezoneW + safezoneX;
 			y = 0.731 * safezoneH + safezoneY;
 			w = 0.061875 * safezoneW;
 			h = 0.022 * safezoneH;
-			colorText[] = {1,1,1,1};
-			colorBackground[] = {0,0,0,1};
-			sizeEx = 4.32 * (1 / (getResolution select 3)) * pixelGrid * 0.5 * GUI_GRID_H;
 		};
 		class okButtonText: RscText
 		{
@@ -573,15 +578,11 @@ class GVAR(editGroups) {
 		class cancelButton: ctrlButton
 		{
 			idc = 1614;
-			action = "(findDisplay 8501) closeDisplay 2;";
-
+			action = "(findDisplay 8503) closeDisplay 2;";
 			x = 0.37625 * safezoneW + safezoneX;
 			y = 0.731 * safezoneH + safezoneY;
 			w = 0.061875 * safezoneW;
 			h = 0.022 * safezoneH;
-			colorText[] = {1,1,1,1};
-			colorBackground[] = {0,0,0,1};
-			sizeEx = 4.32 * (1 / (getResolution select 3)) * pixelGrid * 0.5 * GUI_GRID_H;
 		};
 		class cancelButtonText: RscText
 		{
@@ -595,15 +596,11 @@ class GVAR(editGroups) {
 		class groupName: ctrlEdit
 		{
 			idc = 1400;
-
-			text = "group Name...";
+			text = "Group Name...";
 			x = 0.494844 * safezoneW + safezoneX;
 			y = 0.346 * safezoneH + safezoneY;
 			w = 0.12375 * safezoneW;
 			h = 0.022 * safezoneH;
-			colorText[] = {1,1,1,1};
-			colorBackground[] = {0,0,0,0.5};
-			sizeEx = 4.32 * (1 / (getResolution select 3)) * pixelGrid * 0.5 * GUI_GRID_H;
 		};
 		class groupNameText: RscText
 		{
@@ -617,30 +614,24 @@ class GVAR(editGroups) {
 		class createGroup: ctrlButton
 		{
 			idc = 1615;
-			action = "[ctrlText ((findDisplay 8501) displayCtrl 1400)] call sia3f_configuration_fnc_editRolesCreateRole;";
+			action = QUOTE([ctrlText ((findDisplay 8503) displayCtrl 1400)] call FUNC(editGroupsCreateGroup););
 
 			text = "Create Group";
 			x = 0.556719 * safezoneW + safezoneX;
 			y = 0.39 * safezoneH + safezoneY;
 			w = 0.061875 * safezoneW;
 			h = 0.022 * safezoneH;
-			colorText[] = {1,1,1,1};
-			colorBackground[] = {0,0,0,1};
-			sizeEx = 4.32 * (1 / (getResolution select 3)) * pixelGrid * 0.5 * GUI_GRID_H;
 		};
 		class deleteGroup: ctrlButton
 		{
 			idc = 1616;
-			action = "[ctrlText ((findDisplay 8501) displayCtrl 1400)] call sia3f_configuration_fnc_editRolesDeleteRole;";
+			action = QUOTE([ctrlText ((findDisplay 8503) displayCtrl 1400)] call FUNC(editGroupsDeleteGroup););
 
 			text = "Delete Group";
 			x = 0.494844 * safezoneW + safezoneX;
 			y = 0.39 * safezoneH + safezoneY;
 			w = 0.0567187 * safezoneW;
 			h = 0.022 * safezoneH;
-			colorText[] = {1,1,1,1};
-			colorBackground[] = {0,0,0,1};
-			sizeEx = 4.32 * (1 / (getResolution select 3)) * pixelGrid * 0.5 * GUI_GRID_H;
 		};
 		class rolesBackground: ctrlStatic
 		{
@@ -658,9 +649,16 @@ class GVAR(editGroups) {
 			idcRight = 1505;
 			drawSideArrows = 1;
 			disableOverflow = 1;
-			columns[] = {0.05, 0.15, 0.85};
+			columns[] = {0.12, 0.78};
 
-			onLBDblClick = QUOTE(true) // toggle role
+			onLBDblClick = QUOTE( \
+				params [ARR_2(""_listbox"", ""_row"")]; \
+				private _role = _listbox lnbText [ARR_2(_row, 0)]; \
+				private _group = ((findDisplay 8503) displayCtrl 1500) lbText (lbCurSel ((findDisplay 8503) displayCtrl 1500)); \
+				if (_group == """") exitWith {}; \
+				private _addItem = _role in ((uiNamespace getVariable [ARR_2(QQGVAR(groups),createHashmap)]) getOrDefault [ARR_2(_group, [])]); \
+				[!_addItem] call FUNC(editGroupsSelect); \
+			);
 			onSetFocus = QUOTE(uiNamespace setVariable [ARR_2(QQGVAR(listboxHasFocus),true)];);
 			onKillFocus = QUOTE(uiNamespace setVariable [ARR_2(QQGVAR(listboxHasFocus),false)];);
 
@@ -673,7 +671,7 @@ class GVAR(editGroups) {
 		{
 			idc = 1504;
 			font = "RobotoCondensedBold";
-			action = QUOTE(true); // remove role
+			action = QUOTE([false] call FUNC(editGroupsSelect));
 
 			text = "−";
 			x = -0.11875 * safezoneW + safezoneX;
@@ -685,7 +683,7 @@ class GVAR(editGroups) {
 		{
 			idc = 1505;
 			font = "RobotoCondensedBold";
-			action = QUOTE(true); // add role
+			action = QUOTE([true] call FUNC(editGroupsSelect));
 
 			text = "+";
 			x = -0.11875 * safezoneW + safezoneX;

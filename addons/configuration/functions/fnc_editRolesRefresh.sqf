@@ -44,7 +44,7 @@ if (_index < 0) then {
 };
 
 if (_setCursor) then {
-	_lbCtrl lbSetCurSel _index; // ToDo: find a way to select the new index without firing the 'onLbSelChanged' event handler, like lbSetCurSel does.
+	_lbCtrl lbSetCurSel _index;
 };
 
 private _roleValues = _roles get (_lbCtrl lbText _index);

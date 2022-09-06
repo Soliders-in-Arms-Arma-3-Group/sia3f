@@ -32,4 +32,4 @@ if !(_roleName in _roles) exitWith {
 _roles deleteAt _roleName;
 
 uiNamespace setVariable [QGVAR(roles), _roles];
-[-1] call FUNC(refreshEditRolesGUI);
+[-1] call FUNC(editRolesRefresh);

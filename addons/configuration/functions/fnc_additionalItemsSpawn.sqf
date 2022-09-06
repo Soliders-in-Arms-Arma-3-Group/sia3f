@@ -19,7 +19,7 @@ params [
 ];
 
 // ensure parameter is an actual role
-private _hash = GET_CONFIG(roles,createHashMap);
+private _hash = uiNamespace getVariable [QGVAR(roles), createHashMap];
 if (_role == "" || !(_role in _hash)) exitWith {};
 
 (findDisplay 313) createDisplay QGVAR(additionalItemsEditor);
