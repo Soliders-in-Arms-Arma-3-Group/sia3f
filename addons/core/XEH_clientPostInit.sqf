@@ -46,3 +46,8 @@ player addEventHandler ["Respawn", {
 		call FUNC(exitAFK);
 	};
 }];
+
+if ("@ace" call FUNC(checkModPresence)) then {
+	// toDo: find proper value
+	player setVariable ["ace_medical_medicClass", 0, true];
+};
