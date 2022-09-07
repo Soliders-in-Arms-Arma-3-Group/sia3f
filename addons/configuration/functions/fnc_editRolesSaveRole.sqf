@@ -4,7 +4,7 @@
 
 /*
  * Author: Siege
- * Save settings of the selected role.  Called when the user clicks "ok", but does not close the display.
+ * Save settings of the selected role.
  *
  * Arguments:
  * None
@@ -26,5 +26,5 @@ if (_index == -1) exitWith {
 private _roles = uiNamespace getVariable [QGVAR(roles), createHashMap];
 private _role = _lbCtrl lbText _index;
 
-_roles set [_role, [cbChecked CTRL(2801), cbChecked CTRL(2802), cbChecked CTRL(2803), cbChecked CTRL(2804), []]];
+_roles set [_role, [cbChecked CTRL(2801), cbChecked CTRL(2802), cbChecked CTRL(2803), cbChecked CTRL(2804), (_roles get _role) # 4]];
 uiNamespace setVariable [QGVAR(roles), _roles];

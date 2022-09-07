@@ -20,10 +20,5 @@ params [
 	["_mode", 0, [0]]
 ];
 
-private _display = QGVAR(editGroups);
-if (_mode == 1) then {
-	_display = QGVAR(editGroupsSettings);
-};
-
-(findDisplay 313) createDisplay _display;
+(findDisplay 313) createDisplay ([QGVAR(editGroups), QGVAR(editGroupsSettings)] # _mode);
 [_index] call FUNC(editGroupsRefresh);

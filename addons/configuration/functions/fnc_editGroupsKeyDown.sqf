@@ -20,7 +20,7 @@ params [
 
 // Exit if attribute is not in focus
 private _lbHasFocus = uiNamespace getVariable [QGVAR(listboxHasFocus), false];
-if (!_lbHasFocus) exitWith { false };
+if (!_lbHasFocus || (uiNamespace getVariable [QGVAR(editGroupsCurrentMode), 0]) == 1) exitWith { false };
 
 switch (_keyCode) do {
 	case DIK_LEFT;

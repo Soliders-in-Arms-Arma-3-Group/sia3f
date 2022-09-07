@@ -18,6 +18,10 @@ params [
 	["_addItem", true, [true]]
 ];
 
+if ((uiNamespace getVariable [QGVAR(editGroupsCurrentMode), 0]) == 1) exitWith {
+	// incorrect mode
+};
+
 private _rolesLbCtrl = (findDisplay 8503) displayCtrl 1503;
 private _currentRow = lnbCurSelRow _rolesLbCtrl;
 private _roleName = _rolesLbCtrl lnbText [_currentRow, 0];

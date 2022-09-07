@@ -550,7 +550,7 @@ class GVAR(editGroups) {
 			rows = 1;
 			columns = 2;
 			strings[] = {"Assign Roles", "Edit Options"};
-			onToolBoxSelChanged = QUOTE([_this # 1] call FUNC(editGroupsMode););
+			onToolBoxSelChanged = QUOTE([ARR_2((findDisplay 8503) displayCtrl 1500, _this # 1)] call FUNC(editGroupsMode););
 
 			x = 0.381406 * safezoneW + safezoneX;
 			y = 0.313 * safezoneH + safezoneY;
@@ -746,7 +746,7 @@ class GVAR(editGroupsSettings) {
 			rows = 1;
 			columns = 2;
 			strings[] = {"Assign Roles", "Edit Options"};
-			onToolBoxSelChanged = QUOTE([_this # 1] call FUNC(editGroupsMode););
+			onToolBoxSelChanged = QUOTE([ARR_2((findDisplay 8504) displayCtrl 1500, _this # 1)] call FUNC(editGroupsMode););
 
 			x = 0.381406 * safezoneW + safezoneX;
 			y = 0.313 * safezoneH + safezoneY;
@@ -769,7 +769,7 @@ class GVAR(editGroupsSettings) {
 		{
 			idc = 1613;
 			action = QUOTE( \
-				(findDisplay 8503) closeDisplay 1; \
+				(findDisplay 8504) closeDisplay 1; \
 				call FUNC(editRolesSpawn); \
 			);
 			x = 0.561875 * safezoneW + safezoneX;
@@ -825,7 +825,7 @@ class GVAR(editGroupsSettings) {
 		class createGroup: ctrlButton
 		{
 			idc = 1615;
-			action = QUOTE([ctrlText ((findDisplay 8503) displayCtrl 1400)] call FUNC(editGroupsCreateGroup););
+			action = QUOTE([ctrlText ((findDisplay 8504) displayCtrl 1400)] call FUNC(editGroupsCreateGroup););
 
 			text = "Create Group";
 			x = 0.556719 * safezoneW + safezoneX;
@@ -836,7 +836,7 @@ class GVAR(editGroupsSettings) {
 		class deleteGroup: ctrlButton
 		{
 			idc = 1616;
-			action = QUOTE([ctrlText ((findDisplay 8503) displayCtrl 1400)] call FUNC(editGroupsDeleteGroup););
+			action = QUOTE([ctrlText ((findDisplay 8504) displayCtrl 1400)] call FUNC(editGroupsDeleteGroup););
 
 			text = "Delete Group";
 			x = 0.494844 * safezoneW + safezoneX;
@@ -847,7 +847,7 @@ class GVAR(editGroupsSettings) {
 		class isMedic: RscCheckBox
 		{
 			idc = 2801;
-			onCheckedChanged = QUOTE(call FUNC(editRolesSaveRole););
+			onCheckedChanged = QUOTE(call FUNC(editGroupsSaveSettings););
 			x = 0.494844 * safezoneW + safezoneX;
 			y = 0.467 * safezoneH + safezoneY;
 			w = 0.0154689 * safezoneW;
@@ -855,9 +855,9 @@ class GVAR(editGroupsSettings) {
 		};
 		class additionalItems: ctrlButton
 		{
-			idc = 1600;
+			idc = 1600; // todo
 			action = QUOTE( \
-				private _ctrl = ((findDisplay 8501) displayCtrl 1500); \
+				private _ctrl = ((findDisplay 8504) displayCtrl 1500); \
 				[_ctrl lbText (lbCurSel _ctrl)] call FUNC(additionalItemsSpawn); \
 			);
 			text = "Edit Additional Items";
@@ -878,7 +878,7 @@ class GVAR(editGroupsSettings) {
 		class isEngineer: RscCheckBox
 		{
 			idc = 2802;
-			onCheckedChanged = QUOTE(call FUNC(editRolesSaveRole););
+			onCheckedChanged = QUOTE(call FUNC(editGroupsSaveSettings););
 			x = 0.494844 * safezoneW + safezoneX;
 			y = 0.5 * safezoneH + safezoneY;
 			w = 0.0154689 * safezoneW;
@@ -914,7 +914,7 @@ class GVAR(editGroupsSettings) {
 		class hasHandheldRadio: RscCheckBox
 		{
 			idc = 2803;
-			onCheckedChanged = QUOTE(call FUNC(editRolesSaveRole););
+			onCheckedChanged = QUOTE(call FUNC(editGroupsSaveSettings););
 			x = 0.494844 * safezoneW + safezoneX;
 			y = 0.566 * safezoneH + safezoneY;
 			w = 0.0154689 * safezoneW;
@@ -923,7 +923,7 @@ class GVAR(editGroupsSettings) {
 		class hasManpackRadio: RscCheckBox
 		{
 			idc = 2804;
-			onCheckedChanged = QUOTE(call FUNC(editRolesSaveRole););
+			onCheckedChanged = QUOTE(call FUNC(editGroupsSaveSettings););
 			x = 0.494844 * safezoneW + safezoneX;
 			y = 0.599 * safezoneH + safezoneY;
 			w = 0.0154689 * safezoneW;

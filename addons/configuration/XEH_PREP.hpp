@@ -13,6 +13,7 @@ PREP(editGroupsDeleteGroup);
 PREP(editGroupsKeyDown);
 PREP(editGroupsMode);
 PREP(editGroupsRefresh);
+PREP(editGroupsSaveSettings);
 PREP(editGroupsSelect);
 PREP(editGroupsSpawn);
 
