@@ -11,6 +11,7 @@ PREP(additionalItemsSpawn);
 PREP(editGroupsCreateGroup);
 PREP(editGroupsDeleteGroup);
 PREP(editGroupsKeyDown);
+PREP(editGroupsMode);
 PREP(editGroupsRefresh);
 PREP(editGroupsSelect);
 PREP(editGroupsSpawn);

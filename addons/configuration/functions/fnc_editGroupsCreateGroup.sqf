@@ -26,7 +26,7 @@ if (_groupName in _groups) exitWith {
 	systemChat "Cannot create group, group already exists.";
 };
 
-// create role, value is array of roles
-_groups set [_groupName, []];
+// create role, value is isMedic, isEngineer, hasHandheldRadio, hasManpackRadio, [additional items], [roles in group]
+_groups set [_groupName, [false, false, false, false, [], []]];
 uiNamespace setVariable [QGVAR(groups), _groups];
 [-1] call FUNC(editGroupsRefresh);

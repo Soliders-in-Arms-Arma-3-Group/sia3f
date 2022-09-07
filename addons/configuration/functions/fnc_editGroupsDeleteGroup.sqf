@@ -20,10 +20,6 @@ params [
 
 if (_groupName == "") exitWith {};
 
-if (_groupName == "default") exitWith {
-	systemChat "Cannot delete the default role.";
-};
-
 private _groups = uiNamespace getVariable [QGVAR(groups), createHashMap];
 
 if !(_groupName in _groups) exitWith {

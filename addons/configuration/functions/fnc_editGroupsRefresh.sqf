@@ -52,7 +52,7 @@ if (_setCursor) then {
 
 // update roles based on whether or not they are in the group
 lnbClear _rolesLbCtrl;
-private _groupValue = _groups getOrDefault [_groupsLbCtrl lbText _index, []];
+private _groupValue = (_groups getOrDefault [_groupsLbCtrl lbText _index, [false, false, false, false, [], []]]) select 5;
 TRACE_1("refresh roles",_roles);
 {
 	private _symbol = "−";

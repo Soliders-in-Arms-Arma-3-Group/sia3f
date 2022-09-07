@@ -10,8 +10,5 @@ GVAR(groups) = GET_CONFIG(groups,createHashMap);
 if (GVAR(roles) isEqualTo createHashMap) then {
 	ERROR_MSG("Roles config is not set!");
 };
-if (GVAR(groups) isEqualTo createHashMap) then {
-	ERROR_MSG("Groups config is not set!");
-};
 
 ADDON = true;

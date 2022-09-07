@@ -22,7 +22,7 @@ class GVAR(editRole) {
 			idc = -1;
 			text = "#(argb,8,8,3)color(0.77,0.51,0.08,0.75)";
 			x = 0.37625 * safezoneW + safezoneX;
-			y = 0.269 * safezoneH + safezoneY;
+			y = 0.277 * safezoneH + safezoneY;
 			w = 0.2475 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
@@ -31,7 +31,7 @@ class GVAR(editRole) {
 			idc = -1;
 			text = "Role Editor";
 			x = 0.37625 * safezoneW + safezoneX;
-			y = 0.269 * safezoneH + safezoneY;
+			y = 0.277 * safezoneH + safezoneY;
 			w = 0.242344 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
@@ -159,7 +159,7 @@ class GVAR(editRole) {
 				(findDisplay 8501) closeDisplay 2; \
 			);
 			x = 0.561875 * safezoneW + safezoneX;
-			y = 0.731 * safezoneH + safezoneY;
+			y = 0.7225 * safezoneH + safezoneY;
 			w = 0.061875 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
@@ -168,7 +168,7 @@ class GVAR(editRole) {
 			idc = -1;
 			text = "OK";
 			x = 0.561875 * safezoneW + safezoneX;
-			y = 0.731 * safezoneH + safezoneY;
+			y = 0.7225 * safezoneH + safezoneY;
 			w = 0.0567187 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
@@ -177,7 +177,7 @@ class GVAR(editRole) {
 			idc = 1602;
 			action = "(findDisplay 8501) closeDisplay 2;";
 			x = 0.37625 * safezoneW + safezoneX;
-			y = 0.731 * safezoneH + safezoneY;
+			y = 0.7225 * safezoneH + safezoneY;
 			w = 0.061875 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
@@ -186,7 +186,7 @@ class GVAR(editRole) {
 			idc = -1;
 			text = "CANCEL";
 			x = 0.37625 * safezoneW + safezoneX;
-			y = 0.731 * safezoneH + safezoneY;
+			y = 0.7225 * safezoneH + safezoneY;
 			w = 0.0567187 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
@@ -261,7 +261,7 @@ class GVAR(additionalItemsEditor) {
 			idc = -1;
 			text = "#(argb,8,8,3)color(0.77,0.51,0.08,0.75)";
 			x = 0.355625 * safezoneW + safezoneX;
-			y = 0.297 * safezoneH + safezoneY;
+			y = 0.299 * safezoneH + safezoneY;
 			w = 0.28875 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
@@ -271,7 +271,7 @@ class GVAR(additionalItemsEditor) {
 
 			text = "Additional Items Editor: ROLE_NAME";
 			x = 0.355625 * safezoneW + safezoneX;
-			y = 0.297 * safezoneH + safezoneY;
+			y = 0.299 * safezoneH + safezoneY;
 			w = 0.283594 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
@@ -531,7 +531,7 @@ class GVAR(editGroups) {
 			idc = -1;
 			text = "#(argb,8,8,3)color(0.77,0.51,0.08,0.75)";
 			x = 0.37625 * safezoneW + safezoneX;
-			y = 0.269 * safezoneH + safezoneY;
+			y = 0.277 * safezoneH + safezoneY;
 			w = 0.2475 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
@@ -540,9 +540,24 @@ class GVAR(editGroups) {
 			idc = -1;
 			text = "Group Editor";
 			x = 0.37625 * safezoneW + safezoneX;
-			y = 0.269 * safezoneH + safezoneY;
+			y = 0.277 * safezoneH + safezoneY;
 			w = 0.242344 * safezoneW;
 			h = 0.022 * safezoneH;
+		};
+		class modeSelect: ctrlToolbox
+		{
+			idc = 2300;
+			rows = 1;
+			columns = 2;
+			strings[] = {"Assign Roles", "Edit Options"};
+			onToolBoxSelChanged = QUOTE([_this # 1] call FUNC(editGroupsMode););
+
+			x = 0.381406 * safezoneW + safezoneX;
+			y = 0.313 * safezoneH + safezoneY;
+			w = 0.108281 * safezoneW;
+			h = 0.022 * safezoneH;
+			colorText[] = {1,1,1,1};
+			colorBackground[] = {0,0,0,0.5};
 		};
 		class groupSelect: RscListBox
 		{
@@ -550,9 +565,9 @@ class GVAR(editGroups) {
 			onLBSelChanged = QUOTE([ARR_2(_this # 1, false)] call FUNC(editGroupsRefresh));
 
 			x = 0.381406 * safezoneW + safezoneX;
-			y = 0.313 * safezoneH + safezoneY;
+			y = 0.346 * safezoneH + safezoneY;
 			w = 0.108281 * safezoneW;
-			h = 0.396 * safezoneH;
+			h = 0.363 * safezoneH;
 		};
 		class okButton: ctrlButton
 		{
@@ -562,7 +577,7 @@ class GVAR(editGroups) {
 				call FUNC(editRolesSpawn); \
 			);
 			x = 0.561875 * safezoneW + safezoneX;
-			y = 0.731 * safezoneH + safezoneY;
+			y = 0.7225 * safezoneH + safezoneY;
 			w = 0.061875 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
@@ -571,7 +586,7 @@ class GVAR(editGroups) {
 			idc = -1;
 			text = "OK";
 			x = 0.561875 * safezoneW + safezoneX;
-			y = 0.731 * safezoneH + safezoneY;
+			y = 0.7225 * safezoneH + safezoneY;
 			w = 0.0567187 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
@@ -580,7 +595,7 @@ class GVAR(editGroups) {
 			idc = 1614;
 			action = "(findDisplay 8503) closeDisplay 2;";
 			x = 0.37625 * safezoneW + safezoneX;
-			y = 0.731 * safezoneH + safezoneY;
+			y = 0.7225 * safezoneH + safezoneY;
 			w = 0.061875 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
@@ -589,7 +604,7 @@ class GVAR(editGroups) {
 			idc = -1;
 			text = "CANCEL";
 			x = 0.37625 * safezoneW + safezoneX;
-			y = 0.731 * safezoneH + safezoneY;
+			y = 0.7225 * safezoneH + safezoneY;
 			w = 0.0567187 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
@@ -635,7 +650,7 @@ class GVAR(editGroups) {
 		};
 		class rolesBackground: ctrlStatic
 		{
-			idc = -1;
+			idc = 1000;
 			x = 0.494844 * safezoneW + safezoneX;
 			y = 0.423 * safezoneH + safezoneY;
 			w = 0.12375 * safezoneW;
@@ -690,6 +705,247 @@ class GVAR(editGroups) {
 			y = -0.325 * safezoneH + safezoneY;
 			w = 0.0117188 * safezoneW;
 			h = 0.0208333 * safezoneH;
+		};
+	};
+};
+
+class GVAR(editGroupsSettings) {
+	idd = 8504;
+
+	class controls {
+		class background: RscPicture
+		{
+			idc = -1;
+			text = "#(argb,8,8,3)color(0.075,0.075,0.075,0.8)";
+			x = 0.37625 * safezoneW + safezoneX;
+			y = 0.302 * safezoneH + safezoneY;
+			w = 0.2475 * safezoneW;
+			h = 0.418 * safezoneH;
+		};
+		class title: RscPicture
+		{
+			idc = -1;
+			text = "#(argb,8,8,3)color(0.77,0.51,0.08,0.75)";
+			x = 0.37625 * safezoneW + safezoneX;
+			y = 0.277 * safezoneH + safezoneY;
+			w = 0.2475 * safezoneW;
+			h = 0.022 * safezoneH;
+		};
+		class titleText: RscText
+		{
+			idc = -1;
+			text = "Group Editor";
+			x = 0.37625 * safezoneW + safezoneX;
+			y = 0.277 * safezoneH + safezoneY;
+			w = 0.242344 * safezoneW;
+			h = 0.022 * safezoneH;
+		};
+		class modeSelect: ctrlToolbox
+		{
+			idc = 2300;
+			rows = 1;
+			columns = 2;
+			strings[] = {"Assign Roles", "Edit Options"};
+			onToolBoxSelChanged = QUOTE([_this # 1] call FUNC(editGroupsMode););
+
+			x = 0.381406 * safezoneW + safezoneX;
+			y = 0.313 * safezoneH + safezoneY;
+			w = 0.108281 * safezoneW;
+			h = 0.022 * safezoneH;
+			colorText[] = {1,1,1,1};
+			colorBackground[] = {0,0,0,0.5};
+		};
+		class groupSelect: RscListBox
+		{
+			idc = 1500;
+			onLBSelChanged = QUOTE([ARR_2(_this # 1, false)] call FUNC(editGroupsRefresh));
+
+			x = 0.381406 * safezoneW + safezoneX;
+			y = 0.346 * safezoneH + safezoneY;
+			w = 0.108281 * safezoneW;
+			h = 0.363 * safezoneH;
+		};
+		class okButton: ctrlButton
+		{
+			idc = 1613;
+			action = QUOTE( \
+				(findDisplay 8503) closeDisplay 1; \
+				call FUNC(editRolesSpawn); \
+			);
+			x = 0.561875 * safezoneW + safezoneX;
+			y = 0.7225 * safezoneH + safezoneY;
+			w = 0.061875 * safezoneW;
+			h = 0.022 * safezoneH;
+		};
+		class okButtonText: RscText
+		{
+			idc = -1;
+			text = "OK";
+			x = 0.561875 * safezoneW + safezoneX;
+			y = 0.7225 * safezoneH + safezoneY;
+			w = 0.0567187 * safezoneW;
+			h = 0.022 * safezoneH;
+		};
+		class cancelButton: ctrlButton
+		{
+			idc = 1614;
+			action = "(findDisplay 8504) closeDisplay 2;";
+			x = 0.37625 * safezoneW + safezoneX;
+			y = 0.7225 * safezoneH + safezoneY;
+			w = 0.061875 * safezoneW;
+			h = 0.022 * safezoneH;
+		};
+		class cancelButtonText: RscText
+		{
+			idc = -1;
+			text = "CANCEL";
+			x = 0.37625 * safezoneW + safezoneX;
+			y = 0.7225 * safezoneH + safezoneY;
+			w = 0.0567187 * safezoneW;
+			h = 0.022 * safezoneH;
+		};
+		class groupName: ctrlEdit
+		{
+			idc = 1400;
+			text = "Group Name...";
+			x = 0.494844 * safezoneW + safezoneX;
+			y = 0.346 * safezoneH + safezoneY;
+			w = 0.12375 * safezoneW;
+			h = 0.022 * safezoneH;
+		};
+		class groupNameText: RscText
+		{
+			idc = -1;
+			text = "Group Name:";
+			x = 0.489687 * safezoneW + safezoneX;
+			y = 0.313 * safezoneH + safezoneY;
+			w = 0.12375 * safezoneW;
+			h = 0.022 * safezoneH;
+		};
+		class createGroup: ctrlButton
+		{
+			idc = 1615;
+			action = QUOTE([ctrlText ((findDisplay 8503) displayCtrl 1400)] call FUNC(editGroupsCreateGroup););
+
+			text = "Create Group";
+			x = 0.556719 * safezoneW + safezoneX;
+			y = 0.39 * safezoneH + safezoneY;
+			w = 0.061875 * safezoneW;
+			h = 0.022 * safezoneH;
+		};
+		class deleteGroup: ctrlButton
+		{
+			idc = 1616;
+			action = QUOTE([ctrlText ((findDisplay 8503) displayCtrl 1400)] call FUNC(editGroupsDeleteGroup););
+
+			text = "Delete Group";
+			x = 0.494844 * safezoneW + safezoneX;
+			y = 0.39 * safezoneH + safezoneY;
+			w = 0.0567187 * safezoneW;
+			h = 0.022 * safezoneH;
+		};
+		class isMedic: RscCheckBox
+		{
+			idc = 2801;
+			onCheckedChanged = QUOTE(call FUNC(editRolesSaveRole););
+			x = 0.494844 * safezoneW + safezoneX;
+			y = 0.467 * safezoneH + safezoneY;
+			w = 0.0154689 * safezoneW;
+			h = 0.022 * safezoneH;
+		};
+		class additionalItems: ctrlButton
+		{
+			idc = 1600;
+			action = QUOTE( \
+				private _ctrl = ((findDisplay 8501) displayCtrl 1500); \
+				[_ctrl lbText (lbCurSel _ctrl)] call FUNC(additionalItemsSpawn); \
+			);
+			text = "Edit Additional Items";
+			x = 0.494844 * safezoneW + safezoneX;
+			y = 0.643 * safezoneH + safezoneY;
+			w = 0.12375 * safezoneW;
+			h = 0.022 * safezoneH;
+		};
+		class aceOptionsText: RscText
+		{
+			idc = 1001;
+			text = "ACE Options";
+			x = 0.494844 * safezoneW + safezoneX;
+			y = 0.434 * safezoneH + safezoneY;
+			w = 0.118594 * safezoneW;
+			h = 0.022 * safezoneH;
+		};
+		class isEngineer: RscCheckBox
+		{
+			idc = 2802;
+			onCheckedChanged = QUOTE(call FUNC(editRolesSaveRole););
+			x = 0.494844 * safezoneW + safezoneX;
+			y = 0.5 * safezoneH + safezoneY;
+			w = 0.0154689 * safezoneW;
+			h = 0.022 * safezoneH;
+		};
+		class isMedicText: RscText
+		{
+			idc = -1;
+			text = "Is Medic";
+			x = 0.510312 * safezoneW + safezoneX;
+			y = 0.467 * safezoneH + safezoneY;
+			w = 0.108281 * safezoneW;
+			h = 0.022 * safezoneH;
+		};
+		class isEngineerText: RscText
+		{
+			idc = 1002;
+			text = "Is Engineer";
+			x = 0.510312 * safezoneW + safezoneX;
+			y = 0.5 * safezoneH + safezoneY;
+			w = 0.108281 * safezoneW;
+			h = 0.022 * safezoneH;
+		};
+		class radioOptionsText: RscText
+		{
+			idc = -1;
+			text = "ACRE/TFAR Options";
+			x = 0.494844 * safezoneW + safezoneX;
+			y = 0.533 * safezoneH + safezoneY;
+			w = 0.118594 * safezoneW;
+			h = 0.022 * safezoneH;
+		};
+		class hasHandheldRadio: RscCheckBox
+		{
+			idc = 2803;
+			onCheckedChanged = QUOTE(call FUNC(editRolesSaveRole););
+			x = 0.494844 * safezoneW + safezoneX;
+			y = 0.566 * safezoneH + safezoneY;
+			w = 0.0154689 * safezoneW;
+			h = 0.022 * safezoneH;
+		};
+		class hasManpackRadio: RscCheckBox
+		{
+			idc = 2804;
+			onCheckedChanged = QUOTE(call FUNC(editRolesSaveRole););
+			x = 0.494844 * safezoneW + safezoneX;
+			y = 0.599 * safezoneH + safezoneY;
+			w = 0.0154689 * safezoneW;
+			h = 0.022 * safezoneH;
+		};
+		class hasHandheldRadioText: RscText
+		{
+			idc = -1;
+			text = "Has Handheld Radio";
+			x = 0.510312 * safezoneW + safezoneX;
+			y = 0.566 * safezoneH + safezoneY;
+			w = 0.108281 * safezoneW;
+			h = 0.022 * safezoneH;
+		};
+		class hasManpackRadioText: RscText
+		{
+			idc = -1;
+			text = "Has Manpack Radio";
+			x = 0.510312 * safezoneW + safezoneX;
+			y = 0.599 * safezoneH + safezoneY;
+			w = 0.108281 * safezoneW;
+			h = 0.022 * safezoneH;
 		};
 	};
 };
