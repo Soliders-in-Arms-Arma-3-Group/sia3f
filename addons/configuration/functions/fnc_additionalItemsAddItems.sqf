@@ -17,7 +17,7 @@
 private _category = (uiNamespace getVariable [QGVAR(additionalItemsCategory), 0]) - 1;
 private _filter = toLower ctrlText ((findDisplay 8502) displayCtrl 1401);
 private _configItems = +(uiNamespace getVariable [QGVAR(configItems), []]);
-private _roleItems = uiNamespace getVariable [QGVAR(roleItems), []];
+private _items = uiNamespace getVariable [QGVAR(additionalItems), []];
 
 // Clear listbox
 private _listbox = (findDisplay 8502) displayCtrl 1500;
@@ -53,7 +53,7 @@ if (_category == -1) exitWith {
 			_listbox lnbSetPicture [[_index, 0], _picture];
 			_listbox lbSetTooltip [_index * (count lnbGetColumnsPosition _listbox), _x];
 		};
-	} forEach _roleItems;
+	} forEach _items;
 
 	_listbox lnbSort [1];
 };
@@ -97,7 +97,7 @@ private _config = switch (true) do {
 		private _alpha = 0.5;
 
 		// Change symbol and alpha if item already selected
-		if (_x in _roleItems) then {
+		if (_x in _items) then {
 			_symbol = "+";
 			_alpha = 1;
 		};

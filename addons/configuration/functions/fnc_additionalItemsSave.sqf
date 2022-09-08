@@ -2,7 +2,7 @@
 
 /*
  * Author: Siege
- * Saves the additional items to the role and exits the GUI.
+ * Saves the additional items to the group/role and exits the GUI.
  *
  * Arguments:
  * None
@@ -14,28 +14,39 @@
  * call sia3f_configuration_fnc_additionalItemsSpawn
  */
 
-private _role = uiNamespace getVariable [QGVAR(roleName), ""];
-private _roles = uiNamespace getVariable [QGVAR(roles), createHashMap];
+private _name = uiNamespace getVariable [QGVAR(additionalItemsName), ""];
+private _isGroup = uiNamespace getVariable [QGVAR(additionalItemsIsGroup), false];
+private _hash = uiNamespace getVariable [[QGVAR(roles), QGVAR(groups)] select _isGroup, createHashMap];
 
-if (_role == "" || !(_role in _roles)) exitWith {};
+if (_name == "" || !(_name in _hash)) exitWith {};
 
 // update hash with new additional items
-private _roleValues = _roles get _role;
-_roleValues set [4, uiNamespace getVariable [QGVAR(roleItems), []]];
-_roles set [_role, _roleValues];
+private _values = _hash get _name;
+_values set [4, uiNamespace getVariable [QGVAR(additionalItems), []]];
+_hash set [_name, _values];
 
 (findDisplay 8502) closeDisplay 1;
 
-// reopen role editor
-call FUNC(editRolesSpawn);
-private _lbCtrl = (findDisplay 8501) displayCtrl 1500;
-private _index = 0;
+// reopen role/group editor
+private "_lbCtrl";
+if (_isGroup) then {
+	// unlike roles, group spawn requires index
+	_lbCtrl = (findDisplay 8504) displayCtrl 1500;
+} else {
+	call FUNC(editRolesSpawn);
+	_lbCtrl = (findDisplay 8501) displayCtrl 1500;
+};
 
+private _index = 0;
 for "_i" from 0 to (lbSize _lbCtrl - 1) do {
 	private _text = _lbCtrl lbText _i;
-	if (_text == _role) exitWith {
+	if (_text == _name) exitWith {
 		_index = _i;
 	};
 };
 
-[_index] call FUNC(editRolesRefresh);
+if (_isGroup) then {
+	[_index, 1] call FUNC(editGroupsSpawn);
+} else {
+	[_index] call FUNC(editRolesRefresh);
+};

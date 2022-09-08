@@ -39,7 +39,7 @@ private _filteredList = [];
 	} forEach _configItemsFlat;
 } forEach _importList;
 
-uiNamespace setVariable [QGVAR(roleItems), _filteredList];
+uiNamespace setVariable [QGVAR(additionalItems), _filteredList];
 
 // Refresh the list for new items
 call FUNC(additionalItemsAddItems);

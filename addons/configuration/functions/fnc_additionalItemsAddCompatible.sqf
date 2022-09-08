@@ -20,11 +20,11 @@ private _category = lbCurSel ((findDisplay 8502) displayCtrl 2300);
 if !(_category in [4, 5, 6, 7, 8]) exitWith {};
 
 private _configItems = +(uiNamespace getVariable [QGVAR(configItems), []]);
-private _roleItems = uiNamespace getVariable [QGVAR(roleItems), []];
+private _items = uiNamespace getVariable [QGVAR(additionalItems), []];
 
 // Get list of all weapons in attribute items
 (_configItems select 0) params ["_primaryWeapons", "_secondaryWeapons", "_handgunWeapons"];
-private _attributeWeapons = _roleItems select { _x in _primaryWeapons || { _x in _secondaryWeapons } || { _x in _handgunWeapons } };
+private _attributeWeapons = _items select { _x in _primaryWeapons || { _x in _secondaryWeapons } || { _x in _handgunWeapons } };
 
 // Add compatible attachments or magazines to attribute
 private _cfgWeapons = configFile >> "CfgWeapons";
@@ -63,9 +63,9 @@ if (_category == 8) then {
     _itemsToAdd = _itemsToAdd apply { configName (_cfgWeapons >> _x) };
 };
 
-_roleItems append _itemsToAdd;
-_roleItems = _roleItems arrayIntersect _roleItems;
+_items append _itemsToAdd;
+_items = _items arrayIntersect _items;
 
 // Refresh the list for new items
-uiNamespace setVariable [QGVAR(roleItems), _roleItems];
+uiNamespace setVariable [QGVAR(additionalItems), _items];
 call FUNC(additionalItemsAddItems);

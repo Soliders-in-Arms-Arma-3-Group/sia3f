@@ -1,5 +1,7 @@
 #include "\z\sia3f\addons\main\guiDefines.hpp"
 
+// TODO: Cleanup global variables once they are no longer used (e.g, additionalItems, additionalItemsName, additionalItemsIsGroup, listboxHasFocus, and additionalItemsCategory once the additional items editor is closed)
+
 class GVAR(editRole) {
 	idd = 8501; // hopefully unique number as to not cause problems in the unlikely event that another GUI is open at the same time.
 	onUnload = QUOTE( \
@@ -336,7 +338,7 @@ class GVAR(additionalItemsEditor) {
 			onLBDblClick = QUOTE( \
 				params [ARR_2('_listbox','_row')]; \
 				private _classname = _listbox lnbData [ARR_2(_row, 1)]; \
-				private _addItem = !(_classname in (uiNamespace getVariable [ARR_2(QQGVAR(roleItems),[])])); \
+				private _addItem = !(_classname in (uiNamespace getVariable [ARR_2(QQGVAR(additionalItems),[])])); \
 				[_addItem] call FUNC(additionalItemsSelect); \
 			);
 			onSetFocus = QUOTE(uiNamespace setVariable [ARR_2(QQGVAR(listboxHasFocus),true)];);
@@ -513,6 +515,7 @@ class GVAR(additionalItemsEditor) {
 };
 
 class GVAR(editGroups) {
+	// ToDo: prevent adding roles when there are no groups (creates an empty group)
 	idd = 8503;
 	onLoad = QUOTE(uiNamespace setVariable [ARR_2(QQGVAR(editGroupsCurrentMode),0)];);
 	onKeyDown = QUOTE([_this # 1] call FUNC(editGroupsKeyDown););
@@ -840,7 +843,7 @@ class GVAR(editGroupsSettings) {
 			idc = 1600; // todo
 			action = QUOTE( \
 				private _ctrl = ((findDisplay 8504) displayCtrl 1500); \
-				[_ctrl lbText (lbCurSel _ctrl)] call FUNC(additionalItemsSpawn); \
+				[ARR_2(_ctrl lbText (lbCurSel _ctrl), true)] call FUNC(additionalItemsSpawn); \
 			);
 			text = "Edit Additional Items";
 			x = 0.494844 * safezoneW + safezoneX;
