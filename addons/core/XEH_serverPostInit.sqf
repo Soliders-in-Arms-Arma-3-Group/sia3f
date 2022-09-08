@@ -83,7 +83,7 @@ if (!isNil QEGVAR(configuration,buttons)) then {
 		["enableGlobalMessage", false] call FUNC(teleport); // Disable global message
 		{
 			["addActions", [_x]] call FUNC(teleport); 
-			_x setObjectTextureGlobal [0, "sia_f\images\ace_button_img.paa"];
+			_x setObjectTextureGlobal [0, QPATHTOEF(core,ui\ace_button_img.paa)];
 		} forEach EGVAR(configuration,buttons); // Add 'Teleport Menu' to objects
 	};
 };
