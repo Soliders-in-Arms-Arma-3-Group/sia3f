@@ -36,7 +36,7 @@ TRACE_3("edit groups select",_roleName,_groupName,_groupRoles);
 
 if (_addItem && { !(_roleName in (_groupRoles)) }) exitWith {
 	(_groupRoles) pushBackUnique _roleName;
-	_groups set [_groupName, _groupRoles];
+	_groups set [_groupName, _groupValue];
 
 	_rolesLbCtrl lnbSetText [[_currentRow, 1], "+"];
 	_rolesLbCtrl lnbSetColor [[_currentRow, 0], [1, 1, 1, 1]];
@@ -45,7 +45,7 @@ if (_addItem && { !(_roleName in (_groupRoles)) }) exitWith {
 
 if (!_addItem && { _roleName in _groupRoles }) exitWith {
 	_groupRoles deleteAt (_groupRoles find _roleName);
-	_groups set [_groupName, _groupRoles];
+	_groups set [_groupName, _groupValue];
 
 	_rolesLbCtrl lnbSetText [[_currentRow, 1], "−"];
 	_rolesLbCtrl lnbSetColor [[_currentRow, 0], [1, 1, 1, 0.5]];

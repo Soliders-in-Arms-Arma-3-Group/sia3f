@@ -231,7 +231,7 @@ class GVAR(editRole) {
 		class editGroups: ctrlButton
 		{
 			idc = 1605;
-			action = QUOTE(call FUNC(editGroupsSpawn));
+			action = QUOTE([] call FUNC(editGroupsSpawn););
 			text = "Edit Groups (aka Presets)";
 			x = 0.494844 * safezoneW + safezoneX;
 			y = 0.687 * safezoneH + safezoneY;
@@ -514,6 +514,7 @@ class GVAR(additionalItemsEditor) {
 
 class GVAR(editGroups) {
 	idd = 8503;
+	onLoad = QUOTE(uiNamespace setVariable [ARR_2(QQGVAR(editGroupsCurrentMode),0)];);
 	onKeyDown = QUOTE([_this # 1] call FUNC(editGroupsKeyDown););
 
 	class controls {
@@ -544,30 +545,15 @@ class GVAR(editGroups) {
 			w = 0.242344 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
-		class modeSelect: ctrlToolbox
-		{
-			idc = 2300;
-			rows = 1;
-			columns = 2;
-			strings[] = {"Assign Roles", "Edit Options"};
-			onToolBoxSelChanged = QUOTE([ARR_2((findDisplay 8503) displayCtrl 1500, _this # 1)] call FUNC(editGroupsMode););
-
-			x = 0.381406 * safezoneW + safezoneX;
-			y = 0.313 * safezoneH + safezoneY;
-			w = 0.108281 * safezoneW;
-			h = 0.022 * safezoneH;
-			colorText[] = {1,1,1,1};
-			colorBackground[] = {0,0,0,0.5};
-		};
 		class groupSelect: RscListBox
 		{
 			idc = 1500;
 			onLBSelChanged = QUOTE([ARR_2(_this # 1, false)] call FUNC(editGroupsRefresh));
 
 			x = 0.381406 * safezoneW + safezoneX;
-			y = 0.346 * safezoneH + safezoneY;
+			y = 0.313 * safezoneH + safezoneY;
 			w = 0.108281 * safezoneW;
-			h = 0.363 * safezoneH;
+			h = 0.396 * safezoneH;
 		};
 		class okButton: ctrlButton
 		{
@@ -654,7 +640,7 @@ class GVAR(editGroups) {
 			x = 0.494844 * safezoneW + safezoneX;
 			y = 0.423 * safezoneH + safezoneY;
 			w = 0.12375 * safezoneW;
-			h = 0.286 * safezoneH;
+			h = 0.253 * safezoneH;
 			colorBackground[] = {1,1,1,0.1};
 		};
 		class roles: ctrlListNBox
@@ -680,7 +666,7 @@ class GVAR(editGroups) {
 			x = 0.494844 * safezoneW + safezoneX;
 			y = 0.423 * safezoneH + safezoneY;
 			w = 0.12375 * safezoneW;
-			h = 0.286 * safezoneH;
+			h = 0.253 * safezoneH;
 		};
 		class arrowLeft: ctrlButton
 		{
@@ -706,11 +692,22 @@ class GVAR(editGroups) {
 			w = 0.0117188 * safezoneW;
 			h = 0.0208333 * safezoneH;
 		};
+		class editGroupsSettings: ctrlButton
+		{
+			idc = 1605;
+			action = QUOTE([1] call FUNC(editGroupsMode););
+			text = "Edit Group Options";
+			x = 0.494844 * safezoneW + safezoneX;
+			y = 0.687 * safezoneH + safezoneY;
+			w = 0.12375 * safezoneW;
+			h = 0.022 * safezoneH;
+		};
 	};
 };
 
 class GVAR(editGroupsSettings) {
 	idd = 8504;
+	onLoad = QUOTE(uiNamespace setVariable [ARR_2(QQGVAR(editGroupsCurrentMode),1)];);
 
 	class controls {
 		class background: RscPicture
@@ -740,30 +737,15 @@ class GVAR(editGroupsSettings) {
 			w = 0.242344 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
-		class modeSelect: ctrlToolbox
-		{
-			idc = 2300;
-			rows = 1;
-			columns = 2;
-			strings[] = {"Assign Roles", "Edit Options"};
-			onToolBoxSelChanged = QUOTE([ARR_2((findDisplay 8504) displayCtrl 1500, _this # 1)] call FUNC(editGroupsMode););
-
-			x = 0.381406 * safezoneW + safezoneX;
-			y = 0.313 * safezoneH + safezoneY;
-			w = 0.108281 * safezoneW;
-			h = 0.022 * safezoneH;
-			colorText[] = {1,1,1,1};
-			colorBackground[] = {0,0,0,0.5};
-		};
 		class groupSelect: RscListBox
 		{
 			idc = 1500;
 			onLBSelChanged = QUOTE([ARR_2(_this # 1, false)] call FUNC(editGroupsRefresh));
 
 			x = 0.381406 * safezoneW + safezoneX;
-			y = 0.346 * safezoneH + safezoneY;
+			y = 0.313 * safezoneH + safezoneY;
 			w = 0.108281 * safezoneW;
-			h = 0.363 * safezoneH;
+			h = 0.396 * safezoneH;
 		};
 		class okButton: ctrlButton
 		{
@@ -945,6 +927,16 @@ class GVAR(editGroupsSettings) {
 			x = 0.510312 * safezoneW + safezoneX;
 			y = 0.599 * safezoneH + safezoneY;
 			w = 0.108281 * safezoneW;
+			h = 0.022 * safezoneH;
+		};
+		class editGroups: ctrlButton
+		{
+			idc = 1605;
+			action = QUOTE([0] call FUNC(editGroupsMode););
+			text = "Edit Groups";
+			x = 0.494844 * safezoneW + safezoneX;
+			y = 0.687 * safezoneH + safezoneY;
+			w = 0.12375 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
 	};

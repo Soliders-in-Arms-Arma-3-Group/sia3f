@@ -5,8 +5,7 @@
  * Updates the groups GUI mode.
  *
  * Arguments:
- * Groups select control <CONTROL>
- * New mode: 0 = assign roles, 1 = edit properties <SCALAR> (default: 0)
+ * 0: New mode: 0 = assign roles, 1 = edit properties <SCALAR> (default: 0)
  *
  * Return Value:
  * None
@@ -16,13 +15,11 @@
  */
 
 params [
-	["_ctrl"],
 	["_mode", 0, [0]]
 ];
 
 private _currentMode = uiNamespace getVariable [QGVAR(editGroupsCurrentMode), 0];
 if (_mode == _currentMode) exitWith {};
 
-(findDisplay ([8504, 8503] # _mode)) closeDisplay 1;
-[lbCurSel _ctrl, _mode] call FUNC(editGroupsSpawn);
+[lbCurSel ((findDisplay ([8503, 8504] select _mode)) displayCtrl 1500), _mode] call FUNC(editGroupsSpawn);
 uiNamespace setVariable [QGVAR(editGroupsCurrentMode), _mode];

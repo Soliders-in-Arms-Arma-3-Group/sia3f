@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 
-#define CTRL(idc) ((findDisplay ([8503, 8504] # _mode)) displayCtrl idc)
+#define CTRL(idc) ((findDisplay ([8503, 8504] select _mode)) displayCtrl idc)
 
 /*
  * Author: Siege
@@ -26,6 +26,7 @@ if (floor _index != _index) exitWith {
 	// error, index must be an integer
 };
 
+private _mode = uiNamespace getVariable [QGVAR(editGroupsCurrentMode), 0];
 private _groupsLbCtrl = CTRL(1500);
 private _groups = uiNamespace getVariable [QGVAR(groups), GET_CONFIG(groups,createHashMap)];
 
@@ -44,12 +45,12 @@ if (_setCursor) then {
 	_groupsLbCtrl lbSetCurSel _index;
 };
 
-private _groupValue = (_groups getOrDefault [_groupsLbCtrl lbText _index, [false, false, false, false, [], []]]) select 5;
-private _mode = uiNamespace getVariable [QGVAR(editGroupsCurrentMode), 0];
+private _groupValue = _groups getOrDefault [_groupsLbCtrl lbText _index, [false, false, false, false, [], []]];
 
 if (_mode == 0) then {
 	private _rolesLbCtrl = CTRL(1503);
 	private _roles = uiNamespace getVariable [QGVAR(roles), GET_CONFIG(roles,createHashMap)];
+	_groupValue = _groupValue # 5;
 
 	// ensure there is at least 1 role; optimally always be true due to default role
 	if (_roles isEqualTo createHashMap) exitWith {
