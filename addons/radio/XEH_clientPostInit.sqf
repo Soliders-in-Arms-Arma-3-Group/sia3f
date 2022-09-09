@@ -5,9 +5,7 @@ if (!GET_CONFIG(acreEnabled,true) || !("@ACRE2" call EFUNC(core,checkModPresence
 
 private _personalRadioClassname = ["ACRE_PRC343", "ACRE_BF888S"] select GET_CONFIG(personalRadio,0);
 
-[] spawn FUNC(giveRadios);
-
-[((group player) getVariable [QEGVAR(configuration,radioChannel), 1]), _personalRadioClassname] spawn FUNC(setRadioChannel);
+call FUNC(giveRadios);
 
 player addEventHandler ["Killed", {
 	GVAR(mpttRadioList) = [] call acre_api_fnc_getMultiPushToTalkAssignment;

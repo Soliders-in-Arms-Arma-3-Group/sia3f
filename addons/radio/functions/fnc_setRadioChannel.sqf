@@ -24,6 +24,8 @@ params [
 	["_radioType", "", [""]]
 ];
 
+if (!([player, _radioType] call acre_api_fnc_hasKindOfRadio)) exitWith { TRACE_1("Radio not found", _radioType) };
+
 waitUntil { ([] call acre_api_fnc_isInitialized) }; // Wait until player's radios are initialized.
 private _radioId = [_radioType] call acre_api_fnc_getRadioByType;
 [_radioId, _channel] call acre_api_fnc_setRadioChannel;

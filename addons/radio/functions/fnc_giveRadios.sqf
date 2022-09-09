@@ -28,12 +28,19 @@ private _handheldRadioClassname = ["ACRE_PRC152", "ACRE_PRC148"] select GET_CONF
 private _manpackRadioClassname = ["ACRE_PRC117F", "ACRE_PRC77"] select GET_CONFIG(manpackRadio,0);
 TRACE_3("Radio classnames",_personalRadioClassname,_handheldRadioClassname,_manpackRadioClassname);
 
-waitUntil { ([] call acre_api_fnc_isInitialized) }; // Wait until player's radios are initialized.
-
 private _role = player getVariable [QEGVAR(core,role), "none"];
 
-if (!([player, _personalRadioClassname] call acre_api_fnc_hasKindOfRadio)) then { player addItem _personalRadioClassname };
-if (_role in _rolesWithHandheldRadio && !([player, _handheldRadioClassname] call acre_api_fnc_hasKindOfRadio)) then { player addItem _handheldRadioClassname };
-if (_role in _rolesManpackRadio && !([player, _manpackRadioClassname] call acre_api_fnc_hasKindOfRadio)) then { player addItem _manpackRadioClassname };
+[
+	{
+		params ["_role", "_personalRadioClassname", "_handheldRadioClassname", "_manpackRadioClassname", "_rolesWithHandheldRadio", "_rolesManpackRadio"];
+		if (!([player, _personalRadioClassname] call acre_api_fnc_hasKindOfRadio)) then { player addItem _personalRadioClassname };
+		if (_role in _rolesWithHandheldRadio && !([player, _handheldRadioClassname] call acre_api_fnc_hasKindOfRadio)) then { player addItem _handheldRadioClassname };
+		if (_role in _rolesManpackRadio && !([player, _manpackRadioClassname] call acre_api_fnc_hasKindOfRadio)) then { player addItem _manpackRadioClassname };
+
+		[((group player) getVariable [QEGVAR(configuration,radioChannel), 1]), _personalRadioClassname] spawn FUNC(setRadioChannel);
+	},
+	[_role, _personalRadioClassname, _handheldRadioClassname, _manpackRadioClassname, _rolesWithHandheldRadio, _rolesManpackRadio],
+	1
+] call CBA_fnc_waitAndExecute;
 
 INFO("fnc_giveRadios executed.");
