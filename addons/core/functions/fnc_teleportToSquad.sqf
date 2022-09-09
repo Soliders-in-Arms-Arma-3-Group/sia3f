@@ -40,26 +40,27 @@ if (isNull _target) then {
 	private _str = "Teleporting to " + (name _target) + "...";
 	if (vehicle _target != _target) then { _str = _str + "\nVehicle: " + getText (configFile >> "cfgVehicles" >> (typeOf (vehicle _target)) >> "displayName") };
 	1 cutText [_str, "PLAIN DOWN", -1, true];
-	[_target] spawn {
-		private _target = _this select 0;
-		sleep 0.5;
-		0 cutText ["", "BLACK OUT", 1];
-		sleep 1;
+		[{ 0 cutText ["", "BLACK OUT", 1] }, [], 0.5] call CBA_fnc_waitAndExecute;
 
 		//Teleport player 0.3m behind squad
 		if (vehicle _target == _target) then {
 		_LX = (getPos _target select 0) + (0.3 * sin ((getDir _target) - 180));
 		_LY = (getPos _target select 1) + (0.3 * cos ((getDir _target) - 180));
 		_LZ = (getPos _target select 2);
-		player setPos [_LX, _LY, _LZ];
+		[{ player setPos _this }, [_LX, _LY, _LZ], 1.5] call CBA_fnc_waitAndExecute;
 		} else {
-			player moveInCargo vehicle _target;		 
+			[{ player moveInCargo _this }, (vehicle _target), 1.5] call CBA_fnc_waitAndExecute;	 
 		};
 
 		//Teleport effects
-		sleep 0.5;
-		0 cutText ["", "BLACK IN", .5];
-		1 cutText ["", "PLAIN", -1, true];
-	};
+		[
+			{
+				0 cutText ["", "BLACK IN", .5];
+				1 cutText ["", "PLAIN", -1, true];
+			},
+			[],
+			2
+		] call CBA_fnc_waitAndExecute;
+		
 	true;
 };
