@@ -50,9 +50,9 @@ if (isNull _target) then {
 		_LX = (getPos _target select 0) + (0.3 * sin ((getDir _target) - 180));
 		_LY = (getPos _target select 1) + (0.3 * cos ((getDir _target) - 180));
 		_LZ = (getPos _target select 2);
-		[{ player setPos _this }, [_LX, _LY, _LZ], 1.5] call CBA_fnc_waitAndExecute;
+		[{ player setPos _this }, [_LX, _LY, _LZ], 2.5] call CBA_fnc_waitAndExecute;
 		} else {
-			[{ player moveInCargo _this }, (vehicle _target), 1.5] call CBA_fnc_waitAndExecute;	 
+			[{ player moveInCargo _this }, (vehicle _target), 2.5] call CBA_fnc_waitAndExecute;	 
 		};
 
 		//Teleport effects
@@ -62,7 +62,7 @@ if (isNull _target) then {
 				1 cutText ["", "PLAIN", -1, true];
 			},
 			[],
-			2
+			3
 		] call CBA_fnc_waitAndExecute;
 		
 	true
