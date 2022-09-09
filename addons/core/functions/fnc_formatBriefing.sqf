@@ -31,7 +31,7 @@ LOG("fnc_formatBriefing.sqf started.");
 if (_str == "") exitWith { 
 	LOG("fnc_formatBriefing.sqf found and returned an empty string.");
 
-	return _str;
+	_str;
 };
 
 // replace newline with '<br/>'
@@ -41,7 +41,7 @@ private _newlineChar = "
 if ((_str find _newlineChar) == -1) exitWith {
 	LOG("fnc_formatBriefing.sqf found no newline char and returned string.");
 
-	return _str;
+	_str;
 };
 
 private _strArr = _str splitString "";
@@ -58,6 +58,6 @@ private _strArr = _str splitString "";
 private _returnStr = _strArr joinString "";
 TRACE_1("string returned", _returnStr);
 
-return _returnStr;
+_returnStr;
 
 INFO("fnc_formatBriefing.sqf fully executed.");
