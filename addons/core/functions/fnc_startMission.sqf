@@ -23,8 +23,7 @@ params [
 if (isMultiplayer) then { setDate GVAR(startTime) }; // Set time to start of mission.
 setTimeMultiplier 1; // Set time acceleration to default.
 
-// Update variable.
-missionNamespace setVariable [QGVAR(missionStarted), true, true];
+missionNamespace setVariable [QGVAR(missionStarted), true, true]; // Update variable.
 
 if (GET_CONFIG(briefLoadout,true)) then { remoteExec [QFUNC(loadoutNotes)] }; // Refresh loadout information if enabled.
 
@@ -35,10 +34,15 @@ missionNamespace setVariable [QGVAR(safeStart_phase), "In Progress", true];
 
 // Display intro text if enabled.
 if (GET_CONFIG(showIntroText,true)) then {
-	[_gm] spawn {
-		sleep 5;
-		[(getMissionConfigValue ["onLoadName", missionName])] remoteExec ["BIS_fnc_moduleMissionName", _this select 0];
-		sleep 10;
-		remoteExecCall [QFUNC(introText)];
-	};
+	[
+		{ [(getMissionConfigValue ["onLoadName", missionName])] remoteExec ["BIS_fnc_moduleMissionName", _this] },
+		_gm,
+		5
+	] call CBA_fnc_waitAndExecute;
+	
+	[
+		{ remoteExecCall [_this] },
+		QFUNC(introText),
+		15
+	] call CBA_fnc_waitAndExecute;
 };
