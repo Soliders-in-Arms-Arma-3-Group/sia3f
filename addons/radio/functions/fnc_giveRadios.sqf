@@ -31,6 +31,7 @@ TRACE_3("Radio classnames",_personalRadioClassname,_handheldRadioClassname,_manp
 private _role = player getVariable [QEGVAR(core,role), "none"];
 
 [
+	{ ([] call acre_api_fnc_isInitialized) },
 	{
 		params ["_role", "_personalRadioClassname", "_handheldRadioClassname", "_manpackRadioClassname", "_rolesWithHandheldRadio", "_rolesManpackRadio"];
 		if (!([player, _personalRadioClassname] call acre_api_fnc_hasKindOfRadio)) then { player addItem _personalRadioClassname };
@@ -39,8 +40,7 @@ private _role = player getVariable [QEGVAR(core,role), "none"];
 
 		[((group player) getVariable [QEGVAR(configuration,radioChannel), 1]), _personalRadioClassname] spawn FUNC(setRadioChannel);
 	},
-	[_role, _personalRadioClassname, _handheldRadioClassname, _manpackRadioClassname, _rolesWithHandheldRadio, _rolesManpackRadio],
-	1
-] call CBA_fnc_waitAndExecute;
+	[_role, _personalRadioClassname, _handheldRadioClassname, _manpackRadioClassname, _rolesWithHandheldRadio, _rolesManpackRadio]
+] call CBA_fnc_waitUntilAndExecute;
 
 INFO("fnc_giveRadios executed.");
