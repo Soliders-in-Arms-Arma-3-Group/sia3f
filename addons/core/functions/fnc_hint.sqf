@@ -77,7 +77,8 @@ _txtRoleName setAttributes ["align", "right", "font", FONT_PRIMARY];
 
 private _txtRadioName = text "Radio:";
 _txtRadioName setAttributes ["align", "left", "font", FONT_PRIMARY];
-private _txtGroupChannel = text ((GET_CONFIG(personalRadio, "AN/PRC-343")) + " - Ch " + (str ((group player) getVariable [QEGVAR(configuration,radioChannel), 1])));
+private _radioName =  (getText (ConfigFile >> "CfgWeapons" >> (["ACRE_PRC343", "ACRE_BF888S"] select GET_CONFIG(personalRadio,0)) >> "displayName") splitString "AN/") select 0;
+private _txtGroupChannel = text (_radioName + " - Ch " + (str ((group player) getVariable [QEGVAR(configuration,radioChannel), 1])));
 _txtGroupChannel setAttributes ["align", "right", "font", FONT_PRIMARY];
 
 private _txtGroup = text "Group:";
