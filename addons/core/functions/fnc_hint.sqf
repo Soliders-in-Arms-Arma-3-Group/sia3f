@@ -26,7 +26,7 @@
  * call sia3f_core_fnc_hint
 */
 
-if (!GET_CONFIG(showStatusHint,true) || !hasInterface) exitWith {
+if (!GET_CONFIG(showStatusHint,true) || !hasInterface || !(player getVariable [QGVAR(safeStartHintEnabled), true])) exitWith {
 	LOG("fnc_hint.sqf was disabled by player or ran on server.");
 }; // Exit if not a player or if player has disabled status hint.
 

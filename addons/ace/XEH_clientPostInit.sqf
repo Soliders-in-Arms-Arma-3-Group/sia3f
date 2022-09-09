@@ -14,12 +14,12 @@ private _commonObjects = _buttons;
 // Player Self Actions 
 
 // SIA Parent Action
-_action = [QGVAR(siaActions), " SIA Options", "sia_f\images\sia_tiny.paa", {}, { true }] call ace_interact_menu_fnc_createAction;
+_action = [QGVAR(siaActions), " SIA Options", QPATHTOEF(core,ui\logo_sia3f_tiny.paa), {}, { true }] call ace_interact_menu_fnc_createAction;
 [(typeOf player), 1, ["ACE_SelfActions"], _action] call ace_interact_menu_fnc_addActionToClass;
 
 // Go AFK
 if GET_CONFIG(enableGoAFK,true) then {
-	private _action = ["SIA_AFK", "Go AFK", "\A3\Ui_F\Data\IGUI\Cfg\simpleTasks\types\wait_ca.paa", { [] spawn sia_f_fnc_goAFK }, { !(player getVariable [QGVAR(isAFK), false]) }] call ace_interact_menu_fnc_createAction;
+	private _action = ["SIA_AFK", "Go AFK", "\A3\Ui_F\Data\IGUI\Cfg\simpleTasks\types\wait_ca.paa", { [] spawn EFUNC(core,goAFK) }, { !(player getVariable [QGVAR(isAFK), false]) }] call ace_interact_menu_fnc_createAction;
 	[(typeOf player), 1, ["ACE_SelfActions", QGVAR(siaActions)], _action] call ace_interact_menu_fnc_addActionToClass;
 };
 
@@ -28,16 +28,16 @@ _action = [QGVAR(safeStartHint), "Show Mission Info", "\A3\Ui_F\Data\IGUI\Cfg\si
 [(typeOf player), 1, ["ACE_SelfActions", QGVAR(siaActions)], _action] call ace_interact_menu_fnc_addActionToClass;
 
 _statement = {
-	if (GVAR(safeStartHintEnabled)) then {
-		GVAR(safeStartHintEnabled) = false;
+	if (player getVariable [QEGVAR(core,safeStartHintEnabled), true]) then {
+		player setVariable [QEGVAR(core,safeStartHintEnabled), false];
 		hint "Setup Hint is now DISABLED";
 	} else {
-		GVAR(safeStartHintEnabled) = true;
+		player setVariable [QEGVAR(core,safeStartHintEnabled), true];
 		hint "Setup Hint is now ENABLED";
 	};
 };
 
-_action = [QGVAR(safeStartHintToggle), "Toggle Setup Hint", "", _statement, { true }] call ace_interact_menu_fnc_createAction;
+_action = [QGVAR(safeStartHintToggle), "Toggle Setup Hint", "", _statement, { !(missionNamespace getVariable [QEGVAR(core,missionStarted), false]) }] call ace_interact_menu_fnc_createAction;
 [(typeOf player), 1, ["ACE_SelfActions", QGVAR(siaActions), QGVAR(safeStartHint)], _action] call ace_interact_menu_fnc_addActionToClass;
 
 // Music Control
