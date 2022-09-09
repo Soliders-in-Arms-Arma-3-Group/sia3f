@@ -14,9 +14,9 @@
  * call sia3f_radio_fnc_giveRadios
 */
 
-if (!GET_CONFIG(acreEnabled,true) || !isServer || !("@ACRE2" call EFUNC(core,checkModPresence))) exitWith {
-	LOG("fnc_giveRadios: acre not enabled/loaded or script run on client machine.");
-}; // Exit if not server or if ACRE is disabled.
+if (!GET_CONFIG(acreEnabled,true) || isDedicated || !("@ACRE2" call EFUNC(core,checkModPresence))) exitWith {
+	LOG("fnc_giveRadios: acre not enabled/loaded or script run on server machine.");
+}; // Exit if server or if ACRE is disabled.
 LOG("fnc_giveRadios started.");
 
 // ToDo: allow GM to customize
@@ -28,13 +28,12 @@ private _handheldRadioClassname = ["ACRE_PRC152", "ACRE_PRC148"] select GET_CONF
 private _manpackRadioClassname = ["ACRE_PRC117F", "ACRE_PRC77"] select GET_CONFIG(manpackRadio,0);
 TRACE_3("Radio classnames",_personalRadioClassname,_handheldRadioClassname,_manpackRadioClassname);
 
-{
-	private _player = _x;
-	private _role = _player getVariable [QEGVAR(core,role), "none"];
+waitUntil { ([] call acre_api_fnc_isInitialized) }; // Wait until player's radios are initialized.
 
-	if (!([_player, _personalRadioClassname] call BIS_fnc_hasItem)) then { _player addItem _personalRadioClassname };
-	if (_role in _rolesWithHandheldRadio && !([_player, _handheldRadioClassname] call BIS_fnc_hasItem)) then { _player addItem _handheldRadioClassname };
-	if (_role in _rolesManpackRadio && !([_player, _manpackRadioClassname] call BIS_fnc_hasItem)) then { _player addItem _manpackRadioClassname };
-} forEach call BIS_fnc_listPlayers;
+private _role = player getVariable [QEGVAR(core,role), "none"];
+
+if (!([player, _personalRadioClassname] call acre_api_fnc_hasKindOfRadio)) then { player addItem _personalRadioClassname };
+if (_role in _rolesWithHandheldRadio && !([player, _handheldRadioClassname] call acre_api_fnc_hasKindOfRadio)) then { player addItem _handheldRadioClassname };
+if (_role in _rolesManpackRadio && !([player, _manpackRadioClassname] call acre_api_fnc_hasKindOfRadio)) then { player addItem _manpackRadioClassname };
 
 INFO("fnc_giveRadios executed.");

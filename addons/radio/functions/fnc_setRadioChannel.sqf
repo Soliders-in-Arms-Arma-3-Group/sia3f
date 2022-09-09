@@ -12,7 +12,7 @@
  * None
  *
  * Example:
- * call sia3f_radio_fnc_giveRadios
+ * call sia3f_radio_fnc_setRadioChannel
 */
 
 if (!GET_CONFIG(acreEnabled,true) || !("@ACRE2" call EFUNC(core,checkModPresence))) exitWith {
