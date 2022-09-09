@@ -92,9 +92,44 @@ if (!isNil QEGVAR(configuration,buttons)) then {
 
 if (GET_CONFIG(showStatusHint,true)) then {
     [] spawn {
-        while { !GVAR(missionStarted) } do {
+        while { !(missionNamespace getVariable [QGVAR(missionStarted), false]) } do {
             remoteExec [QFUNC(hint)];
             sleep SAFESTART_HINT_REFRESH;
         };
     };
 };
+
+/* Mission End */
+
+addMissionEventHandler ["MPEnded", {
+
+	// OCAP2 Replay check and export.
+	if !(isNil "ocap_fnc_exportData") then {
+	private _realDate = "real_date" callExtension "EST+";
+	private _outcome = if (_isVictory) then { "Mission Completed" } else { "Mission Failed" };
+	if (_realDate != "") then {
+		private _opType = "MISC";
+		private _weekday = (parseSimpleArray _realDate) # 6;
+		switch (_weekday) do {
+			case 0: { _opType = "MAIN OP"; }; // sunday
+			case 5: { _opType = "SIDE OP"; }; // friday
+		};
+		[_side, _outcome, _opType] call ocap_fnc_exportData;
+	} else {
+		[_side, _outcome, "unk"] call ocap_fnc_exportData;
+		diag_log "endMission.sqf Error: real_date extension not found.";
+	};
+	} else {
+		diag_log "endMission.sqf Error: ocap_fnc_exportData function not found.";
+	};
+
+	// Generate scoreboard.
+	private _arr = [];
+	{
+		_arr pushBack [name _x, (getPlayerScores _x) select 4];
+	} forEach allPlayers - entities "HeadlessClient_F"; // Cycle through all players for name and deaths.
+
+	// Print mission name and scoreboard to console.
+	diag_log format ["SCOREBOARD FOR %1", (getMissionConfigValue ["onLoadName", missionName])];
+	diag_log _arr;
+}];
