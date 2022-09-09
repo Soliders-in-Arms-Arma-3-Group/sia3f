@@ -21,7 +21,10 @@ private _safezone = 100;
 private _target = objNull;
 private _i = 0;
 
-if (count _units < 1) exitWith { 1 cutText ["Teleport failed, squad is empty!", "PLAIN", -1, true]; false };
+if (count _units < 1) exitWith {
+	1 cutText ["Teleport failed, squad is empty!", "PLAIN", -1, true];
+	false
+};
 
 {
 	if (
@@ -35,7 +38,7 @@ if (count _units < 1) exitWith { 1 cutText ["Teleport failed, squad is empty!", 
 
 if (isNull _target) then {
 	1 cutText ["Teleport Failed: No suitable unit found.", "PLAIN DOWN", -1, true];
-	false;
+	false
 } else {
 	private _str = "Teleporting to " + (name _target) + "...";
 	if (vehicle _target != _target) then { _str = _str + "\nVehicle: " + getText (configFile >> "cfgVehicles" >> (typeOf (vehicle _target)) >> "displayName") };
@@ -61,5 +64,5 @@ if (isNull _target) then {
 		0 cutText ["", "BLACK IN", .5];
 		1 cutText ["", "PLAIN", -1, true];
 	};
-	true;
+	true
 };
