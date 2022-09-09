@@ -25,8 +25,6 @@ private _values = _hash get _name;
 _values set [4, uiNamespace getVariable [QGVAR(additionalItems), []]];
 _hash set [_name, _values];
 
-(findDisplay 8502) closeDisplay 1;
-
 // reopen role/group editor
 private "_lbCtrl";
 if (_isGroup) then {

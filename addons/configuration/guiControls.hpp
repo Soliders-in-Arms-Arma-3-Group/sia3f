@@ -4,10 +4,7 @@
 
 class GVAR(editRole) {
 	idd = 8501; // hopefully unique number as to not cause problems in the unlikely event that another GUI is open at the same time.
-	onUnload = QUOTE( \
-		uiNamespace setVariable [ARR_2(QQGVAR(roles),nil)]; \
-		uiNamespace setVariable [ARR_2(QQGVAR(groups),nil)]; \
-	);
+	onUnload = QUOTE(call FUNC(editRolesCleanupGlobals););
 
 	class controls {
 		class background: RscPicture
@@ -247,6 +244,7 @@ class GVAR(additionalItemsEditor) {
 	// this GUI is taken and modified from mharis001 - ACE3 (addons/arsenal/Cfg3DEN.hpp >> Attributes >> ace_arsenal_attribute)
 	idd = 8502;
 	onKeyDown = QUOTE([_this # 1] call FUNC(additionalItemsKeyDown););
+	onUnload = QUOTE(call FUNC(editRolesCleanupGlobals););
 
 	class controls {
 		class background: RscPicture
@@ -515,9 +513,9 @@ class GVAR(additionalItemsEditor) {
 };
 
 class GVAR(editGroups) {
-	// ToDo: prevent adding roles when there are no groups (creates an empty group)
 	idd = 8503;
 	onLoad = QUOTE(uiNamespace setVariable [ARR_2(QQGVAR(editGroupsCurrentMode),0)];);
+	onUnload = QUOTE(call FUNC(editRolesCleanupGlobals););
 	onKeyDown = QUOTE([_this # 1] call FUNC(editGroupsKeyDown););
 
 	class controls {
@@ -561,10 +559,7 @@ class GVAR(editGroups) {
 		class okButton: ctrlButton
 		{
 			idc = 1613;
-			action = QUOTE( \
-				(findDisplay 8503) closeDisplay 1; \
-				call FUNC(editRolesSpawn); \
-			);
+			action = QUOTE(call FUNC(editRolesSpawn););
 			x = 0.561875 * safezoneW + safezoneX;
 			y = 0.7225 * safezoneH + safezoneY;
 			w = 0.061875 * safezoneW;
@@ -711,6 +706,7 @@ class GVAR(editGroups) {
 class GVAR(editGroupsSettings) {
 	idd = 8504;
 	onLoad = QUOTE(uiNamespace setVariable [ARR_2(QQGVAR(editGroupsCurrentMode),1)];);
+	onUnload = QUOTE(call FUNC(editRolesCleanupGlobals););
 
 	class controls {
 		class background: RscPicture
@@ -753,10 +749,7 @@ class GVAR(editGroupsSettings) {
 		class okButton: ctrlButton
 		{
 			idc = 1613;
-			action = QUOTE( \
-				(findDisplay 8504) closeDisplay 1; \
-				call FUNC(editRolesSpawn); \
-			);
+			action = QUOTE(call FUNC(editRolesSpawn););
 			x = 0.561875 * safezoneW + safezoneX;
 			y = 0.7225 * safezoneH + safezoneY;
 			w = 0.061875 * safezoneW;
@@ -840,7 +833,7 @@ class GVAR(editGroupsSettings) {
 		};
 		class additionalItems: ctrlButton
 		{
-			idc = 1600; // todo
+			idc = 1600;
 			action = QUOTE( \
 				private _ctrl = ((findDisplay 8504) displayCtrl 1500); \
 				[ARR_2(_ctrl lbText (lbCurSel _ctrl), true)] call FUNC(additionalItemsSpawn); \

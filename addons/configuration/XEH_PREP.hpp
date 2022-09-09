@@ -17,6 +17,7 @@ PREP(editGroupsSaveSettings);
 PREP(editGroupsSelect);
 PREP(editGroupsSpawn);
 
+PREP(editRolesCleanupGlobals);
 PREP(editRolesCreateRole);
 PREP(editRolesDeleteRole);
 PREP(editRolesRefresh);

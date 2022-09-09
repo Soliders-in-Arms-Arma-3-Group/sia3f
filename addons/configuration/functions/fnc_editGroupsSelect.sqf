@@ -34,6 +34,10 @@ private _groupRoles = _groupValue # 5; // should update _groupValue too since (I
 
 TRACE_3("edit groups select",_roleName,_groupName,_groupRoles);
 
+if (_groupName == "") exitWith {
+	// no group selected
+};
+
 if (_addItem && { !(_roleName in (_groupRoles)) }) exitWith {
 	(_groupRoles) pushBackUnique _roleName;
 	_groups set [_groupName, _groupValue];

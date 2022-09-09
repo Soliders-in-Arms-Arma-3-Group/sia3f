@@ -22,9 +22,6 @@ params [
 
 // ensure parameter is an actual role
 private _hash = uiNamespace getVariable [[QGVAR(roles), QGVAR(groups)] select _isGroup, createHashMap];
-systemChat " ";
-systemChat str _name;
-systemChat str _hash;
 if (_name == "" || !(_name in _hash)) exitWith {};
 
 (findDisplay 313) createDisplay QGVAR(additionalItemsEditor);
