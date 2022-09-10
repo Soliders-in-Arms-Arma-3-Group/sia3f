@@ -21,10 +21,11 @@ params [
 // deal with ACE arsenal export
 if (!(_importList isEqualTypeAll "")) exitWith {
 	_importList = flatten _importList;
+	_importList = _importList arrayIntersect _importList select { _x isEqualType "" && { _x != "" } };
 };
 
 // Verify import list is in correct format
-if (isNil "_importList" || {!(_importList isEqualType [])} || {!(_importList isEqualTypeAll "")}) exitWith {
+if (isNil "_importList" || { !(_importList isEqualType []) } || { !(_importList isEqualTypeAll "") }) exitWith {
 	["Improper import format!", 1] call BIS_fnc_3DENNotification;
 };
 
