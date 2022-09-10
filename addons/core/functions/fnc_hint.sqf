@@ -38,7 +38,7 @@ private _separator = parseText "<br />------------------------------<br />";
 private _image = QPATHTOEF(core,ui\logo_sia3f_tiny.paa);
 
 private _txtHeader = text (getMissionConfigValue ["onLoadName", missionName]);
-_txtHeader setAttributes ["color", HEX_HEADER, "size", "1.4", "font", FONT_SECONDARY, "shadow", "1", "shadowColor", HEX_SECONDARY, "shadowOffset", "0.07"];
+_txtHeader setAttributes ["color", HEX_HEADER, "size", "1.2", "font", FONT_SECONDARY, "shadow", "1", "shadowColor", HEX_SECONDARY, "shadowOffset", "0.07"];
 
 private _txtSetup = text "Current Phase:";
 _txtSetup setAttributes ["align", "left", "font", FONT_HEADER];
@@ -78,7 +78,7 @@ _txtRoleName setAttributes ["align", "right", "font", FONT_PRIMARY];
 private _txtRadioName = text "Radio:";
 _txtRadioName setAttributes ["align", "left", "font", FONT_PRIMARY];
 private _radioName =  (getText (ConfigFile >> "CfgWeapons" >> (["ACRE_PRC343", "ACRE_BF888S"] select GET_CONFIG(personalRadio,0)) >> "displayName") splitString "AN/") select 0;
-private _txtGroupChannel = text (_radioName + " - Ch " + (str ((group player) getVariable [QEGVAR(configuration,radioChannel), 1])));
+private _txtGroupChannel = text (_radioName + ", Ch " + (str ((group player) getVariable [QEGVAR(configuration,radioChannel), 1])));
 _txtGroupChannel setAttributes ["align", "right", "font", FONT_PRIMARY];
 
 private _txtGroup = text "Group:";
