@@ -66,7 +66,7 @@ class GVAR(TPD_teleport)
 
 
 class GVAR(goAFK) {
-	onUnload = QUOTE(call FUNC(goAFK));
+	onUnload = QUOTE(call FUNC(exitAFK));
 	idd = 3289;
 	class controls {
 		class background: RscPicture
@@ -116,7 +116,7 @@ class GVAR(goAFK) {
 		{
 			idc = 1601;
 			colorBackgroundActive[] = {0,0,0,0.7};
-			action = QUOTE(closeDialog 2; spawn FUNC(teleportToSquad););
+			action = QUOTE(closeDialog 2; [] spawn FUNC(teleportToSquad););
 
 			text = "Exit & TP"; //--- ToDo: Localize;
 			x = 0.510312 * safezoneW + safezoneX;

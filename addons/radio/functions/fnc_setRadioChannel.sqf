@@ -12,7 +12,7 @@
  * None
  *
  * Example:
- * call sia3f_radio_fnc_giveRadios
+ * call sia3f_radio_fnc_setRadioChannel
 */
 
 if (!GET_CONFIG(acreEnabled,true) || !("@ACRE2" call EFUNC(core,checkModPresence))) exitWith {
@@ -23,6 +23,8 @@ params [
 	["_channel", 1, [0]],
 	["_radioType", "", [""]]
 ];
+
+if (!([player, _radioType] call acre_api_fnc_hasKindOfRadio)) exitWith { TRACE_1("Radio not found", _radioType) };
 
 waitUntil { ([] call acre_api_fnc_isInitialized) }; // Wait until player's radios are initialized.
 private _radioId = [_radioType] call acre_api_fnc_getRadioByType;

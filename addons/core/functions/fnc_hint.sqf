@@ -26,7 +26,11 @@
  * call sia3f_core_fnc_hint
 */
 
-if (!GET_CONFIG(showStatusHint,true) || !hasInterface) exitWith {}; // Exit if not a player or if player has disabled status hint.
+if (!GET_CONFIG(showStatusHint,true) || !hasInterface || !(player getVariable [QGVAR(safeStartHintEnabled), true])) exitWith {
+	LOG("fnc_hint.sqf was disabled by player or ran on server.");
+}; // Exit if not a player or if player has disabled status hint.
+
+LOG("fnc_hint.sqf started.");
 
 private _systemTime = systemTimeUTC; // Cache System's current time.
 
@@ -34,7 +38,7 @@ private _separator = parseText "<br />------------------------------<br />";
 private _image = QPATHTOEF(core,ui\logo_sia3f_tiny.paa);
 
 private _txtHeader = text (getMissionConfigValue ["onLoadName", missionName]);
-_txtHeader setAttributes ["color", HEX_HEADER, "size", "1.4", "font", FONT_SECONDARY, "shadow", "1", "shadowColor", HEX_SECONDARY, "shadowOffset", "0.07"];
+_txtHeader setAttributes ["color", HEX_HEADER, "size", "1.2", "font", FONT_SECONDARY, "shadow", "1", "shadowColor", HEX_SECONDARY, "shadowOffset", "0.07"];
 
 private _txtSetup = text "Current Phase:";
 _txtSetup setAttributes ["align", "left", "font", FONT_HEADER];
@@ -73,7 +77,8 @@ _txtRoleName setAttributes ["align", "right", "font", FONT_PRIMARY];
 
 private _txtRadioName = text "Radio:";
 _txtRadioName setAttributes ["align", "left", "font", FONT_PRIMARY];
-private _txtGroupChannel = text ((GET_CONFIG(personalRadio, "AN/PRC-343")) + " - Ch " + (str ((group player) getVariable [QGVAR(radioChannel), 1])));
+private _radioName =  (getText (ConfigFile >> "CfgWeapons" >> (["ACRE_PRC343", "ACRE_BF888S"] select GET_CONFIG(personalRadio,0)) >> "displayName") splitString "AN/") select 0;
+private _txtGroupChannel = text (_radioName + ", Ch " + (str ((group player) getVariable [QEGVAR(configuration,radioChannel), 1])));
 _txtGroupChannel setAttributes ["align", "right", "font", FONT_PRIMARY];
 
 private _txtGroup = text "Group:";
@@ -144,7 +149,10 @@ private _array = [
 	_array pushBack _txt;
 	_array pushBack lineBreak;
 } forEach ([leader player] + (units group player - [leader player])); // Do for all units in group, starting with the group lead.
+LOG("fnc_hint.sqf finished formatting _array in the forEach loop.");
 
 private _structuredText = composeText _array;
 
 hintSilent _structuredText;
+
+INFO("fnc_hint.sqf fully executed.");

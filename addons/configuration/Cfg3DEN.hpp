@@ -24,8 +24,12 @@ class Cfg3DEN {
 						property = QGVAR(isArsenal);
 						control = "Checkbox";
 						expression = QUOTE( \
-							if (isNil QQGVAR(arsenals)) then { GVAR(arsenals) = []; }; \
-							GVAR(arsenals) pushBack _this; \
+							if (_value) then { \
+								if (isNil QQGVAR(arsenals)) then { GVAR(arsenals) = []; }; \
+								GVAR(arsenals) pushBackUnique _this; \
+							} else { \
+								GVAR(arsenals) = GVAR(arsenals) - [_this]; \
+							}; \
 						);
 						defaultValue = false;
 
@@ -38,9 +42,15 @@ class Cfg3DEN {
 						tooltip = "Check if this object is meant to be a button";
 						property = QGVAR(isButton);
 						control = "Checkbox";
-						expression = QUOTE(true); // ToDo
+						expression = QUOTE( \
+							if (_value) then { \
+								if (isNil QQGVAR(buttons)) then { GVAR(buttons) = []; }; \
+								GVAR(buttons) pushBackUnique _this; \
+							} else { \
+								GVAR(buttons) = GVAR(buttons) - [_this]; \
+							}; \
+						);
 						defaultValue = false;
-
 						// condition should be objectSimulated && !objectControllable && !logicModule
 						condition = "objectSimulated * (1 - objectControllable) * (1 - logicModule)"; // https://community.bistudio.com/wiki/Eden_Editor:_Configuring_Attributes#Condition
 					};
