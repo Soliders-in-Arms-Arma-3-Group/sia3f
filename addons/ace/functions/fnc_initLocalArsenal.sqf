@@ -24,12 +24,19 @@ _loadout = _loadout arrayIntersect _loadout select { _x isEqualType "" && { _x !
 
 // get role items
 private _role = player getVariable [QEGVAR(configuration,role), "default"];
-private _roleValues = GVAR(roles) getOrDefault [_role, [false, false, false, false, [], ""]];
+private _roleValues = EGVAR(core,roles) getOrDefault [_role, [false, false, false, false, [], ""]];
 private _roleItems = _roleValues # 4;
 
 // get group items if role is in a group
-if ((_roleValues # 5) in GVAR(groups)) then {
-	private _groupItems = (GVAR(groups) get (_roleValues # 5)) # 4;
+private _groupItems = [];
+if ((_roleValues # 5) in EGVAR(core,groups)) then {
+	_groupItems = (EGVAR(core,groups) get (_roleValues # 5)) # 4;
 };
 
-TRACE_3("local arsenal added items",_loadout,_roleItems,_groupItems);
+TRACE_3("local arsenal all items",_loadout,_roleItems,_groupItems);
+
+private _commonItems = +_loadout + _roleItems + _groupItems;
+_commonItems = _commonItems arrayIntersect _commonItems;
+TRACE_1("local arsenal added items",_commonItems);
+
+{ [_x, _commonItems, false] call ace_arsenal_fnc_addVirtualItems } forEach EGVAR(configuration,arsenals);

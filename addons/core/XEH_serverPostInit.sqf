@@ -14,6 +14,15 @@ if (!isNil QEGVAR(configuration,arsenals)) then {
 
 	// === Setup Global Arsenal ===
 
+	{
+		clearBackpackCargoGlobal _x;
+		clearMagazineCargoGlobal _x;
+		clearWeaponCargoGlobal _x;
+		clearItemCargoGlobal _x;
+		[_x, false] remoteExecCall ["ace_dragging_fnc_setDraggable"];
+		[_x, false] remoteExecCall ["ace_dragging_fnc_setCarryable"];
+		[_x, false] call ace_arsenal_fnc_initBox;
+	} forEach EGVAR(configuration,arsenals);
 	/* Likely unecessary data type check. */
 	//if (EGVAR(configuration,arsenals) isEqualTo []) then { ["setupGlobalArsenal Error: Invalid Parameters: %1", _this select 0] call BIS_fnc_error }
 
@@ -67,15 +76,6 @@ if (!isNil QEGVAR(configuration,arsenals)) then {
 			["sia_f_haveKATMedical: Invalid option: %1", sia_f_haveKATMedical] call BIS_fnc_error; // Log error if wrong input given.
 		};
 	};
-
-	{
-		clearBackpackCargoGlobal _x;
-		clearMagazineCargoGlobal _x;
-		clearWeaponCargoGlobal _x;
-		clearItemCargoGlobal _x;
-		[_x, false] remoteExecCall ["ace_dragging_fnc_setDraggable"];
-		[_x, false] remoteExecCall ["ace_dragging_fnc_setCarryable"];
-	} forEach EGVAR(configuration,arsenals);
 };
 
 if (!isNil QEGVAR(configuration,buttons)) then {

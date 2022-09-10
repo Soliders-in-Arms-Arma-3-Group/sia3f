@@ -58,7 +58,7 @@ if ((_roleValues # 5) in GVAR(groups)) then {
 	if (!(_roleValues # 1)) then { _roleValues set [1, _group # 1] };
 };
 
-TRACE_1("test",_roleValues);
+TRACE_2("initializing role values",_role,_roleValues);
 
 player setUnitTrait ["medic", _roleValues # 0];
 player setUnitTrait ["engineer", _roleValues # 1];

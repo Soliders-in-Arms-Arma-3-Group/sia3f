@@ -66,9 +66,11 @@ class Cfg3DEN {
 								if (_roles isEqualTo createHashMap) then { \
 									_roles set [ARR_2(""default"", [ARR_6(false, false, false, false, [], '')])]; \
 								}; \
-								_roles set [ARR_3(_value, [ARR_6(false, false, false, false, [], '')], true)]; \
-								QQGVAR(hiddenConfigValues) set3DENMissionAttribute [ARR_2(QQGVAR(roles), _roles)]; \
-								do3DENAction ""MissionSave""; \
+								private _toSave = _roles set [ARR_2(_value, [ARR_6(false, false, false, false, [], '')])]; \
+								if (!_toSave) then { \
+									QQGVAR(hiddenConfigValues) set3DENMissionAttribute [ARR_2(QQGVAR(roles), _roles)]; \
+									do3DENAction ""MissionSave""; \
+								}; \
 							} else { \
 								_this setVariable [ARR_3('%s', _value, true)]; \
 							}; \
