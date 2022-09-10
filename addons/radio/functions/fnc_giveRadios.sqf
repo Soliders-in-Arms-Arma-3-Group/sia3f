@@ -47,7 +47,7 @@ TRACE_3("Radio classnames",_personalRadioClassname,_handheldRadioClassname,_manp
 
 {
 	private _player = _x;
-	private _role = _player getVariable [QEGVAR(core,role), "none"];
+	private _role = _player getVariable [QEGVAR(configuration,role), "default"];
 
 	if (!([_player, _personalRadioClassname] call BIS_fnc_hasItem)) then { _player addItem _personalRadioClassname };
 	if (_role in _rolesHandheldRadio && !([_player, _handheldRadioClassname] call BIS_fnc_hasItem)) then { _player addItem _handheldRadioClassname };

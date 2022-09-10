@@ -53,6 +53,9 @@ class Cfg3DEN {
 						expression = QUOTE( \
 							if (is3DEN) then { \
 								private _roles = getMissionConfigValue [ARR_2(QQGVAR(roles),createHashMap)]; \
+								if (_roles isEqualTo createHashMap) then { \
+									_roles set [ARR_2(""default"", [ARR_6(false, false, false, false, [], '')])]; \
+								}; \
 								_roles set [ARR_3(_value, [ARR_6(false, false, false, false, [], '')], true)]; \
 								QQGVAR(hiddenConfigValues) set3DENMissionAttribute [ARR_2(QQGVAR(roles), _roles)]; \
 								do3DENAction ""MissionSave""; \
