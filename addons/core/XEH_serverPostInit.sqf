@@ -106,7 +106,7 @@ addMissionEventHandler ["MPEnded", {
 	// OCAP2 Replay check and export.
 	if !(isNil "ocap_fnc_exportData") then {
 	private _realDate = "real_date" callExtension "EST+";
-	private _outcome = if (_isVictory) then { "Mission Completed" } else { "Mission Failed" };
+	private _outcome = "Mission Completed"; // To do: Add functionality to determine if mission failed.
 	if (_realDate != "") then {
 		private _opType = "MISC";
 		private _weekday = (parseSimpleArray _realDate) # 6;
