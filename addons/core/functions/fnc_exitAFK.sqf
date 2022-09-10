@@ -22,6 +22,7 @@ LOG("fnc_exitAFK.sqf started.");
 
 private _unit = player; // ToDo: replace with param & execute func on server
 
+_unit setCaptive false;
 [_unit, false] remoteExec ["hideObjectGlobal", 2];
 [_unit, true] remoteExec ["enableSimulationGlobal", 2];
 if ("@ace" call FUNC(checkModPresence)) then {
@@ -32,7 +33,13 @@ if ("@ace" call FUNC(checkModPresence)) then {
 LOG("fnc_exitAFK.sqf deserialized player.");
 
 [(name _unit + " is no longer AFK.")] remoteExec ["systemChat"]; // "<player> is no longer AFK." system chat message.
-[] spawn { sleep 60; _unit setVariable [QGVAR(isAFK), false]; }; // Time out for 60 seconds.
+
+// Time out for 60 seconds.
+[
+	{ _this setVariable [QGVAR(isAFK), false] },
+	_unit,
+	60
+] call CBA_fnc_waitAndExecute;
 
 5 cutText ["", "PLAIN", -1, true];
 
