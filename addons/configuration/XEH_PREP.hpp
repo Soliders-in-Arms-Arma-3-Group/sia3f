@@ -25,4 +25,5 @@ PREP(editRolesSaveRole);
 PREP(editRolesSpawn);
 
 PREP(initFramework);
+PREP(rolesExpression);
 PREP(scanConfig);

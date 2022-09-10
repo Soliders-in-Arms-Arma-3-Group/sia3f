@@ -10,8 +10,6 @@ missionNamespace setVariable [QGVAR(safeStart_phase), "Waiting", true];
 missionNamespace setVariable [QGVAR(missionStarted), false, true];
 
 if (!isNil QEGVAR(configuration,arsenals)) then {
-	publicVariable QEGVAR(configuration,arsenals);
-
 	// === Setup Global Arsenal ===
 
 	{
@@ -76,6 +74,8 @@ if (!isNil QEGVAR(configuration,arsenals)) then {
 			["sia_f_haveKATMedical: Invalid option: %1", sia_f_haveKATMedical] call BIS_fnc_error; // Log error if wrong input given.
 		};
 	};
+
+	call EFUNC(ace,initLocalArsenal);	
 };
 
 if (!isNil QEGVAR(configuration,buttons)) then {
