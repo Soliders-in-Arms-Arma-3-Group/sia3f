@@ -26,7 +26,7 @@ if (_roleName in _roles) exitWith {
 	systemChat "Cannot create role, role already exists.";
 };
 
-// create role, value array is [isMedic, isEngineer, hasHandheldRadio, hasManpackRadio, additionalItems]
-_roles set [_roleName, [false, false, false, false, []]];
+// create role, value array is [isMedic, isEngineer, hasHandheldRadio, hasManpackRadio, additionalItems, "group (empty if none)"]
+_roles set [_roleName, [false, false, false, false, [], ""]];
 uiNamespace setVariable [QGVAR(roles), _roles];
 [-1] call FUNC(editRolesRefresh);

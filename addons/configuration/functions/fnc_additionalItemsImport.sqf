@@ -5,16 +5,23 @@
  * Handles importing items list from clipboard into the add additional items GUI.
  *
  * Arguments:
- * None
+ * Array of items to import <ARRAY of STRING | ARRAY of ARRAY of STRING>
  *
  * Return Value:
  * None
  *
  * Example:
- * call sia3f_configuration_fnc_additionalItemsImport
+ * ["someClassName", ["someClassName"]] call sia3f_configuration_fnc_additionalItemsImport
  */
 
-private _importList = call compile copyFromClipboard;
+params [
+	["_importList", [], [[]]]
+];
+
+// deal with ACE arsenal export
+if (!(_importList isEqualTypeAll "")) exitWith {
+	_importList = flatten _importList;
+};
 
 // Verify import list is in correct format
 if (isNil "_importList" || {!(_importList isEqualType [])} || {!(_importList isEqualTypeAll "")}) exitWith {
@@ -39,7 +46,9 @@ private _filteredList = [];
 	} forEach _configItemsFlat;
 } forEach _importList;
 
-uiNamespace setVariable [QGVAR(additionalItems), _filteredList];
+// add new items to items without duplicates
+private _filteredList = (uiNamespace getVariable [QGVAR(additionalItems), []]) + _filteredList;
+uiNamespace setVariable [QGVAR(additionalItems), _filteredList arrayIntersect _filteredList];
 
 // Refresh the list for new items
 call FUNC(additionalItemsAddItems);

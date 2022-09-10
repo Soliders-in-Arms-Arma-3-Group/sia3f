@@ -24,6 +24,7 @@ if ((uiNamespace getVariable [QGVAR(editGroupsCurrentMode), 0]) == 1) exitWith {
 
 private _rolesLbCtrl = (findDisplay 8503) displayCtrl 1503;
 private _currentRow = lnbCurSelRow _rolesLbCtrl;
+private _roles = uiNamespace getVariable [QGVAR(roles), GET_CONFIG(roles,createHashMap)];
 private _roleName = _rolesLbCtrl lnbText [_currentRow, 0];
 
 private _groupsLbCtrl = (findDisplay 8503) displayCtrl 1500;
@@ -42,6 +43,8 @@ if (_addItem && { !(_roleName in (_groupRoles)) }) exitWith {
 	(_groupRoles) pushBackUnique _roleName;
 	_groups set [_groupName, _groupValue];
 
+	_roles set [_role, [(_roles get _role) # 0, (_roles get _role) # 1, (_roles get _role) # 2, (_roles get _role) # 3, (_roles get _role) # 4, _groupName]];
+
 	_rolesLbCtrl lnbSetText [[_currentRow, 1], "+"];
 	_rolesLbCtrl lnbSetColor [[_currentRow, 0], [1, 1, 1, 1]];
 	_rolesLbCtrl lnbSetColor [[_currentRow, 1], [1, 1, 1, 1]];
@@ -51,6 +54,8 @@ if (!_addItem && { _roleName in _groupRoles }) exitWith {
 	_groupRoles deleteAt (_groupRoles find _roleName);
 	_groups set [_groupName, _groupValue];
 
+	_roles set [_role, [(_roles get _role) # 0, (_roles get _role) # 1, (_roles get _role) # 2, (_roles get _role) # 3, (_roles get _role) # 4, ""]];
+
 	_rolesLbCtrl lnbSetText [[_currentRow, 1], "−"];
 	_rolesLbCtrl lnbSetColor [[_currentRow, 0], [1, 1, 1, 0.5]];
 	_rolesLbCtrl lnbSetColor [[_currentRow, 1], [1, 1, 1, 0.5]];
@@ -58,3 +63,4 @@ if (!_addItem && { _roleName in _groupRoles }) exitWith {
 
 _groups set [_groupName, _groupValue];
 uiNamespace setVariable [QGVAR(groups), _groups];
+uiNamespace setVariable [QGVAR(roles), _roles];

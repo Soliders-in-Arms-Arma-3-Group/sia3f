@@ -416,7 +416,7 @@ class GVAR(additionalItemsEditor) {
 		class import: ctrlButton
 		{
 			idc = 1607;
-			action = QUOTE(call FUNC(additionalItemsImport););
+			action = QUOTE([call compile copyFromClipboard] call FUNC(additionalItemsImport););
 			text = "IMPORT";
 			x = 0.474219 * safezoneW + safezoneX;
 			y = 0.654 * safezoneH + safezoneY;

@@ -47,7 +47,25 @@ player addEventHandler ["Respawn", {
 	};
 }];
 
+
+private _role = player getVariable ["sia3f_configuration_role", "default"];
+private _roleValues = GVAR(roles) getOrDefault [_role, [false, false, false, false, [], ""]];
+
+// account for roles in groups (group setting only applies if role setting is false)
+if ((_roleValues # 5) in GVAR(groups)) then {
+	private _group = GVAR(groups) get (_roleValues # 5);
+	if (!(_roleValues # 0)) then { _roleValues set [0, _group # 0] };
+	if (!(_roleValues # 1)) then { _roleValues set [1, _group # 1] };
+};
+
+TRACE_1("test",_roleValues);
+
 if ("@ace" call FUNC(checkModPresence)) then {
-	// toDo: find proper value
-	player setVariable ["ace_medical_medicClass", 0, true];
+	player setVariable ["ace_medical_medicClass", parseNumber (_roleValues # 0), true];
+	player setVariable ["ACE_isEngineer", parseNumber (_roleValues # 1), true];
+	player setVariable ["ACE_isEOD", _roleValues # 1, true];
+} else {
+	player setUnitTrait ["medic", _roleValues # 0];
+	player setUnitTrait ["engineer", _roleValues # 1];
+	player setUnitTrait ["explosiveSpecialist", _roleValues # 1];
 };

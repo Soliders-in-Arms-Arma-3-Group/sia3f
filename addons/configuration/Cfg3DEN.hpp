@@ -50,7 +50,16 @@ class Cfg3DEN {
 						tooltip = "The unit's role (e.g, ""Rifleman""); Only needs to be defined on playable units";
 						property = QGVAR(role);
 						control = "Edit";
-						expression = QUOTE(_this setVariable [ARR_3('%s',_value,true)];);
+						expression = QUOTE( \
+							if (is3DEN) then { \
+								private _roles = getMissionConfigValue [ARR_2(QQGVAR(roles),createHashMap)]; \
+								_roles set [ARR_3(_value, [ARR_6(false, false, false, false, [], '')], true)]; \
+								QQGVAR(hiddenConfigValues) set3DENMissionAttribute [ARR_2(QQGVAR(roles), _roles)]; \
+								do3DENAction ""MissionSave""; \
+							} else { \
+								_this setVariable [ARR_3('%s', _value, true)]; \
+							}; \
+						);
 						typeName = "STRING";
 						defaultValue = "''";
 
