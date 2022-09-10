@@ -28,7 +28,7 @@ private _handheldRadioClassname = ["ACRE_PRC152", "ACRE_PRC148"] select GET_CONF
 private _manpackRadioClassname = ["ACRE_PRC117F", "ACRE_PRC77"] select GET_CONFIG(manpackRadio,0);
 TRACE_3("Radio classnames",_personalRadioClassname,_handheldRadioClassname,_manpackRadioClassname);
 
-private _role = player getVariable [QEGVAR(core,role), "none"];
+private _role = player getVariable [QEGVAR(configuration,role), "none"];
 
 [
 	{ ([] call acre_api_fnc_isInitialized) },
