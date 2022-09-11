@@ -1431,7 +1431,7 @@ See the make.cfg file for additional build options.
                 cache[module] = new_sha
 
     except Exception as e:
-        print_yellow("Cancel or some error detected: {}".format(e))
+        print_error("Cancel or some error detected: {}".format(e))
 
 
     finally:

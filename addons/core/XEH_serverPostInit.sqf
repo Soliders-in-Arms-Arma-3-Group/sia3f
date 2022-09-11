@@ -1,10 +1,12 @@
 #include "script_component.hpp"
+
+#define SAFESTART_HINT_REFRESH 30; 
 // basically initServer.sqf
 
 GVAR(startTime) = date;
 setTimeMultiplier 0.1;
 
-missionNamespace setVariable [QGVAR(setupPhase), "Waiting", true];
+missionNamespace setVariable [QGVAR(safeStart_phase), "Waiting", true];
 missionNamespace setVariable [QGVAR(missionStarted), false, true];
 
 if (!isNil QEGVAR(configuration,arsenals)) then {
@@ -80,8 +82,54 @@ if (!isNil QEGVAR(configuration,buttons)) then {
 	if (GET_CONFIG(enableTPMenu,true)) then {
 		["enableGlobalMessage", false] call FUNC(teleport); // Disable global message
 		{
-			["addActions", [_x]] call TPD_fnc_teleport; 
-			_x setObjectTextureGlobal [0, "sia_f\images\ace_button_img.paa"];
+			["addActions", [_x]] call FUNC(teleport); 
+			_x setObjectTextureGlobal [0, QPATHTOEF(core,ui\ace_button_img.paa)];
 		} forEach EGVAR(configuration,buttons); // Add 'Teleport Menu' to objects
 	};
 };
+
+/* Safe Start */
+
+if (GET_CONFIG(showStatusHint,true)) then {
+    [] spawn {
+        while { !(missionNamespace getVariable [QGVAR(missionStarted), false]) } do {
+            remoteExec [QFUNC(hint)];
+            sleep SAFESTART_HINT_REFRESH;
+        };
+    };
+};
+
+/* Mission End */
+
+addMissionEventHandler ["MPEnded", {
+
+	// OCAP2 Replay check and export.
+	if !(isNil "ocap_fnc_exportData") then {
+	private _realDate = "real_date" callExtension "EST+";
+	private _outcome = "Mission Completed"; // To do: Add functionality to determine if mission failed.
+	if (_realDate != "") then {
+		private _opType = "MISC";
+		private _weekday = (parseSimpleArray _realDate) # 6;
+		switch (_weekday) do {
+			case 0: { _opType = "MAIN OP"; }; // sunday
+			case 5: { _opType = "SIDE OP"; }; // friday
+		};
+		[_side, _outcome, _opType] call ocap_fnc_exportData;
+	} else {
+		[_side, _outcome, "unk"] call ocap_fnc_exportData;
+		diag_log "endMission.sqf Error: real_date extension not found.";
+	};
+	} else {
+		diag_log "endMission.sqf Error: ocap_fnc_exportData function not found.";
+	};
+
+	// Generate scoreboard.
+	private _arr = [];
+	{
+		_arr pushBack [name _x, (getPlayerScores _x) select 4];
+	} forEach allPlayers - entities "HeadlessClient_F"; // Cycle through all players for name and deaths.
+
+	// Print mission name and scoreboard to console.
+	diag_log format ["SCOREBOARD FOR %1", (getMissionConfigValue ["onLoadName", missionName])];
+	diag_log _arr;
+}];

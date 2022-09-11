@@ -6,5 +6,6 @@ class GVAR(frameworkSettings) {
 		#include "radioOptions.hpp"
 		#include "aceActionOptions.hpp"
 		#include "briefingSettings.hpp"
+		#include "onMissionStart.hpp"
 	};
 };

@@ -3,16 +3,16 @@
 Handles all functionality in the Eden Editor.  Work in progress.
 
 ## Config Definitions
-This will define all of the variables that can be used with ``GET_CONFIG(var)``.  The following table lists the variable name, in-game name, description , and type of  every config value.  Ordered in the same way it is in-game.
+This will define all of the variables that can be used with ``GET_CONFIG(var,default)``.  The following table lists the variable name, in-game name, description , and type of  every config value.  Ordered in the same way it is in-game.
 
 ``frameworkSettings`` section:
 |Variable Name|In Game Name|Description|Type|Default Value|
 |-------------|------------|-----------|----|-------------|
 |**Mission Info**|
 |missionLocationName|Mission Location Name|The location of the mission.  Used in persistent hint and intro text scroll.|String|""|
-|bluforFactionName|Blufor Faction Name|The Blufor side's name (e.g, US Army).  Used in persistent hint and intro text scroll.|String|""|
-|indepFactionName|Independent Faction Name|The Independent side's name (e.g, Altis Armed Forces).  Used in persistent hint and intro text scroll.|String|""|
-|opforFactionName|Opfor Faction Name|The Opfor side's name (e.g, Kazerghastan Royal Guard).  Used in persistent hint and intro text scroll.|String|""|
+|westFactionName|Blufor Faction Name|The Blufor side's name (e.g, US Army).  Used in persistent hint and intro text scroll.|String|""|
+|independentFactionName|Independent Faction Name|The Independent side's name (e.g, Altis Armed Forces).  Used in persistent hint and intro text scroll.|String|""|
+|eastFactionName|Opfor Faction Name|The Opfor side's name (e.g, Kazerghastan Royal Guard).  Used in persistent hint and intro text scroll.|String|""|
 |showStatusHint|Show Status Hint|If checked, the status hint will be shown by default.  If not, the status hint will be hidden by default.  Either way, it can still be toggled by the player.|Boolean|True|
 |showIntroText|Show Intro Text|Shows intro text if checked, does not if it is not checked.|Boolean|True|
 |showReplay|Show Replay|Option to show the replay with GRAD replay.  The OCAP recording will always be saved, however.  Note that this option may be removed in the future.|Boolean|True|
@@ -36,6 +36,8 @@ This will define all of the variables that can be used with ``GET_CONFIG(var)``.
 |briefORBAT|ORBAT Briefing|If checked, adds ORBAT information to the briefing.|Boolean|True|
 |briefWeather|Weather Briefing|If checked, adds a weather report to the briefing.|Boolean|True|
 |briefLoadout|Loadout Information|If checked, adds loadout information to the briefing.|Boolean|True|
+|**On Mission Start**|
+|onMissionStartCode|On Mission Start Code|Code to be executed on mission start.|STRING|""|
 |**Objects**|
 |isArsenal|Is Arsenal|If checked, makes the object an arsenal.|Boolean|False|
 |isButton|Is Button|If checked, makes the object a button.|Boolean|False|

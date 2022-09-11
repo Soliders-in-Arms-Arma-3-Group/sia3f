@@ -1,3 +1,4 @@
 #include "script_component.hpp"
 
-call FUNC(giveRadios);
+if (!GET_CONFIG(acreEnabled,true) || !isServer || !("@ACRE2" call EFUNC(core,checkModPresence))) exitWith {}; // exit if ACRE not loaded
+
