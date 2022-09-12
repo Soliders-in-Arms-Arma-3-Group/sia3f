@@ -104,7 +104,7 @@ class GVAR(editRole) {
 		class radioOptionsText: RscText
 		{
 			idc = -1;
-			text = "ACRE/TFAR Options";
+			text = "Radio Options";
 			x = 0.494844 * safezoneW + safezoneX;
 			y = 0.533 * safezoneH + safezoneY;
 			w = 0.118594 * safezoneW;
@@ -231,7 +231,7 @@ class GVAR(editRole) {
 		{
 			idc = 1605;
 			action = QUOTE([] call FUNC(editGroupsSpawn););
-			text = "Edit Groups (aka Presets)";
+			text = "Edit Role Groups";
 			x = 0.494844 * safezoneW + safezoneX;
 			y = 0.687 * safezoneH + safezoneY;
 			w = 0.12375 * safezoneW;
@@ -883,7 +883,7 @@ class GVAR(editGroupsSettings) {
 		class radioOptionsText: RscText
 		{
 			idc = -1;
-			text = "ACRE/TFAR Options";
+			text = "Radio Options";
 			x = 0.494844 * safezoneW + safezoneX;
 			y = 0.533 * safezoneH + safezoneY;
 			w = 0.118594 * safezoneW;
