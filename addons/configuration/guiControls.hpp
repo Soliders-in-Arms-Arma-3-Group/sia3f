@@ -1,7 +1,5 @@
 #include "\z\sia3f\addons\main\guiDefines.hpp"
 
-// TODO: Cleanup global variables once they are no longer used (e.g, additionalItems, additionalItemsName, additionalItemsIsGroup, listboxHasFocus, and additionalItemsCategory once the additional items editor is closed)
-
 class GVAR(editRole) {
 	idd = 8501; // hopefully unique number as to not cause problems in the unlikely event that another GUI is open at the same time.
 	onUnload = QUOTE(call FUNC(editRolesCleanupGlobals););
@@ -16,22 +14,14 @@ class GVAR(editRole) {
 			w = 0.2475 * safezoneW;
 			h = 0.418 * safezoneH;
 		};
-		class title: RscPicture
-		{
-			idc = -1;
-			text = "#(argb,8,8,3)color(0.77,0.51,0.08,0.75)";
-			x = 0.37625 * safezoneW + safezoneX;
-			y = 0.277 * safezoneH + safezoneY;
-			w = 0.2475 * safezoneW;
-			h = 0.022 * safezoneH;
-		};
-		class titleText: RscText
+		class title: RscText
 		{
 			idc = -1;
 			text = "Role Editor";
+			colorBackground[] = GUI_THEME_COLOR;
 			x = 0.37625 * safezoneW + safezoneX;
 			y = 0.277 * safezoneH + safezoneY;
-			w = 0.242344 * safezoneW;
+			w = 0.2475 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
 		class roleSelect: RscListBox
@@ -256,23 +246,14 @@ class GVAR(additionalItemsEditor) {
 			w = 0.28875 * safezoneW;
 			h = 0.363 * safezoneH;
 		};
-		class title: RscPicture
+		class title: RscText
 		{
-			idc = -1;
-			text = "#(argb,8,8,3)color(0.77,0.51,0.08,0.75)";
+			idc = 1000;
+			text = "Additional Items Editor: ROLE_NAME";
+			colorBackground[] = GUI_THEME_COLOR;
 			x = 0.355625 * safezoneW + safezoneX;
 			y = 0.299 * safezoneH + safezoneY;
 			w = 0.28875 * safezoneW;
-			h = 0.022 * safezoneH;
-		};
-		class titleText: RscText
-		{
-			idc = 1000;
-
-			text = "Additional Items Editor: ROLE_NAME";
-			x = 0.355625 * safezoneW + safezoneX;
-			y = 0.299 * safezoneH + safezoneY;
-			w = 0.283594 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
 		class category: ctrlToolboxPictureKeepAspect
@@ -365,7 +346,7 @@ class GVAR(additionalItemsEditor) {
 			font = "RobotoCondensedBold";
 			action = QUOTE([true] call FUNC(additionalItemsSelect););
 
-			text = "+";
+			text = "∞";
 			x = -0.11875 * safezoneW + safezoneX;
 			y = -0.325 * safezoneH + safezoneY;
 			w = 0.0117188 * safezoneW;
@@ -528,22 +509,14 @@ class GVAR(editGroups) {
 			w = 0.2475 * safezoneW;
 			h = 0.418 * safezoneH;
 		};
-		class title: RscPicture
-		{
-			idc = -1;
-			text = "#(argb,8,8,3)color(0.77,0.51,0.08,0.75)";
-			x = 0.37625 * safezoneW + safezoneX;
-			y = 0.277 * safezoneH + safezoneY;
-			w = 0.2475 * safezoneW;
-			h = 0.022 * safezoneH;
-		};
-		class titleText: RscText
+		class title: RscText
 		{
 			idc = -1;
 			text = "Group Editor";
+			colorBackground[] = GUI_THEME_COLOR;
 			x = 0.37625 * safezoneW + safezoneX;
 			y = 0.277 * safezoneH + safezoneY;
-			w = 0.242344 * safezoneW;
+			w = 0.2475 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
 		class groupSelect: RscListBox
@@ -568,7 +541,7 @@ class GVAR(editGroups) {
 		class okButtonText: RscText
 		{
 			idc = -1;
-			text = "OK";
+			text = "RETURN";
 			x = 0.561875 * safezoneW + safezoneX;
 			y = 0.7225 * safezoneH + safezoneY;
 			w = 0.0567187 * safezoneW;
@@ -718,22 +691,14 @@ class GVAR(editGroupsSettings) {
 			w = 0.2475 * safezoneW;
 			h = 0.418 * safezoneH;
 		};
-		class title: RscPicture
-		{
-			idc = -1;
-			text = "#(argb,8,8,3)color(0.77,0.51,0.08,0.75)";
-			x = 0.37625 * safezoneW + safezoneX;
-			y = 0.277 * safezoneH + safezoneY;
-			w = 0.2475 * safezoneW;
-			h = 0.022 * safezoneH;
-		};
-		class titleText: RscText
+		class title: RscText
 		{
 			idc = -1;
 			text = "Group Editor";
+			colorBackground[] = GUI_THEME_COLOR;
 			x = 0.37625 * safezoneW + safezoneX;
 			y = 0.277 * safezoneH + safezoneY;
-			w = 0.242344 * safezoneW;
+			w = 0.2475 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
 		class groupSelect: RscListBox
@@ -758,7 +723,7 @@ class GVAR(editGroupsSettings) {
 		class okButtonText: RscText
 		{
 			idc = -1;
-			text = "OK";
+			text = "RETURN";
 			x = 0.561875 * safezoneW + safezoneX;
 			y = 0.7225 * safezoneH + safezoneY;
 			w = 0.0567187 * safezoneW;

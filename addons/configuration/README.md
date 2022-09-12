@@ -62,3 +62,6 @@ Sets the [mission config value](https://community.bistudio.com/wiki/set3DENMissi
 |section|The section that the config value belongs to.  As of the time of writing, this parameter can be either ``frameworkSettings`` or ``hiddenConfigValues``.|
 |var|The config value to set.  See the tables above for valid values.|
 |value|The value to set to ``var``.
+
+### GUI_THEME_COLOR
+Gets the user's "Menu" color scheme "Background" RGBA value.  Should always be used in GUI title bars.  Default/Example: ``{0.13,0.54,0.21,0.8}``
