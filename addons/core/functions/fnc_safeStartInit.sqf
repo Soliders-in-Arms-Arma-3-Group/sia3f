@@ -36,10 +36,10 @@ if (GET_CONFIG(showStatusHint,true) && isServer) then {
 if (_safeStartSafetyEnabled && hasInterface) then {
 	[
 		{ !isNull (getAssignedCuratorLogic _this) },
-		{ [_this] spawn FUNC(safeStartLoop) },
+		{ [] spawn FUNC(safeStartLoop) },
 		player,
 		1,
-		{ [_this] spawn FUNC(safeStartLoop) }
+		{ [] spawn FUNC(safeStartLoop) }
 	] call CBA_fnc_waitUntilAndExecute;
 };
 
