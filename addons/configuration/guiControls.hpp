@@ -5,6 +5,7 @@ class GVAR(editRole) {
 	onUnload = QUOTE(call FUNC(editRolesCleanupGlobals););
 
 	class controls {
+		DISABLE_BACKGROUND
 		class background: RscPicture
 		{
 			idc = -1;
@@ -23,6 +24,7 @@ class GVAR(editRole) {
 			y = 0.277 * safezoneH + safezoneY;
 			w = 0.2475 * safezoneW;
 			h = 0.022 * safezoneH;
+			tooltip = "Configuration of the settings and arsenal items for specifc SIA Mission Framework roles. \nNOTE that the gear each player spawns in with is already added to their local arsenal.";
 		};
 		class roleSelect: RscListBox
 		{
@@ -54,15 +56,17 @@ class GVAR(editRole) {
 			y = 0.643 * safezoneH + safezoneY;
 			w = 0.12375 * safezoneW;
 			h = 0.022 * safezoneH;
+			tooltip = "Edit the items avaliable to all units with the selected role";
 		};
-		class aceOptionsText: RscText
+		class traitOptionsText: RscText
 		{
 			idc = -1;
-			text = "ACE Options";
+			text = "Trait Options";
 			x = 0.494844 * safezoneW + safezoneX;
 			y = 0.434 * safezoneH + safezoneY;
 			w = 0.118594 * safezoneW;
 			h = 0.022 * safezoneH;
+			tooltip = "Adds the following trait to all units with the selected role";
 		};
 		class isEngineer: RscCheckBox
 		{
@@ -99,6 +103,7 @@ class GVAR(editRole) {
 			y = 0.533 * safezoneH + safezoneY;
 			w = 0.118594 * safezoneW;
 			h = 0.022 * safezoneH;
+			tooltip = "Adds the following radio from 'SIA Framework Settings' to all units with the selected role";
 		};
 		class hasHandheldRadio: RscCheckBox
 		{
@@ -206,6 +211,7 @@ class GVAR(editRole) {
 			y = 0.39 * safezoneH + safezoneY;
 			w = 0.061875 * safezoneW;
 			h = 0.022 * safezoneH;
+			tooltip = "Create a role with the name entered above";
 		};
 		class deleteRole: ctrlButton
 		{
@@ -216,6 +222,7 @@ class GVAR(editRole) {
 			y = 0.39 * safezoneH + safezoneY;
 			w = 0.0567187 * safezoneW;
 			h = 0.022 * safezoneH;
+			tooltip = "Delete the role matching the name entered above";
 		};
 		class editGroups: ctrlButton
 		{
@@ -226,6 +233,7 @@ class GVAR(editRole) {
 			y = 0.687 * safezoneH + safezoneY;
 			w = 0.12375 * safezoneW;
 			h = 0.022 * safezoneH;
+			tooltip = "Edit the settings for role groups (aka 'Presets')";
 		};
 	};
 };
@@ -237,6 +245,7 @@ class GVAR(additionalItemsEditor) {
 	onUnload = QUOTE(call FUNC(editRolesCleanupGlobals););
 
 	class controls {
+		DISABLE_BACKGROUND
 		class background: RscPicture
 		{
 			idc = -1;
@@ -500,6 +509,7 @@ class GVAR(editGroups) {
 	onKeyDown = QUOTE([_this # 1] call FUNC(editGroupsKeyDown););
 
 	class controls {
+		DISABLE_BACKGROUND
 		class background: RscPicture
 		{
 			idc = -1;
@@ -518,6 +528,7 @@ class GVAR(editGroups) {
 			y = 0.277 * safezoneH + safezoneY;
 			w = 0.2475 * safezoneW;
 			h = 0.022 * safezoneH;
+			tooltip = "Create and edit groups of roles, allowing for items and settings to be applied to multiple roles at once.";
 		};
 		class groupSelect: RscListBox
 		{
@@ -593,6 +604,7 @@ class GVAR(editGroups) {
 			y = 0.39 * safezoneH + safezoneY;
 			w = 0.061875 * safezoneW;
 			h = 0.022 * safezoneH;
+			tooltip = "Create a group with the name entered above";
 		};
 		class deleteGroup: ctrlButton
 		{
@@ -604,6 +616,7 @@ class GVAR(editGroups) {
 			y = 0.39 * safezoneH + safezoneY;
 			w = 0.0567187 * safezoneW;
 			h = 0.022 * safezoneH;
+			tooltip = "Delete the group matching the name entered above";
 		};
 		class rolesBackground: ctrlStatic
 		{
@@ -682,6 +695,7 @@ class GVAR(editGroupsSettings) {
 	onUnload = QUOTE(call FUNC(editRolesCleanupGlobals););
 
 	class controls {
+		DISABLE_BACKGROUND
 		class background: RscPicture
 		{
 			idc = -1;
@@ -700,6 +714,7 @@ class GVAR(editGroupsSettings) {
 			y = 0.277 * safezoneH + safezoneY;
 			w = 0.2475 * safezoneW;
 			h = 0.022 * safezoneH;
+			tooltip = "Create and edit groups of roles, allowing for items and settings to be applied to multiple roles at once.";
 		};
 		class groupSelect: RscListBox
 		{
@@ -728,6 +743,7 @@ class GVAR(editGroupsSettings) {
 			y = 0.7225 * safezoneH + safezoneY;
 			w = 0.0567187 * safezoneW;
 			h = 0.022 * safezoneH;
+			tooltip = "Create a group with the name entered above";
 		};
 		class cancelButton: ctrlButton
 		{
@@ -775,6 +791,7 @@ class GVAR(editGroupsSettings) {
 			y = 0.39 * safezoneH + safezoneY;
 			w = 0.061875 * safezoneW;
 			h = 0.022 * safezoneH;
+			tooltip = "Create a group with the name entered above";
 		};
 		class deleteGroup: ctrlButton
 		{
@@ -786,6 +803,7 @@ class GVAR(editGroupsSettings) {
 			y = 0.39 * safezoneH + safezoneY;
 			w = 0.0567187 * safezoneW;
 			h = 0.022 * safezoneH;
+			tooltip = "Delete the group matching the name entered above";
 		};
 		class isMedic: RscCheckBox
 		{
@@ -808,15 +826,17 @@ class GVAR(editGroupsSettings) {
 			y = 0.643 * safezoneH + safezoneY;
 			w = 0.12375 * safezoneW;
 			h = 0.022 * safezoneH;
+			tooltip = "Edit the items avaliable to all roles in the selected group";
 		};
-		class aceOptionsText: RscText
+		class traitOptionsText: RscText
 		{
 			idc = 1001;
-			text = "ACE Options";
+			text = "Trait Options";
 			x = 0.494844 * safezoneW + safezoneX;
 			y = 0.434 * safezoneH + safezoneY;
 			w = 0.118594 * safezoneW;
 			h = 0.022 * safezoneH;
+			tooltip = "Adds the following trait to all roles in the selected group";
 		};
 		class isEngineer: RscCheckBox
 		{
@@ -853,6 +873,7 @@ class GVAR(editGroupsSettings) {
 			y = 0.533 * safezoneH + safezoneY;
 			w = 0.118594 * safezoneW;
 			h = 0.022 * safezoneH;
+			tooltip = "Adds the following radio from 'SIA Framework Settings' to all roles in the selected group";
 		};
 		class hasHandheldRadio: RscCheckBox
 		{
