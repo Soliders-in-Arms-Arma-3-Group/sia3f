@@ -35,23 +35,13 @@ if (_safeStartHintEnabled && isServer) then {
 
 /* Safe Start Safety */
 if (_safeStartSafetyEnabled && hasInterface) then {
-	player allowDamage false;
-
-	if (player in (allCurators apply { getAssignedCuratorUnit _x })) exitWith { LOG("fnc_safeStartInit.sqf loop exited: player is curator.") };
-
-	{ [player, _x, true] call ace_safemode_fnc_setWeaponSafety } forEach (weapons player);
-	player setVariable ["ace_common_effect_blockThrow", 1]; // force use vanilla throwing so the EH works
-	player setVariable ["ace_explosives_PlantingExplosive", true]; // prevent planting explosives
-
-	private _firedMan_EH = player addEventHandler ["FiredMan", {
-		deleteVehicle (_this # 6); // delete object as it is fired
-		
-		if (_this # 1 == "Throw") then {
-			(_this # 0) addItem (_this # 4); // replace whatever was thrown.
-		};
-	}];
-
-	[_firedMan_EH] call FUNC(safeStartLoop);
+	[
+		{ !isNull (getAssignedCuratorLogic _this) },
+		{ [_this] spawn FUNC(safeStartLoop) },
+		player,
+		1,
+		{ [_this] spawn FUNC(safeStartLoop) }
+	] call CBA_fnc_waitUntilAndExecute;
 };
 
 INFO("fnc_safeStartInit.sqf fully executed.");
