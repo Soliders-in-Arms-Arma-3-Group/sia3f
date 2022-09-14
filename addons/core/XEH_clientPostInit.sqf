@@ -46,3 +46,15 @@ player addEventHandler ["Respawn", {
 		call FUNC(exitAFK);
 	};
 }];
+
+// safeStart Player Weapon Safety
+[
+	{
+		if (!(player in (allCurators apply { getAssignedCuratorUnit _x }))) then { 
+			call FUNC(safeStartHint); // Enable safeStart weapon safety for non-Zeus players.
+		} else {
+			player allowDamage false; // Make the zeus(es) invincible.
+		};
+	},
+	1 // To do: Replace with more accurate waitUntil.
+] call CBA_waitAndExecute;

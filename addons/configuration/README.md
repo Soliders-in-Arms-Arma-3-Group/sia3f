@@ -37,7 +37,7 @@ This will define all of the variables that can be used with ``GET_CONFIG(var,def
 |briefWeather|Weather Briefing|If checked, adds a weather report to the briefing.|Boolean|True|
 |briefLoadout|Loadout Information|If checked, adds loadout information to the briefing.|Boolean|True|
 |**On Mission Start**|
-|onMissionStartCode|On Mission Start Code|Code to be executed on mission start.|STRING|""|
+|onMissionStartCode|On Mission Start Code|Code to be executed on Zeus mission start.|STRING|""|
 |**Objects**|
 |isArsenal|Is Arsenal|If checked, makes the object an arsenal.|Boolean|False|
 |isButton|Is Button|If checked, makes the object a button.|Boolean|False|

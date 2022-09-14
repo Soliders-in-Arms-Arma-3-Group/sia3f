@@ -24,7 +24,7 @@ if GET_CONFIG(enableGoAFK,true) then {
 };
 
 // Setup safeStart Hint
-_action = [QGVAR(safeStartHint), "Show Mission Info", "\A3\Ui_F\Data\IGUI\Cfg\simpleTasks\types\unknown_ca.paa", { call EFUNC(core,hint) }, { true }] call ace_interact_menu_fnc_createAction;
+_action = [QGVAR(safeStartHint), "Show Mission Info", "\A3\Ui_F\Data\IGUI\Cfg\simpleTasks\types\unknown_ca.paa", { call EFUNC(core,safeStartHint) }, { true }] call ace_interact_menu_fnc_createAction;
 [(typeOf player), 1, ["ACE_SelfActions", QGVAR(siaActions)], _action] call ace_interact_menu_fnc_addActionToClass;
 
 _statement = {

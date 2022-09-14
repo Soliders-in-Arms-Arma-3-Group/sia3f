@@ -1,6 +1,5 @@
 #include "script_component.hpp"
 
-#define SAFESTART_HINT_REFRESH 30; 
 // basically initServer.sqf
 
 GVAR(startTime) = date;
@@ -86,17 +85,6 @@ if (!isNil QEGVAR(configuration,buttons)) then {
 			_x setObjectTextureGlobal [0, QPATHTOEF(core,ui\ace_button_img.paa)];
 		} forEach EGVAR(configuration,buttons); // Add 'Teleport Menu' to objects
 	};
-};
-
-/* Safe Start */
-
-if (GET_CONFIG(showStatusHint,true)) then {
-    [] spawn {
-        while { !(missionNamespace getVariable [QGVAR(missionStarted), false]) } do {
-            remoteExec [QFUNC(hint)];
-            sleep SAFESTART_HINT_REFRESH;
-        };
-    };
 };
 
 /* Mission End */
