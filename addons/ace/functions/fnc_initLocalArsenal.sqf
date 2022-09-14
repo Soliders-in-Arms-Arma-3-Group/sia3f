@@ -24,13 +24,17 @@ _loadout = _loadout arrayIntersect _loadout select { _x isEqualType "" && { _x !
 
 // get role items
 private _role = player getVariable [QEGVAR(configuration,role), "default"];
-private _roleValues = EGVAR(core,roles) getOrDefault [_role, [false, false, false, false, [], ""]];
+private _roleValues = EGVAR(core,roles) getOrDefault [_role, [false, false, false, false, [], []]];
 private _roleItems = _roleValues # 4;
 
 // get group items if role is in a group
 private _groupItems = [];
-if ((_roleValues # 5) in EGVAR(core,groups)) then {
-	_groupItems = (EGVAR(core,groups) get (_roleValues # 5)) # 4;
+if (({ _x in EGVAR(core,groups) } count _roleValues # 5) > 0) then {
+	{
+		_groupItems append ((EGVAR(core,groups) get _x) # 4);
+	} forEach _roleValues # 5;
+	
+	_groupItems = _groupItems arrayIntersect _groupItems;
 };
 
 TRACE_3("local arsenal all items",_loadout,_roleItems,_groupItems);

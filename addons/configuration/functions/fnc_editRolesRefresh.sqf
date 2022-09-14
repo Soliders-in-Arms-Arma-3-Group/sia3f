@@ -30,7 +30,7 @@ private _lbCtrl = CTRL(1500);
 private _roles = uiNamespace getVariable [QGVAR(roles), GET_CONFIG(roles,createHashMap)];
 
 if (_roles isEqualTo createHashMap) then {
-	_roles set ["default", [false, false, false, false, [], ""]]; // for new/unsaved missions
+	_roles set ["default", [false, false, false, false, [], []]]; // for new/unsaved missions
 };
 
 lbClear _lbCtrl;

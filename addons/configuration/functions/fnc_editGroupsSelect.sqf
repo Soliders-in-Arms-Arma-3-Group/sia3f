@@ -43,7 +43,7 @@ if (_addItem && { !(_roleName in (_groupRoles)) }) exitWith {
 	(_groupRoles) pushBackUnique _roleName;
 	_groups set [_groupName, _groupValue];
 
-	_roles set [_roleName, [(_roles get _roleName) # 0, (_roles get _roleName) # 1, (_roles get _roleName) # 2, (_roles get _roleName) # 3, (_roles get _roleName) # 4, _groupName]];
+	_roles set [_roleName, [(_roles get _roleName) # 0, (_roles get _roleName) # 1, (_roles get _roleName) # 2, (_roles get _roleName) # 3, (_roles get _roleName) # 4, ((_roles get _roleName) # 5) + [_groupName]]];
 
 	_rolesLbCtrl lnbSetText [[_currentRow, 1], "+"];
 	_rolesLbCtrl lnbSetColor [[_currentRow, 0], [1, 1, 1, 1]];
@@ -54,7 +54,7 @@ if (!_addItem && { _roleName in _groupRoles }) exitWith {
 	_groupRoles deleteAt (_groupRoles find _roleName);
 	_groups set [_groupName, _groupValue];
 
-	_roles set [_roleName, [(_roles get _roleName) # 0, (_roles get _roleName) # 1, (_roles get _roleName) # 2, (_roles get _roleName) # 3, (_roles get _roleName) # 4, ""]];
+	_roles set [_roleName, [(_roles get _roleName) # 0, (_roles get _roleName) # 1, (_roles get _roleName) # 2, (_roles get _roleName) # 3, (_roles get _roleName) # 4, ((_roles get _roleName) # 5) - [_groupName]]];
 
 	_rolesLbCtrl lnbSetText [[_currentRow, 1], "−"];
 	_rolesLbCtrl lnbSetColor [[_currentRow, 0], [1, 1, 1, 0.5]];

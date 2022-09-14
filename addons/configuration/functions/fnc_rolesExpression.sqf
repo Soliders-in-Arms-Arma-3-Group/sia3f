@@ -24,8 +24,8 @@ if (isNull _object || _value isEqualTo "") exitWith {};
 
 if (is3DEN) then {
 	private _roles = GET_CONFIG(roles,createHashMap);
-	_roles set ["default", [false, false, false, false, [], ""], true];
-	private _toSave = _roles set [_value, [false, false, false, false, [], ""]];
+	_roles set ["default", [false, false, false, false, [], []], true];
+	private _toSave = _roles set [_value, [false, false, false, false, [], []]];
 	if (!_toSave) then {
 		SET_CONFIG(hiddenConfigValues,roles,_roles);
 		do3DENAction "MissionSave";
