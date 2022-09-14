@@ -824,8 +824,10 @@ def main(argv):
     global missingFiles
     global failedBuilds
     global printedErrors
+    global builtAddons
 
     printedErrors = 0
+    builtAddons = 0
 
     if sys.platform != "win32":
         print_error("Non-Windows platform (Cygwin?). Please re-run from cmd.")
@@ -1342,6 +1344,8 @@ See the make.cfg file for additional build options.
                         print ("Resuming build...")
                         failedBuilds.append("{}".format(module))
                         continue
+                    else:
+                        builtAddons += 1
 
                     # Back to the root
                     os.chdir(module_root)
@@ -1532,7 +1536,7 @@ See the make.cfg file for additional build options.
         if printedOnlyErrors > 0:
             print_yellow("- {} untraced error(s)!".format(printedOnlyErrors))
     else:
-        print_green("\nCompleted with 0 errors.")
+        print_green("\nBuilt {} modules with 0 errors.".format(builtAddons))
 
 
 if __name__ == "__main__":
@@ -1546,5 +1550,3 @@ if __name__ == "__main__":
             sys.exit(1)
         else:
             sys.exit(0)
-
-    input("Press Enter to continue...")
