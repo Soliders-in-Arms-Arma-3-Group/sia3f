@@ -3,7 +3,7 @@
 /*
  * Author: McKendrick
  * Credits: F3 - Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
- * Safe Start, Safety and Invicibility Toggle
+ * Safe Start, Safety and Invincibility Toggle
  *
  * Arguments:
  * 0: ID of "FiredMan" safety event handler <NUMBER>.
@@ -15,6 +15,7 @@
  * call sia3f_core_fnc_safeStartLoop
 
 */
+
 INFO("fnc_safeStarLoop.sqf started.");
 
 params [

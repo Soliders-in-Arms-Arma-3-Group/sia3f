@@ -3,4 +3,4 @@
 call FUNC(loadoutNotes);
 call FUNC(briefing);
 call FUNC(orbat);
-((GET_CONFIG(showStatusHint,true))) call FUNC(safeStartInit);
+call FUNC(safeStartInit);

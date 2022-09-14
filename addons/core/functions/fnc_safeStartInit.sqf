@@ -3,11 +3,10 @@
 #define SAFESTART_HINT_REFRESH 30; 
 /*
  * Author: McKendrick
- * Safe Start initlization for safety and hint.
+ * Safe Start initialization for safety and hint.
  *
  * Arguments:
- * 0: If safeStart Hint feature is enabled <BOOLEAN> (default: True)
- * 1: If safeStart Safety feature is enabled <BOOLEAN> (default: True)
+ * 0: If safeStart Safety feature is enabled <BOOLEAN> (default: True)
  *
  * Return Value:
  * None
@@ -16,21 +15,21 @@
  * call sia3f_core_fnc_safeStartInit
 
 */
-LOG("fnc_safeStartHint.sqf started.");
+
+LOG("fnc_safeStartInit.sqf started.");
 
 params [
-	["_safeStartHintEnabled", true, [true]],
 	["_safeStartSafetyEnabled", true, [true]]
 ];
 
 /* Safe Start Hint */
-if (_safeStartHintEnabled && isServer) then {
-    [] spawn {
-        while { !(missionNamespace getVariable [QGVAR(missionStarted), false]) } do {
-            remoteExec [QFUNC(safeStartHint)];
-            sleep SAFESTART_HINT_REFRESH;
-        };
-    };
+if (GET_CONFIG(showStatusHint,true) && isServer) then {
+	[] spawn {
+		while { !(missionNamespace getVariable [QGVAR(missionStarted), false]) } do {
+			remoteExec [QFUNC(safeStartHint)];
+			sleep SAFESTART_HINT_REFRESH;
+		};
+	};
 };
 
 /* Safe Start Safety */
