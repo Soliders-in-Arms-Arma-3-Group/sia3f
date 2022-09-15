@@ -30,6 +30,14 @@ private _mode = uiNamespace getVariable [QGVAR(editGroupsCurrentMode), 0];
 private _groupsLbCtrl = CTRL(1500);
 private _groups = uiNamespace getVariable [QGVAR(groups), GET_CONFIG(groups,createHashMap)];
 
+if (_groups isEqualTo createHashMap) then {
+	private _defaultGroups = [
+		["leadership", [false, false, true, false, [], ["team leader", "squad leader", "platoon leader"]]]
+	];
+
+	{ _groups set [(_x select 0), (_x select 1)] } forEach _defaultGroups;
+};
+
 // redo groups list
 lbClear _groupsLbCtrl;
 {

@@ -27,11 +27,11 @@ if (is3DEN) then {
 	private _defaultRoles = [
 		["default", [false, false, false, false, [], []]],
 		["rifleman", [false, false, false, false, [], []]],
-		["team leader", [false, false, true, false, [], []]],
-		["squad leader", [false, false, true, false, [], []]],
+		["team leader", [false, false, true, false, [], ["leadership"]]],
+		["squad leader", [false, false, true, false, [], ["leadership"]]],
 		["medic", [true, false, false, false, [], []]],
 		["crewman", [false, true, false, false, [], []]],
-		["platoon leader", [false, false, true, true, [], []]]
+		["platoon leader", [false, false, true, true, [], ["leadership"]]]
 	];
 
 	{ _roles set [(_x select 0), (_x select 1), true] } forEach _defaultRoles;
