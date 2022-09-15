@@ -22,20 +22,20 @@ LOG("fnc_giveRadios started.");
 private _rolesHandheldRadio = [];
 private _rolesManpackRadio = [];
 {
-	if (_x # 2) then {
-		_rolesHandheldRadio pushBackUnique _y;
+	if (_y # 2) then {
+		_rolesHandheldRadio pushBackUnique _x;
 	};
-	if (_x # 3) then {
-		_rolesManpackRadio pushBackUnique _y;
+	if (_y # 3) then {
+		_rolesManpackRadio pushBackUnique _x;
 	};
 } forEach EGVAR(core,roles);
 
 {
-	if (_x # 2) then {
-		{ _rolesHandheldRadio pushBackUnique _x } forEach _x # 5;
+	if (_y # 2) then {
+		{ _rolesHandheldRadio pushBackUnique _x } forEach _y # 5;
 	};
-	if (_x # 3) then {
-		{ _rolesManpackRadio pushBackUnique _x } forEach _x # 5;
+	if (_y # 3) then {
+		{ _rolesManpackRadio pushBackUnique _x } forEach _y # 5;
 	};
 } forEach EGVAR(core,groups);
 TRACE_2("Radio roles",_rolesHandheldRadio,_rolesManpackRadio);
