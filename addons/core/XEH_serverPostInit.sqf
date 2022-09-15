@@ -94,7 +94,7 @@ addMissionEventHandler ["MPEnded", {
 	// OCAP2 Replay check and export.
 	if !(isNil "ocap_fnc_exportData") then {
 		private _weekDay = [systemTime] call CBA_fnc_weekDay;
-		private _outcome = missionNamespace getVariable [QGVAR(missionOutcome), "Mission Completed"]; // To do: Add functionality to determine if mission failed.
+		private _outcome = missionNamespace getVariable [QGVAR(missionOutcome), "Mission Completed"];
 		if (_weekDay > -1) then {
 			private _opType = "MISC";
 			switch (_weekday) do {
