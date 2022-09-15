@@ -89,7 +89,9 @@ switch (_mode) do {
 	};
 
 	case "reorderRadioMPTT" : {
-		_params params ["_radioType"];
+		_params params [
+			["_radioType", (["ACRE_PRC343", "ACRE_BF888S"] select GET_CONFIG(personalRadio,0))]
+		];
 		_hasRadio = [player, _radioType] call acre_api_fnc_hasKindOfRadio;
 		if (!_hasRadio) exitWith {
 			LOG("fnc_acreRadioSetup Error: ACRE Reorder MPTT - player has no radio.");
