@@ -150,8 +150,8 @@ _action = [QGVAR(safeStart_missionStartConfirm), "Confirm", "", { call EFUNC(cor
 _action = [QGVAR(safeStart_missionEnd), "End Mission", "\A3\ui_f\data\IGUI\Cfg\simpleTasks\types\getOut_ca.paa", {}, { (missionNamespace getVariable [QEGVAR(core,missionStarted), false]) }] call ace_interact_menu_fnc_createAction;
 [["ACE_ZeusActions"], _action] call ace_interact_menu_fnc_addActionToZeus;
 
-_action = [QGVAR(safeStart_missionEndWin), "Win", "", { ["end1", true, true] remoteExecCall ["BIS_fnc_endMission", 0] }, { (missionNamespace getVariable [QEGVAR(core,missionStarted), false]) }] call ace_interact_menu_fnc_createAction; // To-do: Link to end mission
+_action = [QGVAR(safeStart_missionEndWin), "Win", "", { missionNamespace setVariable [QGVAR(missionOutcome), "Mission Completed"]; ["end1", true, true] remoteExecCall ["BIS_fnc_endMission", 0] }, { (missionNamespace getVariable [QEGVAR(core,missionStarted), false]) }] call ace_interact_menu_fnc_createAction; // To-do: Link to end mission
 [["ACE_ZeusActions", QGVAR(safeStart_missionEnd)], _action] call ace_interact_menu_fnc_addActionToZeus;
 
-_action = [QGVAR(safeStart_missionEndLose), "Lose", "", { ["end1", false, true] remoteExecCall ["BIS_fnc_endMission", 0] }, { (missionNamespace getVariable [QEGVAR(core,missionStarted), false]) }] call ace_interact_menu_fnc_createAction; // To-do: Link to end mission
+_action = [QGVAR(safeStart_missionEndLose), "Lose", "", { missionNamespace setVariable [QGVAR(missionOutcome), "Mission Failed"]; ["end1", false, true] remoteExecCall ["BIS_fnc_endMission", 0] }, { (missionNamespace getVariable [QEGVAR(core,missionStarted), false]) }] call ace_interact_menu_fnc_createAction; // To-do: Link to end mission
 [["ACE_ZeusActions", QGVAR(safeStart_missionEnd)], _action] call ace_interact_menu_fnc_addActionToZeus;

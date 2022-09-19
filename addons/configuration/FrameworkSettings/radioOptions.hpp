@@ -25,6 +25,10 @@ class GVAR(ACRERadioOptions) {
 					name = "Beofeng 888S";
 					value = 1;
 				};
+				class GVAR(personalRadio_NONE) {
+					name = "NONE";
+					value = 2;
+				};
 			};
 		};
 
@@ -44,6 +48,10 @@ class GVAR(ACRERadioOptions) {
 					name = "AN/PRC-148";
 					value = 1;
 				};
+				class GVAR(handheldRadio_NONE) {
+					name = "NONE";
+					value = 2;
+				};
 			};
 		};
 
@@ -59,10 +67,13 @@ class GVAR(ACRERadioOptions) {
 					default = 1;
 					value = 0;
 				};
-
 				class GVAR(manpackRadio_PRC77) {
 					name = "AN/PRC-77";
 					value = 1;
+				};
+				class GVAR(manpackRadio_NONE) {
+					name = "NONE";
+					value = 2;
 				};
 			};
 		};
