@@ -1,48 +1,128 @@
 #include "\z\sia3f\addons\main\guiDefines.hpp"
 
+//GUI and script related macros
+#include "\a3\3DEN\UI\macros.inc"
+
+//DIK Key Codes
+#include "\a3\ui_f\hpp\definedikcodes.inc"
+
+//Common GRIDs
+#include "\a3\ui_f\hpp\definecommongrids.inc"
+
+//Eden Editor IDDs and IDCs as well as controls types and styles and macros
+#include "\a3\3den\ui\resincl.inc"
+
+#define DIALOG_W 200
+#define DIALOG_H 140
+
+#define SHOW_IN_ROOT value = 0
+#define EDIT_W 10
+#define EDIT_W_WIDE 11
+#define CENTERED_X(w) (CENTER_X - (w / 2 * GRID_W))
+#define DIALOG_TOP (safezoneY + 17 * GRID_H)
+#define CTRL_DEFAULT_H (SIZE_M * GRID_H)
+#define CTRL_DEFAULT_W (SIZE_M * GRID_W)
+
 class GVAR(editRole) {
+	// this GUI is taken and modified from R3vo - 3den-Enhanced >> VIM
 	idd = 8501; // hopefully unique number as to not cause problems in the unlikely event that another GUI is open at the same time.
 	onUnload = QUOTE(call FUNC(editRolesCleanupGlobals););
 
 	class controls {
 		DISABLE_BACKGROUND
-		class background: RscPicture
+		class background: ctrlStaticBackground
 		{
 			idc = -1;
-			text = "#(argb,8,8,3)color(0.075,0.075,0.075,0.8)";
-			x = 0.37625 * safezoneW + safezoneX;
-			y = 0.302 * safezoneH + safezoneY;
-			w = 0.2475 * safezoneW;
-			h = 0.418 * safezoneH;
+			x = CENTERED_X(DIALOG_W);
+			y = DIALOG_TOP + CTRL_DEFAULT_H;
+			w = DIALOG_W * GRID_W;
+			h = DIALOG_H * GRID_H;
 		};
-		class title: RscText
+		class title: ctrlStaticTitle
 		{
 			idc = -1;
 			text = "Role Editor";
 			colorBackground[] = GUI_THEME_COLOR;
-			x = 0.37625 * safezoneW + safezoneX;
-			y = 0.277 * safezoneH + safezoneY;
-			w = 0.2475 * safezoneW;
-			h = 0.022 * safezoneH;
+			x = CENTERED_X(DIALOG_W);
+			y = DIALOG_TOP;
+			w = DIALOG_W * GRID_W;
+			h = CTRL_DEFAULT_H;
 			tooltip = "Configuration of the settings and arsenal items for specifc SIA Mission Framework roles. \nNOTE that the gear each player spawns in with is already added to their local arsenal.";
 		};
-		class roleSelect: RscListBox
+		class Footer: ctrlStaticFooter
+		{
+			idc = -1;
+			x = CENTERED_X(DIALOG_W);
+			y = DIALOG_TOP + DIALOG_H * GRID_H - 2 * GRID_H;
+			w = DIALOG_W * GRID_W;
+			h = CTRL_DEFAULT_H + 2 * GRID_H;
+		};
+		class MenuStrip: ctrlMenuStrip // MENU BAR
+		{
+			idc = 4000;
+			x = CENTERED_X(DIALOG_W);
+			y = DIALOG_TOP + CTRL_DEFAULT_H;
+			w = DIALOG_W * GRID_W;
+			h = CTRL_DEFAULT_H;
+			class Items
+			{
+				items[] =
+				{
+					"FolderTools",
+					"FolderHelp"
+				};
+				class FolderTools
+				{
+					text = "Tools";
+					items[] = 
+					{
+						"WIP" // To-do: Add delete all, reset, import, export
+					};
+				};
+				class FolderHelp
+				{
+					text = "Help";
+       			   	items[] = {"Documentation"};
+				};
+				// Tools
+				class WIP
+				{
+					text = "WIP"; 
+				};
+				// Help
+				class Documentation
+				{
+					text = "Documentation";
+					picture = "\a3\3DEN\Data\Controls\ctrlMenu\link_ca.paa";
+					weblink = "https://github.com/Soliders-in-Arms-Arma-3-Group/sia3f/wiki"; //To-do: link to tutorial and any other help.
+					opensNewWindow = 1;
+				};
+				class Default;
+				class Separator;
+			};
+		};
+		class roleSelectText: ctrlStatic
+		{
+		idc = 1000;
+			text = "Avaliable Roles";
+			x = CENTERED_X(DIALOG_W) + GRID_W;
+			y = DIALOG_TOP + 2 * CTRL_DEFAULT_H + GRID_H;
+			w = 40 * GRID_W;
+			h = CTRL_DEFAULT_H;
+			font = "RobotoCondensedBold";
+			shadow = 1;
+			sizeEx = GUI_GRID_H * 1.2;
+			tooltip = "List of default, imported, and user-created roles";
+		};
+
+		class roleSelect: ctrlListbox
 		{
 			idc = 1500;
 			onLBSelChanged = QUOTE([ARR_2(_this # 1, false)] call FUNC(editRolesRefresh));
-			x = 0.381406 * safezoneW + safezoneX;
-			y = 0.313 * safezoneH + safezoneY;
-			w = 0.108281 * safezoneW;
-			h = 0.396 * safezoneH;
-		};
-		class isMedic: RscCheckBox
-		{
-			idc = 2801;
-			onCheckedChanged = QUOTE(call FUNC(editRolesSaveRole););
-			x = 0.494844 * safezoneW + safezoneX;
-			y = 0.467 * safezoneH + safezoneY;
-			w = 0.0154689 * safezoneW;
-			h = 0.022 * safezoneH;
+			x = CENTERED_X(DIALOG_W) + GRID_W;
+			y = DIALOG_TOP + 3 * CTRL_DEFAULT_H + GRID_H;
+			w = (DIALOG_W / 2 - 1) * GRID_W;
+			h = DIALOG_H * GRID_H - 4 * CTRL_DEFAULT_H + 2 * GRID_H;
 		};
 		class additionalItems: ctrlButton
 		{
@@ -52,94 +132,105 @@ class GVAR(editRole) {
 				[_ctrl lbText (lbCurSel _ctrl)] call FUNC(additionalItemsSpawn); \
 			);
 			text = "Edit Additional Items";
-			x = 0.494844 * safezoneW + safezoneX;
-			y = 0.643 * safezoneH + safezoneY;
-			w = 0.12375 * safezoneW;
-			h = 0.022 * safezoneH;
-			tooltip = "Edit the items avaliable to all units with the selected role";
+			x = CENTERED_X(DIALOG_W) + DIALOG_W / 1.75 * GRID_W;
+			y = DIALOG_TOP + 7 * CTRL_DEFAULT_H + GRID_H;
+			w = (DIALOG_W / 2.75) * GRID_W;
+			h = CTRL_DEFAULT_H * 2.5;
+			tooltip = "Edit the items avaliable in the arsenal of all units with the selected role";
 		};
 		class traitOptionsText: RscText
 		{
 			idc = -1;
 			text = "Trait Options";
-			x = 0.494844 * safezoneW + safezoneX;
-			y = 0.434 * safezoneH + safezoneY;
-			w = 0.118594 * safezoneW;
-			h = 0.022 * safezoneH;
+			font = "RobotoCondensedBold";
+			x = CENTERED_X(DIALOG_W) + DIALOG_W / 1.75 * GRID_W - 4 * GRID_W;
+			y = DIALOG_TOP + 11.75 * CTRL_DEFAULT_H + GRID_H;
+			w = 40 * GRID_W;
+			h = CTRL_DEFAULT_H;
 			tooltip = "Adds the following trait to all units with the selected role";
+		};
+		class isMedic: RscCheckBox
+		{
+			idc = 2801;
+			onCheckedChanged = QUOTE(call FUNC(editRolesSaveRole););
+			x = CENTERED_X(DIALOG_W) + DIALOG_W / 1.75 * GRID_W - 5 * GRID_W;
+			y = DIALOG_TOP + 13 * CTRL_DEFAULT_H + GRID_H;
+			w = CTRL_DEFAULT_W;
+			h = CTRL_DEFAULT_H;
 		};
 		class isEngineer: RscCheckBox
 		{
 			idc = 2802;
 			onCheckedChanged = QUOTE(call FUNC(editRolesSaveRole););
-			x = 0.494844 * safezoneW + safezoneX;
-			y = 0.5 * safezoneH + safezoneY;
-			w = 0.0154689 * safezoneW;
-			h = 0.022 * safezoneH;
+			x = CENTERED_X(DIALOG_W) + DIALOG_W / 1.75 * GRID_W - 5 * GRID_W;
+			y = DIALOG_TOP + 14.25 * CTRL_DEFAULT_H + GRID_H;
+			w = CTRL_DEFAULT_W;
+			h = CTRL_DEFAULT_H;
 		};
 		class isMedicText: RscText
 		{
 			idc = -1;
 			text = "Is Medic";
-			x = 0.510312 * safezoneW + safezoneX;
-			y = 0.467 * safezoneH + safezoneY;
-			w = 0.108281 * safezoneW;
-			h = 0.022 * safezoneH;
+			x = CENTERED_X(DIALOG_W) + DIALOG_W / 1.75 * GRID_W;
+			y = DIALOG_TOP + 13 * CTRL_DEFAULT_H + GRID_H;
+			w = 40 * GRID_W;
+			h = CTRL_DEFAULT_H;
 		};
 		class isEngineerText: RscText
 		{
 			idc = -1;
 			text = "Is Engineer";
-			x = 0.510312 * safezoneW + safezoneX;
-			y = 0.5 * safezoneH + safezoneY;
-			w = 0.108281 * safezoneW;
-			h = 0.022 * safezoneH;
+			x = CENTERED_X(DIALOG_W) + DIALOG_W / 1.75 * GRID_W;
+			y = DIALOG_TOP + 14.25 * CTRL_DEFAULT_H + GRID_H;
+			w = 40 * GRID_W;
+			h = CTRL_DEFAULT_H;
 		};
 		class radioOptionsText: RscText
 		{
 			idc = -1;
 			text = "Radio Options";
-			x = 0.494844 * safezoneW + safezoneX;
-			y = 0.533 * safezoneH + safezoneY;
-			w = 0.118594 * safezoneW;
-			h = 0.022 * safezoneH;
+			font = "RobotoCondensedBold";
+			x = CENTERED_X(DIALOG_W) + DIALOG_W / 1.25 * GRID_W - 4 * GRID_W;
+			y = DIALOG_TOP + 11.75 * CTRL_DEFAULT_H + GRID_H;
+			w = 40 * GRID_W;
+			h = CTRL_DEFAULT_H;
 			tooltip = "Adds the following radio from 'SIA Framework Settings' to all units with the selected role";
 		};
 		class hasHandheldRadio: RscCheckBox
 		{
 			idc = 2803;
 			onCheckedChanged = QUOTE(call FUNC(editRolesSaveRole););
-			x = 0.494844 * safezoneW + safezoneX;
-			y = 0.566 * safezoneH + safezoneY;
-			w = 0.0154689 * safezoneW;
-			h = 0.022 * safezoneH;
+			x = CENTERED_X(DIALOG_W) + DIALOG_W / 1.25 * GRID_W - 5 * GRID_W;
+			y = DIALOG_TOP + 13 * CTRL_DEFAULT_H + GRID_H;
+			w = CTRL_DEFAULT_W;
+			h = CTRL_DEFAULT_H;
 		};
 		class hasManpackRadio: RscCheckBox
 		{
 			idc = 2804;
 			onCheckedChanged = QUOTE(call FUNC(editRolesSaveRole););
-			x = 0.494844 * safezoneW + safezoneX;
-			y = 0.599 * safezoneH + safezoneY;
-			w = 0.0154689 * safezoneW;
-			h = 0.022 * safezoneH;
+			x = CENTERED_X(DIALOG_W) + DIALOG_W / 1.25 * GRID_W - 5 * GRID_W;
+			y = DIALOG_TOP + 14.25 * CTRL_DEFAULT_H + GRID_H;
+			w = CTRL_DEFAULT_W;
+			h = CTRL_DEFAULT_H;
 		};
 		class hasHandheldRadioText: RscText
 		{
 			idc = -1;
-			text = "Has Handheld Radio";
-			x = 0.510312 * safezoneW + safezoneX;
-			y = 0.566 * safezoneH + safezoneY;
-			w = 0.108281 * safezoneW;
-			h = 0.022 * safezoneH;
+			text = "Has Handheld";
+			x = CENTERED_X(DIALOG_W) + DIALOG_W / 1.25 * GRID_W;
+			y = DIALOG_TOP + 13 * CTRL_DEFAULT_H + GRID_H;
+			w = 40 * GRID_W;
+			h = CTRL_DEFAULT_H;
 		};
 		class hasManpackRadioText: RscText
 		{
 			idc = -1;
-			text = "Has Manpack Radio";
-			x = 0.510312 * safezoneW + safezoneX;
-			y = 0.599 * safezoneH + safezoneY;
-			w = 0.108281 * safezoneW;
-			h = 0.022 * safezoneH;
+			text = "Has Manpack";
+			x = CENTERED_X(DIALOG_W) + DIALOG_W / 1.25 * GRID_W;
+			y = DIALOG_TOP + 14.25 * CTRL_DEFAULT_H + GRID_H;
+			w = 40 * GRID_W;
+			h = CTRL_DEFAULT_H;
 		};
 		class okButton: ctrlButton
 		{
@@ -152,65 +243,56 @@ class GVAR(editRole) {
 				do3DENAction ""MissionSave""; \
 				(findDisplay 8501) closeDisplay 2; \
 			);
-			x = 0.561875 * safezoneW + safezoneX;
-			y = 0.7225 * safezoneH + safezoneY;
-			w = 0.061875 * safezoneW;
-			h = 0.022 * safezoneH;
+			text = "SAVE";
+			x = CENTERED_X(DIALOG_W) + GRID_W + DIALOG_W * GRID_W - 47 * GRID_W;
+			y = DIALOG_TOP + DIALOG_H * GRID_H - GRID_H;
+			w = 22 * GRID_W;
+			h = CTRL_DEFAULT_H;
+			tooltip = "Save changes and close the menu";
 		};
-		class okButtonText: RscText
-		{
-			idc = -1;
-			text = "OK";
-			x = 0.561875 * safezoneW + safezoneX;
-			y = 0.7225 * safezoneH + safezoneY;
-			w = 0.0567187 * safezoneW;
-			h = 0.022 * safezoneH;
-		};
-		class cancelButton: ctrlButton
-		{
-			idc = 1602;
-			action = "(findDisplay 8501) closeDisplay 2;";
-			x = 0.37625 * safezoneW + safezoneX;
-			y = 0.7225 * safezoneH + safezoneY;
-			w = 0.061875 * safezoneW;
-			h = 0.022 * safezoneH;
-		};
-		class cancelButtonText: RscText
+		class cancelButton: ctrlButtonClose
 		{
 			idc = -1;
 			text = "CANCEL";
-			x = 0.37625 * safezoneW + safezoneX;
-			y = 0.7225 * safezoneH + safezoneY;
-			w = 0.0567187 * safezoneW;
-			h = 0.022 * safezoneH;
+			x = CENTERED_X(DIALOG_W) + GRID_W + DIALOG_W * GRID_W - 24 * GRID_W;
+			y = DIALOG_TOP + DIALOG_H * GRID_H - GRID_H;
+			w = 22 * GRID_W;
+			h = CTRL_DEFAULT_H;
+			onButtonClick = "(findDisplay 8501) closeDisplay 2;";
+			tooltip = "Close the menu without saving changes";
 		};
 		class roleName: ctrlEdit
 		{
 			idc = 1400;
 			text = "Role Name...";
-			x = 0.494844 * safezoneW + safezoneX;
-			y = 0.346 * safezoneH + safezoneY;
-			w = 0.12375 * safezoneW;
-			h = 0.022 * safezoneH;
+			x = CENTERED_X(DIALOG_W) + DIALOG_W / 2 * GRID_W + 6 * GRID_W;
+			y = DIALOG_TOP + 3.5 * CTRL_DEFAULT_H + GRID_H;
+			w = (DIALOG_W / 2 - 11) * GRID_W;
+			h = CTRL_DEFAULT_H;
+			tooltip = "Type in the name of a role to add, delete, or modify";
 		};
 		class roleNameText: RscText
 		{
 			idc = -1;
-			text = "Role Name:";
-			x = 0.489687 * safezoneW + safezoneX;
-			y = 0.313 * safezoneH + safezoneY;
-			w = 0.12375 * safezoneW;
-			h = 0.022 * safezoneH;
+			text = "Role Settings";
+			font = "RobotoCondensedBold";
+			x = CENTERED_X(DIALOG_W) + DIALOG_W / 2 * GRID_W + 6 * GRID_W;
+			y = DIALOG_TOP + 2 * CTRL_DEFAULT_H + GRID_H;
+			w = 40 * GRID_W;
+			h = CTRL_DEFAULT_H;
+			shadow = 1;
+			sizeEx = GUI_GRID_H * 1.2;
+			tooltip = "Add, delete, or modify a custom role";
 		};
 		class createRole: ctrlButton
 		{
 			idc = 1603;
 			action = QUOTE([ctrlText ((findDisplay 8501) displayCtrl 1400)] call FUNC(editRolesCreateRole););
 			text = "Create Role";
-			x = 0.556719 * safezoneW + safezoneX;
-			y = 0.39 * safezoneH + safezoneY;
-			w = 0.061875 * safezoneW;
-			h = 0.022 * safezoneH;
+			x = CENTERED_X(DIALOG_W) + GRID_W + DIALOG_W * GRID_W - 38 * GRID_W;
+			y = DIALOG_TOP + 5 * CTRL_DEFAULT_H + GRID_H;
+			w = 32 * GRID_W;
+			h = CTRL_DEFAULT_H;
 			tooltip = "Create a role with the name entered above";
 		};
 		class deleteRole: ctrlButton
@@ -218,58 +300,98 @@ class GVAR(editRole) {
 			idc = 1604;
 			action = QUOTE([ctrlText ((findDisplay 8501) displayCtrl 1400)] call FUNC(editRolesDeleteRole););
 			text = "Delete Role";
-			x = 0.494844 * safezoneW + safezoneX;
-			y = 0.39 * safezoneH + safezoneY;
-			w = 0.0567187 * safezoneW;
-			h = 0.022 * safezoneH;
+			x = CENTERED_X(DIALOG_W) + DIALOG_W / 2 * GRID_W + 6 * GRID_W;
+			y = DIALOG_TOP + 5 * CTRL_DEFAULT_H + GRID_H;
+			w = 32 * GRID_W;
+			h = CTRL_DEFAULT_H;
 			tooltip = "Delete the role matching the name entered above";
 		};
 		class editGroups: ctrlButton
 		{
 			idc = 1605;
 			action = QUOTE([] call FUNC(editGroupsSpawn););
-			text = "Edit Role Groups";
-			x = 0.494844 * safezoneW + safezoneX;
-			y = 0.687 * safezoneH + safezoneY;
-			w = 0.12375 * safezoneW;
-			h = 0.022 * safezoneH;
-			tooltip = "Edit the settings for role groups (aka 'Presets')";
+			text = "Role Groups";
+			x = CENTERED_X(DIALOG_W) + GRID_W;
+			y = DIALOG_TOP + DIALOG_H * GRID_H - GRID_H;
+			w = 32 * GRID_W;
+			h = CTRL_DEFAULT_H;
+			tooltip = "Configure and edit the settings for role groups (aka 'Presets')";
 		};
 	};
 };
 
 class GVAR(additionalItemsEditor) {
 	// this GUI is taken and modified from mharis001 - ACE3 (addons/arsenal/Cfg3DEN.hpp >> Attributes >> ace_arsenal_attribute)
+	// background, footer, and menuStrip is taken and modified from R3vo - 3den-Enhanced >> VIM
 	idd = 8502;
 	onKeyDown = QUOTE([_this # 1] call FUNC(additionalItemsKeyDown););
 	onUnload = QUOTE(call FUNC(editRolesCleanupGlobals););
 
 	class controls {
 		DISABLE_BACKGROUND
-		class background: RscPicture
+		class background: ctrlStaticBackground
 		{
 			idc = -1;
-			text = "#(argb,8,8,3)color(0.075,0.075,0.075,0.8)";
-			x = 0.355624 * safezoneW + safezoneX;
-			y = 0.324 * safezoneH + safezoneY;
-			w = 0.28875 * safezoneW;
-			h = 0.363 * safezoneH;
+			x = CENTERED_X(DIALOG_W);
+			y = DIALOG_TOP + CTRL_DEFAULT_H;
+			w = DIALOG_W * GRID_W;
+			h = DIALOG_H * GRID_H;
 		};
-		class title: RscText
+		class title: ctrlStaticTitle
 		{
-			idc = 1000;
+			idc = -1;
 			text = "Additional Items Editor: ROLE_NAME";
 			colorBackground[] = GUI_THEME_COLOR;
-			x = 0.355625 * safezoneW + safezoneX;
-			y = 0.299 * safezoneH + safezoneY;
-			w = 0.28875 * safezoneW;
-			h = 0.022 * safezoneH;
+			x = CENTERED_X(DIALOG_W);
+			y = DIALOG_TOP;
+			w = DIALOG_W * GRID_W;
+			h = CTRL_DEFAULT_H;
+			tooltip = "Configuration of the local arsenal items for specifc SIA Mission Framework roles. \nNOTE that the gear each player spawns in with is already added to their local arsenal.";
+		};
+		class footer: ctrlStaticFooter
+		{
+			idc = -1;
+			x = CENTERED_X(DIALOG_W);
+			y = DIALOG_TOP + DIALOG_H * GRID_H - 2 * GRID_H;
+			w = DIALOG_W * GRID_W;
+			h = CTRL_DEFAULT_H + 2 * GRID_H;
+		};
+		// Menu Strip
+		class MenuStrip: ctrlMenuStrip // MENU BAR
+		{
+			idc = 4000;
+			x = CENTERED_X(DIALOG_W);
+			y = DIALOG_TOP + CTRL_DEFAULT_H;
+			w = DIALOG_W * GRID_W;
+			h = CTRL_DEFAULT_H;
+			class Items
+			{
+				items[] =
+				{
+					"FolderHelp"
+				};
+				class FolderHelp
+				{
+					text = "Help";
+       			   	items[] = {"Documentation"};
+				};
+				// Help
+				class Documentation
+				{
+					text = "Documentation";
+					picture = "\a3\3DEN\Data\Controls\ctrlMenu\link_ca.paa";
+					weblink = "https://github.com/Soliders-in-Arms-Arma-3-Group/sia3f/wiki"; //To-do: link to tutorial and any other help.
+					opensNewWindow = 1;
+				};
+				class Default;
+				class Separator;
+			};
 		};
 		class category: ctrlToolboxPictureKeepAspect
 		{
 			idc = 2300;
-			rows = 2;
-			columns = 12;
+			rows = 12;
+			columns = 2;
 			strings[] = {
 				"\a3\Ui_F_Curator\Data\RscCommon\RscAttributeInventory\filter_0_ca.paa",
 				"\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\PrimaryWeapon_ca.paa",
@@ -298,20 +420,20 @@ class GVAR(additionalItemsEditor) {
 			};
 			onToolBoxSelChanged = QUOTE((_this # 1) call FUNC(additionalItemsCategory););
 
-			x = 0.360781 * safezoneW + safezoneX;
-			y = 0.357 * safezoneH + safezoneY;
-			w = 0.278437 * safezoneW;
-			h = 0.088 * safezoneH;
+			x = CENTERED_X(DIALOG_W) + GRID_W;
+            y = DIALOG_TOP + (CTRL_DEFAULT_H * 2);
+            w = CTRL_DEFAULT_W * 3;
+            h = (DIALOG_H * GRID_H) - CTRL_DEFAULT_H * 2 - (GRID_H * 2);
 			colorText[] = {1,1,1,1};
 			colorBackground[] = {0,0,0,0.5};
 		};
 		class itemsBackground: ctrlStatic
 		{
 			idc = -1;
-			x = 0.360781 * safezoneW + safezoneX;
-			y = 0.445 * safezoneH + safezoneY;
-			w = 0.278437 * safezoneW;
-			h = 0.198 * safezoneH;
+            x = CENTERED_X(DIALOG_W) + CTRL_DEFAULT_W * 3.5;
+            y = DIALOG_TOP + 3 * CTRL_DEFAULT_H + GRID_H;
+            w = (DIALOG_W / 1.125) * GRID_W;
+            h = DIALOG_H * GRID_H - 4 * CTRL_DEFAULT_H + 2 * GRID_H;
 			colorBackground[] = {1,1,1,0.1};
 		};
 		class items: ctrlListNBox
@@ -332,10 +454,10 @@ class GVAR(additionalItemsEditor) {
 			onSetFocus = QUOTE(uiNamespace setVariable [ARR_2(QQGVAR(listboxHasFocus),true)];);
 			onKillFocus = QUOTE(uiNamespace setVariable [ARR_2(QQGVAR(listboxHasFocus),false)];);
 
-			x = 0.360781 * safezoneW + safezoneX;
-			y = 0.445 * safezoneH + safezoneY;
-			w = 0.278437 * safezoneW;
-			h = 0.198 * safezoneH;
+			x = CENTERED_X(DIALOG_W) + CTRL_DEFAULT_W * 3.5;
+            y = DIALOG_TOP + 3 * CTRL_DEFAULT_H + GRID_H;
+            w = (DIALOG_W / 1.125) * GRID_W;
+            h = DIALOG_H * GRID_H - 4 * CTRL_DEFAULT_H + 2 * GRID_H;
 		};
 		class arrowLeft: ctrlButton
 		{
@@ -361,7 +483,16 @@ class GVAR(additionalItemsEditor) {
 			w = 0.0117188 * safezoneW;
 			h = 0.0208333 * safezoneH;
 		};
-		class searchBar: RscEdit
+		class FilterSearch: ctrlCombo
+		{
+		idc = 3300;
+		x = CENTERED_X(DIALOG_W) + GRID_W;
+		y = DIALOG_TOP + DIALOG_H * GRID_H - GRID_H;
+		w = 5 * GRID_W;
+		h = CTRL_DEFAULT_H;
+		//onLBSelChanged = To-Do: Add ability to filter by mod.
+		};
+		class searchBar: ctrlEdit
 		{
 			idc = 1401;
 
@@ -374,44 +505,35 @@ class GVAR(additionalItemsEditor) {
 				call FUNC(additionalItemsAddItems); \
 			);
 
-			x = 0.376249 * safezoneW + safezoneX;
-			y = 0.654 * safezoneH + safezoneY;
-			w = 0.0928125 * safezoneW;
-			h = 0.022 * safezoneH;
+			x = CENTERED_X(DIALOG_W) + 6 * GRID_W;
+			y = DIALOG_TOP + DIALOG_H * GRID_H - GRID_H;
+			w = 40 * GRID_W;
+			h = CTRL_DEFAULT_H;
 		};
-		class searchButton: ctrlButton
+		class searchButton: ctrlButtonSearch
 		{
 			idc = 1606;
-			action = QUOTE( \
+			onButtonClick = QUOTE( \
 				private _searchBar = (findDisplay 8502) displayCtrl 1401; \
 				_searchBar ctrlSetText ''; \
 				ctrlSetFocus _searchBar; \
 				call FUNC(additionalItemsAddItems); \
 			);
 
-			x = 0.360781 * safezoneW + safezoneX;
-			y = 0.654 * safezoneH + safezoneY;
-			w = 0.0117188 * safezoneW;
-			h = 0.0208333 * safezoneH;
-		};
-		class searchButtonImage: RscPicture
-		{
-			idc = -1;
-			text = "\a3\Ui_f\data\GUI\RscCommon\RscButtonSearch\search_start_ca.paa";
-			x = 0.360781 * safezoneW + safezoneX;
-			y = 0.654 * safezoneH + safezoneY;
-			w = 0.0117188 * safezoneW;
-			h = 0.0208333 * safezoneH;
-		};
+			x = CENTERED_X(DIALOG_W) + 46 * GRID_W;
+			y = DIALOG_TOP + DIALOG_H * GRID_H - GRID_H;
+			w = 5 * GRID_W;
+			h = CTRL_DEFAULT_H;
+		};	
 		class import: ctrlButton
 		{
 			idc = 1607;
 			action = QUOTE([call compile copyFromClipboard] call FUNC(additionalItemsImport););
 			text = "IMPORT";
-			x = 0.474219 * safezoneW + safezoneX;
-			y = 0.654 * safezoneH + safezoneY;
-			w = 0.0515625 * safezoneW;
-			h = 0.022 * safezoneH;
+			x = CENTERED_X(DIALOG_W) + CTRL_DEFAULT_W * 3.5;
+           	y = DIALOG_TOP + 2 * CTRL_DEFAULT_H + GRID_H;
+            w = 22 * GRID_W;
+            h = CTRL_DEFAULT_H;
 			colorBackground[] = {0,0,0,0.6};
 			tooltip = "Import items list array from clipboard (should be the same format as export)";
 		};
@@ -420,10 +542,10 @@ class GVAR(additionalItemsEditor) {
 			idc = 1608;
 			action = QUOTE(copyToClipboard str (uiNamespace getVariable [ARR_2(QQGVAR(roleItems),[])]););
 			text = "EXPORT";
-			x = 0.530937 * safezoneW + safezoneX;
-			y = 0.654 * safezoneH + safezoneY;
-			w = 0.0515625 * safezoneW;
-			h = 0.022 * safezoneH;
+			x = CENTERED_X(DIALOG_W) + CTRL_DEFAULT_W * 8.25;
+            y = DIALOG_TOP + 2 * CTRL_DEFAULT_H + GRID_H;
+            w = 22 * GRID_W;
+            h = CTRL_DEFAULT_H;
 			colorBackground[] = {0,0,0,0.6};
 			tooltip = "Export current items list as an array for use in scripts";
 		};
@@ -432,12 +554,14 @@ class GVAR(additionalItemsEditor) {
 			idc = 1609;
 			action = QUOTE(call FUNC(additionalItemsClear););
 			text = "CLEAR";
-			x = 0.587656 * safezoneW + safezoneX;
-			y = 0.654 * safezoneH + safezoneY;
-			w = 0.0515625 * safezoneW;
-			h = 0.022 * safezoneH;
+			x = CENTERED_X(DIALOG_W) + CTRL_DEFAULT_W * 13;
+            y = DIALOG_TOP + 2 * CTRL_DEFAULT_H + GRID_H;
+            w = 22 * GRID_W;
+            h = CTRL_DEFAULT_H;
 			colorBackground[] = {0,0,0,0.6};
+			tooltip = "Clear all current items from the list";
 		};
+		
 		class addCompatible: ctrlButton
 		{
 			idc = 1610;
@@ -447,62 +571,40 @@ class GVAR(additionalItemsEditor) {
 			font = "RobotoCondensedLight";
 			action = QUOTE(call FUNC(additionalItemsAddCompatible););
 
-			x = 0.54125 * safezoneW + safezoneX;
-			y = 0.335 * safezoneH + safezoneY;
-			w = 0.0976563 * safezoneW;
-			h = 0.0166667 * safezoneH;
+			x = CENTERED_X(DIALOG_W) + DIALOG_W / 1.3 * GRID_W;
+            y = DIALOG_TOP + 2 * CTRL_DEFAULT_H + GRID_H;
+            w = 35 * GRID_W;
+			h = CTRL_DEFAULT_H;
 			colorBackground[] = {0,0,0,0.5};
 			sizeEx = 4 * (pixelH * pixelGrid * 0.5);
-		};
-		class itemsText: RscText
-		{
-			idc = -1;
-			text = "Items";
-			x = 0.357 * safezoneW + safezoneX;
-			y = 0.332 * safezoneH + safezoneY;
-			w = 0.103125 * safezoneW;
-			h = 0.022 * safezoneH;
 		};
 		class Ok: ctrlButton
 		{
 			idc = 1611;
+			text = "SAVE";
 			action = QUOTE(call FUNC(additionalItemsSave););
-			x = 0.5825 * safezoneW + safezoneX;
-			y = 0.69 * safezoneH + safezoneY;
-			w = 0.061875 * safezoneW;
-			h = 0.022 * safezoneH;
+			x = CENTERED_X(DIALOG_W) + GRID_W + DIALOG_W * GRID_W - 47 * GRID_W;
+			y = DIALOG_TOP + DIALOG_H * GRID_H - GRID_H;
+			w = 22 * GRID_W;
+			h = CTRL_DEFAULT_H;
+			tooltip = "Save changes and return to the previous menu";
 		};
-		class OkText: RscText
-		{
-			idc = -1;
-			text = "OK";
-			x = 0.5825 * safezoneW + safezoneX;
-			y = 0.69 * safezoneH + safezoneY;
-			w = 0.0567187 * safezoneW;
-			h = 0.022 * safezoneH;
-		};
-		class cancel: ctrlButton
+		class cancel: ctrlButtonClose
 		{
 			idc = 1612;
-			action = "(findDisplay 8502) closeDisplay 2;";
-			x = 0.355625 * safezoneW + safezoneX;
-			y = 0.69 * safezoneH + safezoneY;
-			w = 0.061875 * safezoneW;
-			h = 0.022 * safezoneH;
-		};
-		class cancelText: RscText
-		{
-			idc = -1;
 			text = "CANCEL";
-			x = 0.355625 * safezoneW + safezoneX;
-			y = 0.69 * safezoneH + safezoneY;
-			w = 0.0567187 * safezoneW;
-			h = 0.022 * safezoneH;
+			action = "(findDisplay 8502) closeDisplay 2;";
+			x = CENTERED_X(DIALOG_W) + GRID_W + DIALOG_W * GRID_W - 24 * GRID_W;
+			y = DIALOG_TOP + DIALOG_H * GRID_H - GRID_H;
+			w = 22 * GRID_W;
+			h = CTRL_DEFAULT_H;
+			tooltip = "Close the menu without saving changes";
 		};
 	};
 };
 
 class GVAR(editGroups) {
+	// this GUI is taken and modified from R3vo - 3den-Enhanced >> VIM
 	idd = 8503;
 	onLoad = QUOTE(uiNamespace setVariable [ARR_2(QQGVAR(editGroupsCurrentMode),0)];);
 	onUnload = QUOTE(call FUNC(editRolesCleanupGlobals););
@@ -510,89 +612,151 @@ class GVAR(editGroups) {
 
 	class controls {
 		DISABLE_BACKGROUND
-		class background: RscPicture
+		class background: ctrlStaticBackground
 		{
 			idc = -1;
-			text = "#(argb,8,8,3)color(0.075,0.075,0.075,0.8)";
-			x = 0.37625 * safezoneW + safezoneX;
-			y = 0.302 * safezoneH + safezoneY;
-			w = 0.2475 * safezoneW;
-			h = 0.418 * safezoneH;
+			x = CENTERED_X(DIALOG_W);
+			y = DIALOG_TOP + CTRL_DEFAULT_H;
+			w = DIALOG_W * GRID_W;
+			h = DIALOG_H * GRID_H;
 		};
-		class title: RscText
+		class title: ctrlStaticTitle
 		{
 			idc = -1;
 			text = "Group Editor";
 			colorBackground[] = GUI_THEME_COLOR;
-			x = 0.37625 * safezoneW + safezoneX;
-			y = 0.277 * safezoneH + safezoneY;
-			w = 0.2475 * safezoneW;
-			h = 0.022 * safezoneH;
+			x = CENTERED_X(DIALOG_W);
+			y = DIALOG_TOP;
+			w = DIALOG_W * GRID_W;
+			h = CTRL_DEFAULT_H;
 			tooltip = "Create and edit groups of roles, allowing for items and settings to be applied to multiple roles at once.";
 		};
-		class groupSelect: RscListBox
+		class Footer: ctrlStaticFooter
+		{
+			idc = -1;
+			x = CENTERED_X(DIALOG_W);
+			y = DIALOG_TOP + DIALOG_H * GRID_H - 2 * GRID_H;
+			w = DIALOG_W * GRID_W;
+			h = CTRL_DEFAULT_H + 2 * GRID_H;
+		};
+		class MenuStrip: ctrlMenuStrip // MENU BAR
+		{
+			idc = 4000;
+			x = CENTERED_X(DIALOG_W);
+			y = DIALOG_TOP + CTRL_DEFAULT_H;
+			w = DIALOG_W * GRID_W;
+			h = CTRL_DEFAULT_H;
+			class Items
+			{
+				items[] =
+				{
+					"FolderTools",
+					"FolderHelp"
+				};
+				class FolderTools
+				{
+					text = "Tools";
+					items[] = 
+					{
+						"WIP" // To-do: Add delete all, reset, import, export
+					};
+				};
+				class FolderHelp
+				{
+					text = "Help";
+       			   	items[] = {"Documentation"};
+				};
+				// Tools
+				class WIP
+				{
+					text = "WIP"; 
+				};
+				// Help
+				class Documentation
+				{
+					text = "Documentation";
+					picture = "\a3\3DEN\Data\Controls\ctrlMenu\link_ca.paa";
+					weblink = "https://github.com/Soliders-in-Arms-Arma-3-Group/sia3f/wiki"; //To-do: link to tutorial and any other help.
+					opensNewWindow = 1;
+				};
+				class Default;
+				class Separator;
+			};
+		};
+		class groupSelectText: ctrlStatic
+		{
+		idc = 1000;
+			text = "Available Groups";
+			x = CENTERED_X(DIALOG_W) + GRID_W;
+			y = DIALOG_TOP + 2 * CTRL_DEFAULT_H + GRID_H;
+			w = 40 * GRID_W;
+			h = CTRL_DEFAULT_H;
+			font = "RobotoCondensedBold";
+			shadow = 1;
+			sizeEx = GUI_GRID_H * 1.2;
+			tooltip = "List of default, imported, and user-created roles";
+		};
+		class groupSelect: ctrlListbox
 		{
 			idc = 1500;
 			onLBSelChanged = QUOTE([ARR_2(_this # 1, false)] call FUNC(editGroupsRefresh));
 
-			x = 0.381406 * safezoneW + safezoneX;
-			y = 0.313 * safezoneH + safezoneY;
-			w = 0.108281 * safezoneW;
-			h = 0.396 * safezoneH;
+			x = CENTERED_X(DIALOG_W) + GRID_W;
+			y = DIALOG_TOP + 3 * CTRL_DEFAULT_H + GRID_H;
+			w = (DIALOG_W / 2 - 1) * GRID_W;
+			h = DIALOG_H * GRID_H - 4 * CTRL_DEFAULT_H + 2 * GRID_H;
 		};
 		class okButton: ctrlButton
 		{
 			idc = 1613;
-			action = QUOTE(call FUNC(editRolesSpawn););
-			x = 0.561875 * safezoneW + safezoneX;
-			y = 0.7225 * safezoneH + safezoneY;
-			w = 0.061875 * safezoneW;
-			h = 0.022 * safezoneH;
+			action = QUOTE( \
+				private _rolesHash = uiNamespace getVariable [ARR_2(QQGVAR(roles), createHashMap)]; \
+				private _groupsHash = uiNamespace getVariable [ARR_2(QQGVAR(groups), createHashMap)]; \
+				QQGVAR(hiddenConfigValues) set3DENMissionAttribute [ARR_2(QQGVAR(roles), _rolesHash)]; \
+				QQGVAR(hiddenConfigValues) set3DENMissionAttribute [ARR_2(QQGVAR(groups), _groupsHash)]; \
+				do3DENAction ""MissionSave""; \
+				(findDisplay 8503) closeDisplay 2; \
+			);
+			text = "SAVE";
+			x = CENTERED_X(DIALOG_W) + GRID_W + DIALOG_W * GRID_W - 47 * GRID_W;
+			y = DIALOG_TOP + DIALOG_H * GRID_H - GRID_H;
+			w = 22 * GRID_W;
+			h = CTRL_DEFAULT_H;
+			tooltip = "Save changes and close the menu";
 		};
-		class okButtonText: RscText
-		{
-			idc = -1;
-			text = "RETURN";
-			x = 0.561875 * safezoneW + safezoneX;
-			y = 0.7225 * safezoneH + safezoneY;
-			w = 0.0567187 * safezoneW;
-			h = 0.022 * safezoneH;
-		};
-		class cancelButton: ctrlButton
+		class cancelButton: ctrlButtonClose
 		{
 			idc = 1614;
-			action = "(findDisplay 8503) closeDisplay 2;";
-			x = 0.37625 * safezoneW + safezoneX;
-			y = 0.7225 * safezoneH + safezoneY;
-			w = 0.061875 * safezoneW;
-			h = 0.022 * safezoneH;
-		};
-		class cancelButtonText: RscText
-		{
-			idc = -1;
+			onButtonClick = "(findDisplay 8503) closeDisplay 2;";
 			text = "CANCEL";
-			x = 0.37625 * safezoneW + safezoneX;
-			y = 0.7225 * safezoneH + safezoneY;
-			w = 0.0567187 * safezoneW;
-			h = 0.022 * safezoneH;
+			x = CENTERED_X(DIALOG_W) + GRID_W + DIALOG_W * GRID_W - 24 * GRID_W;
+			y = DIALOG_TOP + DIALOG_H * GRID_H - GRID_H;
+			w = 22 * GRID_W;
+			h = CTRL_DEFAULT_H;
+			tooltip = "Close the menu without saving changes";
 		};
 		class groupName: ctrlEdit
 		{
 			idc = 1400;
 			text = "Group Name...";
-			x = 0.494844 * safezoneW + safezoneX;
-			y = 0.346 * safezoneH + safezoneY;
-			w = 0.12375 * safezoneW;
-			h = 0.022 * safezoneH;
+			x = CENTERED_X(DIALOG_W) + DIALOG_W / 2 * GRID_W + 6 * GRID_W;
+			y = DIALOG_TOP + 3.5 * CTRL_DEFAULT_H + GRID_H;
+			w = (DIALOG_W / 2 - 11) * GRID_W;
+			h = CTRL_DEFAULT_H;
+			tooltip = "Type in the name of a group to add, delete, or modify";
 		};
 		class groupNameText: RscText
 		{
 			idc = -1;
-			text = "Group Name:";
-			x = 0.489687 * safezoneW + safezoneX;
-			y = 0.313 * safezoneH + safezoneY;
-			w = 0.12375 * safezoneW;
-			h = 0.022 * safezoneH;
+			text = "Group Editor";
+			font = "RobotoCondensedBold";
+			x = CENTERED_X(DIALOG_W) + DIALOG_W / 2 * GRID_W + 6 * GRID_W;
+			y = DIALOG_TOP + 2 * CTRL_DEFAULT_H + GRID_H;
+			w = 40 * GRID_W;
+			h = CTRL_DEFAULT_H;
+			shadow = 1;
+			sizeEx = GUI_GRID_H * 1.2;
+			tooltip = "Add, delete, or modify a custom group \nAdd or remove roles to the selected group using the list below";
 		};
 		class createGroup: ctrlButton
 		{
@@ -600,10 +764,10 @@ class GVAR(editGroups) {
 			action = QUOTE([ctrlText ((findDisplay 8503) displayCtrl 1400)] call FUNC(editGroupsCreateGroup););
 
 			text = "Create Group";
-			x = 0.556719 * safezoneW + safezoneX;
-			y = 0.39 * safezoneH + safezoneY;
-			w = 0.061875 * safezoneW;
-			h = 0.022 * safezoneH;
+			x = CENTERED_X(DIALOG_W) + GRID_W + DIALOG_W * GRID_W - 38 * GRID_W;
+			y = DIALOG_TOP + 5 * CTRL_DEFAULT_H + GRID_H;
+			w = 32 * GRID_W;
+			h = CTRL_DEFAULT_H;
 			tooltip = "Create a group with the name entered above";
 		};
 		class deleteGroup: ctrlButton
@@ -612,19 +776,19 @@ class GVAR(editGroups) {
 			action = QUOTE([ctrlText ((findDisplay 8503) displayCtrl 1400)] call FUNC(editGroupsDeleteGroup););
 
 			text = "Delete Group";
-			x = 0.494844 * safezoneW + safezoneX;
-			y = 0.39 * safezoneH + safezoneY;
-			w = 0.0567187 * safezoneW;
-			h = 0.022 * safezoneH;
+			x = CENTERED_X(DIALOG_W) + DIALOG_W / 2 * GRID_W + 6 * GRID_W;
+			y = DIALOG_TOP + 5 * CTRL_DEFAULT_H + GRID_H;
+			w = 32 * GRID_W;
+			h = CTRL_DEFAULT_H;
 			tooltip = "Delete the group matching the name entered above";
 		};
 		class rolesBackground: ctrlStatic
 		{
 			idc = 1000;
-			x = 0.494844 * safezoneW + safezoneX;
-			y = 0.423 * safezoneH + safezoneY;
-			w = 0.12375 * safezoneW;
-			h = 0.253 * safezoneH;
+			x = CENTERED_X(DIALOG_W) + DIALOG_W / 2 * GRID_W + 6 * GRID_W;
+			y = DIALOG_TOP + 7 * CTRL_DEFAULT_H + GRID_H;
+			w = (DIALOG_W / 2 - 11) * GRID_W;
+			h = DIALOG_H * GRID_H - 10 * CTRL_DEFAULT_H + 2 * GRID_H;
 			colorBackground[] = {1,1,1,0.1};
 		};
 		class roles: ctrlListNBox
@@ -647,10 +811,10 @@ class GVAR(editGroups) {
 			onSetFocus = QUOTE(uiNamespace setVariable [ARR_2(QQGVAR(listboxHasFocus),true)];);
 			onKillFocus = QUOTE(uiNamespace setVariable [ARR_2(QQGVAR(listboxHasFocus),false)];);
 
-			x = 0.494844 * safezoneW + safezoneX;
-			y = 0.423 * safezoneH + safezoneY;
-			w = 0.12375 * safezoneW;
-			h = 0.253 * safezoneH;
+			x = CENTERED_X(DIALOG_W) + DIALOG_W / 2 * GRID_W + 6 * GRID_W;
+			y = DIALOG_TOP + 7 * CTRL_DEFAULT_H + GRID_H;
+			w = (DIALOG_W / 2 - 11) * GRID_W;
+			h = DIALOG_H * GRID_H - 10 * CTRL_DEFAULT_H + 2 * GRID_H;
 		};
 		class arrowLeft: ctrlButton
 		{
@@ -676,110 +840,185 @@ class GVAR(editGroups) {
 			w = 0.0117188 * safezoneW;
 			h = 0.0208333 * safezoneH;
 		};
+		class editRoles: ctrlButton
+		{
+			idc = 1604;
+			action = QUOTE(call FUNC(editRolesSpawn););
+			text = "Edit Roles";
+			x = CENTERED_X(DIALOG_W) + GRID_W;
+			y = DIALOG_TOP + DIALOG_H * GRID_H - GRID_H;
+			w = 32 * GRID_W;
+			h = CTRL_DEFAULT_H;
+			tooltip = "Return to the role editor";
+		};	
 		class editGroupsSettings: ctrlButton
 		{
 			idc = 1605;
 			action = QUOTE([1] call FUNC(editGroupsMode););
-			text = "Edit Group Options";
-			x = 0.494844 * safezoneW + safezoneX;
-			y = 0.687 * safezoneH + safezoneY;
-			w = 0.12375 * safezoneW;
-			h = 0.022 * safezoneH;
+			text = "Group Settings";
+			x = CENTERED_X(DIALOG_W) + GRID_W + 33 * GRID_W;
+			y = DIALOG_TOP + DIALOG_H * GRID_H - GRID_H;
+			w = 36 * GRID_W;
+			h = CTRL_DEFAULT_H;
+			tooltip = "Configure the settings and additional items for your groups";
 		};
 	};
 };
 
 class GVAR(editGroupsSettings) {
+	// this GUI is taken and modified from R3vo - 3den-Enhanced >> VIM
 	idd = 8504;
 	onLoad = QUOTE(uiNamespace setVariable [ARR_2(QQGVAR(editGroupsCurrentMode),1)];);
 	onUnload = QUOTE(call FUNC(editRolesCleanupGlobals););
 
 	class controls {
 		DISABLE_BACKGROUND
-		class background: RscPicture
+		class background: ctrlStaticBackground
 		{
 			idc = -1;
-			text = "#(argb,8,8,3)color(0.075,0.075,0.075,0.8)";
-			x = 0.37625 * safezoneW + safezoneX;
-			y = 0.302 * safezoneH + safezoneY;
-			w = 0.2475 * safezoneW;
-			h = 0.418 * safezoneH;
+			//text = "#(argb,8,8,3)color(0.075,0.075,0.075,0.8)";
+			x = CENTERED_X(DIALOG_W);
+			y = DIALOG_TOP + CTRL_DEFAULT_H;
+			w = DIALOG_W * GRID_W;
+			h = DIALOG_H * GRID_H;
 		};
-		class title: RscText
+		class title: ctrlStaticTitle
 		{
 			idc = -1;
 			text = "Group Editor";
 			colorBackground[] = GUI_THEME_COLOR;
-			x = 0.37625 * safezoneW + safezoneX;
-			y = 0.277 * safezoneH + safezoneY;
-			w = 0.2475 * safezoneW;
-			h = 0.022 * safezoneH;
+			x = CENTERED_X(DIALOG_W);
+			y = DIALOG_TOP;
+			w = DIALOG_W * GRID_W;
+			h = CTRL_DEFAULT_H;
 			tooltip = "Create and edit groups of roles, allowing for items and settings to be applied to multiple roles at once.";
 		};
-		class groupSelect: RscListBox
+		class Footer: ctrlStaticFooter
+		{
+			idc = -1;
+			x = CENTERED_X(DIALOG_W);
+			y = DIALOG_TOP + DIALOG_H * GRID_H - 2 * GRID_H;
+			w = DIALOG_W * GRID_W;
+			h = CTRL_DEFAULT_H + 2 * GRID_H;
+		};
+		class MenuStrip: ctrlMenuStrip // MENU BAR
+		{
+			idc = 4000;
+			x = CENTERED_X(DIALOG_W);
+			y = DIALOG_TOP + CTRL_DEFAULT_H;
+			w = DIALOG_W * GRID_W;
+			h = CTRL_DEFAULT_H;
+			class Items
+			{
+				items[] =
+				{
+					"FolderTools",
+					"FolderHelp"
+				};
+				class FolderTools
+				{
+					text = "Tools";
+					items[] = 
+					{
+						"WIP" // To-do: Add delete all, reset, import, export
+					};
+				};
+				class FolderHelp
+				{
+					text = "Help";
+       			   	items[] = {"Documentation"};
+				};
+				// Tools
+				class WIP
+				{
+					text = "WIP"; 
+				};
+				// Help
+				class Documentation
+				{
+					text = "Documentation";
+					picture = "\a3\3DEN\Data\Controls\ctrlMenu\link_ca.paa";
+					weblink = "https://github.com/Soliders-in-Arms-Arma-3-Group/sia3f/wiki"; //To-do: link to tutorial and any other help.
+					opensNewWindow = 1;
+				};
+				class Default;
+				class Separator;
+			};
+		};
+		class groupSelectText: ctrlStatic
+		{
+		idc = 1000;
+			text = "Available Groups";
+			x = CENTERED_X(DIALOG_W) + GRID_W;
+			y = DIALOG_TOP + 2 * CTRL_DEFAULT_H + GRID_H;
+			w = 40 * GRID_W;
+			h = CTRL_DEFAULT_H;
+			font = "RobotoCondensedBold";
+			shadow = 1;
+			sizeEx = GUI_GRID_H * 1.2;
+			tooltip = "List of default, imported, and user-created roles";
+		};
+		class groupSelect: ctrlListbox
 		{
 			idc = 1500;
 			onLBSelChanged = QUOTE([ARR_2(_this # 1, false)] call FUNC(editGroupsRefresh));
 
-			x = 0.381406 * safezoneW + safezoneX;
-			y = 0.313 * safezoneH + safezoneY;
-			w = 0.108281 * safezoneW;
-			h = 0.396 * safezoneH;
+			x = CENTERED_X(DIALOG_W) + GRID_W;
+			y = DIALOG_TOP + 3 * CTRL_DEFAULT_H + GRID_H;
+			w = (DIALOG_W / 2 - 1) * GRID_W;
+			h = DIALOG_H * GRID_H - 4 * CTRL_DEFAULT_H + 2 * GRID_H;
 		};
 		class okButton: ctrlButton
 		{
 			idc = 1613;
-			action = QUOTE(call FUNC(editRolesSpawn););
-			x = 0.561875 * safezoneW + safezoneX;
-			y = 0.7225 * safezoneH + safezoneY;
-			w = 0.061875 * safezoneW;
-			h = 0.022 * safezoneH;
+			action = QUOTE( \
+				private _rolesHash = uiNamespace getVariable [ARR_2(QQGVAR(roles), createHashMap)]; \
+				private _groupsHash = uiNamespace getVariable [ARR_2(QQGVAR(groups), createHashMap)]; \
+				QQGVAR(hiddenConfigValues) set3DENMissionAttribute [ARR_2(QQGVAR(roles), _rolesHash)]; \
+				QQGVAR(hiddenConfigValues) set3DENMissionAttribute [ARR_2(QQGVAR(groups), _groupsHash)]; \
+				do3DENAction ""MissionSave""; \
+				(findDisplay 8504) closeDisplay 2; \
+			);
+			text = "SAVE";
+			x = CENTERED_X(DIALOG_W) + GRID_W + DIALOG_W * GRID_W - 47 * GRID_W;
+			y = DIALOG_TOP + DIALOG_H * GRID_H - GRID_H;
+			w = 22 * GRID_W;
+			h = CTRL_DEFAULT_H;
+			tooltip = "Save changes and close the menu";
 		};
-		class okButtonText: RscText
-		{
-			idc = -1;
-			text = "RETURN";
-			x = 0.561875 * safezoneW + safezoneX;
-			y = 0.7225 * safezoneH + safezoneY;
-			w = 0.0567187 * safezoneW;
-			h = 0.022 * safezoneH;
-			tooltip = "Create a group with the name entered above";
-		};
-		class cancelButton: ctrlButton
+		class cancelButton: ctrlButtonClose
 		{
 			idc = 1614;
 			action = "(findDisplay 8504) closeDisplay 2;";
-			x = 0.37625 * safezoneW + safezoneX;
-			y = 0.7225 * safezoneH + safezoneY;
-			w = 0.061875 * safezoneW;
-			h = 0.022 * safezoneH;
-		};
-		class cancelButtonText: RscText
-		{
-			idc = -1;
 			text = "CANCEL";
-			x = 0.37625 * safezoneW + safezoneX;
-			y = 0.7225 * safezoneH + safezoneY;
-			w = 0.0567187 * safezoneW;
-			h = 0.022 * safezoneH;
+			x = CENTERED_X(DIALOG_W) + GRID_W + DIALOG_W * GRID_W - 24 * GRID_W;
+			y = DIALOG_TOP + DIALOG_H * GRID_H - GRID_H;
+			w = 22 * GRID_W;
+			h = CTRL_DEFAULT_H;
+			tooltip = "Close the menu without saving changes";
 		};
 		class groupName: ctrlEdit
 		{
 			idc = 1400;
 			text = "Group Name...";
-			x = 0.494844 * safezoneW + safezoneX;
-			y = 0.346 * safezoneH + safezoneY;
-			w = 0.12375 * safezoneW;
-			h = 0.022 * safezoneH;
+			x = CENTERED_X(DIALOG_W) + DIALOG_W / 2 * GRID_W + 6 * GRID_W;
+			y = DIALOG_TOP + 3.5 * CTRL_DEFAULT_H + GRID_H;
+			w = (DIALOG_W / 2 - 11) * GRID_W;
+			h = CTRL_DEFAULT_H;
+			tooltip = "Type in the name of a group to add, delete, or modify";
 		};
 		class groupNameText: RscText
 		{
 			idc = -1;
-			text = "Group Name:";
-			x = 0.489687 * safezoneW + safezoneX;
-			y = 0.313 * safezoneH + safezoneY;
-			w = 0.12375 * safezoneW;
-			h = 0.022 * safezoneH;
+			text = "Group Settings";
+			font = "RobotoCondensedBold";
+			x = CENTERED_X(DIALOG_W) + DIALOG_W / 2 * GRID_W + 6 * GRID_W;
+			y = DIALOG_TOP + 2 * CTRL_DEFAULT_H + GRID_H;
+			w = 40 * GRID_W;
+			h = CTRL_DEFAULT_H;
+			shadow = 1;
+			sizeEx = GUI_GRID_H * 1.2;
+			tooltip = "Add, delete, or modify a custom group";
 		};
 		class createGroup: ctrlButton
 		{
@@ -787,10 +1026,10 @@ class GVAR(editGroupsSettings) {
 			action = QUOTE([ctrlText ((findDisplay 8504) displayCtrl 1400)] call FUNC(editGroupsCreateGroup););
 
 			text = "Create Group";
-			x = 0.556719 * safezoneW + safezoneX;
-			y = 0.39 * safezoneH + safezoneY;
-			w = 0.061875 * safezoneW;
-			h = 0.022 * safezoneH;
+			x = CENTERED_X(DIALOG_W) + GRID_W + DIALOG_W * GRID_W - 38 * GRID_W;
+			y = DIALOG_TOP + 5 * CTRL_DEFAULT_H + GRID_H;
+			w = 32 * GRID_W;
+			h = CTRL_DEFAULT_H;
 			tooltip = "Create a group with the name entered above";
 		};
 		class deleteGroup: ctrlButton
@@ -799,20 +1038,20 @@ class GVAR(editGroupsSettings) {
 			action = QUOTE([ctrlText ((findDisplay 8504) displayCtrl 1400)] call FUNC(editGroupsDeleteGroup););
 
 			text = "Delete Group";
-			x = 0.494844 * safezoneW + safezoneX;
-			y = 0.39 * safezoneH + safezoneY;
-			w = 0.0567187 * safezoneW;
-			h = 0.022 * safezoneH;
+			x = CENTERED_X(DIALOG_W) + DIALOG_W / 2 * GRID_W + 6 * GRID_W;
+			y = DIALOG_TOP + 5 * CTRL_DEFAULT_H + GRID_H;
+			w = 32 * GRID_W;
+			h = CTRL_DEFAULT_H;
 			tooltip = "Delete the group matching the name entered above";
 		};
 		class isMedic: RscCheckBox
 		{
 			idc = 2801;
 			onCheckedChanged = QUOTE(call FUNC(editGroupsSaveSettings););
-			x = 0.494844 * safezoneW + safezoneX;
-			y = 0.467 * safezoneH + safezoneY;
-			w = 0.0154689 * safezoneW;
-			h = 0.022 * safezoneH;
+			x = CENTERED_X(DIALOG_W) + DIALOG_W / 1.75 * GRID_W - 5 * GRID_W;
+			y = DIALOG_TOP + 13 * CTRL_DEFAULT_H + GRID_H;
+			w = CTRL_DEFAULT_W;
+			h = CTRL_DEFAULT_H;
 		};
 		class additionalItems: ctrlButton
 		{
@@ -822,104 +1061,116 @@ class GVAR(editGroupsSettings) {
 				[ARR_2(_ctrl lbText (lbCurSel _ctrl), true)] call FUNC(additionalItemsSpawn); \
 			);
 			text = "Edit Additional Items";
-			x = 0.494844 * safezoneW + safezoneX;
-			y = 0.643 * safezoneH + safezoneY;
-			w = 0.12375 * safezoneW;
-			h = 0.022 * safezoneH;
+			x = CENTERED_X(DIALOG_W) + DIALOG_W / 1.75 * GRID_W;
+			y = DIALOG_TOP + 7 * CTRL_DEFAULT_H + GRID_H;
+			w = (DIALOG_W / 2.75) * GRID_W;
+			h = CTRL_DEFAULT_H * 2.5;
 			tooltip = "Edit the items avaliable to all roles in the selected group";
 		};
 		class traitOptionsText: RscText
 		{
 			idc = 1001;
 			text = "Trait Options";
-			x = 0.494844 * safezoneW + safezoneX;
-			y = 0.434 * safezoneH + safezoneY;
-			w = 0.118594 * safezoneW;
-			h = 0.022 * safezoneH;
+			x = CENTERED_X(DIALOG_W) + DIALOG_W / 1.75 * GRID_W - 4 * GRID_W;
+			y = DIALOG_TOP + 11.75 * CTRL_DEFAULT_H + GRID_H;
+			w = 40 * GRID_W;
+			h = CTRL_DEFAULT_H;
 			tooltip = "Adds the following trait to all roles in the selected group";
 		};
 		class isEngineer: RscCheckBox
 		{
 			idc = 2802;
 			onCheckedChanged = QUOTE(call FUNC(editGroupsSaveSettings););
-			x = 0.494844 * safezoneW + safezoneX;
-			y = 0.5 * safezoneH + safezoneY;
-			w = 0.0154689 * safezoneW;
-			h = 0.022 * safezoneH;
+			x = CENTERED_X(DIALOG_W) + DIALOG_W / 1.75 * GRID_W - 5 * GRID_W;
+			y = DIALOG_TOP + 14.25 * CTRL_DEFAULT_H + GRID_H;
+			w = CTRL_DEFAULT_W;
+			h = CTRL_DEFAULT_H;
 		};
 		class isMedicText: RscText
 		{
 			idc = -1;
 			text = "Is Medic";
-			x = 0.510312 * safezoneW + safezoneX;
-			y = 0.467 * safezoneH + safezoneY;
-			w = 0.108281 * safezoneW;
-			h = 0.022 * safezoneH;
+			x = CENTERED_X(DIALOG_W) + DIALOG_W / 1.75 * GRID_W;
+			y = DIALOG_TOP + 13 * CTRL_DEFAULT_H + GRID_H;
+			w = 40 * GRID_W;
+			h = CTRL_DEFAULT_H;
 		};
 		class isEngineerText: RscText
 		{
 			idc = 1002;
 			text = "Is Engineer";
-			x = 0.510312 * safezoneW + safezoneX;
-			y = 0.5 * safezoneH + safezoneY;
-			w = 0.108281 * safezoneW;
-			h = 0.022 * safezoneH;
+			x = CENTERED_X(DIALOG_W) + DIALOG_W / 1.75 * GRID_W;
+			y = DIALOG_TOP + 14.25 * CTRL_DEFAULT_H + GRID_H;
+			w = 40 * GRID_W;
+			h = CTRL_DEFAULT_H;
 		};
 		class radioOptionsText: RscText
 		{
 			idc = -1;
 			text = "Radio Options";
-			x = 0.494844 * safezoneW + safezoneX;
-			y = 0.533 * safezoneH + safezoneY;
-			w = 0.118594 * safezoneW;
-			h = 0.022 * safezoneH;
+			x = CENTERED_X(DIALOG_W) + DIALOG_W / 1.25 * GRID_W - 4 * GRID_W;
+			y = DIALOG_TOP + 11.75 * CTRL_DEFAULT_H + GRID_H;
+			w = 40 * GRID_W;
+			h = CTRL_DEFAULT_H;
 			tooltip = "Adds the following radio from 'SIA Framework Settings' to all roles in the selected group";
 		};
 		class hasHandheldRadio: RscCheckBox
 		{
 			idc = 2803;
 			onCheckedChanged = QUOTE(call FUNC(editGroupsSaveSettings););
-			x = 0.494844 * safezoneW + safezoneX;
-			y = 0.566 * safezoneH + safezoneY;
-			w = 0.0154689 * safezoneW;
-			h = 0.022 * safezoneH;
+			x = CENTERED_X(DIALOG_W) + DIALOG_W / 1.25 * GRID_W - 5 * GRID_W;
+			y = DIALOG_TOP + 13 * CTRL_DEFAULT_H + GRID_H;
+			w = CTRL_DEFAULT_W;
+			h = CTRL_DEFAULT_H;
 		};
 		class hasManpackRadio: RscCheckBox
 		{
 			idc = 2804;
 			onCheckedChanged = QUOTE(call FUNC(editGroupsSaveSettings););
-			x = 0.494844 * safezoneW + safezoneX;
-			y = 0.599 * safezoneH + safezoneY;
-			w = 0.0154689 * safezoneW;
-			h = 0.022 * safezoneH;
+			x = CENTERED_X(DIALOG_W) + DIALOG_W / 1.25 * GRID_W - 5 * GRID_W;
+			y = DIALOG_TOP + 14.25 * CTRL_DEFAULT_H + GRID_H;
+			w = CTRL_DEFAULT_W;
+			h = CTRL_DEFAULT_H;
 		};
 		class hasHandheldRadioText: RscText
 		{
 			idc = -1;
-			text = "Has Handheld Radio";
-			x = 0.510312 * safezoneW + safezoneX;
-			y = 0.566 * safezoneH + safezoneY;
-			w = 0.108281 * safezoneW;
-			h = 0.022 * safezoneH;
+			text = "Has Handheld";
+			x = CENTERED_X(DIALOG_W) + DIALOG_W / 1.25 * GRID_W;
+			y = DIALOG_TOP + 13 * CTRL_DEFAULT_H + GRID_H;
+			w = 40 * GRID_W;
+			h = CTRL_DEFAULT_H;
 		};
 		class hasManpackRadioText: RscText
 		{
 			idc = -1;
-			text = "Has Manpack Radio";
-			x = 0.510312 * safezoneW + safezoneX;
-			y = 0.599 * safezoneH + safezoneY;
-			w = 0.108281 * safezoneW;
-			h = 0.022 * safezoneH;
+			text = "Has Manpack";
+			x = CENTERED_X(DIALOG_W) + DIALOG_W / 1.25 * GRID_W;
+			y = DIALOG_TOP + 14.25 * CTRL_DEFAULT_H + GRID_H;
+			w = 40 * GRID_W;
+			h = CTRL_DEFAULT_H;
+		};
+		class editRoles: ctrlButton
+		{
+			idc = 1604;
+			action = QUOTE(call FUNC(editRolesSpawn););
+			text = "Edit Roles";
+			x = CENTERED_X(DIALOG_W) + GRID_W;
+			y = DIALOG_TOP + DIALOG_H * GRID_H - GRID_H;
+			w = 32 * GRID_W;
+			h = CTRL_DEFAULT_H;
+			tooltip = "Return to the role editor";
 		};
 		class editGroups: ctrlButton
 		{
 			idc = 1605;
-			action = QUOTE([0] call FUNC(editGroupsMode););
+			action = QUOTE([] call FUNC(editGroupsSpawn););
 			text = "Edit Groups";
-			x = 0.494844 * safezoneW + safezoneX;
-			y = 0.687 * safezoneH + safezoneY;
-			w = 0.12375 * safezoneW;
-			h = 0.022 * safezoneH;
+			x = CENTERED_X(DIALOG_W) + GRID_W + 33 * GRID_W;
+			y = DIALOG_TOP + DIALOG_H * GRID_H - GRID_H;
+			w = 36 * GRID_W;
+			h = CTRL_DEFAULT_H;
+			tooltip = "Return to the group editor";
 		};
 	};
 };
