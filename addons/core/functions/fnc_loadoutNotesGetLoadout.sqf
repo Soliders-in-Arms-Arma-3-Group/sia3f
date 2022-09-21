@@ -20,6 +20,8 @@ params [
 	["_full", true, [true]]
 ];
 
+LOG("fnc_loadoutNotesGetLoadout.sqf started.");
+
 // Get a nested array containing all attached weapon items
 private _wepItems = weaponsItems _unit;
 
@@ -62,4 +64,9 @@ _weps = _weps apply {
 //Note: At this point "_mags" only consists of magazine types that are
 // not compatible with the unit's weapons.
 
-[_full, _wepItems, _mags, _items, _items_assigned, _bp, _bpLoad, _weps] call sia3f_core_fnc_loadoutNotesDataToText
+private _returnStr = [_full, _wepItems, _mags, _items, _items_assigned, _bp, _bpLoad, _weps] call FUNC(loadoutNotesDataToText);
+
+TRACE_1("string returned",_returnStr);
+INFO("fnc_loadoutNotesGetLoadout.sqf fully executed.");
+
+_returnStr;

@@ -30,4 +30,8 @@ waitUntil { ([] call acre_api_fnc_isInitialized) }; // Wait until player's radio
 private _radioId = [_radioType] call acre_api_fnc_getRadioByType;
 [_radioId, _channel] call acre_api_fnc_setRadioChannel;
 
+TRACE_2("fnc_setRadioChannel channel and radio",_radioId,(str _channel));
+
 // ToDo: TFAR implementation.
+
+INFO("fnc_setRadioChannel.sqf fully executed.");

@@ -32,9 +32,14 @@ if !(_picture isEqualTo "") then {
 	_picture = format ["<img image='%1' height='24'/>", _picture];
 };
 
-format [
+private _returnStr = format [
 	["%1%2%3 ", "%1%2 "] select _short,
 	_prefix,
 	_picture,
 	getText (configFile >> _type >> _name >> "displayName")
-]
+];
+
+TRACE_1("string returned",_returnStr);
+INFO("fnc_loadoutNotesDataToText.sqf fully executed.");
+
+_returnStr;

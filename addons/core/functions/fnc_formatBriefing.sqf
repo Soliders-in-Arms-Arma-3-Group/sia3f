@@ -56,8 +56,7 @@ private _strArr = _str splitString "";
 
 // ToDo: colors, bold, images?, etc.
 private _returnStr = _strArr joinString "";
-TRACE_1("string returned", _returnStr);
-
-_returnStr;
-
+TRACE_1("string returned",_returnStr);
 INFO("fnc_formatBriefing.sqf fully executed.");
+
+_returnStr
