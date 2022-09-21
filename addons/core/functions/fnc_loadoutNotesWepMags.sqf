@@ -43,5 +43,4 @@ private _magArr = [];
 
 INFO("fnc_loadoutNotesWepMags.sqf fully executed.");
 
-_magArr;
-
+_magArr
