@@ -80,8 +80,20 @@ _txtRadioName setAttributes ["align", "left", "font", FONT_PRIMARY];
 
 private _txtGroupChannel = text "Vanilla";
 if ("@ACRE2" call EFUNC(core,checkModPresence)) then {
-	private _radioName =  (getText (ConfigFile >> "CfgWeapons" >> (["ACRE_PRC343", "ACRE_BF888S"] select GET_CONFIG(personalRadio,0)) >> "displayName") splitString "AN/") select 0;
-	_txtGroupChannel = text (_radioName + ", Ch " + (str ((group player) getVariable [QEGVAR(configuration,radioChannel), 1])));
+	private _srRadio = missionNameSpace getVariable [QEGVAR(configuration,personalRadio),"NONE"];
+	if (_srRadio == "NONE") then {
+		if ([player] call acre_api_fnc_hasRadio) then { // If no SR radio set by mission, then pull whatever radio name and channel the player has, if any, else just say NONE.
+			private _radio = [] call acre_api_fnc_getCurrentRadio;
+			private _channel = [] call acre_api_fnc_getCurrentRadioChannelNumber;
+			private _radioName = [_radio] call acre_api_fnc_getDisplayName;
+			_txtGroupChannel = text (_radioName + ", Ch " + (str _channel));
+		} else {
+			_txtGroupChannel = text "NONE";
+		};
+	} else {
+		private _srRadioName =  (getText (ConfigFile >> "CfgWeapons" >> (_srRadio) >> "displayName") splitString "AN/") select 0;
+		_txtGroupChannel = text (_srRadioName + ", Ch " + (str ((group player) getVariable [QEGVAR(configuration,radioChannel), 1])));
+	};
 };
 
 _txtGroupChannel setAttributes ["align", "right", "font", FONT_PRIMARY];

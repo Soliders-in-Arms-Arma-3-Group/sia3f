@@ -16,6 +16,8 @@
 
 if (!hasInterface) exitWith {}; // Exit if not a player.
 
+LOG("teleportToSquad started");
+
 private _units = (units group player) - [player];
 private _safezone = 100;
 private _target = objNull;
@@ -38,6 +40,7 @@ if (count _units < 1) exitWith {
 
 if (isNull _target) then {
 	1 cutText ["Teleport Failed: No suitable unit found.", "PLAIN DOWN", -1, true];
+	LOG("teleportToSquad.sqf found no suitable target.");
 	false
 } else {
 	private _str = "Teleporting to " + (name _target) + "...";
@@ -64,6 +67,10 @@ if (isNull _target) then {
 			[],
 			3
 		] call CBA_fnc_waitAndExecute;
+
+		TRACE_1("teleport target",(name _target));
 		
 	true
 };
+
+INFO("fnc_teleportToSquad.sqf fully executed.");

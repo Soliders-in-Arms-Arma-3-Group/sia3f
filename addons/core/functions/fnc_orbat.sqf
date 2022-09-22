@@ -24,6 +24,8 @@
 
 if (!hasInterface || !GET_CONFIG(briefOrbat,true)) exitWith {}; // Exit if not a player.
 
+LOG("fnc_orbat.sqf started");
+
 if (!isNil QGVAR(orbat)) then { player removeDiaryRecord ["Diary", GVAR(orbat)] }; // If diary entry already exists, then erase it.
 
 // Create array with all player groups matching the player's side
@@ -83,3 +85,5 @@ private _contentArr = [];
 
 private _content = _contentArr joinString "";
 GVAR(orbat) = player createDiaryRecord ["Diary", ["ORBAT", "<execute expression='call " + QFUNC(orbat) + ";'>Refresh</execute><br></br><br></br>" + _content]]; // Add ORBAT text to diary along with "Refresh" button.
+
+INFO("fnc_orbat.sqf fully executed.");

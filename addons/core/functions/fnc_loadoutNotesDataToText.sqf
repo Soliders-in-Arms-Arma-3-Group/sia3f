@@ -21,6 +21,8 @@
  * [params] call sia3f_core_fnc_loadoutNotesDataToText
 */
 
+LOG("loadoutNotesDataToText started");
+
 params [
 	["_full", true, [true]],
 	["_wepItems", [], [[]]],
@@ -138,8 +140,11 @@ if (count _mags > 0 || count _items > 0 || count _items_assigned > 0) then {
 	} forEach _items_assigned;
 };
 
+INFO("fnc_loadoutNotesDataToText.sqf fully executed.");
 
 //return value
-if (_full) exitWith { _textLong };
+if (_full) exitWith { TRACE_1("string returned",_textLong);  _textLong };
+
+TRACE_1("string returned", _textShrt);
 
 _textShrt
