@@ -16,4 +16,10 @@
 
 #include "\z\sia3f\addons\main\script_macros.hpp"
 
+// GUI includes
+#include "\a3\3DEN\UI\macros.inc" // GUI and script related macros
+#include "\a3\ui_f\hpp\definedikcodes.inc" // DIK Key Codes
+#include "\a3\ui_f\hpp\definecommongrids.inc" // Common GRIDs
+#include "\a3\3den\UI\resincl.inc" // Eden Editor IDDs and IDCs as well as controls types and styles and macros
+
 #include "\z\sia3f\addons\configuration\script_macros.hpp"

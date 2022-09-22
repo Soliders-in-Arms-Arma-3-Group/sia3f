@@ -7,3 +7,11 @@
 #define GUI_THEME_ALPHA "(profileNamespace getVariable ['GUI_BCG_RGB_A',0.8])"
 
 #define GUI_THEME_COLOR {GUI_THEME_RGB_R,GUI_THEME_RGB_G,GUI_THEME_RGB_B,GUI_THEME_ALPHA}
+
+#define DIALOG_W 200
+#define DIALOG_H 140
+
+#define CENTERED_X(w) (CENTER_X - (w / 2 * GRID_W))
+#define DIALOG_TOP (safezoneY + 17 * GRID_H)
+#define CTRL_DEFAULT_H (SIZE_M * GRID_H)
+#define CTRL_DEFAULT_W (SIZE_M * GRID_W)

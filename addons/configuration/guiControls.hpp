@@ -1,28 +1,5 @@
 #include "\z\sia3f\addons\main\guiDefines.hpp"
 
-//GUI and script related macros
-#include "\a3\3DEN\UI\macros.inc"
-
-//DIK Key Codes
-#include "\a3\ui_f\hpp\definedikcodes.inc"
-
-//Common GRIDs
-#include "\a3\ui_f\hpp\definecommongrids.inc"
-
-//Eden Editor IDDs and IDCs as well as controls types and styles and macros
-#include "\a3\3den\ui\resincl.inc"
-
-#define DIALOG_W 200
-#define DIALOG_H 140
-
-#define SHOW_IN_ROOT value = 0
-#define EDIT_W 10
-#define EDIT_W_WIDE 11
-#define CENTERED_X(w) (CENTER_X - (w / 2 * GRID_W))
-#define DIALOG_TOP (safezoneY + 17 * GRID_H)
-#define CTRL_DEFAULT_H (SIZE_M * GRID_H)
-#define CTRL_DEFAULT_W (SIZE_M * GRID_W)
-
 class GVAR(editRole) {
 	// this GUI is taken and modified from R3vo - 3den-Enhanced >> VIM
 	idd = 8501; // hopefully unique number as to not cause problems in the unlikely event that another GUI is open at the same time.
@@ -47,7 +24,7 @@ class GVAR(editRole) {
 			y = DIALOG_TOP;
 			w = DIALOG_W * GRID_W;
 			h = CTRL_DEFAULT_H;
-			tooltip = "Configuration of the settings and arsenal items for specifc SIA Mission Framework roles. \nNOTE that the gear each player spawns in with is already added to their local arsenal.";
+			tooltip = "Configuration of the settings and arsenal items for specific SIA Mission Framework roles. \nNOTE that the gear each player spawns in with is already added to their local arsenal.";
 		};
 		class Footer: ctrlStaticFooter
 		{
@@ -59,36 +36,35 @@ class GVAR(editRole) {
 		};
 		class MenuStrip: ctrlMenuStrip // MENU BAR
 		{
-			idc = 4000;
+			idc = -1;
 			x = CENTERED_X(DIALOG_W);
 			y = DIALOG_TOP + CTRL_DEFAULT_H;
 			w = DIALOG_W * GRID_W;
 			h = CTRL_DEFAULT_H;
+
 			class Items
 			{
-				items[] =
-				{
-					"FolderTools",
+				items[] = {
+					// "FolderTools",
 					"FolderHelp"
 				};
-				class FolderTools
+
+				/* class FolderTools
 				{
 					text = "Tools";
-					items[] = 
-					{
-						"WIP" // To-do: Add delete all, reset, import, export
-					};
-				};
+					items[] = { "WIP" }; // To-do: Add delete all, reset, import, export
+				}; */
 				class FolderHelp
 				{
 					text = "Help";
-       			   	items[] = {"Documentation"};
+					items[] = { "Documentation" };
 				};
+
 				// Tools
-				class WIP
+				/* class WIP
 				{
 					text = "WIP"; 
-				};
+				}; */
 				// Help
 				class Documentation
 				{
@@ -103,8 +79,8 @@ class GVAR(editRole) {
 		};
 		class roleSelectText: ctrlStatic
 		{
-		idc = 1000;
-			text = "Avaliable Roles";
+			idc = -1;
+			text = "Available Roles";
 			x = CENTERED_X(DIALOG_W) + GRID_W;
 			y = DIALOG_TOP + 2 * CTRL_DEFAULT_H + GRID_H;
 			w = 40 * GRID_W;
@@ -114,7 +90,6 @@ class GVAR(editRole) {
 			sizeEx = GUI_GRID_H * 1.2;
 			tooltip = "List of default, imported, and user-created roles";
 		};
-
 		class roleSelect: ctrlListbox
 		{
 			idc = 1500;
@@ -136,7 +111,7 @@ class GVAR(editRole) {
 			y = DIALOG_TOP + 7 * CTRL_DEFAULT_H + GRID_H;
 			w = (DIALOG_W / 2.75) * GRID_W;
 			h = CTRL_DEFAULT_H * 2.5;
-			tooltip = "Edit the items avaliable in the arsenal of all units with the selected role";
+			tooltip = "Edit the items available in the arsenal of all units with the selected role";
 		};
 		class traitOptionsText: RscText
 		{
@@ -269,7 +244,7 @@ class GVAR(editRole) {
 			y = DIALOG_TOP + 3.5 * CTRL_DEFAULT_H + GRID_H;
 			w = (DIALOG_W / 2 - 11) * GRID_W;
 			h = CTRL_DEFAULT_H;
-			tooltip = "Type in the name of a role to add, delete, or modify";
+			tooltip = "Type in the name of a role to add or delete";
 		};
 		class roleNameText: RscText
 		{
@@ -339,14 +314,14 @@ class GVAR(additionalItemsEditor) {
 		};
 		class title: ctrlStaticTitle
 		{
-			idc = -1;
+			idc = 1000;
 			text = "Additional Items Editor: ROLE_NAME";
 			colorBackground[] = GUI_THEME_COLOR;
 			x = CENTERED_X(DIALOG_W);
 			y = DIALOG_TOP;
 			w = DIALOG_W * GRID_W;
 			h = CTRL_DEFAULT_H;
-			tooltip = "Configuration of the local arsenal items for specifc SIA Mission Framework roles. \nNOTE that the gear each player spawns in with is already added to their local arsenal.";
+			tooltip = "Configuration of the local arsenal items for specific SIA Mission Framework roles. \nNOTE that the gear each player spawns in with is already added to their local arsenal.";
 		};
 		class footer: ctrlStaticFooter
 		{
@@ -373,7 +348,7 @@ class GVAR(additionalItemsEditor) {
 				class FolderHelp
 				{
 					text = "Help";
-       			   	items[] = {"Documentation"};
+					items[] = {"Documentation"};
 				};
 				// Help
 				class Documentation
@@ -421,19 +396,19 @@ class GVAR(additionalItemsEditor) {
 			onToolBoxSelChanged = QUOTE((_this # 1) call FUNC(additionalItemsCategory););
 
 			x = CENTERED_X(DIALOG_W) + GRID_W;
-            y = DIALOG_TOP + (CTRL_DEFAULT_H * 2);
-            w = CTRL_DEFAULT_W * 3;
-            h = (DIALOG_H * GRID_H) - CTRL_DEFAULT_H * 2 - (GRID_H * 2);
+			y = DIALOG_TOP + (CTRL_DEFAULT_H * 2);
+			w = CTRL_DEFAULT_W * 3;
+			h = (DIALOG_H * GRID_H) - CTRL_DEFAULT_H * 2 - (GRID_H * 2);
 			colorText[] = {1,1,1,1};
 			colorBackground[] = {0,0,0,0.5};
 		};
 		class itemsBackground: ctrlStatic
 		{
 			idc = -1;
-            x = CENTERED_X(DIALOG_W) + CTRL_DEFAULT_W * 3.5;
-            y = DIALOG_TOP + 3 * CTRL_DEFAULT_H + GRID_H;
-            w = (DIALOG_W / 1.125) * GRID_W;
-            h = DIALOG_H * GRID_H - 4 * CTRL_DEFAULT_H + 2 * GRID_H;
+			x = CENTERED_X(DIALOG_W) + CTRL_DEFAULT_W * 3.5;
+			y = DIALOG_TOP + 3 * CTRL_DEFAULT_H + GRID_H;
+			w = (DIALOG_W / 1.125) * GRID_W;
+			h = DIALOG_H * GRID_H - 4 * CTRL_DEFAULT_H + 2 * GRID_H;
 			colorBackground[] = {1,1,1,0.1};
 		};
 		class items: ctrlListNBox
@@ -455,9 +430,9 @@ class GVAR(additionalItemsEditor) {
 			onKillFocus = QUOTE(uiNamespace setVariable [ARR_2(QQGVAR(listboxHasFocus),false)];);
 
 			x = CENTERED_X(DIALOG_W) + CTRL_DEFAULT_W * 3.5;
-            y = DIALOG_TOP + 3 * CTRL_DEFAULT_H + GRID_H;
-            w = (DIALOG_W / 1.125) * GRID_W;
-            h = DIALOG_H * GRID_H - 4 * CTRL_DEFAULT_H + 2 * GRID_H;
+			y = DIALOG_TOP + 3 * CTRL_DEFAULT_H + GRID_H;
+			w = (DIALOG_W / 1.125) * GRID_W;
+			h = DIALOG_H * GRID_H - 4 * CTRL_DEFAULT_H + 2 * GRID_H;
 		};
 		class arrowLeft: ctrlButton
 		{
@@ -483,15 +458,15 @@ class GVAR(additionalItemsEditor) {
 			w = 0.0117188 * safezoneW;
 			h = 0.0208333 * safezoneH;
 		};
-		class FilterSearch: ctrlCombo
+		/* class FilterSearch: ctrlCombo
 		{
-		idc = 3300;
-		x = CENTERED_X(DIALOG_W) + GRID_W;
-		y = DIALOG_TOP + DIALOG_H * GRID_H - GRID_H;
-		w = 5 * GRID_W;
-		h = CTRL_DEFAULT_H;
-		//onLBSelChanged = To-Do: Add ability to filter by mod.
-		};
+			idc = 3300;
+			x = CENTERED_X(DIALOG_W) + GRID_W;
+			y = DIALOG_TOP + DIALOG_H * GRID_H - GRID_H;
+			w = 5 * GRID_W;
+			h = CTRL_DEFAULT_H;
+			// onLBSelChanged = To-Do: Add ability to filter by mod.
+		}; */
 		class searchBar: ctrlEdit
 		{
 			idc = 1401;
@@ -531,9 +506,9 @@ class GVAR(additionalItemsEditor) {
 			action = QUOTE([call compile copyFromClipboard] call FUNC(additionalItemsImport););
 			text = "IMPORT";
 			x = CENTERED_X(DIALOG_W) + CTRL_DEFAULT_W * 3.5;
-           	y = DIALOG_TOP + 2 * CTRL_DEFAULT_H + GRID_H;
-            w = 22 * GRID_W;
-            h = CTRL_DEFAULT_H;
+			y = DIALOG_TOP + 2 * CTRL_DEFAULT_H + GRID_H;
+			w = 22 * GRID_W;
+			h = CTRL_DEFAULT_H;
 			colorBackground[] = {0,0,0,0.6};
 			tooltip = "Import items list array from clipboard (should be the same format as export)";
 		};
@@ -543,9 +518,9 @@ class GVAR(additionalItemsEditor) {
 			action = QUOTE(copyToClipboard str (uiNamespace getVariable [ARR_2(QQGVAR(roleItems),[])]););
 			text = "EXPORT";
 			x = CENTERED_X(DIALOG_W) + CTRL_DEFAULT_W * 8.25;
-            y = DIALOG_TOP + 2 * CTRL_DEFAULT_H + GRID_H;
-            w = 22 * GRID_W;
-            h = CTRL_DEFAULT_H;
+			y = DIALOG_TOP + 2 * CTRL_DEFAULT_H + GRID_H;
+			w = 22 * GRID_W;
+			h = CTRL_DEFAULT_H;
 			colorBackground[] = {0,0,0,0.6};
 			tooltip = "Export current items list as an array for use in scripts";
 		};
@@ -555,9 +530,9 @@ class GVAR(additionalItemsEditor) {
 			action = QUOTE(call FUNC(additionalItemsClear););
 			text = "CLEAR";
 			x = CENTERED_X(DIALOG_W) + CTRL_DEFAULT_W * 13;
-            y = DIALOG_TOP + 2 * CTRL_DEFAULT_H + GRID_H;
-            w = 22 * GRID_W;
-            h = CTRL_DEFAULT_H;
+			y = DIALOG_TOP + 2 * CTRL_DEFAULT_H + GRID_H;
+			w = 22 * GRID_W;
+			h = CTRL_DEFAULT_H;
 			colorBackground[] = {0,0,0,0.6};
 			tooltip = "Clear all current items from the list";
 		};
@@ -572,8 +547,8 @@ class GVAR(additionalItemsEditor) {
 			action = QUOTE(call FUNC(additionalItemsAddCompatible););
 
 			x = CENTERED_X(DIALOG_W) + DIALOG_W / 1.3 * GRID_W;
-            y = DIALOG_TOP + 2 * CTRL_DEFAULT_H + GRID_H;
-            w = 35 * GRID_W;
+			y = DIALOG_TOP + 2 * CTRL_DEFAULT_H + GRID_H;
+			w = 35 * GRID_W;
 			h = CTRL_DEFAULT_H;
 			colorBackground[] = {0,0,0,0.5};
 			sizeEx = 4 * (pixelH * pixelGrid * 0.5);
@@ -646,31 +621,33 @@ class GVAR(editGroups) {
 			y = DIALOG_TOP + CTRL_DEFAULT_H;
 			w = DIALOG_W * GRID_W;
 			h = CTRL_DEFAULT_H;
+
 			class Items
 			{
 				items[] =
 				{
-					"FolderTools",
+					// "FolderTools",
 					"FolderHelp"
 				};
-				class FolderTools
+				/* class FolderTools
 				{
 					text = "Tools";
 					items[] = 
 					{
 						"WIP" // To-do: Add delete all, reset, import, export
 					};
-				};
+				}; */
 				class FolderHelp
 				{
 					text = "Help";
-       			   	items[] = {"Documentation"};
+					items[] = {"Documentation"};
 				};
+
 				// Tools
-				class WIP
+				/* class WIP
 				{
 					text = "WIP"; 
-				};
+				}; */
 				// Help
 				class Documentation
 				{
@@ -743,7 +720,7 @@ class GVAR(editGroups) {
 			y = DIALOG_TOP + 3.5 * CTRL_DEFAULT_H + GRID_H;
 			w = (DIALOG_W / 2 - 11) * GRID_W;
 			h = CTRL_DEFAULT_H;
-			tooltip = "Type in the name of a group to add, delete, or modify";
+			tooltip = "Type in the name of a group to add or delete";
 		};
 		class groupNameText: RscText
 		{
@@ -908,31 +885,33 @@ class GVAR(editGroupsSettings) {
 			y = DIALOG_TOP + CTRL_DEFAULT_H;
 			w = DIALOG_W * GRID_W;
 			h = CTRL_DEFAULT_H;
+
 			class Items
 			{
 				items[] =
 				{
-					"FolderTools",
+					// "FolderTools",
 					"FolderHelp"
 				};
-				class FolderTools
+				/* class FolderTools
 				{
 					text = "Tools";
 					items[] = 
 					{
 						"WIP" // To-do: Add delete all, reset, import, export
 					};
-				};
+				}; */
 				class FolderHelp
 				{
 					text = "Help";
-       			   	items[] = {"Documentation"};
+					items[] = {"Documentation"};
 				};
+
 				// Tools
-				class WIP
+				/* class WIP
 				{
 					text = "WIP"; 
-				};
+				}; */
 				// Help
 				class Documentation
 				{
@@ -947,7 +926,7 @@ class GVAR(editGroupsSettings) {
 		};
 		class groupSelectText: ctrlStatic
 		{
-		idc = 1000;
+			idc = 1000;
 			text = "Available Groups";
 			x = CENTERED_X(DIALOG_W) + GRID_W;
 			y = DIALOG_TOP + 2 * CTRL_DEFAULT_H + GRID_H;
@@ -1005,7 +984,7 @@ class GVAR(editGroupsSettings) {
 			y = DIALOG_TOP + 3.5 * CTRL_DEFAULT_H + GRID_H;
 			w = (DIALOG_W / 2 - 11) * GRID_W;
 			h = CTRL_DEFAULT_H;
-			tooltip = "Type in the name of a group to add, delete, or modify";
+			tooltip = "Type in the name of a group to add or delete";
 		};
 		class groupNameText: RscText
 		{
@@ -1065,7 +1044,7 @@ class GVAR(editGroupsSettings) {
 			y = DIALOG_TOP + 7 * CTRL_DEFAULT_H + GRID_H;
 			w = (DIALOG_W / 2.75) * GRID_W;
 			h = CTRL_DEFAULT_H * 2.5;
-			tooltip = "Edit the items avaliable to all roles in the selected group";
+			tooltip = "Edit the items available to all roles in the selected group";
 		};
 		class traitOptionsText: RscText
 		{
