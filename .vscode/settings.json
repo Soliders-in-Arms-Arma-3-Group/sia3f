@@ -2,16 +2,17 @@
 	"C_Cpp.errorSquiggles": "Disabled",
 	"cSpell.words": [
 		"Beofeng",
-		"Koromiko",
-		"GVAR",
-		"QGVAR",
-		"QQGVAR",
-		"EGVAR",
-		"QEGVAR",
-		"QQEGVAR",
-		"FUNC",
-		"QFUNC",
 		"EFUNC",
-		"QEFUNC"
+		"EGVAR",
+		"FUNC",
+		"GVAR",
+		"Koromiko",
+		"listbox",
+		"QEFUNC",
+		"QEGVAR",
+		"QFUNC",
+		"QGVAR",
+		"QQEGVAR",
+		"QQGVAR"
 	]
 }

@@ -95,6 +95,9 @@
 #define MB_BUTTON_CANCEL  2
 #define MB_BUTTON_USER    4
 
+//Disabled background
+#define DISABLE_BACKGROUND class BackgroundDisable: ctrlStaticBackgroundDisable {}; \
+	class BackgroundDisableTiles: ctrlStaticBackgroundDisableTiles {};
 
 //Eden base controls
 class ctrlButton;

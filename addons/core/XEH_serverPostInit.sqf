@@ -1,5 +1,6 @@
 #include "script_component.hpp"
 
+#define SAFESTART_HINT_REFRESH 30; 
 // basically initServer.sqf
 
 GVAR(startTime) = date;
@@ -9,10 +10,17 @@ missionNamespace setVariable [QGVAR(safeStart_phase), "Waiting", true];
 missionNamespace setVariable [QGVAR(missionStarted), false, true];
 
 if (!isNil QEGVAR(configuration,arsenals)) then {
-	publicVariable QEGVAR(configuration,arsenals);
-
 	// === Setup Global Arsenal ===
 
+	{
+		clearBackpackCargoGlobal _x;
+		clearMagazineCargoGlobal _x;
+		clearWeaponCargoGlobal _x;
+		clearItemCargoGlobal _x;
+		[_x, false] remoteExecCall ["ace_dragging_fnc_setDraggable"];
+		[_x, false] remoteExecCall ["ace_dragging_fnc_setCarryable"];
+		[_x, false] call ace_arsenal_fnc_initBox;
+	} forEach EGVAR(configuration,arsenals);
 	/* Likely unecessary data type check. */
 	//if (EGVAR(configuration,arsenals) isEqualTo []) then { ["setupGlobalArsenal Error: Invalid Parameters: %1", _this select 0] call BIS_fnc_error }
 
@@ -67,14 +75,7 @@ if (!isNil QEGVAR(configuration,arsenals)) then {
 		};
 	};
 
-	{
-		clearBackpackCargoGlobal _x;
-		clearMagazineCargoGlobal _x;
-		clearWeaponCargoGlobal _x;
-		clearItemCargoGlobal _x;
-		[_x, false] remoteExecCall ["ace_dragging_fnc_setDraggable"];
-		[_x, false] remoteExecCall ["ace_dragging_fnc_setCarryable"];
-	} forEach EGVAR(configuration,arsenals);
+	call EFUNC(ace,initLocalArsenal);	
 };
 
 if (!isNil QEGVAR(configuration,buttons)) then {
@@ -87,25 +88,37 @@ if (!isNil QEGVAR(configuration,buttons)) then {
 	};
 };
 
+/* Safe Start */
+
+if (GET_CONFIG(showStatusHint,true)) then {
+    [] spawn {
+        while { !(missionNamespace getVariable [QGVAR(missionStarted), false]) } do {
+            remoteExec [QFUNC(hint)];
+            sleep SAFESTART_HINT_REFRESH;
+        };
+    };
+};
+
 /* Mission End */
 
 addMissionEventHandler ["MPEnded", {
 
 	// OCAP2 Replay check and export.
 	if !(isNil "ocap_fnc_exportData") then {
-		private _weekDay = [systemTime] call CBA_fnc_weekDay;
-		private _outcome = missionNamespace getVariable [QGVAR(missionOutcome), "Mission Completed"];
-		if (_weekDay > -1) then {
-			private _opType = "MISC";
-			switch (_weekday) do {
-				case 0: { _opType = "MAIN OP"; }; // sunday
-				case 5: { _opType = "SIDE OP"; }; // friday
-			};
-			[_side, _outcome, _opType] call ocap_fnc_exportData;
-		} else {
-			[_side, _outcome, "unk"] call ocap_fnc_exportData;
-			diag_log "endMission.sqf Error: CBA_fnc_weekDay failed.";
+	private _realDate = "real_date" callExtension "EST+";
+	private _outcome = "Mission Completed"; // To do: Add functionality to determine if mission failed.
+	if (_realDate != "") then {
+		private _opType = "MISC";
+		private _weekday = (parseSimpleArray _realDate) # 6;
+		switch (_weekday) do {
+			case 0: { _opType = "MAIN OP"; }; // sunday
+			case 5: { _opType = "SIDE OP"; }; // friday
 		};
+		[_side, _outcome, _opType] call ocap_fnc_exportData;
+	} else {
+		[_side, _outcome, "unk"] call ocap_fnc_exportData;
+		diag_log "endMission.sqf Error: real_date extension not found.";
+	};
 	} else {
 		diag_log "endMission.sqf Error: ocap_fnc_exportData function not found.";
 	};

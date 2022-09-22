@@ -23,14 +23,14 @@
  * None
  *
  * Example:
- * call sia3f_core_fnc_safeStartHint
+ * call sia3f_core_fnc_hint
 */
 
 if (!GET_CONFIG(showStatusHint,true) || !hasInterface || !(player getVariable [QGVAR(safeStartHintEnabled), true])) exitWith {
-	LOG("fnc_safeStartHint.sqf was disabled by player or ran on server.");
+	LOG("fnc_hint.sqf was disabled by player or ran on server.");
 }; // Exit if not a player or if player has disabled status hint.
 
-LOG("fnc_safeStartHint.sqf started.");
+LOG("fnc_hint.sqf started.");
 
 private _systemTime = systemTimeUTC; // Cache System's current time.
 
@@ -166,10 +166,10 @@ private _array = [
 	_array pushBack _txt;
 	_array pushBack lineBreak;
 } forEach ([leader player] + (units group player - [leader player])); // Do for all units in group, starting with the group lead.
-LOG("fnc_safeStartHint.sqf finished formatting _array in the forEach loop.");
+LOG("fnc_hint.sqf finished formatting _array in the forEach loop.");
 
 private _structuredText = composeText _array;
 
 hintSilent _structuredText;
 
-INFO("fnc_safeStartHint.sqf fully executed.");
+INFO("fnc_hint.sqf fully executed.");

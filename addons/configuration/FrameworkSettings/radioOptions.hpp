@@ -78,6 +78,7 @@ class GVAR(ACRERadioOptions) {
 					default = 1;
 					value = 1;
 				};
+
 				class GVAR(manpackRadio_PRC77) {
 					name = "AN/PRC-77";
 					value = 2;

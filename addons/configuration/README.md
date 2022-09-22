@@ -37,7 +37,7 @@ This will define all of the variables that can be used with ``GET_CONFIG(var,def
 |briefWeather|Weather Briefing|If checked, adds a weather report to the briefing.|Boolean|True|
 |briefLoadout|Loadout Information|If checked, adds loadout information to the briefing.|Boolean|True|
 |**On Mission Start**|
-|onMissionStartCode|On Mission Start Code|Code to be executed on Zeus mission start.|STRING|""|
+|onMissionStartCode|On Mission Start Code|Code to be executed on mission start.|STRING|""|
 |**Objects**|
 |isArsenal|Is Arsenal|If checked, makes the object an arsenal.|Boolean|False|
 |isButton|Is Button|If checked, makes the object a button.|Boolean|False|
@@ -48,15 +48,20 @@ This will define all of the variables that can be used with ``GET_CONFIG(var,def
 |-------------|-----------|----|-------------|
 |**Initialization Values**|
 |frameworkInit|Should only be true if the ``initFramework`` function has been executed successfully.|Boolean|False|
+|roles|Hashmap of roles and all of their properties.  Value array is ``[isMedic, isEngineer, hasHandheldRadio, hasManpackRadio, [additional items]]``.|Hashmap|createHashMap|
+|groups|Hashmap of roles and all of their properties.  Value array is ``[isMedic, isEngineer, hasHandheldRadio, hasManpackRadio, [additional items], [roles in group]]``|Hashmap|createHashMap|
 
 ## Macro Definitions
 This module's custom macros are defined here.  They cannot be used outside of this module.
 
 ### SET_CONFIG(section,var,value)
-Sets the [mission config value](https://community.bistudio.com/wiki/set3DENMissionAttribute) of a variable.
+Sets the [mission config value](https://community.bistudio.com/wiki/set3DENMissionAttribute) of a variable.  Should be followed by ``do3DENAction "MissionSave";`` in order to actually save the value.  Using ``GET_CONFIG`` on the variable without first saving will return the old value.
 
 |Parameter|Description|
 |-|-|
 |section|The section that the config value belongs to.  As of the time of writing, this parameter can be either ``frameworkSettings`` or ``hiddenConfigValues``.|
 |var|The config value to set.  See the tables above for valid values.|
 |value|The value to set to ``var``.
+
+### GUI_THEME_COLOR
+Gets the user's "Menu" color scheme "Background" RGBA value.  Should always be used in GUI title bars.  Default/Example: ``{0.13,0.54,0.21,0.8}``

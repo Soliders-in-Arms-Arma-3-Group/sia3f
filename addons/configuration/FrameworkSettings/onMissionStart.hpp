@@ -4,9 +4,9 @@ class GVAR(onMissionStart) {
 	class Attributes {
 		class GVAR(onMissionStartCode) {
 			displayName = "On Mission Start Code";
-			tooltip = "Insert code to be executed on Zeus mission start.";
+			tooltip = "Insert code to be executed on mission start.";
 			property = QGVAR(onMissionStartCode);
-			control = "EditCodeMulti5";
+			control = "EditMulti5";
 			defaultValue = "''";
 			validate = "expression";
 			typeName = "STRING";

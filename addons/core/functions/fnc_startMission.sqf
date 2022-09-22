@@ -39,13 +39,13 @@ if (GET_CONFIG(showIntroText,true)) then {
 	[
 		{ [(getMissionConfigValue ["onLoadName", missionName])] remoteExec ["BIS_fnc_moduleMissionName", _this] },
 		_gm,
-		5 // Time in seconds between mission starts and scenario name/gm is displayed.
+		5
 	] call CBA_fnc_waitAndExecute;
 	
 	[
 		{ remoteExecCall [_this] },
 		QFUNC(introText),
-		15 // Time in seconds between mission starts and intro text is displayed.
+		15
 	] call CBA_fnc_waitAndExecute;
 };
 
