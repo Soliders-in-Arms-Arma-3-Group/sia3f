@@ -90,7 +90,7 @@ switch (_mode) do {
 
 	case "reorderRadioMPTT" : {
 		_params params [
-			["_radioType", (missionNameSpace getVariable [QEGVAR(configuration,personalRadio),"ACRE_PRC343"])]
+			["_radioType", missionNameSpace getVariable [QEGVAR(configuration,personalRadio),"ACRE_PRC343"], ""]
 		];
 		_hasRadio = [player, _radioType] call acre_api_fnc_hasKindOfRadio;
 		if (!_hasRadio) exitWith {

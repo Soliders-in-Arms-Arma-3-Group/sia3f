@@ -105,22 +105,22 @@ addMissionEventHandler ["MPEnded", {
 
 	// OCAP2 Replay check and export.
 	if !(isNil "ocap_fnc_exportData") then {
-	private _realDate = "real_date" callExtension "EST+";
-	private _outcome = "Mission Completed"; // To do: Add functionality to determine if mission failed.
-	if (_realDate != "") then {
-		private _opType = "MISC";
-		private _weekday = (parseSimpleArray _realDate) # 6;
-		switch (_weekday) do {
-			case 0: { _opType = "MAIN OP"; }; // sunday
-			case 5: { _opType = "SIDE OP"; }; // friday
+		private _realDate = "real_date" callExtension "EST+";
+		private _outcome = "Mission Completed"; // To do: Add functionality to determine if mission failed.
+		if (_realDate != "") then {
+			private _opType = "MISC";
+			private _weekday = (parseSimpleArray _realDate) # 6;
+			switch (_weekday) do {
+				case 0: { _opType = "MAIN OP"; }; // sunday
+				case 5: { _opType = "SIDE OP"; }; // friday
+			};
+			[_side, _outcome, _opType] call ocap_fnc_exportData;
+		} else {
+			[_side, _outcome, "unk"] call ocap_fnc_exportData;
+			ERROR("real_date extension not found");
 		};
-		[_side, _outcome, _opType] call ocap_fnc_exportData;
 	} else {
-		[_side, _outcome, "unk"] call ocap_fnc_exportData;
-		diag_log "endMission.sqf Error: real_date extension not found.";
-	};
-	} else {
-		diag_log "endMission.sqf Error: ocap_fnc_exportData function not found.";
+		ERROR("ocap_fnc_exportData function not found");
 	};
 
 	// Generate scoreboard.
@@ -130,6 +130,6 @@ addMissionEventHandler ["MPEnded", {
 	} forEach allPlayers - entities "HeadlessClient_F"; // Cycle through all players for name and deaths.
 
 	// Print mission name and scoreboard to console.
-	diag_log format ["SCOREBOARD FOR %1", (getMissionConfigValue ["onLoadName", missionName])];
-	diag_log _arr;
+	INFO_1("Scoreboard for %1",getMissionConfigValue ["onLoadName", missionName]);
+	INFO("%1",_arr);
 }];
