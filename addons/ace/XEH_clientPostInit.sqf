@@ -24,7 +24,7 @@ if GET_CONFIG(enableGoAFK,true) then {
 };
 
 // Setup safeStart Hint
-_action = [QGVAR(safeStartHint), "Show Mission Info", "\A3\Ui_F\Data\IGUI\Cfg\simpleTasks\types\unknown_ca.paa", { call EFUNC(core,safeStartHint) }, { true }] call ace_interact_menu_fnc_createAction;
+_action = [QGVAR(safeStartHint), "Show Mission Info", "\A3\Ui_F\Data\IGUI\Cfg\simpleTasks\types\unknown_ca.paa", { call EFUNC(core,hint) }, { true }] call ace_interact_menu_fnc_createAction;
 [(typeOf player), 1, ["ACE_SelfActions", QGVAR(siaActions)], _action] call ace_interact_menu_fnc_addActionToClass;
 
 _statement = {
@@ -150,8 +150,8 @@ _action = [QGVAR(safeStart_missionStartConfirm), "Confirm", "", { call EFUNC(cor
 _action = [QGVAR(safeStart_missionEnd), "End Mission", "\A3\ui_f\data\IGUI\Cfg\simpleTasks\types\getOut_ca.paa", {}, { (missionNamespace getVariable [QEGVAR(core,missionStarted), false]) }] call ace_interact_menu_fnc_createAction;
 [["ACE_ZeusActions"], _action] call ace_interact_menu_fnc_addActionToZeus;
 
-_action = [QGVAR(safeStart_missionEndWin), "Win", "", { missionNamespace setVariable [QGVAR(missionOutcome), "Mission Completed"]; ["end1", true, true] remoteExecCall ["BIS_fnc_endMission", 0] }, { (missionNamespace getVariable [QEGVAR(core,missionStarted), false]) }] call ace_interact_menu_fnc_createAction; // To-do: Link to end mission
+_action = [QGVAR(safeStart_missionEndWin), "Win", "", { ["end1", true, true] remoteExecCall ["BIS_fnc_endMission", 0] }, { (missionNamespace getVariable [QEGVAR(core,missionStarted), false]) }] call ace_interact_menu_fnc_createAction; // To-do: Link to end mission
 [["ACE_ZeusActions", QGVAR(safeStart_missionEnd)], _action] call ace_interact_menu_fnc_addActionToZeus;
 
-_action = [QGVAR(safeStart_missionEndLose), "Lose", "", { missionNamespace setVariable [QGVAR(missionOutcome), "Mission Failed"]; ["end1", false, true] remoteExecCall ["BIS_fnc_endMission", 0] }, { (missionNamespace getVariable [QEGVAR(core,missionStarted), false]) }] call ace_interact_menu_fnc_createAction; // To-do: Link to end mission
+_action = [QGVAR(safeStart_missionEndLose), "Lose", "", { ["end1", false, true] remoteExecCall ["BIS_fnc_endMission", 0] }, { (missionNamespace getVariable [QEGVAR(core,missionStarted), false]) }] call ace_interact_menu_fnc_createAction; // To-do: Link to end mission
 [["ACE_ZeusActions", QGVAR(safeStart_missionEnd)], _action] call ace_interact_menu_fnc_addActionToZeus;

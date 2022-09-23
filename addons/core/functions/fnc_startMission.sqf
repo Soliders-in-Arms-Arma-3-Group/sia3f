@@ -20,6 +20,8 @@ params [
 	["_gm", (getAssignedCuratorUnit (allCurators select 0))]
 ];
 
+LOG("fnc_startMission.sqf started.");
+
 if (isMultiplayer) then { setDate GVAR(startTime) }; // Set time to start of mission.
 setTimeMultiplier 1; // Set time acceleration to default.
 
@@ -37,16 +39,19 @@ if (GET_CONFIG(showIntroText,true)) then {
 	[
 		{ [(getMissionConfigValue ["onLoadName", missionName])] remoteExec ["BIS_fnc_moduleMissionName", _this] },
 		_gm,
-		5 // Time in seconds between mission starts and scenario name/gm is displayed.
+		5
 	] call CBA_fnc_waitAndExecute;
 	
 	[
 		{ remoteExecCall [_this] },
 		QFUNC(introText),
-		15 // Time in seconds between mission starts and intro text is displayed.
+		15
 	] call CBA_fnc_waitAndExecute;
 };
 
 call compile (GET_CONFIG(onMissionStartCode,"")); // Compile and run user-input code from 3den configuration.
 
 [QGVAR(missionStarted), []] call CBA_fnc_globalEvent; // Raise CBA event handler.
+LOG("fnc_startMission.sqf raised a CBA global event");
+
+INFO("fnc_startMission.sqf fully executed.");

@@ -47,14 +47,27 @@ player addEventHandler ["Respawn", {
 	};
 }];
 
-// safeStart Player Weapon Safety
-[
+
+private _role = player getVariable [QEGVAR(configuration,role), "default"];
+private _roleValues = GVAR(roles) getOrDefault [_role, [false, false, false, false, [], []]];
+
+// account for roles in groups (group setting only applies if role setting is false)
+if (({ _x in GVAR(groups) } count _roleValues # 5) > 0) then {
 	{
-		if (!(player in (allCurators apply { getAssignedCuratorUnit _x }))) then { 
-			call FUNC(safeStartHint); // Enable safeStart weapon safety for non-Zeus players.
-		} else {
-			player allowDamage false; // Make the zeus(es) invincible.
-		};
-	},
-	1 // To do: Replace with more accurate waitUntil.
-] call CBA_waitAndExecute;
+		private _group = GVAR(groups) get _x;
+		if (!(_roleValues # 0)) then { _roleValues set [0, _group # 0] };
+		if (!(_roleValues # 1)) then { _roleValues set [1, _group # 1] };
+	} forEach _roleValues # 5;
+};
+
+TRACE_2("initializing role values",_role,_roleValues);
+
+player setUnitTrait ["medic", _roleValues # 0];
+player setUnitTrait ["engineer", _roleValues # 1];
+player setUnitTrait ["explosiveSpecialist", _roleValues # 1];
+
+if ("@ace" call FUNC(checkModPresence)) then {
+	player setVariable ["ace_medical_medicClass", parseNumber (_roleValues # 0), true];
+	player setVariable ["ACE_isEngineer", parseNumber (_roleValues # 1), true];
+	player setVariable ["ACE_isEOD", _roleValues # 1, true];
+};

@@ -69,7 +69,7 @@ class GVAR(goAFK) {
 	onUnload = QUOTE(call FUNC(exitAFK));
 	idd = 3289;
 	class controls {
-		class AFK_background: RscPicture
+		class background: RscPicture
 		{
 			idc = 1200;
 
@@ -79,7 +79,7 @@ class GVAR(goAFK) {
 			w = 0.185625 * safezoneW;
 			h = 0.088 * safezoneH;
 		};
-		class AFK_title: RscPicture
+		class title: RscPicture
 		{
 			idc = 1201;
 
@@ -89,7 +89,7 @@ class GVAR(goAFK) {
 			w = 0.185625 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
-		class AFK_titleText: RscText
+		class titleText: RscText
 		{
 			idc = 1000;
 
@@ -99,7 +99,7 @@ class GVAR(goAFK) {
 			w = 0.175313 * safezoneW;
 			h = 0.022 * safezoneH;
 		};
-		class AFK_exitButton: RscButton
+		class exitButton: RscButton
 		{
 			idc = 1600;
 			colorBackgroundActive[] = {0,0,0,0.7};
@@ -112,7 +112,7 @@ class GVAR(goAFK) {
 			h = 0.022 * safezoneH;
 			tooltip = "Exit AFK state at current position"; //--- ToDo: Localize;
 		};
-		class AFK_exitAndTPButton: RscButton
+		class exitAndTPButton: RscButton
 		{
 			idc = 1601;
 			colorBackgroundActive[] = {0,0,0,0.7};

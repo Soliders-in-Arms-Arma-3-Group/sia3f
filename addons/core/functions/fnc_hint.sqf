@@ -23,14 +23,14 @@
  * None
  *
  * Example:
- * call sia3f_core_fnc_safeStartHint
+ * call sia3f_core_fnc_hint
 */
 
 if (!GET_CONFIG(showStatusHint,true) || !hasInterface || !(player getVariable [QGVAR(safeStartHintEnabled), true])) exitWith {
-	LOG("fnc_safeStartHint.sqf was disabled by player or ran on server.");
+	LOG("fnc_hint.sqf was disabled by player or ran on server.");
 }; // Exit if not a player or if player has disabled status hint.
 
-LOG("fnc_safeStartHint.sqf started.");
+LOG("fnc_hint.sqf started.");
 
 private _systemTime = systemTimeUTC; // Cache System's current time.
 
@@ -80,8 +80,20 @@ _txtRadioName setAttributes ["align", "left", "font", FONT_PRIMARY];
 
 private _txtGroupChannel = text "Vanilla";
 if ("@ACRE2" call EFUNC(core,checkModPresence)) then {
-	private _radioName =  (getText (ConfigFile >> "CfgWeapons" >> (["ACRE_PRC343", "ACRE_BF888S"] select GET_CONFIG(personalRadio,0)) >> "displayName") splitString "AN/") select 0;
-	_txtGroupChannel = text (_radioName + ", Ch " + (str ((group player) getVariable [QEGVAR(configuration,radioChannel), 1])));
+	private _srRadio = missionNameSpace getVariable [QEGVAR(configuration,personalRadio),"NONE"];
+	if (_srRadio == "NONE") then {
+		if ([player] call acre_api_fnc_hasRadio) then { // If no SR radio set by mission, then pull whatever radio name and channel the player has, if any, else just say NONE.
+			private _radio = [] call acre_api_fnc_getCurrentRadio;
+			private _channel = [] call acre_api_fnc_getCurrentRadioChannelNumber;
+			private _radioName = [_radio] call acre_api_fnc_getDisplayName;
+			_txtGroupChannel = text (_radioName + ", Ch " + (str _channel));
+		} else {
+			_txtGroupChannel = text "NONE";
+		};
+	} else {
+		private _srRadioName =  (getText (ConfigFile >> "CfgWeapons" >> (_srRadio) >> "displayName") splitString "AN/") select 0;
+		_txtGroupChannel = text (_srRadioName + ", Ch " + (str ((group player) getVariable [QEGVAR(configuration,radioChannel), 1])));
+	};
 };
 
 _txtGroupChannel setAttributes ["align", "right", "font", FONT_PRIMARY];
@@ -154,10 +166,10 @@ private _array = [
 	_array pushBack _txt;
 	_array pushBack lineBreak;
 } forEach ([leader player] + (units group player - [leader player])); // Do for all units in group, starting with the group lead.
-LOG("fnc_safeStartHint.sqf finished formatting _array in the forEach loop.");
+LOG("fnc_hint.sqf finished formatting _array in the forEach loop.");
 
 private _structuredText = composeText _array;
 
 hintSilent _structuredText;
 
-INFO("fnc_safeStartHint.sqf fully executed.");
+INFO("fnc_hint.sqf fully executed.");

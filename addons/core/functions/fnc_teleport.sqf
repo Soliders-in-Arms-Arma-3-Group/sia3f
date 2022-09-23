@@ -44,6 +44,8 @@
 disableSerialization;
 params ["_mode", "_parameters"];
 
+LOG("fnc_teleport.sqf started");
+
 switch (_mode) do {
 	case "onLoad": {
 		private _display = uiNamespace getVariable [QGVAR(TPD_Display), displayNull];
@@ -136,3 +138,8 @@ switch (_mode) do {
 		[2, 0.05, _newPos] call BIS_fnc_mapAnimAdd;
 	};
 };
+
+TRACE_1("mode executed",_mode);
+
+INFO("fnc_teleport.sqf fully executed.");
+
