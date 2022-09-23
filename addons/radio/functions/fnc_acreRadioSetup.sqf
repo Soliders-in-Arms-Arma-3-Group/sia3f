@@ -1,9 +1,9 @@
 #include "script_component.hpp"
 
-#define GET_HASH profileNamespace getVariable [\
+/* profileNamespace getVariable [
 	QGVAR(ACREDefaultSpatial), \
-	["ACRE_PRC343", "ACRE_PRC148", "ACRE_PRC152", "ACRE_PRC77", "ACRE_PRC117F"] createHashMapFromArray ["RIGHT", "LEFT", "LEFT", "LEFT", "LEFT"] \
-] // Load player's current default spatial settings.
+	["ACRE_PRC343", "ACRE_PRC148", "ACRE_PRC152", "ACRE_PRC77", "ACRE_PRC117F"] createHashMapFromArray ["RIGHT", "LEFT", "LEFT", "LEFT", "LEFT"]
+] // Load player's current default spatial settings. */ // Commented out in order to make sqf validator work
 
 /*
  * Author: McKendrick
