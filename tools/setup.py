@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+# from https://github.com/acemod/arma-project-template/blob/master/tools/setup.py
 # Modified by Siege to remove the ACE build dependency because I see no need for it.
 
 #######################

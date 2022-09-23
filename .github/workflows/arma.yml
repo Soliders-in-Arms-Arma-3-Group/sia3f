@@ -1,0 +1,47 @@
+# from https://github.com/acemod/ACE3/blob/master/.github/workflows/arma.yml
+# modified by Siege
+
+name: Arma
+
+on:
+  push:
+    branches:
+    - main
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout the source code
+      uses: actions/checkout@master
+    - name: Validate SQF
+      run: python3 tools/sqf_validator.py
+    - name: Validate Config
+      run: python3 tools/config_style_checker.py
+    - name: Check for BOM
+      uses: arma-actions/bom-check@master
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout the source code
+      uses: actions/checkout@master
+    - name: Lint (sqflint)
+      uses: arma-actions/sqflint@master
+      continue-on-error: true # No failure due to many false-positives
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout the source code
+      uses: actions/checkout@master
+    - name: Build using HEMTT
+      uses: arma-actions/hemtt@master
+      with:
+        command: build --release --ci
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v2-preview
+      with:
+        name: sia3f-${{ github.sha }}-nobin
+        path: releases/sia3f_*.zip

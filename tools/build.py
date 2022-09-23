@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+# from https://github.com/acemod/ACE3/blob/master/tools/build.py
+
 import os
 import sys
 import subprocess
