@@ -60,7 +60,7 @@ class Cfg3DEN {
 						tooltip = "The unit's role (e.g, ""Rifleman""); Only needs to be defined on playable units";
 						property = QGVAR(role);
 						control = "Edit";
-						expression = QUOTE([_this, _value] call FUNC(rolesExpression););
+						expression = QUOTE([ARR_2(_this, _value)] call FUNC(rolesExpression););
 						typeName = "STRING";
 						defaultValue = "''";
 

@@ -10,7 +10,10 @@
 class GVAR(TPD_teleport)
 {
 	idd = -1;
-	onLoad = QUOTE(uiNamespace setVariable [ARR_2(QQGVAR(TPD_Display), _this select 0)];['onLoad', nil, _this select 0] spawn FUNC(teleport));
+	onLoad = QUOTE( \
+		uiNamespace setVariable [ARR_2(QQGVAR(TPD_Display), _this select 0)]; \
+		[ARR_3('onLoad', nil, _this select 0)] spawn FUNC(teleport); \
+	);
 	class controlsBackground
 	{
 		class headline: ctrlStaticTitle
