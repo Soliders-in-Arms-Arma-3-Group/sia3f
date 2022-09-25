@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 
+# from https://github.com/acemod/ACE3/blob/master/tools/config_style_checker.py
+# modified by Siege
+
 import fnmatch
 import os
 import re
