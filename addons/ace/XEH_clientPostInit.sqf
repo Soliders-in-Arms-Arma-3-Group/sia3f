@@ -1,6 +1,8 @@
 #include "script_component.hpp"
 // should behave identically to initPlayerLocal
 
+if (!("@ace" call EFUNC(core,checkModPresence)) || is3DEN) exitWith {};
+
 /* ACE3 Interactions */
 private ["_action", "_statement"];
 private _buttons = EGVAR(configuration,buttons);

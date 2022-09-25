@@ -1,5 +1,7 @@
 #include "script_component.hpp"
 
+if (is3DEN) exitWith {};
+
 #define SAFESTART_HINT_REFRESH 30; 
 // basically initServer.sqf
 

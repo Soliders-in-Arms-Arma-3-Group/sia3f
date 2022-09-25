@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 // should behave identically to initPlayerLocal
 
-if (!GET_CONFIG(acreEnabled,true) || !("@ACRE2" call EFUNC(core,checkModPresence))) exitWith {}; // exit if ACRE not loaded
+if (!GET_CONFIG(acreEnabled,true) || !("@ACRE2" call EFUNC(core,checkModPresence)) || is3DEN) exitWith {};
 
 private _personalRadioClassname = missionNameSpace getVariable [QEGVAR(configuration,personalRadio),"ACRE_PRC343"];
 

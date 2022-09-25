@@ -1,6 +1,8 @@
 #include "script_component.hpp"
 // should behave identically to initPlayerLocal
 
+if (is3DEN) exitWith {};
+
 player addEventHandler ["Killed", {
 	params ["_unit"];
 
