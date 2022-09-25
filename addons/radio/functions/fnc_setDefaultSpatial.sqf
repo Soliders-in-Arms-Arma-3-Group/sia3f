@@ -5,8 +5,8 @@
  * Updates and applies setting for given radio and ear.
  *
  * Arguments:
- * 0: Radio to change ear for <STRING>
- * 1: Ear to set <STRING>
+ * 0: Radio classname to change ear for <STRING>
+ * 1: Ear to set, 0: Left, 1: Both, 2: Right <SCALAR<0-2>> (default: 1)
  *
  * Return Value:
  * None
@@ -22,17 +22,13 @@ if (!GET_CONFIG(acreEnabled,true) || !hasInterface || !("@ACRE2" call EFUNC(core
 waitUntil { ([] call acre_api_fnc_isInitialized) }; // Wait until player's radios are initialized.
 LOG("fnc_acreRadioSetup started (radios initialized)");
 
-_params params [
-	["_radio", "", ""],
-	["_ear", "" , ""]
+params [
+	["_radio", "", [""]],
+	["_ear", 1 , [0]]
 ];
+TRACE_2("params",_radio,_ear);
 
-private _hash = GET_HASH; // Get hash of settings.
-_hash set [_radio, _ear]; // Change new setting.
-
-profileNamespace setVariable [QGVAR(ACREDefaultSpatial), _hash]; // Update player's settings.
-saveProfileNamespace;
-TRACE_1("Hash saved to profileNamespace sia3f_radio_ACREDefaultSpatial",_hash);
+private _ear = ["LEFT", "CENTER", "RIGHT"] select _ear;
 
 [([_radio] call acre_api_fnc_getRadioByType), _ear] call acre_api_fnc_setRadioSpatial; // Apply chosen radio spatialization.
 TRACE_2("set radio to ear",_radio,_ear);

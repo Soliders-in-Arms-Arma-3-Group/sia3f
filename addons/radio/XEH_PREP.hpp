@@ -1,6 +1,5 @@
-PREP(acreRadioSetup);
+PREP(giveRadios);
 PREP(loadDefaultSpatial);
 PREP(reorderMPTT);
-PREP(setDefaultSPatial);
-PREP(giveRadios);
+PREP(setDefaultSpatial);
 PREP(setRadioChannel);
