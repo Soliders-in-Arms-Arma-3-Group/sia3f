@@ -14,12 +14,12 @@ player addEventHandler ["Killed", {
 player addEventHandler ["Respawn", {
 	// Restore ACRE PTT Assignment
 	waitUntil { ([] call acre_api_fnc_isInitialized) };
-	["loadRadioDefaultSpatials", []] spawn FUNC(ACRERadioSetup);
-	["reorderRadioMPTT", [_personalRadioClassname]] spawn FUNC(ACRERadioSetup);
+	[] spawn FUNC(loadDefaultSpatial);
+	[_personalRadioClassname] spawn FUNC(reorderMPTT);
 }];
 
 ["ace_arsenal_displayClosed", {
-	["loadRadioDefaultSpatials", []] spawn FUNC(ACRERadioSetup);
-	["reorderRadioMPTT", [_personalRadioClassname]] spawn FUNC(ACRERadioSetup);
+	[] spawn FUNC(loadDefaultSpatial);
+	[_personalRadioClassname] spawn FUNC(reorderMPTT);
 	[((group player) getVariable [QEGVAR(configuration,radioChannel), 1]), _personalRadioClassname] spawn FUNC(setRadioChannel);
 }] call CBA_fnc_addEventHandler;

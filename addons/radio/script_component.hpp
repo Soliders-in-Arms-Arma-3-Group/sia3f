@@ -2,7 +2,7 @@
 #define COMPONENT_BEAUTIFIED Radio
 #include "\z\sia3f\addons\main\script_mod.hpp"
 
-// #define DEBUG_MODE_FULL
+#define DEBUG_MODE_FULL
 // #define DISABLE_COMPILE_CACHE
 // #define ENABLE_PERFORMANCE_COUNTERS
 
@@ -15,3 +15,5 @@
 #endif
 
 #include "\z\sia3f\addons\main\script_macros.hpp"
+
+#include "\z\sia3f\addons\radio\script_macros.hpp"
