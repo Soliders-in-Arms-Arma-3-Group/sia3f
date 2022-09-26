@@ -21,7 +21,7 @@ if (!GET_CONFIG(acreEnabled,true) || !hasInterface || !("@ACRE2" call EFUNC(core
 waitUntil { ([] call acre_api_fnc_isInitialized) }; // Wait until player's radios are initialized.
 LOG("fnc_acreRadioSetup started (radios initialized)");
 
-_params params [
+params [
 	["_radioType", missionNameSpace getVariable [QEGVAR(configuration,personalRadio), "ACRE_PRC343"], ""]
 ];
 
