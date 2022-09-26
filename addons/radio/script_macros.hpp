@@ -1,11 +1,11 @@
 #define SPATIALIZATION_SETTINGS_NAME(NAME) NAME##_spatialization
-#define SPATIALIZATION_SETTINGS_VALUE_INFO [[0, 1, 2], ["Left", "Both", "Right"], 1]
-#define SPATIALIZATION_SETTINGS(RADIO,displayName) [ \
+#define SPATIALIZATION_SETTINGS_VALUE_INFO(DEFAULT) [[0, 1, 2], ["Left", "Both", "Right"], DEFAULT]
+#define SPATIALIZATION_SETTINGS(RADIO,DISPLAY_NAME,DEFAULT) [ \
 	QGVAR(SPATIALIZATION_SETTINGS_NAME(RADIO)), \
 	"LIST", \
-	displayName, \
+	DISPLAY_NAME, \
 	["SIA Mission Framework", "Spatialization Settings"], \
-	SPATIALIZATION_SETTINGS_VALUE_INFO, \
+	SPATIALIZATION_SETTINGS_VALUE_INFO(DEFAULT), \
 	false, \
 	{ \
 		TRACE_2(QUOTE(RADIO settings updated),_this); \
