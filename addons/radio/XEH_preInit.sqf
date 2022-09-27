@@ -21,6 +21,6 @@ SPATIALIZATION_SETTINGS(ACRE_SEM90,"SEM90",0);
 
 #include "XEH_PREP.hpp"
 
-if (!GET_CONFIG(acreEnabled,true) || !("@ACRE2" call EFUNC(core,checkModPresence)) || is3DEN) exitWith {};
+if (!GET_CONFIG(acreEnabled,true) || !("@ACRE2" call EFUNC(core,checkModPresence)) || (allDisplays isEqualTo [findDisplay 0]) || is3DEN) exitWith {};
 
 ADDON = true;

@@ -4,7 +4,7 @@ ADDON = false;
 
 #include "XEH_PREP.hpp"
 
-if (!is3DEN) exitWith {};
+if ((allDisplays isEqualTo [findDisplay 0]) || !is3DEN) exitWith {};
 
 if (GVAR(missionLoaded)) then {
 	private _roles = GET_CONFIG(roles,createHashMap);
