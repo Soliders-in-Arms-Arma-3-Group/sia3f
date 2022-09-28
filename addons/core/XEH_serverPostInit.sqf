@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 
-if (is3DEN) exitWith {};
+if ((allDisplays isEqualTo [findDisplay 0]) || is3DEN) exitWith {};
 
 #define SAFESTART_HINT_REFRESH 30; 
 // basically initServer.sqf
