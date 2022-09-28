@@ -8,7 +8,7 @@ class CfgPatches {
 		requiredVersion = REQUIRED_VERSION;
 		requiredAddons[] = { "sia3f_core" };
 		author = "Soldiers in Arms";
-		authors[] = { "" };
+		authors[] = { "McKendrick, Siege" };
 		url = "https://github.com/Soliders-in-Arms-Arma-3-Group";
 		VERSION_CONFIG;
 	};
