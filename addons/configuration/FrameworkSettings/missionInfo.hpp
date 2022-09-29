@@ -32,7 +32,7 @@ class GVAR(missionInfo) {
 
 		class GVAR(showStatusHint) {
 			displayName = "Show Status Hint";
-			tooltip = "Toggle persistent info display.";
+			tooltip = "Toggle persistent info display";
 			property = QGVAR(showStatusHint);
 			control = "Checkbox";
 			defaultValue = true;
@@ -40,7 +40,7 @@ class GVAR(missionInfo) {
 
 		class GVAR(showIntroText) {
 			displayName = "Show Intro Text";
-			tooltip = "Show cinematic intro text on mission start.";
+			tooltip = "Show cinematic intro text on mission start";
 			property = QGVAR(showIntroText);
 			control = "Checkbox";
 			defaultValue = true;
@@ -48,7 +48,7 @@ class GVAR(missionInfo) {
 
 		class GVAR(showReplay) {
 			displayName = "Show Replay";
-			tooltip = "Record and playback the mission using the GRAD Replay system.";
+			tooltip = "Record and playback the mission using the GRAD Replay system";
 			property = QGVAR(showReplay);
 			control = "Checkbox";
 			defaultValue = true;

@@ -2,17 +2,19 @@ class GVAR(arsenalOptions) {
 	collapsed = 1;
 	displayName = "Arsenal Options";
 	class Attributes {
+		/*
 		class GVAR(disableArsenalOnRespawn) {
 			displayName = "Disable Arsenal On Respawn";
-			tooltip = "Currently no functionality.";
+			tooltip = "Currently no functionality";
 			property = QGVAR(disableArsenalOnRespawn);
 			control = "Checkbox";
 			defaultValue = false;
 		};
+		*/
 
 		class GVAR(haveBasics) {
 			displayName = "Have Basics";
-			tooltip = "Add basic items such as compasses, maps, and bandages.";
+			tooltip = "Add basic items such as compasses, maps, and bandages";
 			property = QGVAR(haveBasics);
 			control = "Checkbox";
 			defaultValue = true;
@@ -20,7 +22,7 @@ class GVAR(arsenalOptions) {
 
 		class GVAR(haveCTab) {
 			displayName = "Have CTab";
-			tooltip = "Add CTab items such as the helmet cam and rugged tablet.";
+			tooltip = "Add CTab items such as the helmet cam and rugged tablet";
 			property = QGVAR(haveCTab);
 			control = "Checkbox";
 			defaultValue = true;

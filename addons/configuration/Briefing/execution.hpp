@@ -4,7 +4,7 @@ class GVAR(execution) {
 	class Attributes {
 		class GVAR(execTabName) {
 			displayName = "Tab Name";
-			tooltip = "Name of the tab (default ""Execution"").";
+			tooltip = "Name of the tab (default ""Execution"")";
 			property = QGVAR(execTabName);
 			control = "Edit";
 			typeName = "STRING";
@@ -13,7 +13,7 @@ class GVAR(execution) {
 
 		class GVAR(execTabText) {
 			displayName = "Tab Text";
-			tooltip = "Execution tab text.";
+			tooltip = "Execution tab text";
 			property = QGVAR(execTabText);
 			control = "EditMulti5";
 			typeName = "STRING";

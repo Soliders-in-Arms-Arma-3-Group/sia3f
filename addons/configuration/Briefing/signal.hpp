@@ -4,7 +4,7 @@ class GVAR(signal) {
 	class Attributes {
 		class GVAR(signalTabName) {
 			displayName = "Tab Name";
-			tooltip = "Name of the tab (default ""Signal"").";
+			tooltip = "Name of the tab (default ""Signal"")";
 			property = QGVAR(signalTabName);
 			control = "Edit";
 			typeName = "STRING";
@@ -13,7 +13,7 @@ class GVAR(signal) {
 
 		class GVAR(signalTabText) {
 			displayName = "Tab Text";
-			tooltip = "Signal tab text.";
+			tooltip = "Signal tab text";
 			property = QGVAR(signalTabText);
 			control = "EditMulti5";
 			typeName = "STRING";

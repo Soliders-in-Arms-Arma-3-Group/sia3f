@@ -81,7 +81,7 @@ class Cfg3DEN {
 				class Attributes {
 					class GVAR(radioChannel) {
 						displayName = "Radio Channel";
-						tooltip = "The channel number this group's personal radio will automatically be set to.";
+						tooltip = "The channel number this group's personal radio will automatically be set to";
 						property = QGVAR(radioChannel);
 						control = "Edit";
 						expression = QUOTE(_this setVariable [ARR_3(""%s"",_value,true)];);

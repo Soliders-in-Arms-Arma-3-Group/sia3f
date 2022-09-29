@@ -4,7 +4,7 @@ class GVAR(mission) {
 	class Attributes {
 		class GVAR(missionTabName) {
 			displayName = "Tab Name";
-			tooltip = "Name of the tab (default ""Mission"").";
+			tooltip = "Name of the tab (default ""Mission"")";
 			property = QGVAR(missionTabName);
 			control = "Edit";
 			typeName = "STRING";
@@ -13,7 +13,7 @@ class GVAR(mission) {
 
 		class GVAR(missionTabText) {
 			displayName = "Tab Text";
-			tooltip = "Mission tab text.";
+			tooltip = "Mission tab text";
 			property = QGVAR(missionTabText);
 			control = "EditMulti5";
 			typeName = "STRING";

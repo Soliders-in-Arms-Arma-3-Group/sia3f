@@ -24,7 +24,7 @@ class GVAR(editRole) {
 			y = DIALOG_TOP;
 			w = DIALOG_W * GRID_W;
 			h = CTRL_DEFAULT_H;
-			tooltip = "Configuration of the settings and arsenal items for specific SIA Mission Framework roles. \nNOTE that the gear each player spawns in with is already added to their local arsenal.";
+			tooltip = "Configuration of the settings and arsenal items for specific SIA Mission Framework roles. \nNOTE that the gear each player spawns in with is already added to their local arsenal";
 		};
 		class Footer: ctrlStaticFooter
 		{
@@ -321,7 +321,7 @@ class GVAR(additionalItemsEditor) {
 			y = DIALOG_TOP;
 			w = DIALOG_W * GRID_W;
 			h = CTRL_DEFAULT_H;
-			tooltip = "Configuration of the local arsenal items for specific SIA Mission Framework roles. \nNOTE that the gear each player spawns in with is already added to their local arsenal.";
+			tooltip = "Configuration of the local arsenal items for specific SIA Mission Framework roles. \nNOTE that the gear each player spawns in with is already added to their local arsenal";
 		};
 		class footer: ctrlStaticFooter
 		{
@@ -604,7 +604,7 @@ class GVAR(editGroups) {
 			y = DIALOG_TOP;
 			w = DIALOG_W * GRID_W;
 			h = CTRL_DEFAULT_H;
-			tooltip = "Create and edit groups of roles, allowing for items and settings to be applied to multiple roles at once.";
+			tooltip = "Create and edit groups of roles, allowing for items and settings to be applied to multiple roles at once";
 		};
 		class Footer: ctrlStaticFooter
 		{
@@ -868,7 +868,7 @@ class GVAR(editGroupsSettings) {
 			y = DIALOG_TOP;
 			w = DIALOG_W * GRID_W;
 			h = CTRL_DEFAULT_H;
-			tooltip = "Create and edit groups of roles, allowing for items and settings to be applied to multiple roles at once.";
+			tooltip = "Create and edit groups of roles, allowing for items and settings to be applied to multiple roles at once";
 		};
 		class Footer: ctrlStaticFooter
 		{
