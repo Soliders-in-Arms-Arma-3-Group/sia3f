@@ -59,7 +59,7 @@ class Cfg3DEN {
 						displayName = "Role";
 						tooltip = "The unit's role (e.g, ""Rifleman""); Only needs to be defined on playable units";
 						property = QGVAR(role);
-						control = "Edit";
+						control = "Edit"; // ToDo: custom control that hides when unit is not playable
 						expression = QUOTE([ARR_2(_this, _value)] call FUNC(rolesExpression););
 						typeName = "STRING";
 						defaultValue = "''";
@@ -84,10 +84,10 @@ class Cfg3DEN {
 						tooltip = "The channel number this group's personal radio will automatically be set to.";
 						property = QGVAR(radioChannel);
 						control = "Edit";
-						expression = "_this setVariable ['%s',_value,true];";
+						expression = QUOTE(_this setVariable [ARR_3(""%s"",_value,true)];);
 
 						defaultValue = "1";
-						
+
 						unique = 0;
 						validate = "number";
 						typeName = "NUMBER";
