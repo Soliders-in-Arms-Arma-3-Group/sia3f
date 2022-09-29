@@ -4,6 +4,10 @@
 // Default versioning level
 #define DEFAULT_VERSIONING_LEVEL 2
 
+#define LOG_FUNC_START LOG_SYS("Function Started",__FILE__)
+#define LOG_FUNC_END LOG_SYS("Function Ended",__FILE__)
+#define LOG_FUNC_END_ERROR(MESSAGE) LOG_SYS("Function ended with error",format [ARR_3('%1 - %2',MESSAGE,__FILE__)])
+
 // Player GUI colors
 // From https://github.com/zen-mod/ZEN/blob/3473e812d0e2e807fea39b4dd2f871ba40b1e8aa/addons/main/script_macros.hpp#L86-L91
 #define GUI_THEME_RGB_R "(profileNamespace getVariable ['GUI_BCG_RGB_R',0.13])"
