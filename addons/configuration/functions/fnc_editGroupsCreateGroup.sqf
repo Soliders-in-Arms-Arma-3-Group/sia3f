@@ -18,15 +18,20 @@ params [
 	["_groupName", "", [""]]
 ];
 
-if (_groupName == "") exitWith {};
+if (_groupName == "") exitWith {
+	LOG_FUNC_END_ERROR("empty group name");
+};
 
 private _groups = uiNamespace getVariable [QGVAR(groups), createHashMap];
 
 if (_groupName in _groups) exitWith {
 	systemChat "Cannot create group, group already exists.";
+	LOG_FUNC_END_ERROR("group name already exists");
 };
+LOG_FUNC_START;
 
 // create role, value is isMedic, isEngineer, hasHandheldRadio, hasManpackRadio, [additional items], [roles in group]
 _groups set [_groupName, [false, false, false, false, [], []]];
 uiNamespace setVariable [QGVAR(groups), _groups];
 [-1] call FUNC(editGroupsRefresh);
+LOG_FUNC_END;

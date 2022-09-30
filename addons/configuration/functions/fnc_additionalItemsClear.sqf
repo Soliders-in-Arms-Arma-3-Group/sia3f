@@ -14,9 +14,9 @@
  * call sia3f_configuration_fnc_additionalItemsClear
  */
 
+LOG_FUNC_START;
 private _category = lbCurSel ((findDisplay 8502) displayCtrl 2300) - 1;
 private _items = uiNamespace getVariable [QGVAR(additionalItems), []];
-TRACE_1("Handling clear button",_category);
 
 // Remove all if no specific category
 if (_category == -1) then {
@@ -35,9 +35,12 @@ if (_category == -1) then {
 			_configItems select (_category - 5);
 		};
 	};
+
+	TRACE_2("Clear button removed items",_category,_categoryItems);
 	_items = _items - _categoryItems;
 };
 
 // Refresh the list after clear
 uiNamespace setVariable [QGVAR(additionalItems), _items];
 call FUNC(additionalItemsAddItems);
+LOG_FUNC_END;

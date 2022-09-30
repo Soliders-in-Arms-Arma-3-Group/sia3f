@@ -12,7 +12,7 @@ class display3DEN { // https://community.bistudio.com/wiki/Eden_Editor:_Configur
 				class GVAR(missionSettings) {
 					text = "Mission Settings";
 					action = QUOTE(edit3DENMissionAttributes QQGVAR(frameworkSettings););
-                    opensNewWindow = 1;
+					opensNewWindow = 1;
 				};
  
 				class GVAR(briefingSetup) {
@@ -23,7 +23,7 @@ class display3DEN { // https://community.bistudio.com/wiki/Eden_Editor:_Configur
 
 				class GVAR(init) {
 					text = "Initialize Framework";
-					action = QUOTE(call FUNC(initFramework));
+					action = QUOTE(call FUNC(initFramework););
 				};
 
 				class GVAR(importExportFolder) { // ToDo
@@ -42,7 +42,7 @@ class display3DEN { // https://community.bistudio.com/wiki/Eden_Editor:_Configur
 				class GVAR(roleEdit) {
 					text = "Edit Roles";
 					action = QUOTE(call FUNC(editRolesSpawn););
-                    opensNewWindow = 1;
+					opensNewWindow = 1;
 				};
 
 				class GVAR(templateLink) {

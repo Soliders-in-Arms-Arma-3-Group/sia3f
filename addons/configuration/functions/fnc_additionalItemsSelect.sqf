@@ -29,7 +29,7 @@ private _items = uiNamespace getVariable [QGVAR(additionalItems), []];
 private _findItem = _items find _itemClassname;
 
 // Add item if not already in list
-if (_addItem && {_findItem < 0}) exitWith {
+if (_addItem && { _findItem < 0 }) exitWith {
 	_items pushBack _itemClassname;
 	// Change symbol and increase alpha
 	_listbox lnbSetText [[_currentRow, 2], "+"];
@@ -40,7 +40,7 @@ if (_addItem && {_findItem < 0}) exitWith {
 };
 
 // Remove item if in list
-if (!_addItem && {_findItem > -1}) exitWith {
+if (!_addItem && { _findItem > -1 }) exitWith {
 	_items deleteAt _findItem;
 	// Change symbol and reduce alpha
 	_listbox lnbSetText [[_currentRow, 2], "−"];

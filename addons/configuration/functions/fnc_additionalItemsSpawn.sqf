@@ -22,7 +22,10 @@ params [
 
 // ensure parameter is an actual role
 private _hash = uiNamespace getVariable [[QGVAR(roles), QGVAR(groups)] select _isGroup, createHashMap];
-if (_name == "" || !(_name in _hash)) exitWith {};
+if (_name == "" || !(_name in _hash)) exitWith {
+	LOG_FUNC_END_ERROR("role/group not found");
+};
+LOG_FUNC_START;
 
 (findDisplay 313) createDisplay QGVAR(additionalItemsEditor);
 
@@ -37,3 +40,4 @@ uiNamespace setVariable [QGVAR(additionalItemsIsGroup), _isGroup];
 
 // refresh items
 [0] call FUNC(additionalItemsCategory);
+LOG_FUNC_END;

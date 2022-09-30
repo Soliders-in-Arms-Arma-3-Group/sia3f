@@ -17,7 +17,6 @@
 params [
 	["_index", 0, [0]]
 ];
-TRACE_1("additionalItemsCategory params",_index);
 
 // Store selected category
 uiNamespace setVariable [QGVAR(additionalItemsCategory), _index];
