@@ -14,7 +14,10 @@
  * call sia3f_ace_fnc_initLocalArsenal
 */
 
-if (!hasInterface) exitWith {}; // exit if executed on non client machine
+if (!hasInterface) exitWith {
+	LOG_FUNC_END_ERROR("executed on server machine");
+}; // exit if executed on non client machine
+LOG_FUNC_START;
 
 // add player's loadout to arsenal
 private _loadout = getUnitLoadout player;
@@ -44,3 +47,4 @@ _commonItems = _commonItems arrayIntersect _commonItems;
 TRACE_1("local arsenal added items",_commonItems);
 
 { [_x, _commonItems, false] call ace_arsenal_fnc_addVirtualItems } forEach EGVAR(configuration,arsenals);
+LOG_FUNC_END;

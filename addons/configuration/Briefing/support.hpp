@@ -4,7 +4,7 @@ class GVAR(support) {
 	class Attributes {
 		class GVAR(supportTabName) {
 			displayName = "Tab Name";
-			tooltip = "Name of the tab (default ""Support"").";
+			tooltip = "Name of the tab (default ""Support"")";
 			property = QGVAR(supportTabName);
 			control = "Edit";
 			typeName = "STRING";
@@ -13,7 +13,7 @@ class GVAR(support) {
 
 		class GVAR(supportTabText) {
 			displayName = "Tab Text";
-			tooltip = "Support tab text.";
+			tooltip = "Support tab text";
 			property = QGVAR(supportTabText);
 			control = "EditMulti5";
 			typeName = "STRING";

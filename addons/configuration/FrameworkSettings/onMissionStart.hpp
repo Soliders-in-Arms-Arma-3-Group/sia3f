@@ -4,7 +4,7 @@ class GVAR(onMissionStart) {
 	class Attributes {
 		class GVAR(onMissionStartCode) {
 			displayName = "On Mission Start Code";
-			tooltip = "Insert code to be executed on mission start.";
+			tooltip = "Insert code to be executed on mission start";
 			property = QGVAR(onMissionStartCode);
 			control = "EditMulti5";
 			defaultValue = "''";

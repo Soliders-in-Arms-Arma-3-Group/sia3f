@@ -20,7 +20,7 @@ class GVAR(briefingSettings) {
 
 		class GVAR(briefLoadout) {
 			displayName = "Loadout Information";
-			tooltip = "Add loadout information to briefing.";
+			tooltip = "Add loadout information to briefing";
 			property = QGVAR(briefLoadout);
 			control = "Checkbox";
 			defaultValue = true;

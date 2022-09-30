@@ -44,7 +44,7 @@ class GVAR(missionInfo) {
 
 		class GVAR(showIntroText) {
 			displayName = "Show Intro Text";
-			tooltip = "Show cinematic intro text on mission start.";
+			tooltip = "Show cinematic intro text on mission start";
 			property = QGVAR(showIntroText);
 			control = "Checkbox";
 			defaultValue = true;

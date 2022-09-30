@@ -4,7 +4,7 @@ class GVAR(situation) {
 	class Attributes {
 		class GVAR(situationTabName) {
 			displayName = "Tab Name";
-			tooltip = "Name of the tab (default ""Situation"").";
+			tooltip = "Name of the tab (default ""Situation"")";
 			property = QGVAR(situationTabName);
 			control = "Edit";
 			typeName = "STRING";
@@ -13,7 +13,7 @@ class GVAR(situation) {
 
 		class GVAR(situationTabText) {
 			displayName = "Tab Text";
-			tooltip = "Situation tab text.";
+			tooltip = "Situation tab text";
 			property = QGVAR(situationTabText);
 			control = "EditMulti5";
 			typeName = "STRING";

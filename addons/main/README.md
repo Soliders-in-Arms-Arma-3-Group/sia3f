@@ -7,6 +7,30 @@ Backbone of other components, defining most of the commonly used macros.  Highly
 Custom macros not imported from CBA are defined here.
 ***
 
+### LOG_FUNC_START
+Log the start of a function to the RPT file.  Should be inserted into the first line that is meant to be executed in a function, i.e, after any if statement that checks for mod presence, config values, etc.
+
+Example RPT file output for the 'test' function in module 'balls':
+```
+[SIA3F] (balls) Function Started: /z/sia3f/addons/balls/functions/fnc_test.sqf
+```
+
+### LOG_FUNC_END
+Log the end of a function to the RPT file.  Should be inserted after the last line that is meant to be executed in a function.
+
+Example RPT file output for the 'test' function in module 'balls':
+```
+[SIA3F] (balls) Function Ended: /z/sia3f/addons/balls/functions/fnc_test.sqf
+```
+
+### LOG_FUNC_END_ERROR(error)
+Log an error that causes a function to stop before the end (e.g, ``if (condition) exitWith {};``).
+
+Example RPT file output for the 'test' function in module 'balls' with an `error` value of `"test"`:
+```
+[SIA3F] (balls) Function ended with error: test - /z/sia3f/addons/ace/functions/fnc_test.sqf
+```
+
 ### GUI_THEME_RGB_<R/G/B>
 Get user defined GUI red/green/blue value.  Intended for use in GUI controls.  No parameters.
 
