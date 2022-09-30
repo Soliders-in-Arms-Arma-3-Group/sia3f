@@ -14,8 +14,7 @@
  * call sia3f_core_fnc_briefing
 */
 
-LOG("briefing started");
-
+LOG_FUNC_START;
 private _situationText = [GET_CONFIG(situationTabText,"")] call FUNC(formatBriefing);
 private _missionText = [GET_CONFIG(missionTabText,"")] call FUNC(formatBriefing);
 private _executionText = [GET_CONFIG(execTabText,"")] call FUNC(formatBriefing);
@@ -28,5 +27,4 @@ player createDiaryRecord ["Diary", [GET_CONFIG(supportTabName,"Support"), _suppo
 player createDiaryRecord ["Diary", [GET_CONFIG(execTabName,"Execution"), _executionText]];
 player createDiaryRecord ["Diary", [GET_CONFIG(missionTabName,"Mission"), _missionText]];
 player createDiaryRecord ["Diary", [GET_CONFIG(situationTabName,"Situation"), _situationText]];
-
-LOG("briefing finished");
+LOG_FUNC_END;

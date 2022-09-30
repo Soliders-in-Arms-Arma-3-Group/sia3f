@@ -114,13 +114,5 @@ addMissionEventHandler ["MPEnded", {
 		ERROR("ocap_fnc_exportData function not found");
 	};
 
-	// Generate scoreboard.
-	private _arr = [];
-	{
-		_arr pushBack [name _x, (getPlayerScores _x) select 4];
-	} forEach allPlayers - entities "HeadlessClient_F"; // Cycle through all players for name and deaths.
-
-	// Print mission name and scoreboard to console.
-	INFO_1("Scoreboard for %1",getMissionConfigValue ["onLoadName", missionName]);
-	INFO("%1",_arr);
+	call FUNC(exportScoreboard);
 }];

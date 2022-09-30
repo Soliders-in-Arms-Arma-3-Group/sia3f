@@ -17,10 +17,9 @@
 */
 
 if (!hasInterface) exitWith {
-	LOG("fnc_goAFK.sqf ran on server.");
+	LOG_FUNC_END_ERROR("function ran on server");
 };
-
-LOG("fnc_goAFK.sqf has started.");
+LOG_FUNC_START;
 
 private _unit = player; // ToDo: replace with param & execute func on server
 
@@ -31,6 +30,7 @@ if (
 	!isAbleToBreathe _unit ||
 	(!isTouchingGround _unit) && (vehicle _unit == _unit) ||
 	(currentPilot vehicle _unit == _unit) && (isEngineOn vehicle _unit)
+	LOG_FUNC_END_ERROR("AFK not allowed");
 ) exitWith { 5 cutText ["Going AFK is not allowed at this time.", "PLAIN", -1, true] };
 
 // set proper unit states/vars
@@ -42,15 +42,16 @@ if ("@ace" call FUNC(checkModPresence)) then {
 	[objNull, _unit] call ace_medical_treatment_fnc_fullHeal;
 };
 _unit setVariable [QGVAR(isAFK), true];
-LOG("fnc_goAFK.sqf: player fully healed and set to AFK.");
+LOG("player set to AFK.");
 
 [(name _unit + " is now AFK.")] remoteExec ["systemChat"]; // "<player> is now AFK" system chat message.
 5 cutText ["You are now AFK\nYou may exit in " + (str TIMEOUT) + " seconds.", "PLAIN", -1, true];
 
 sleep TIMEOUT;
 
-if (!alive player) exitWith {};
+if (!alive player) exitWith {
+	LOG_FUNC_END_ERROR("player not alive");
+};
 
 createDialog QGVAR(goAFK); // open exit dialog
-
-INFO("fnc_goAFK.sqf fully executed.");
+LOG_FUNC_END;

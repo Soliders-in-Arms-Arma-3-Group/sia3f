@@ -24,14 +24,12 @@
 params [
 	["_str", "", [""]]
 ];
-TRACE_1("input string", _str);
-
-LOG("fnc_formatBriefing.sqf started.");
+LOG_FUNC_START;
+TRACE_1("input string",_str);
 
 if (_str == "") exitWith { 
-	LOG("fnc_formatBriefing.sqf found and returned an empty string.");
-
-	_str;
+	LOG_FUNC_END_ERROR("found and returned an empty string");
+	_str
 };
 
 // replace newline with '<br/>'
@@ -39,18 +37,15 @@ private _newlineChar = "
 ";
 
 if ((_str find _newlineChar) == -1) exitWith {
-	LOG("fnc_formatBriefing.sqf found no newline char and returned string.");
-
-	_str;
+	LOG_FUNC_END_ERROR("found no newline char and returned string");
+	_str
 };
 
 private _strArr = _str splitString "";
 {
 	if (_x == _newlineChar) then {
 		_strArr set [_forEachIndex, "<br></br>"];
-		TRACE_1("forEach index var", _forEachIndex);
-		// diag_log _strArr;
-		LOG("fnc_formatBriefing.sqf formatted a new line");
+		TRACE_2("character replaced with newline",_forEachIndex,_x);
 	};
 } forEach _strArr; // there should be a more efficient way to do this than iterating through the entire array, which could possibly have thousands of indexes elements.
 
@@ -58,5 +53,5 @@ private _strArr = _str splitString "";
 private _returnStr = _strArr joinString "";
 TRACE_1("string returned",_returnStr);
 INFO("fnc_formatBriefing.sqf fully executed.");
-
+LOG_FUNC_END;
 _returnStr

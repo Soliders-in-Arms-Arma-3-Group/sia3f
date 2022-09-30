@@ -14,7 +14,8 @@
  * "@sia3f" call sia3f_core_fnc_checkModPresence
 */
 
-if ( !params [["_addon", "", [""]]] ) then { ERROR("checkModPresence invalid params"); };
+if ( !params [["_addon", "", [""]]] ) then { LOG_FUNC_END_ERROR("invalid parameters"); };
+LOG_FUNC_START;
 
 private _hasMod = false; // exitWith doesn't work in the forEach context, so can't return true in the middle of forEach
 
@@ -23,4 +24,5 @@ private _hasMod = false; // exitWith doesn't work in the forEach context, so can
 } forEach getLoadedModsInfo;
 
 TRACE_2("checkModPresence returned",_addon,_hasMod);
+LOG_FUNC_END;
 _hasMod

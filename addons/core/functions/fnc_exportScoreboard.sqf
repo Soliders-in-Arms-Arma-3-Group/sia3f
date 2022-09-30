@@ -14,6 +14,7 @@
  * call sia3f_core_fnc_exportScoreboard
 */
 
+LOG_FUNC_START;
 private _arr = [];
 
 // Cycle through all players for name and death.
@@ -24,6 +25,7 @@ private _arr = [];
 // Print data to server log/console.
 // ! - THIS IS TEMP TILL BETTER SOLUTION IS IMPLEMENTED
 
-diag_log format ["SCOREBOARD FOR %1", sia_f_missionName];
-diag_log _arr;
+INFO_1("Scoreboard for %1",getMissionConfigValue ["onLoadName", missionName]);
+INFO("%1",_arr);
+LOG_FUNC_END;
 _arr
