@@ -1,6 +1,7 @@
 PREP(briefing);
 PREP(checkModPresence);
 PREP(exitAFK);
+PREP(exportScoreboard);
 PREP(formatBriefing);
 PREP(goAFK);
 PREP(hint);

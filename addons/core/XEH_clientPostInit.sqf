@@ -24,16 +24,16 @@ player addEventHandler ["Respawn", {
 	// If _unit does not have a saved loadout, load loadout from death
 	if (isNil "_loadout") then {
 		_unit setUnitLoadout GVAR(deathLoadout);
-		hint "Gear from previous death loaded."
+		hint "Gear from previous death loaded.";
 	} else {
-		_unit setUnitLoadout (savedLoadout);
+		_unit setUnitLoadout _loadout;
 		hint "Saved kit loaded.";
 	};
 
 	// Check if _unit had earplugs in on death, and put them back in.
 	if ("@ace" call FUNC(checkModPresence)) then {
 		if (GVAR(hadEarplugsIn)) then {
-			_unit removeItem "ACE_EarPlugs";
+			_unit removeItem "ACE_EarPlugs"; // replace with conditional to check if unit already has earplugs
 			_unit addItem "ACE_EarPlugs";
 			[_unit, true] call ace_hearing_fnc_putInEarplugs;
 		};
