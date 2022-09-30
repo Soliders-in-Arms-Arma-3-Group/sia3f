@@ -22,7 +22,7 @@ waitUntil { ([] call acre_api_fnc_isInitialized) }; // Wait until player's radio
 LOG("fnc_acreRadioSetup started (radios initialized)");
 
 params [
-	["_radioType", missionNameSpace getVariable [QEGVAR(configuration,personalRadio), "ACRE_PRC343"], ""]
+	["_radioType", missionNameSpace getVariable [QGVAR(personalRadio), "ACRE_PRC343"], ""]
 ];
 
 _hasRadio = [player, _radioType] call acre_api_fnc_hasKindOfRadio;

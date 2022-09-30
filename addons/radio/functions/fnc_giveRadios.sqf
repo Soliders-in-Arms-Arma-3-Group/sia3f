@@ -40,9 +40,9 @@ private _rolesManpackRadio = [];
 } forEach EGVAR(core,groups);
 TRACE_2("Radio roles",_rolesHandheldRadio,_rolesManpackRadio);
 
-private _personalRadioClassname = missionNameSpace getVariable [QEGVAR(configuration,personalRadio),"ACRE_PRC343"];
-private _handheldRadioClassname = missionNameSpace getVariable [QEGVAR(configuration,handheldRadio),"ACRE_PRC152"];
-private _manpackRadioClassname = missionNameSpace getVariable [QEGVAR(configuration,manpackRadio),"ACRE_PRC117F"];
+private _personalRadioClassname = missionNameSpace getVariable [QGVAR(personalRadio),"ACRE_PRC343"];
+private _handheldRadioClassname = missionNameSpace getVariable [QGVAR(handheldRadio),"ACRE_PRC152"];
+private _manpackRadioClassname = missionNameSpace getVariable [QGVAR(manpackRadio),"ACRE_PRC117F"];
 TRACE_3("Radio classnames",_personalRadioClassname,_handheldRadioClassname,_manpackRadioClassname);
 
 private _role = player getVariable [QEGVAR(configuration,role), "default"];
