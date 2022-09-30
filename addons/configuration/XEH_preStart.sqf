@@ -2,6 +2,6 @@
 
 #include "XEH_PREP.hpp"
 
-if ((allDisplays isEqualTo [findDisplay 0]) || !is3DEN) exitWith {};
+// ToDo: make this only run when entering 3DEN, scanConfig is not a performance friendly function (88 ms)
 
 call FUNC(scanConfig);
