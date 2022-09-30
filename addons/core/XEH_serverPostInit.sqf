@@ -92,7 +92,7 @@ if (!isNil QEGVAR(configuration,buttons)) then {
 
 /* Safe Start */
 
-if (GET_CONFIG(showStatusHint,true)) then {
+if (GET_CONFIG(showSafestartHint,true)) then {
     [] spawn {
         while { !(missionNamespace getVariable [QGVAR(missionStarted), false]) } do {
             remoteExec [QFUNC(hint)];

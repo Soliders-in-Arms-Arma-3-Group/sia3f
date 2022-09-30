@@ -3,7 +3,7 @@ class GVAR(aceActionOptions) {
 	displayName = "ACE Actions Options";
 	class Attributes {
 		class GVAR(enableTPMenu) {
-			displayName = "Enable TP Menu";
+			displayName = "Teleport Menu";
 			tooltip = "Enable 'Teleport Menu' on ACE Buttons.";
 			property = QGVAR(enableTPMenu);
 			control = "Checkbox";
@@ -11,7 +11,7 @@ class GVAR(aceActionOptions) {
 		};
 
 		class GVAR(enableTPToSquad) {
-			displayName = "Enable TP To Squad";
+			displayName = "Teleport to Squad";
 			tooltip = "Enable 'Teleport to Squad' on ACE Buttons.";
 			property = QGVAR(enableTPToSquad);
 			control = "Checkbox";
@@ -19,7 +19,7 @@ class GVAR(aceActionOptions) {
 		};
 
 		class GVAR(enableManageKit) {
-			displayName = "Enable Manage Kit";
+			displayName = "Kit Manager";
 			tooltip = "Enable 'Manage Kit' on ACE Buttons.";
 			property = QGVAR(enableManageKit);
 			control = "Checkbox";
@@ -27,7 +27,7 @@ class GVAR(aceActionOptions) {
 		};
 
 		class GVAR(enableLoadoutInfo) {
-			displayName = "Enable Loadout Info";
+			displayName = "Loadout Information";
 			tooltip = "Enable 'Update Loadout Info' on ACE Buttons.";
 			property = QGVAR(enableLoadoutInfo);
 			control = "Checkbox";
@@ -35,7 +35,7 @@ class GVAR(aceActionOptions) {
 		};
 
 		class GVAR(enableGoAFK) {
-			displayName = "Enable Go AFK";
+			displayName = "Go AFK";
 			tooltip = "Enable Self ACE Action to go AFK.";
 			property = QGVAR(enableGoAFK);
 			control = "Checkbox";

@@ -6,7 +6,7 @@ class display3DEN { // https://community.bistudio.com/wiki/Eden_Editor:_Configur
 				items[] += { QGVAR(frameworkFolder) };
 				class GVAR(frameworkFolder) {
 					text = "SIA Mission Framework";
-					items[] = { QGVAR(missionSettings), QGVAR(briefingSetup), QGVAR(init), /*QGVAR(importExportFolder),*/ QGVAR(roleEdit), QGVAR(frameworkMeta) };
+					items[] = { QGVAR(missionSettings), QGVAR(briefingSetup), QGVAR(init), /*QGVAR(importExportFolder),*/ QGVAR(roleEdit), GVAR(templateLink), QGVAR(frameworkMeta) };
 				};
 
 				class GVAR(missionSettings) {
@@ -45,8 +45,16 @@ class display3DEN { // https://community.bistudio.com/wiki/Eden_Editor:_Configur
                     opensNewWindow = 1;
 				};
 
+				class GVAR(templateLink) {
+					text = "Template Composition";
+					picture = "\a3\3DEN\Data\Controls\ctrlMenu\link_ca.paa";
+					weblink = "https://steamcommunity.com/sharedfiles/filedetails/?id=2868675434";
+					opensNewWindow = 1;
+				};
+
 				class GVAR(frameworkMeta) {
 					text = "Framework Version 0.1.0";
+					picture = "\a3\3DEN\Data\Controls\ctrlMenu\link_ca.paa";
 					weblink = "https://github.com/Soliders-in-Arms-Arma-3-Group/sia3f";
 					opensNewWindow = 1;
 				};

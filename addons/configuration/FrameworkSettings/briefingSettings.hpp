@@ -3,7 +3,7 @@ class GVAR(briefingSettings) {
 	displayName = "Briefing Additional Settings";
 	class Attributes {
 		class GVAR(briefORBAT) {
-			displayName = "ORBAT Briefing";
+			displayName = "Player ORBAT";
 			tooltip = "Add ORBAT information to briefing.";
 			property = QGVAR(briefORBAT);
 			control = "Checkbox";
@@ -11,7 +11,7 @@ class GVAR(briefingSettings) {
 		};
 
 		class GVAR(briefWeather) {
-			displayName = "Weather Briefing";
+			displayName = "Weather Information";
 			tooltip = "Add weather report to briefing.";
 			property = QGVAR(briefWeather);
 			control = "Checkbox";

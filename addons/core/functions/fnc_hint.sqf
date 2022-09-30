@@ -26,7 +26,7 @@
  * call sia3f_core_fnc_hint
 */
 
-if (!GET_CONFIG(showStatusHint,true) || !hasInterface || !(player getVariable [QGVAR(safeStartHintEnabled), true])) exitWith {
+if (!hasInterface || !(player getVariable [QGVAR(safeStartHintEnabled), true])) exitWith {
 	LOG("fnc_hint.sqf was disabled by player or ran on server.");
 }; // Exit if not a player or if player has disabled status hint.
 
@@ -35,7 +35,6 @@ LOG("fnc_hint.sqf started.");
 private _systemTime = systemTimeUTC; // Cache System's current time.
 
 private _separator = parseText "<br />------------------------------<br />";
-private _image = QPATHTOEF(core,ui\logo_sia3f_tiny.paa);
 
 private _txtHeader = text (getMissionConfigValue ["onLoadName", missionName]);
 _txtHeader setAttributes ["color", HEX_HEADER, "size", "1.2", "font", FONT_SECONDARY, "shadow", "1", "shadowColor", HEX_SECONDARY, "shadowOffset", "0.07"];
@@ -80,7 +79,7 @@ _txtRadioName setAttributes ["align", "left", "font", FONT_PRIMARY];
 
 private _txtGroupChannel = text "Vanilla";
 if ("@ACRE2" call EFUNC(core,checkModPresence)) then {
-	private _srRadio = missionNameSpace getVariable [QEGVAR(configuration,personalRadio),"NONE"];
+	private _srRadio = missionNameSpace getVariable [QEGVAR(radio,personalRadio),"NONE"];
 	if (_srRadio == "NONE") then {
 		if ([player] call acre_api_fnc_hasRadio) then { // If no SR radio set by mission, then pull whatever radio name and channel the player has, if any, else just say NONE.
 			private _radio = [] call acre_api_fnc_getCurrentRadio;
@@ -91,7 +90,7 @@ if ("@ACRE2" call EFUNC(core,checkModPresence)) then {
 			_txtGroupChannel = text "NONE";
 		};
 	} else {
-		private _srRadioName =  (getText (ConfigFile >> "CfgWeapons" >> (_srRadio) >> "displayName") splitString "AN/") select 0;
+		private _srRadioName =  getText (ConfigFile >> "CfgWeapons" >> (_srRadio) >> "displayName");
 		_txtGroupChannel = text (_srRadioName + ", Ch " + (str ((group player) getVariable [QEGVAR(configuration,radioChannel), 1])));
 	};
 };
@@ -106,8 +105,6 @@ private _groupMembers = (units group player) apply {name _x};
 private _txtGroupMembers = "";
 
 private _array = [
-	image _image,
-	lineBreak,
 	_txtHeader,
 	lineBreak,
 	_txtLocation,
