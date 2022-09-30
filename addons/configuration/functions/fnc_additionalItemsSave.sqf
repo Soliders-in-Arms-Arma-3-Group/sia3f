@@ -21,7 +21,7 @@ private _hash = uiNamespace getVariable [[QGVAR(roles), QGVAR(groups)] select _i
 if (_name == "" || !(_name in _hash)) exitWith {
 	LOG_FUNC_END_ERROR("role/group not found");
 };
-LOG_FUNC_START
+LOG_FUNC_START;
 
 // update hash with new additional items
 private _values = _hash get _name;
@@ -53,4 +53,4 @@ if (_isGroup) then {
 } else {
 	[_index] call FUNC(editRolesRefresh);
 };
-LOG_FUNC_END
+LOG_FUNC_END;
