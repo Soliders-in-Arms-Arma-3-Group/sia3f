@@ -4,7 +4,7 @@ class GVAR(ACRERadioOptions) {
 	class Attributes {
 		class GVAR(acreEnabled) {
 			displayName = "ACRE Enabled";
-			tooltip = "Toggle usage of ACRE-related scripts within the framework.";
+			tooltip = "Toggle usage of ACRE-related scripts within the framework";
 			property = QGVAR(acreEnabled);
 			control = "Checkbox";
 			defaultValue = true;
@@ -12,7 +12,7 @@ class GVAR(ACRERadioOptions) {
 
 		class GVAR(personalRadio) {
 			displayName = "Personal Radio";
-			tooltip = "Personal Radio to be used. \n\nBy default, this radio is given to all players and used for internal communications.";
+			tooltip = "Personal Radio to be used\n\nThis radio is given to all players and used for squad communication";
 			property = QGVAR(personalRadio);
 			control = "COMBO";
 			typeName = "NUMBER";
@@ -40,7 +40,7 @@ class GVAR(ACRERadioOptions) {
 
 		class GVAR(handheldRadio) {
 			displayName = "Handheld Radio";
-			tooltip = "Handheld Radio to be used. \n\nBy default, this radio is given to acting leadership and used for command-related communications.";
+			tooltip = "Handheld Radio to be used\n\nThis radio is given to roles with the 'Has Handheld' trait and is used for command-related communications";
 			property = QGVAR(handheldRadio);
 			control = "COMBO";
 			typeName = "NUMBER";
@@ -67,7 +67,7 @@ class GVAR(ACRERadioOptions) {
 
 		class GVAR(manpackRadio) {
 			displayName = "Manpack Radio";
-			tooltip = "Manpack Radio to be used. \n\nBy default, this radio is given to acting leadership and used for long-range, command-related communications.";
+			tooltip = "Manpack Radio to be used\n\nThis radio is given to roles with the 'Has Manpack' trait and is used for long-range, command-related communications";
 			property = QGVAR(manpackRadio);
 			control = "COMBO";
 			typeName = "NUMBER";

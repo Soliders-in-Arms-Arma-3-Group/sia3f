@@ -14,7 +14,7 @@ class GVAR(arsenalOptions) {
 
 		class GVAR(haveBasics) {
 			displayName = "Add Basics";
-			tooltip = "Add basic items such as compasses, maps, and bandages.";
+			tooltip = "Add basic items such as compasses, maps, and bandages";
 			property = QGVAR(haveBasics);
 			control = "Checkbox";
 			defaultValue = true;
@@ -22,7 +22,7 @@ class GVAR(arsenalOptions) {
 
 		class GVAR(haveCTab) {
 			displayName = "Add CTab";
-			tooltip = "Add CTab items such as the helmet cam and rugged tablet.";
+			tooltip = "Add CTab items such as the helmet cam and rugged tablet";
 			property = QGVAR(haveCTab);
 			control = "Checkbox";
 			defaultValue = true;
@@ -30,7 +30,7 @@ class GVAR(arsenalOptions) {
 
 		class GVAR(haveKATMedical) {
 			displayName = "KAT Medical Availability";
-			tooltip = "Add KAT Advanced Medical items based on the selected preset.\n\nFULL: All KAT items including Pharmacy items.\n\nLIMITED: Add only basic and essential KAT items, ideal for low-tech/budget scenarios.\n\nNONE: No KAT items will be added.";
+			tooltip = "Add KAT Advanced Medical items based on the selected preset\n\nFULL: All KAT items including Pharmacy items\n\nLIMITED: Add only basic and essential KAT items, ideal for low-tech/budget scenarios\n\nNONE: No KAT items will be added";
 			property = QGVAR(haveKATMedical);
 			control = "COMBO";
 			typeName = "NUMBER";
