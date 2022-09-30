@@ -25,14 +25,14 @@ if (!isNil QEGVAR(configuration,arsenals)) then {
 	} forEach EGVAR(configuration,arsenals);
 
 	// Add basic items.
-	if (EGVAR(configuration,haveBasics)) then {
+	if (GET_CONFIG(haveBasics,true)) then {
 		/* To-do: learn a way to allow end-user to modify data below */
 		private _arr = ["ACE_fieldDressing", "ACE_elasticBandage", "ACE_packingBandage", "ACE_quikclot", "ACE_bloodIV", "ACE_bloodIV_250", "ACE_bloodIV_500", "ACE_CableTie", "ACE_Chemlight_Shield", "ACE_EarPlugs", "ACE_epinephrine", "ACE_MapTools", "ACE_morphine", "ACE_RangeCard", "ACE_splint", "ACE_tourniquet", "ACE_surgicalKit", "ACE_salineIV", "ACE_salineIV_250", "ACE_salineIV_500", "ToolKit", "ACE_artilleryTable", "Chemlight_blue", "Chemlight_green", "Chemlight_red", "Chemlight_yellow", "ItemWatch", "ItemCompass", "ItemMap", "ACE_Canteen", "ACE_WaterBottle"];
 		{ [_x, _arr, true] call ace_arsenal_fnc_addVirtualItems } forEach EGVAR(configuration,arsenals);
 	};
 
 	// Add ACRE radio items.
-	if (EGVAR(configuration,acreEnabled) && "@ACRE2" call FUNC(checkModPresence)) then {
+	if (GET_CONFIG(acreEnabled,true) && "@ACRE2" call FUNC(checkModPresence)) then {
 		{
 			private _acreRadios = ([] call acre_api_fnc_getAllRadios) select 0;
 			if (_x != "NONE") then {
@@ -40,7 +40,7 @@ if (!isNil QEGVAR(configuration,arsenals)) then {
 				if (_x in _acreRadios) then {
 					{ [_x, [_y], true] call ace_arsenal_fnc_addVirtualItems } forEach EGVAR(configuration,arsenals);
 				} else {
-					ERROR_1("Setup Global Arsenal radios, invalid radio type",_x);
+					ERROR_1("Setup Global Arsenal radios, invalid radio type: %1",_x);
 				};
 			};
 		} forEach [GVAR(personalRadio), GVAR(handheldRadio), GVAR(manpackRadio)];
