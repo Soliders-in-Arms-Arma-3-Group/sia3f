@@ -1,2 +1,18 @@
-# automatically generated c++ configs
-.vscode
+release/*
+*.cache
+*.pbo
+texHeaders.bin
+*.swp
+*.swo
+*.biprivatekey
+*.lnk
+Thumbs.db
+ArmaScriptCompiler.exe
+hemtt.exe
+
+# VS extraneous build shit
+extensions/builds/*.exp
+extensions/builds/*.lib
+extensions/builds/*.pdb
+extensions/*/BuildShit
+extensions/*/.vs

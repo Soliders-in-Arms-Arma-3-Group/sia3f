@@ -1,5 +1,12 @@
 name = "SIA 3DEN Mission Framework";
-author = "Siege";
+picture = "logo_sia3f.paa";
 actionName = "GitHub";
-action = "https://github.com/SiegeToaster/SIA_3DEN_FRAMEWORK";
-overview = "Adds actions to the Eden Editor that allow configuration of the SIA Mission Framework.";
+action = "https://github.com/Soliders-in-Arms-Arma-3-Group/SIA_3DEN_framework";
+description = "Framework for making missions in Soldiers in Arms";
+logo = "logo_sia3f.paa";
+logoOver = "logo_sia3f.paa";
+tooltip = "SIA Framework";
+tooltipOwned = "SIA Framework Owned";
+overview = "SIA Eden Editor Mission Framework";
+author = "Soldiers in Arms";
+overviewPicture = "logo_sia3f.paa";

@@ -1,6 +1,7 @@
-# JM's Fall of the Titans ACE Compat
+# SIA 3DEN Mission Framework
 
-Adds compatibility for [ace3](https://steamcommunity.com/workshop/filedetails/?id=463939057) to the [JM's Fall of the Titans](https://steamcommunity.com/sharedfiles/filedetails/?id=2660676470) mod.
+<div align="center">
+  <img width="250" height="250" src="https://media.discordapp.net/attachments/750043129477988392/984265521862148106/unknown.png">
+</div>
 
-
-Requires [JM's Fall of the Titans](https://steamcommunity.com/sharedfiles/filedetails/?id=2660676470), of course.
+Eden Editor extension for SIA's Mission Framework.  Made for the purpose of making it easier to configure the framework.
