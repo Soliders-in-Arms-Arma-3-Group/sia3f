@@ -22,9 +22,10 @@
  * call sia3f_core_fnc_orbat
 */
 
-if (!hasInterface || !GET_CONFIG(briefOrbat,true)) exitWith {}; // Exit if not a player.
-
-LOG("fnc_orbat.sqf started");
+if (!hasInterface || !GET_CONFIG(briefOrbat,true)) exitWith {
+	LOG_FUNC_END_ERROR("function disabled or ran on server")
+}; // Exit if not a player.
+LOG_FUNC_START;
 
 if (!isNil QGVAR(orbat)) then { player removeDiaryRecord ["Diary", GVAR(orbat)] }; // If diary entry already exists, then erase it.
 
@@ -67,14 +68,14 @@ private _contentArr = [];
 			};
 		};
 
-		private _rankIcon = format ["<img color='%1' image='\A3\Ui_F\Data\GUI\Cfg\Ranks\" + (rank _x) + "_gs.paa' width='15' height='15'/>", _teamColor]; // Get icon of units' rank from config.
-		private _roleIcon = format ["<img color='%1' image='\A3\Ui_F\Data\Map\VehicleIcons\" + (getText(configFile >> "CfgVehicles" >> (typeOf _x) >> "icon")) + "_ca.paa' width='15' height='15'/>", _teamColor]; // Get icon of units' role from config.
+		private _rankIcon = format ["<img color='%1' image='\A3\Ui_F\Data\GUI\Cfg\Ranks\" + rank _x + "_gs.paa' width='15' height='15'/>", _teamColor]; // Get icon of units' rank from config.
+		private _roleIcon = format ["<img color='%1' image='\A3\Ui_F\Data\Map\VehicleIcons\" + getText (configFile >> "CfgVehicles" >> (typeOf _x) >> "icon") + "_ca.paa' width='15' height='15'/>", _teamColor]; // Get icon of units' role from config.
 		_contentArr append [
 			"  ",
 			_roleIcon,
 			"  ",
 			format ["<font color='%2' face='%3'>%1: </font>", _role, _roleColor, 'PuristaBold'],
-			format ["<font  color='%2' face='%3'>%1</font>", (name _x), _teamColor, 'PuristaLight'],
+			format ["<font  color='%2' face='%3'>%1</font>", name _x, _teamColor, 'PuristaLight'],
 			"  ",
 			_rankIcon,
 			"  <br />"
@@ -86,4 +87,4 @@ private _contentArr = [];
 private _content = _contentArr joinString "";
 GVAR(orbat) = player createDiaryRecord ["Diary", ["ORBAT", "<execute expression='call " + QFUNC(orbat) + ";'>Refresh</execute><br></br><br></br>" + _content]]; // Add ORBAT text to diary along with "Refresh" button.
 
-INFO("fnc_orbat.sqf fully executed.");
+LOG_FUNC_END;

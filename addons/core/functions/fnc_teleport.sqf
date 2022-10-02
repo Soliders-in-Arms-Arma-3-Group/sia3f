@@ -43,8 +43,7 @@
 
 disableSerialization;
 params ["_mode", "_parameters"];
-
-LOG("fnc_teleport.sqf started");
+LOG_FUNC_START;
 
 switch (_mode) do {
 	case "onLoad": {
@@ -53,7 +52,7 @@ switch (_mode) do {
 		private _customLocs = missionNamespace getVariable [QGVAR(TDP_CustomLocations), []];
 		while { !isNull _display } do {
 			lbClear _ctrlLB;
-			((units side player) select {alive _x && _x != player && isPlayer _x && vehicle _x == _x}) apply {
+			((units side player) select { alive _x && _x != player && isPlayer _x && vehicle _x == _x }) apply {
 				private _index = _ctrlLB lbAdd name _x;
 				_ctrlLB lbSetData [_index, str position _x];
 				_ctrlLB lbSetTextRight [_index, format ["(%2 m) - Grid: %1", mapGridPosition _x, round (player distance _x)]];
@@ -102,7 +101,7 @@ switch (_mode) do {
 	};
 
 	case "enableGlobalMessage": {
-		if !(_parameters isEqualType true) exitWith { diag_log "TPD: Global message state could not be set. Only pass BOOLEAN to the function!" };
+		if !(_parameters isEqualType true) exitWith { ERROR("TPD global message state could not be set"); };
 		missionNamespace setVariable [QGVAR(TDP_EnableGlobalMessage), _parameters, true];
 	};
 
@@ -111,7 +110,7 @@ switch (_mode) do {
 	};
 
 	case "addActions": {
-		if !(_parameters isEqualTypeAll objNull) exitWith { diag_log "TPD: Actions could not be added. Only pass objects to the function!" };
+		if !(_parameters isEqualTypeAll objNull) exitWith { ERROR("TPD Actions could not be added"); };
 		_parameters apply {
 
 		//Modified by McKendrick
@@ -140,6 +139,4 @@ switch (_mode) do {
 };
 
 TRACE_1("mode executed",_mode);
-
-INFO("fnc_teleport.sqf fully executed.");
-
+LOG_FUNC_END;
