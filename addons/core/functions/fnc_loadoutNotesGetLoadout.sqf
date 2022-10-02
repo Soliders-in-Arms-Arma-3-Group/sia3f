@@ -19,8 +19,7 @@ params [
 	["_unit", player, [objNull]],
 	["_full", true, [true]]
 ];
-
-LOG("fnc_loadoutNotesGetLoadout.sqf started.");
+LOG_FUNC_START;
 
 // Get a nested array containing all attached weapon items
 private _wepItems = weaponsItems _unit;

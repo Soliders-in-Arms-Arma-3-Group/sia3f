@@ -15,14 +15,14 @@
 
 */
 
-LOG("fnc_introText.sqf started.");
+LOG_FUNC_START;
 
-private _faction = (getMissionConfigValue [("sia3f_configuration_" + str side player + "FactionName"), (getText (configFile >> "CfgFactionClasses" >> (faction player) >> "displayName"))]);
+private _faction = getMissionConfigValue ["sia3f_configuration_" + str side player + "FactionName", getText (configFile >> "CfgFactionClasses" >> (faction player) >> "displayName")];
 private _missionLocation = GET_CONFIG(missionLocationName, worldName);
-private _role = player getVariable [QGVAR(role), (roleDescription player)];
+private _role = player getVariable [QGVAR(role), roleDescription player];
 _role = if (_role != "") then [{ (_role splitString "@") select 0 }, { getText (configFile >> "CfgVehicles" >> (typeOf player) >> "displayName") }];
 
-TRACE_3("fnc_introText.sqf content",_faction,_missionLocation,_role);
+TRACE_3("into text content",_faction,_missionLocation,_role);
 
 [ 
 	[_faction, "font = 'PuristaSemibold'"],
@@ -32,5 +32,4 @@ TRACE_3("fnc_introText.sqf content",_faction,_missionLocation,_role);
 	[((player call BIS_fnc_locationDescription) + ", " + _missionLocation), "font = 'PuristaMedium'"]
 ]  execVM "\a3\missions_f_bootcamp\Campaign\Functions\GUI\fn_SITREP.sqf";
 
-
-INFO("fnc_introText.sqf fully executed.");
+LOG_FUNC_END;

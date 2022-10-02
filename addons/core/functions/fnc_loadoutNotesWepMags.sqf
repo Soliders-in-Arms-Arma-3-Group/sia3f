@@ -19,8 +19,7 @@ params [
 	["_weapon", "", [""]],
 	["_mags", [], [[]]]
 ];
-
-LOG("fnc_loadoutNotesWepMags.sqf started.");
+LOG_FUNC_START;
 
 // Get possible magazines for weapon
 private _wepMags = getArray (configFile >> "CfgWeapons" >> _weapon >> "magazines");
@@ -41,6 +40,7 @@ private _magArr = [];
 	};
 } forEach _wepMags;
 
-INFO("fnc_loadoutNotesWepMags.sqf fully executed.");
+TRACE_1("return",_magArr);
+LOG_FUNC_END;
 
 _magArr
