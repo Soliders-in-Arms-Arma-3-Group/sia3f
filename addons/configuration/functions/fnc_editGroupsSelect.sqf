@@ -19,7 +19,7 @@ params [
 ];
 
 if ((uiNamespace getVariable [QGVAR(editGroupsCurrentMode), 0]) == 1) exitWith {
-	// incorrect mode
+	LOG_FUNC_END_ERROR("incorrect mode");
 };
 
 private _rolesLbCtrl = (findDisplay 8503) displayCtrl 1503;
@@ -33,10 +33,8 @@ private _groupName = _groupsLbCtrl lbText (lbCurSel _groupsLbCtrl);
 private _groupValue = _groups getOrDefault [_groupName, [false, false, false, false, [], []]];
 private _groupRoles = _groupValue # 5; // should update _groupValue too since (I think) assigning an array makes it a reference
 
-TRACE_3("edit groups select",_roleName,_groupName,_groupRoles);
-
 if (_groupName == "") exitWith {
-	// no group selected
+	LOG_FUNC_END_ERROR("no group selected");
 };
 
 if (_addItem && { !(_roleName in (_groupRoles)) }) exitWith {

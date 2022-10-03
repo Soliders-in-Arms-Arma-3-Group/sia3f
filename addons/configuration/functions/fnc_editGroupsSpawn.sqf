@@ -19,6 +19,8 @@ params [
 	["_index", 0, [0]],
 	["_mode", 0, [0]]
 ];
+LOG_FUNC_START;
 
 (findDisplay 313) createDisplay ([QGVAR(editGroups), QGVAR(editGroupsSettings)] # _mode);
 [_index] call FUNC(editGroupsRefresh);
+LOG_FUNC_END;

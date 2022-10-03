@@ -14,6 +14,7 @@
  * call sia3f_configuration_fnc_editRolesCleanupGlobals
  */
 
+LOG_FUNC_START;
 {
 	uiNamespace setVariable [_x, nil];
 } forEach [
@@ -25,3 +26,4 @@
 	QGVAR(additionalItemsIsGroup),
 	QGVAR(additionalItemsCategory)
 ];
+LOG_FUNC_END;
