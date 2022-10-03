@@ -16,19 +16,21 @@
 */
 
 if (!GET_CONFIG(acreEnabled,true) || !hasInterface || !("@ACRE2" call EFUNC(core,checkModPresence))) exitWith {
-	WARNING("fnc_acreRadioSetup: acre not enabled/loaded or script run on server.");
+	LOG_FUNC_END_ERROR("acre not enabled/loaded or script run on server");
 }; // Exit if not player or if ACRE is disabled/not loaded.
-
-waitUntil { ([] call acre_api_fnc_isInitialized) }; // Wait until player's radios are initialized.
-LOG("fnc_acreRadioSetup started (radios initialized)");
 
 params [
 	["_radio", "", [""]],
 	["_ear", 1 , [0]]
 ];
+
+LOG_FUNC_START;
 TRACE_2("params",_radio,_ear);
+
+waitUntil { ([] call acre_api_fnc_isInitialized) }; // Wait until player's radios are initialized.
 
 private _ear = ["LEFT", "CENTER", "RIGHT"] select _ear;
 
 [([_radio] call acre_api_fnc_getRadioByType), _ear] call acre_api_fnc_setRadioSpatial; // Apply chosen radio spatialization.
 TRACE_2("set radio to ear",_radio,_ear);
+LOG_FUNC_END;
