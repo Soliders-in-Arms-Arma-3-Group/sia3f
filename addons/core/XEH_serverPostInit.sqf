@@ -28,7 +28,7 @@ if (!isNil QEGVAR(configuration,arsenals)) then {
 	if (GET_CONFIG(haveBasics,true)) then {
 		/* To-do: learn a way to allow end-user to modify data below */
 		private _arr = ["ACE_fieldDressing", "ACE_elasticBandage", "ACE_packingBandage", "ACE_quikclot", "ACE_bloodIV", "ACE_bloodIV_250", "ACE_bloodIV_500", "ACE_CableTie", "ACE_Chemlight_Shield", "ACE_EarPlugs", "ACE_epinephrine", "ACE_MapTools", "ACE_morphine", "ACE_RangeCard", "ACE_splint", "ACE_tourniquet", "ACE_surgicalKit", "ACE_salineIV", "ACE_salineIV_250", "ACE_salineIV_500", "ToolKit", "ACE_artilleryTable", "Chemlight_blue", "Chemlight_green", "Chemlight_red", "Chemlight_yellow", "ItemWatch", "ItemCompass", "ItemMap", "ACE_Canteen", "ACE_WaterBottle"];
-		{ [_x, _arr, true] call ace_arsenal_fnc_addVirtualItems } forEach EGVAR(configuration,arsenals);
+		{ [_x, _arr, true] call ace_arsenal_fnc_addVirtualItems; } forEach EGVAR(configuration,arsenals);
 	};
 
 	// Add ACRE radio items.
@@ -38,7 +38,7 @@ if (!isNil QEGVAR(configuration,arsenals)) then {
 			if (_x != "NONE") then {
 				private _y = _x;
 				if (_x in _acreRadios) then {
-					{ [_x, [_y], true] call ace_arsenal_fnc_addVirtualItems } forEach EGVAR(configuration,arsenals);
+					{ [_x, [_y], true] call ace_arsenal_fnc_addVirtualItems; } forEach EGVAR(configuration,arsenals);
 				} else {
 					ERROR_1("Setup Global Arsenal radios, invalid radio type: %1",_x);
 				};
@@ -49,20 +49,20 @@ if (!isNil QEGVAR(configuration,arsenals)) then {
 	// Add cTab items.
 	if (GET_CONFIG(haveCTab,true) && "@cTab" call FUNC(checkModPresence)) then { // TODO: double check cTab's mod tag
 		private _arr = ["ItemMicroDAGR", "ItemcTabHCam", "ItemAndroid", "ItemcTab"];
-		{ [_x, _arr, true] call ace_arsenal_fnc_addVirtualItems } forEach EGVAR(configuration,arsenals);
+		{ [_x, _arr, true] call ace_arsenal_fnc_addVirtualItems; } forEach EGVAR(configuration,arsenals);
 	};
 
 	// Add KAT Medical items.
 	switch (GET_CONFIG(haveKATMedical,2)) do {
 		case 2: {
 			private _arr = ["kat_aatKit", "kat_accuvac", "kat_guedel", "kat_AED", "kat_X_AED", "kat_larynx", "kat_Pulseoximeter", "kat_chestSeal", "kat_Painkiller", "kat_stretcherBag", "Attachable_Helistretcher", "kat_stethoscope", "KAT_Empty_bloodIV_500", "KAT_Empty_bloodIV_250", "kat_IV_16", "kat_IO_FAST", "kat_amiodarone", "kat_atropine", "kat_lidocaine", "kat_naloxone", "kat_nitroglycerin", "kat_norepinephrine", "kat_phenylephrine", "kat_TXA"];
-			{ [_x, _arr, true] call ace_arsenal_fnc_addVirtualItems } forEach EGVAR(configuration,arsenals);
+			{ [_x, _arr, true] call ace_arsenal_fnc_addVirtualItems; } forEach EGVAR(configuration,arsenals);
 		};
 
 		case 1:
 		{ 
 			private _arr = ["kat_guedel", "kat_larynx", "kat_chestSeal", "kat_Painkiller", "kat_IV_16", "kat_AED"];
-			{ [_x, _arr, true] call ace_arsenal_fnc_addVirtualItems } forEach EGVAR(configuration,arsenals);
+			{ [_x, _arr, true] call ace_arsenal_fnc_addVirtualItems; } forEach EGVAR(configuration,arsenals);
 		};
 	};
 

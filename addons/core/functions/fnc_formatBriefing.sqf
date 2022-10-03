@@ -29,6 +29,7 @@ TRACE_1("input string",_str);
 
 if (_str == "") exitWith { 
 	LOG_FUNC_END_ERROR("found and returned an empty string");
+
 	_str
 };
 
@@ -38,6 +39,7 @@ private _newlineChar = "
 
 if ((_str find _newlineChar) == -1) exitWith {
 	LOG_FUNC_END_ERROR("found no newline char and returned string");
+
 	_str
 };
 
@@ -54,4 +56,5 @@ private _returnStr = _strArr joinString "";
 TRACE_1("string returned",_returnStr);
 INFO("fnc_formatBriefing.sqf fully executed.");
 LOG_FUNC_END;
+
 _returnStr

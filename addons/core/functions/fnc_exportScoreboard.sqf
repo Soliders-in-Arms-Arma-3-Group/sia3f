@@ -26,6 +26,7 @@ private _arr = [];
 // ! - THIS IS TEMP TILL BETTER SOLUTION IS IMPLEMENTED
 
 INFO_1("Scoreboard for %1",getMissionConfigValue ["onLoadName", missionName]);
-INFO("%1",_arr);
+INFO_1("%1",_arr);
 LOG_FUNC_END;
+
 _arr
