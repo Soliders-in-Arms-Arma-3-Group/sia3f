@@ -12,11 +12,11 @@
  * None
  *
  * Example:
- * call sia3f_radio_fnc_setRadioChannel
+ * spawn sia3f_radio_fnc_setRadioChannel
 */
 
 if (!GET_CONFIG(acreEnabled,true) || !("@ACRE2" call EFUNC(core,checkModPresence))) exitWith {
-	LOG("fnc_setRadioChannel: acre not enabled/loaded.");
+	LOG_FUNC_END_ERROR("acre not enabled/loaded");
 };
 
 params [
@@ -24,14 +24,15 @@ params [
 	["_radioType", "", [""]]
 ];
 
-if (!([player, _radioType] call acre_api_fnc_hasKindOfRadio)) exitWith { TRACE_1("Radio not found", _radioType) };
+LOG_FUNC_START;
+
+if (!([player, _radioType] call acre_api_fnc_hasKindOfRadio)) exitWith { LOG_FUNC_END_ERROR("Radio not found"); };
 
 waitUntil { ([] call acre_api_fnc_isInitialized) }; // Wait until player's radios are initialized.
 private _radioId = [_radioType] call acre_api_fnc_getRadioByType;
 [_radioId, _channel] call acre_api_fnc_setRadioChannel;
-
-TRACE_2("fnc_setRadioChannel channel and radio",_radioId,(str _channel));
+TRACE_2("set radio channel:",_radioId,_channel);
 
 // ToDo: TFAR implementation.
 
-INFO("fnc_setRadioChannel.sqf fully executed.");
+LOG_FUNC_END;

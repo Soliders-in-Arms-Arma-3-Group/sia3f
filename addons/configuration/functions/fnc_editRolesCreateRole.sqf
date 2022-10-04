@@ -18,15 +18,20 @@ params [
 	["_roleName", "", [""]]
 ];
 
-if (_roleName == "") exitWith {};
+if (_roleName == "") exitWith {
+	LOG_FUNC_END_ERROR("empty role name");
+};
+LOG_FUNC_START;
 
 private _roles = uiNamespace getVariable [QGVAR(roles), createHashMap];
 
 if (_roleName in _roles) exitWith {
 	systemChat "Cannot create role, role already exists.";
+	LOG_FUNC_END_ERROR("role already exists");
 };
 
 // create role, value array is [isMedic, isEngineer, hasHandheldRadio, hasManpackRadio, additionalItems, groups]
 _roles set [_roleName, [false, false, false, false, [], []]];
 uiNamespace setVariable [QGVAR(roles), _roles];
 [-1] call FUNC(editRolesRefresh);
+LOG_FUNC_END;

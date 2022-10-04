@@ -17,7 +17,9 @@
 private _category = lbCurSel ((findDisplay 8502) displayCtrl 2300);
 
 // Exit if selected category is not attachments or magazines
-if !(_category in [4, 5, 6, 7, 8]) exitWith {};
+if !(_category in [4, 5, 6, 7, 8]) exitWith {
+    LOG_FUNC_END_ERROR("attempted to add compatible items with invalid category");
+};
 
 private _configItems = +(uiNamespace getVariable [QGVAR(configItems), []]);
 private _items = uiNamespace getVariable [QGVAR(additionalItems), []];

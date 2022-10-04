@@ -20,7 +20,10 @@ params [
 	["_value", "", [""]]
 ];
 
-if (isNull _object || _value isEqualTo "") exitWith {};
+if (isNull _object || _value isEqualTo "") exitWith {
+	LOG_FUNC_END_ERROR("invalid parameters");
+};
+LOG_FUNC_START;
 
 if (is3DEN) then {
 	private _roles = GET_CONFIG(roles,createHashMap);
@@ -34,13 +37,16 @@ if (is3DEN) then {
 		["platoon leader", [false, false, true, true, [], ["leadership"]]]
 	];
 
-	{ _roles set [(_x select 0), (_x select 1), true] } forEach _defaultRoles;
+	{ _roles set [(_x select 0), (_x select 1), true]; } forEach _defaultRoles;
 
 	private _toSave = _roles set [_value, [false, false, false, false, [], []]];
 	if (!_toSave) then {
 		SET_CONFIG(hiddenConfigValues,roles,_roles);
 		do3DENAction "MissionSave";
+		TRACE_1("new role created",_value);
 	};
 } else {
 	_object setVariable [QGVAR(role), _value, true];
+	LOG("set obj variable");
 };
+LOG_FUNC_END;

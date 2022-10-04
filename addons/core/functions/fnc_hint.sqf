@@ -27,10 +27,10 @@
 */
 
 if (!hasInterface || !(player getVariable [QGVAR(safeStartHintEnabled), true])) exitWith {
-	LOG("fnc_hint.sqf was disabled by player or ran on server.");
+	LOG_FUNC_END_ERROR("function disabled by player or ran on server");
 }; // Exit if not a player or if player has disabled status hint.
 
-LOG("fnc_hint.sqf started.");
+LOG_FUNC_START;
 
 private _systemTime = systemTimeUTC; // Cache System's current time.
 
@@ -166,7 +166,7 @@ private _array = [
 LOG("fnc_hint.sqf finished formatting _array in the forEach loop.");
 
 private _structuredText = composeText _array;
-
 hintSilent _structuredText;
+TRACE_1("hint text",_structuredText);
 
-INFO("fnc_hint.sqf fully executed.");
+LOG_FUNC_END;

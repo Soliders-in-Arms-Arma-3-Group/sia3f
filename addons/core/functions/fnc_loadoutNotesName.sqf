@@ -23,11 +23,12 @@ params [
 	["_prefix", "", [""]],
 	["_short", false, [false]]
 ];
+LOG_FUNC_START;
 
 private _picture = getText (configFile >> _type >> _name >> "picture");
 if !(_picture isEqualTo "") then {
 	if (_picture find ".paa" == -1) then {
-		_picture = _picture + ".paa"
+		_picture = _picture + ".paa";
 	};
 	_picture = format ["<img image='%1' height='24'/>", _picture];
 };
@@ -40,6 +41,6 @@ private _returnStr = format [
 ];
 
 TRACE_1("string returned",_returnStr);
-INFO("fnc_loadoutNotesDataToText.sqf fully executed.");
+LOG_FUNC_END;
 
 _returnStr;

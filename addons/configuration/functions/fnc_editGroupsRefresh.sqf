@@ -23,7 +23,7 @@ params [
 ];
 
 if (floor _index != _index) exitWith {
-	// error, index must be an integer
+	LOG_FUNC_END_ERROR("index must be an integer");
 };
 
 private _mode = uiNamespace getVariable [QGVAR(editGroupsCurrentMode), 0];
@@ -47,7 +47,7 @@ lbSort _groupsLbCtrl;
 
 // find proper group index and select according to param
 if (_index < 0) then {
-	_index = ((lbSize _groupsLbCtrl) + _index);
+	_index = (lbSize _groupsLbCtrl) + _index;
 };
 if (_setCursor) then {
 	_groupsLbCtrl lbSetCurSel _index;
@@ -68,7 +68,6 @@ if (_mode == 0) then {
 
 	// update roles based on whether or not they are in the group
 	lnbClear _rolesLbCtrl;
-	TRACE_1("refresh roles",_roles);
 	{
 		private _symbol = "−";
 		private _alpha = 0.5;

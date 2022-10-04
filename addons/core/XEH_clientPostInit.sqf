@@ -57,8 +57,8 @@ private _roleValues = GVAR(roles) getOrDefault [_role, [false, false, false, fal
 if (({ _x in GVAR(groups) } count _roleValues # 5) > 0) then {
 	{
 		private _group = GVAR(groups) get _x;
-		if (!(_roleValues # 0)) then { _roleValues set [0, _group # 0] };
-		if (!(_roleValues # 1)) then { _roleValues set [1, _group # 1] };
+		if (!(_roleValues # 0)) then { _roleValues set [0, _group # 0]; };
+		if (!(_roleValues # 1)) then { _roleValues set [1, _group # 1]; };
 	} forEach _roleValues # 5;
 };
 

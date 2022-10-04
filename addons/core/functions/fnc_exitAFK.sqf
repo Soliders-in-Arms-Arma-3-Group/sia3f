@@ -27,7 +27,7 @@ _unit setCaptive false;
 if ("@ace" call FUNC(checkModPresence)) then {
 	private _serializedMedStatus = _unit getVariable [QGVAR(serializedMedStatus), "{}"];
 	[_unit, _serializedMedStatus] call ace_medical_fnc_deserializeState;
-	TRACE_2("Player, player ACE3 serialized medical status.", _unit, _serializedMedStatus);
+	TRACE_2("player ACE3 serialized medical status.", _unit, _serializedMedStatus);
 };
 
 LOG("player is no longer AFK");

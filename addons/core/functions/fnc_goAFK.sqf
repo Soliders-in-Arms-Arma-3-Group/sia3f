@@ -13,6 +13,8 @@
  * True when exit dialog created successfully <BOOL>
  *
  * Example:
+ * spawn sia3f_core_fnc_goAFK
+ * OR, from a scheduled environment
  * call sia3f_core_fnc_goAFK
 */
 
@@ -30,8 +32,10 @@ if (
 	!isAbleToBreathe _unit ||
 	(!isTouchingGround _unit) && (vehicle _unit == _unit) ||
 	(currentPilot vehicle _unit == _unit) && (isEngineOn vehicle _unit)
+) exitWith {
+	5 cutText ["Going AFK is not allowed at this time.", "PLAIN", -1, true];
 	LOG_FUNC_END_ERROR("AFK not allowed");
-) exitWith { 5 cutText ["Going AFK is not allowed at this time.", "PLAIN", -1, true] };
+};
 
 // set proper unit states/vars
 _unit setCaptive true;
@@ -44,7 +48,7 @@ if ("@ace" call FUNC(checkModPresence)) then {
 _unit setVariable [QGVAR(isAFK), true];
 LOG("player set to AFK.");
 
-[(name _unit + " is now AFK.")] remoteExec ["systemChat"]; // "<player> is now AFK" system chat message.
+[name _unit + " is now AFK."] remoteExec ["systemChat"]; // "<player> is now AFK" system chat message.
 5 cutText ["You are now AFK\nYou may exit in " + (str TIMEOUT) + " seconds.", "PLAIN", -1, true];
 
 sleep TIMEOUT;

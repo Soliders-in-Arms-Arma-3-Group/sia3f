@@ -21,8 +21,6 @@
  * [params] call sia3f_core_fnc_loadoutNotesDataToText
 */
 
-LOG("loadoutNotesDataToText started");
-
 params [
 	["_full", true, [true]],
 	["_wepItems", [], [[]]],
@@ -33,6 +31,7 @@ params [
 	["_bpLoad", 0, [0]],
 	["_weps", [], [[]]]
 ];
+LOG_FUNC_START;
 
 private _arrow = "<img image='\A3\ui_f\data\gui\rscCommon\rscTree\hiddenTexture_ca.paa' height='24'/>";
 private _classesBlacklist = ["FirstAidKit"];
@@ -94,7 +93,7 @@ if (count _weps > 0) then {
 // Add lines for all other items
 if (_bp != "") then {
 	_textLong = _textLong + "<br/><font size='18'>BACKPACK [%FULL]:</font><br/>";
-	private _bpText = ([_bp, "CfgVehicles"] call FUNC(loadoutNotesName));
+	private _bpText = [_bp, "CfgVehicles"] call FUNC(loadoutNotesName);
 	if (getContainerMaxLoad _bp > 0) then {
 		_bpText = _bpText + format ["[%1%2]", round _bpLoad, "%"];
 	} else {
@@ -140,11 +139,12 @@ if (count _mags > 0 || count _items > 0 || count _items_assigned > 0) then {
 	} forEach _items_assigned;
 };
 
-INFO("fnc_loadoutNotesDataToText.sqf fully executed.");
-
 //return value
-if (_full) exitWith { TRACE_1("string returned",_textLong);  _textLong };
-
+if (_full) exitWith {
+	TRACE_1("string returned",_textLong);
+	_textLong
+};
 TRACE_1("string returned", _textShrt);
+LOG_FUNC_END;
 
 _textShrt

@@ -23,7 +23,7 @@ params [
 ];
 
 if (floor _index != _index) exitWith {
-	// error, index must be an integer
+	LOG_FUNC_END_ERROR("index must be an integer");
 };
 
 private _lbCtrl = CTRL(1500);
@@ -40,7 +40,7 @@ if (_roles isEqualTo createHashMap) then {
 		["platoon leader", [false, false, true, true, [], ["leadership"]]]
 	];
 
-	{ _roles set [(_x select 0), (_x select 1)] } forEach _defaultRoles; // for new/unsaved missions
+	{ _roles set [(_x select 0), (_x select 1)]; } forEach _defaultRoles; // for new/unsaved missions
 };
 
 lbClear _lbCtrl;

@@ -27,7 +27,7 @@ LOG_FUNC_START;
 private _values = _hash get _name;
 _values set [4, uiNamespace getVariable [QGVAR(additionalItems), []]];
 _hash set [_name, _values];
-TRACE_3("saved values",_hash,_name,_values);
+TRACE_2("saved values",_name,_values);
 
 // reopen role/group editor
 private "_lbCtrl";

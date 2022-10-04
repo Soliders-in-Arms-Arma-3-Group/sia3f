@@ -15,9 +15,9 @@
 */
 
 if (!GET_CONFIG(acreEnabled,true) || isDedicated || !("@ACRE2" call EFUNC(core,checkModPresence))) exitWith {
-	LOG("fnc_giveRadios: acre not enabled/loaded or script run on server machine.");
+	LOG_FUNC_END_ERROR("acre not enabled/loaded or script run on server machine");
 }; // Exit if server or if ACRE is disabled.
-LOG("fnc_giveRadios started.");
+LOG_FUNC_START;
 
 private _rolesHandheldRadio = [];
 private _rolesManpackRadio = [];
@@ -51,13 +51,22 @@ private _role = player getVariable [QEGVAR(configuration,role), "default"];
 	{ ([] call acre_api_fnc_isInitialized) },
 	{
 		params ["_role", "_personalRadioClassname", "_handheldRadioClassname", "_manpackRadioClassname", "_rolesWithHandheldRadio", "_rolesManpackRadio"];
-		if (!([player, _personalRadioClassname] call acre_api_fnc_hasKindOfRadio) && _personalRadioClassname != "NONE") then { player addItem _personalRadioClassname };
-		if (_role in _rolesWithHandheldRadio && !([player, _handheldRadioClassname] call acre_api_fnc_hasKindOfRadio) && _handheldRadioClassname != "NONE") then { player addItem _handheldRadioClassname };
-		if (_role in _rolesManpackRadio && !([player, _manpackRadioClassname] call acre_api_fnc_hasKindOfRadio) && _manpackRadioClassname != "NONE") then { player addItem _manpackRadioClassname };
+		if (!([player, _personalRadioClassname] call acre_api_fnc_hasKindOfRadio) && _personalRadioClassname != "NONE") then {
+			player addItem _personalRadioClassname;
+			LOG("added personal radio");
+		};
+		if (_role in _rolesWithHandheldRadio && !([player, _handheldRadioClassname] call acre_api_fnc_hasKindOfRadio) && _handheldRadioClassname != "NONE") then {
+			player addItem _handheldRadioClassname;
+			LOG("added handheld radio");
+		};
+		if (_role in _rolesManpackRadio && !([player, _manpackRadioClassname] call acre_api_fnc_hasKindOfRadio) && _manpackRadioClassname != "NONE") then {
+			player addItem _manpackRadioClassname;
+			LOG("added manpack radio");
+		};
 
 		[((group player) getVariable [QEGVAR(configuration,radioChannel), 1]), _personalRadioClassname] spawn FUNC(setRadioChannel);
 	},
 	[_role, _personalRadioClassname, _handheldRadioClassname, _manpackRadioClassname, _rolesHandheldRadio, _rolesManpackRadio]
 ] call CBA_fnc_waitUntilAndExecute;
 
-INFO("fnc_giveRadios executed.");
+LOG_FUNC_END;

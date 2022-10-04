@@ -5,7 +5,7 @@
  * Changes the mission status to "started", as well as displays some cinematic visuals for the players. Execute on the server.
  *
  * Arguments:
- * None
+ * The game master <OBJECT>
  *
  * Return Value:
  * None
@@ -14,13 +14,14 @@
  * call sia3f_core_fnc_startMission
 */
 
-if (!isServer) exitWith {}; // Exit if not server.
+if (!isServer) exitWith {
+	LOG_FUNC_END_ERROR("function ran on client machine");
+}; // Exit if not server.
 
 params [
-	["_gm", (getAssignedCuratorUnit (allCurators select 0))]
+	["_gm", getAssignedCuratorUnit (allCurators select 0)]
 ];
-
-LOG("fnc_startMission.sqf started.");
+LOG_FUNC_START;
 
 if (isMultiplayer) then { setDate GVAR(startTime) }; // Set time to start of mission.
 setTimeMultiplier 1; // Set time acceleration to default.
@@ -52,6 +53,6 @@ if (GET_CONFIG(showIntroText,true)) then {
 call compile (GET_CONFIG(onMissionStartCode,"")); // Compile and run user-input code from 3den configuration.
 
 [QGVAR(missionStarted), []] call CBA_fnc_globalEvent; // Raise CBA event handler.
-LOG("fnc_startMission.sqf raised a CBA global event");
+LOG(QUOTE(fnc_startMission.sqf raised a CBA global event: QQGVAR(missionStarted)));
 
-INFO("fnc_startMission.sqf fully executed.");
+LOG_FUNC_END;

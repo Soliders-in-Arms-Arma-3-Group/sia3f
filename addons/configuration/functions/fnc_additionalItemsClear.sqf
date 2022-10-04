@@ -36,8 +36,8 @@ if (_category == -1) then {
 		};
 	};
 
-	TRACE_2("Clear button removed items",_category,_categoryItems);
 	_items = _items - _categoryItems;
+	TRACE_2("Clear button removed items",_category,_categoryItems);
 };
 
 // Refresh the list after clear
