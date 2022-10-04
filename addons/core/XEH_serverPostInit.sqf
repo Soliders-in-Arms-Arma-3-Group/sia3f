@@ -93,14 +93,12 @@ if (GET_CONFIG(showSafestartHint,true)) then {
 /* Mission End */
 
 addMissionEventHandler ["MPEnded", {
-
 	// OCAP2 Replay check and export.
 	if !(isNil "ocap_fnc_exportData") then {
-		private _realDate = "real_date" callExtension "EST+";
+		private _weekday = [systemTime] call CBA_fnc_weekDay;
 		private _outcome = "Mission Completed"; // To do: Add functionality to determine if mission failed.
-		if (_realDate != "") then {
+		if (_weekday >= 0) then {
 			private _opType = "MISC";
-			private _weekday = (parseSimpleArray _realDate) # 6;
 			switch (_weekday) do {
 				case 0: { _opType = "MAIN OP"; }; // sunday
 				case 5: { _opType = "SIDE OP"; }; // friday
@@ -108,7 +106,7 @@ addMissionEventHandler ["MPEnded", {
 			[_side, _outcome, _opType] call ocap_fnc_exportData;
 		} else {
 			[_side, _outcome, "unk"] call ocap_fnc_exportData;
-			ERROR("real_date extension not found");
+			ERROR("Failed to fetch weekday");
 		};
 	} else {
 		ERROR("ocap_fnc_exportData function not found");
