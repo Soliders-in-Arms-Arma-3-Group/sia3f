@@ -25,5 +25,4 @@ private _hasMod = false; // exitWith doesn't work in the forEach context, so can
 
 TRACE_2("checkModPresence returned",_addon,_hasMod);
 LOG_FUNC_END;
-
 _hasMod
