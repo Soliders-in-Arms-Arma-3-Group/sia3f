@@ -5,8 +5,8 @@ if (!("@ace" call EFUNC(core,checkModPresence)) || (allDisplays isEqualTo [findD
 
 /* ACE3 Interactions */
 private ["_action", "_statement"];
-private _buttons = EGVAR(configuration,buttons);
-private _arsenals = EGVAR(configuration,arsenals);
+private _buttons = missionNamespace getVariable [QEGVAR(configuration,buttons), []];
+private _arsenals = missionNamespace getVariable [QEGVAR(configuration,arsenals), []];
 private _commonObjects = +_buttons + _arsenals;
 _commonObjects = _commonObjects arrayIntersect _commonObjects;
 

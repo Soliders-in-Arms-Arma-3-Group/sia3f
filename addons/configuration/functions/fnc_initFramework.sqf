@@ -19,7 +19,7 @@ if (("sia3f_configuration_hiddenConfigValues" get3DENMissionAttribute "sia3f_con
 	["SIA Mission Framework has already been initialized.", 1] call BIS_fnc_3DENNotification;
 	LOG_FUNC_END_ERROR("framework already initialized");
 };
-LOG_FUNC_START
+LOG_FUNC_START;
 
 private _callback = "make_descriptionExt" callExtension ["", [getMissionPath ""]];
 // ToDo: check for extension success and notify player if it fails.

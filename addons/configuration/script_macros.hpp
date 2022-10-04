@@ -6,8 +6,6 @@
 #define GUI_THEME_RGB_B "(profileNamespace getVariable ['GUI_BCG_RGB_B',0.21])"
 #define GUI_THEME_ALPHA "(profileNamespace getVariable ['GUI_BCG_RGB_A',0.8])"
 
-#define GUI_THEME_COLOR { GUI_THEME_RGB_R, GUI_THEME_RGB_G, GUI_THEME_RGB_B, GUI_THEME_ALPHA }
-
 #define DIALOG_W 200
 #define DIALOG_H 140
 
