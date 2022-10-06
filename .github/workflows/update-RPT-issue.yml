@@ -1,0 +1,15 @@
+name: Update RPT issue (#12)
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  updateRPT:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the source code
+        uses: actions/checkout@master
+      - name: Update Issue
+        run: python3 tools/update_RPT_ToDo.py
