@@ -15,3 +15,5 @@ PREP(orbat);
 PREP(startMission);
 PREP(teleport);
 PREP(teleportToSquad);
+PREP(vehicleInfo);
+PREP(vehicleInfoTab);
