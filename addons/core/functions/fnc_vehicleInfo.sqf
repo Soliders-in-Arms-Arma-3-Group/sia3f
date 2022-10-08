@@ -5,7 +5,7 @@
  * Generates information regarding available vehicles and their seats, weapons, and ammo.
  *
  * Arguments:
- * 0: Array of vehicles <ARRAY of OBJECT>.
+ * 0: Array of vehicles <ARRAY of OBJECT>
  *
  * Return value:
  * Formatted information <STRING>

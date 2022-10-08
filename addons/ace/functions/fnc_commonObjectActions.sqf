@@ -24,7 +24,7 @@ if (!GET_CONFIG(enableManageKit,true)) exitWith {
 	LOG_FUNC_END_ERROR("enableManageKit disabled");
 };
 
-TRACE_1("params",_commonObjects)
+TRACE_1("params",_commonObjects);
 
 private _statement = {
 	player setVariable [QEGVAR(core,savedLoadout), getUnitLoadout player];

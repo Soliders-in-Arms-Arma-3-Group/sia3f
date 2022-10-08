@@ -2,16 +2,18 @@
 
 /*
  * Author: McKendrick, modified by Siege
- * Create diary record for vehicle with 
+ * Create diary record for vehicle with formatted information
  *
  * Arguments:
- * 0: Array of vehicles <ARRAY of OBJECT>.
+ * 0: Vehicle class name <STRING>
+ * 1: Vehicle weapons info <ARRAY of ARRAY>
+ * 2: Diary subject name <STRING>
  *
  * Return value:
- * Formatted information <STRING>
+ * Vehicle diary record <DIARY RECORD>
  *
  * Example:
- * [helicopter, jet] call sia3f_core_fnc_vehicleInfo
+ * [params] call sia3f_core_fnc_vehicleInfoTab
 */
 
 params ["_className", "_weaponsInfo", "_newDiarySubject"];
@@ -68,7 +70,7 @@ _strArr pushBack (_newArr joinString "");
 _strArr pushBack "<br></br><br></br><execute expression ='player selectDiarySubject ""Diary:Record4""'>Go back</execute>";
 
 private _text = _strArr joinString "";
-if (!(player diarySubjectExists _newDiarySubject)) then { player createDiarySubject [_newDiarySubject,"Vehicle Information"]; };
+if (!(player diarySubjectExists _newDiarySubject)) then { player createDiarySubject [_newDiarySubject, "Vehicle Information"]; };
 
 TRACE_3("diary record values"_displayName,_text,_icon);
 private _retValue = player createDiaryRecord ["vehicleInfo", [_displayName, _text, _icon]];
