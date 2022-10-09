@@ -6,6 +6,7 @@
  *
  * Arguments:
  * 0: Array of vehicles <ARRAY of OBJECT>
+ * 1: Diary record of the support briefing tab <DIARY RECORD>
  *
  * Return value:
  * Formatted information <STRING>
@@ -15,11 +16,12 @@
 */
 
 params [
-	["_vehicles", [], [[]]]
+	["_vehicles", [], [[]]],
+	["_record", ""]
 ];
 
 if (_vehicles isEqualTo []) exitWith {
-	LOG_FUNC_END_ERROR("invalid parameters");
+	LOG_FUNC_END_ERROR("invalid parameters or no vehicles to add");
 }; // Exit if array not given.
 LOG_FUNC_START;
 
@@ -127,7 +129,7 @@ private _text = [];
 		if (_amount > 0) then { _str = _str + format ["<font face='PuristaLight'>%1x </font>", _amount]; }; // Add amount of vics if more than one is available.
 
 		// Name
-		private _newDiaryRecord = [_className, _weaponsInfo, _newDiarySubject] call FUNC(vehicleInfoTab);
+		private _newDiaryRecord = [_className, _weaponsInfo, _newDiarySubject, _record] call FUNC(vehicleInfoTab);
 		_str = _str + "<font face='PuristaMedium'>" + createDiaryLink [_newDiarySubject, _newDiaryRecord, _displayName] + "</font>";
 
 		_str = _str + "<br></br>";

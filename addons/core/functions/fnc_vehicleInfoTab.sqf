@@ -8,6 +8,7 @@
  * 0: Vehicle class name <STRING>
  * 1: Vehicle weapons info <ARRAY of ARRAY>
  * 2: Diary subject name <STRING>
+ * 3: Diary record of the support briefing tab <DIARY RECORD>
  *
  * Return value:
  * Vehicle diary record <DIARY RECORD>
@@ -16,9 +17,9 @@
  * [params] call sia3f_core_fnc_vehicleInfoTab
 */
 
-params ["_className", "_weaponsInfo", "_newDiarySubject"];
+params ["_className", "_weaponsInfo", "_newDiarySubject", "_record"];
 LOG_FUNC_START;
-TRACE_3("params",_className,_weaponsInfo,_newDiarySubject);
+TRACE_4("params",_className,_weaponsInfo,_newDiarySubject,_record);
 
 private _cfgVehicles = configFile >> "CfgVehicles"; // cache cfgVehicles
 
@@ -67,7 +68,7 @@ if (count _pylons > 0) then {
 };
 
 _strArr pushBack (_newArr joinString "");
-_strArr pushBack "<br></br><br></br><execute expression ='player selectDiarySubject ""Diary:Record4""'>Go back</execute>";
+_strArr pushBack format ["<br></br><br></br>" + createDiaryLink ["Diary", _record, "Go back"]];
 
 private _text = _strArr joinString "";
 if (!(player diarySubjectExists _newDiarySubject)) then { player createDiarySubject [_newDiarySubject, "Vehicle Information"]; };
