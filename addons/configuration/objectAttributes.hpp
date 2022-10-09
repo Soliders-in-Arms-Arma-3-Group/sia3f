@@ -57,7 +57,7 @@ class GVAR(objectSettings) {
 			tooltip = "Add object to the vehicle info tab";
 			property = QGVAR(supportInfo);
 			control = "Checkbox";
-			expression = QUOTE(
+			expression = QUOTE( \
 				if (_value) then { \
 					if (isNil QQGVAR(supportObjects)) then { GVAR(supportObjects) = []; }; \
 					GVAR(supportObjects) pushBackUnique _this; \
