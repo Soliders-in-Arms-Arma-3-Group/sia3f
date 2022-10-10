@@ -5,7 +5,7 @@
  * Add ace actions for both arsenals and buttons.
  *
  * Arguments:
- * None
+ * 0: Common objects, both buttons and arsenal <ARRAY of OBJECT>
  *
  * Return Value:
  * None
@@ -43,10 +43,9 @@ private _clearAction = [QGVAR(kitClear), "Remove Saved Kit", "z\ace\addons\arsen
 }, { true }] call ace_interact_menu_fnc_createAction;
 
 {
-	[_x, 0, ["ACE_MainActions"], _mainAction, true] call ace_interact_menu_fnc_addActionToObject;
-	[_x, 0, ["ACE_MainActions", QGVAR(kit)], _saveAction, true] call ace_interact_menu_fnc_addActionToObject;
-	[_x, 0, ["ACE_MainActions", QGVAR(kit)], _loadAction, true] call ace_interact_menu_fnc_addActionToObject;
-	[_x, 0, ["ACE_MainActions", QGVAR(kit)], _clearAction, true] call ace_interact_menu_fnc_addActionToObject;
+	private _y = _x;
+	[_y, 0, ["ACE_MainActions"], _mainAction, true] call ace_interact_menu_fnc_addActionToObject;
+	{ [_y, 0, ["ACE_MainActions", QGVAR(kit)], _x, true] call ace_interact_menu_fnc_addActionToObject; } forEach [_saveAction, _loadAction, _clearAction];
 } forEach _commonObjects;
 
 LOG_FUNC_END;
