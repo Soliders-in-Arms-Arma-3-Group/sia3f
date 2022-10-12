@@ -23,15 +23,15 @@ params [
 ];
 LOG_FUNC_START;
 
-if (isMultiplayer) then { setDate GVAR(startTime) }; // Set time to start of mission.
+if (isMultiplayer) then { setDate GVAR(startTime); }; // Set time to start of mission.
 setTimeMultiplier 1; // Set time acceleration to default.
 
 missionNamespace setVariable [QGVAR(missionStarted), true, true]; // Update variable.
 
-if (GET_CONFIG(briefLoadout,true)) then { remoteExec [QFUNC(loadoutNotes)] }; // Refresh loadout information if enabled.
+if (GET_CONFIG(briefLoadout,true)) then { remoteExec [QFUNC(loadoutNotes)]; }; // Refresh loadout information if enabled.
 
 if (GET_CONFIG(enableManageKit,true)) then {
-	{ _x setVariable [QGVAR(savedLoadout), getUnitLoadout _x, true] } forEach (call BIS_fnc_listPlayers);
+	{ _x setVariable [QGVAR(savedLoadout), getUnitLoadout _x, true]; } forEach (call BIS_fnc_listPlayers);
 }; // save each player's loadout.
 
 // Update phase to "Mission Started".
@@ -42,13 +42,13 @@ missionNamespace setVariable [QGVAR(safeStart_phase), "In Progress", true];
 // Display intro text if enabled.
 if (GET_CONFIG(showIntroText,true)) then {
 	[
-		{ [(getMissionConfigValue ["onLoadName", missionName])] remoteExec ["BIS_fnc_moduleMissionName", _this] },
+		{ [(getMissionConfigValue ["onLoadName", missionName])] remoteExec ["BIS_fnc_moduleMissionName", _this]; },
 		_gm,
 		5
 	] call CBA_fnc_waitAndExecute;
 	
 	[
-		{ remoteExecCall [_this] },
+		{ remoteExecCall [_this]; },
 		QFUNC(introText),
 		15
 	] call CBA_fnc_waitAndExecute;

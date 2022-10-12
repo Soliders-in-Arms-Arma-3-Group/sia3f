@@ -14,7 +14,7 @@
  * call sia3f_ace_fnc_zeusActions
 */
 
-// Zeus Actions
+LOG_FUNC_START;
 
 // Pre-OP Phases
 private _actionSetPhase = [QEGVAR(core,safeStart_phase), "Set Phase", "\A3\ui_f\data\IGUI\Cfg\simpleTasks\types\use_ca.paa", {}, { !(missionNamespace getVariable [QEGVAR(core,missionStarted), false]) }] call ace_interact_menu_fnc_createAction;
@@ -61,3 +61,5 @@ private _actionEndLose = [QGVAR(safeStart_missionEndLose), "Lose", "", { ["end1"
 
 [["ACE_ZeusActions"], _actionMissionEnd] call ace_interact_menu_fnc_addActionToZeus;
 { [["ACE_ZeusActions", QGVAR(safeStart_missionEnd)], _x] call ace_interact_menu_fnc_addActionToZeus } forEach [_actionEndWin, _actionEndLose];
+
+LOG_FUNC_END;

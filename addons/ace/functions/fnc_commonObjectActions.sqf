@@ -18,14 +18,14 @@ params [
 	["_commonObjects", [], [[objNull]]]
 ];
 
-LOG_FUNC_START;
-// Manage Loadouts
-if (!GET_CONFIG(enableManageKit,true)) exitWith {
-	LOG_FUNC_END_ERROR("enableManageKit disabled");
+if (!GET_CONFIG(enableManageKit,true) || _commonObjects isEqualTo []) exitWith {
+	LOG_FUNC_END_ERROR("enableManageKit disabled or invalid/empty params");
 };
+LOG_FUNC_START;
 
 TRACE_1("params",_commonObjects);
 
+// Manage Loadouts
 private _statement = {
 	player setVariable [QEGVAR(core,savedLoadout), getUnitLoadout player];
 	hint "Kit saved. Will be loaded on respawn.";
