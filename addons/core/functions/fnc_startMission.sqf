@@ -30,6 +30,10 @@ missionNamespace setVariable [QGVAR(missionStarted), true, true]; // Update vari
 
 if (GET_CONFIG(briefLoadout,true)) then { remoteExec [QFUNC(loadoutNotes)] }; // Refresh loadout information if enabled.
 
+if (GET_CONFIG(enableManageKit,true)) then {
+	{ _x setVariable [QGVAR(savedLoadout), getUnitLoadout _x, true] } forEach (call BIS_fnc_listPlayers);
+}; // save each player's loadout.
+
 // Update phase to "Mission Started".
 missionNamespace setVariable [QGVAR(safeStart_phase), "In Progress", true];
 [QGVAR(safeStart_phase), ["Mission is a go!", "\A3\ui_f\data\IGUI\Cfg\simpleTasks\types\run_ca.paa"]] remoteExec ["BIS_fnc_showNotification"];
