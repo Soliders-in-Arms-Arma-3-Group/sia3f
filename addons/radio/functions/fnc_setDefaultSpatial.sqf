@@ -21,7 +21,7 @@ if (!GET_CONFIG(acreEnabled,true) || !hasInterface || !("@ACRE2" call EFUNC(core
 
 params [
 	["_radio", "", [""]],
-	["_ear", 1 , [0]]
+	["_ear", 1, [0]]
 ];
 
 LOG_FUNC_START;
