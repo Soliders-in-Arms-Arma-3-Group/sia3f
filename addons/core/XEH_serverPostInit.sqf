@@ -15,9 +15,9 @@ setTimeMultiplier 0.1;
 missionNamespace setVariable [QGVAR(safeStart_phase), "Waiting", true];
 missionNamespace setVariable [QGVAR(missionStarted), false, true];
 
-if (!isNil QEGVAR(configuration,arsenals)) then {
+if (!isNil QEGVAR(configuration,arsenals) && "@ace" call EFUNC(core,checkModPresence)) then {
 	call FUNC(setupGlobalArsenal);
-	call EFUNC(ace,initLocalArsenal);	
+	call EFUNC(ace,initLocalArsenal);
 };
 
 if (!isNil QEGVAR(configuration,buttons)) then {
@@ -32,12 +32,12 @@ if (!isNil QEGVAR(configuration,buttons)) then {
 
 // Safe Start
 if (GET_CONFIG(showSafestartHint,true)) then {
-    [] spawn {
-        while { !(missionNamespace getVariable [QGVAR(missionStarted), false]) } do {
-            remoteExec [QFUNC(hint)];
-            sleep SAFESTART_HINT_REFRESH;
-        };
-    };
+	[] spawn {
+		while { !(missionNamespace getVariable [QGVAR(missionStarted), false]) } do {
+			remoteExec [QFUNC(hint)];
+			sleep SAFESTART_HINT_REFRESH;
+		};
+	};
 };
 
 // Mission End

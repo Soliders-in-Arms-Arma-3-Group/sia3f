@@ -18,7 +18,7 @@ private _category = lbCurSel ((findDisplay 8502) displayCtrl 2300);
 
 // Exit if selected category is not attachments or magazines
 if !(_category in [4, 5, 6, 7, 8]) exitWith {
-    LOG_FUNC_END_ERROR("attempted to add compatible items with invalid category");
+	LOG_FUNC_END_ERROR("attempted to add compatible items with invalid category");
 };
 
 private _configItems = +(uiNamespace getVariable [QGVAR(configItems), []]);
@@ -33,36 +33,36 @@ private _cfgWeapons = configFile >> "CfgWeapons";
 private _itemsToAdd = [];
 
 if (_category == 8) then {
-    private _magazineGroups = uiNamespace getVariable QGVAR(magazineGroups);
-    private _cfgMagazines = configFile >> "CfgMagazines";
+	private _magazineGroups = uiNamespace getVariable QGVAR(magazineGroups);
+	private _cfgMagazines = configFile >> "CfgMagazines";
 
-    {
-        private _weaponConfig = _cfgWeapons >> _x;
+	{
+		private _weaponConfig = _cfgWeapons >> _x;
 
-        {
-            private _muzzleConfig = if (_x == "this") then { _weaponConfig } else { _weaponConfig >> _x };
+		{
+			private _muzzleConfig = if (_x == "this") then { _weaponConfig } else { _weaponConfig >> _x };
 
-            // Only add existent magazines and ensure correct classname case
-            private _magazines = getArray (_muzzleConfig >> "magazines") select { isClass (_cfgMagazines >> _x) };
-            _magazines = _magazines apply { configName (_cfgMagazines >> _x) };
-            _itemsToAdd append _magazines;
+			// Only add existent magazines and ensure correct classname case
+			private _magazines = getArray (_muzzleConfig >> "magazines") select { isClass (_cfgMagazines >> _x) };
+			_magazines = _magazines apply { configName (_cfgMagazines >> _x) };
+			_itemsToAdd append _magazines;
 
-            {
-                _itemsToAdd append (_magazineGroups get (toLower _x));
-            } forEach getArray (_muzzleConfig >> "magazineWell");
-        } forEach getArray (_weaponConfig >> "muzzles");
-    } forEach _attributeWeapons;
+			{
+				_itemsToAdd append (_magazineGroups get (toLower _x));
+			} forEach getArray (_muzzleConfig >> "magazineWell");
+		} forEach getArray (_weaponConfig >> "muzzles");
+	} forEach _attributeWeapons;
 } else {
-    private _attachmentCategory = _category - 4;
-    private _filter = ["optic", "pointer", "muzzle", "bipod"] select _attachmentCategory;
+	private _attachmentCategory = _category - 4;
+	private _filter = ["optic", "pointer", "muzzle", "bipod"] select _attachmentCategory;
 
-    {
-        _itemsToAdd append ([_x, _filter] call CBA_fnc_compatibleItems);
-    } forEach _attributeWeapons;
+	{
+		_itemsToAdd append ([_x, _filter] call CBA_fnc_compatibleItems);
+	} forEach _attributeWeapons;
 
-    // Only add items with scope of 2 and ensure correct classname case
-    _itemsToAdd = _itemsToAdd select { getNumber (_cfgWeapons >> _x >> "scope") == 2 };
-    _itemsToAdd = _itemsToAdd apply { configName (_cfgWeapons >> _x) };
+	// Only add items with scope of 2 and ensure correct classname case
+	_itemsToAdd = _itemsToAdd select { getNumber (_cfgWeapons >> _x >> "scope") == 2 };
+	_itemsToAdd = _itemsToAdd apply { configName (_cfgWeapons >> _x) };
 };
 
 _items append _itemsToAdd;
