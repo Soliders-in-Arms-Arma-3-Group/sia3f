@@ -1,4 +1,4 @@
-#import "script_component.hpp"
+#include "script_component.hpp"
 
 /*
  * Author: McKendrick, Siege
