@@ -11,7 +11,7 @@
  * None
  *
  * Example:
- * call sia3f_ace_fnc_buttonActions
+ * [someButton, someOtherButton] call sia3f_ace_fnc_buttonActions
 */
 
 params [

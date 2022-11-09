@@ -111,19 +111,15 @@ switch (_mode) do {
 
 	case "addActions": {
 		if !(_parameters isEqualTypeAll objNull) exitWith { ERROR("TPD Actions could not be added"); };
-		_parameters apply {
-
-		//Modified by McKendrick
-		// vvvv
-		if ("@ace" call FUNC(checkModPresence)) then { 
-			private _action = ["TPD", "Open Teleport Menu", "\a3\modules_f_curator\data\portraitobjectivemove_ca.paa", { [] spawn { findDisplay 46 createDisplay QGVAR(TPD_Teleport) } }, { true }] call ace_interact_menu_fnc_createAction;
-			[_x, 0, ["ACE_MainActions"], _action, true] remoteExecCall ["ace_interact_menu_fnc_addActionToObject"];
-		} else {
-			[_x, ["<img image='\a3\modules_f_curator\data\portraitobjectivemove_ca.paa'/> Select Teleport Location", { findDisplay 46 createDisplay QGVAR(TPD_Teleport) }, nil, 6, true, true, "", "true", 4]] remoteExec ["addAction", 0, _x];
-		};
-		// ^^^^
-
-		};
+		TRACE_1("addActions parameters",_parameters);
+		{
+			if ("@ace" call FUNC(checkModPresence)) then { 
+				private _action = ["TPD", "Open Teleport Menu", "\a3\modules_f_curator\data\portraitobjectivemove_ca.paa", { [] spawn { findDisplay 46 createDisplay QGVAR(TPD_Teleport) } }, { true }] call ace_interact_menu_fnc_createAction;
+				[_x, 0, ["ACE_MainActions"], _action, true] remoteExecCall ["ace_interact_menu_fnc_addActionToObject"];
+			} else {
+				[_x, ["<img image='\a3\modules_f_curator\data\portraitobjectivemove_ca.paa'/> Select Teleport Location", { findDisplay 46 createDisplay QGVAR(TPD_Teleport) }, nil, 6, true, true, "", "true", 4]] remoteExec ["addAction", 0, _x];
+			};
+		} forEach _parameters;
 	};
 
 	case "previewPosition": {

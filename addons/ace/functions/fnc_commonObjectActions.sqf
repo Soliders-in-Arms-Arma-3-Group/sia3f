@@ -11,7 +11,7 @@
  * None
  *
  * Example:
- * call sia3f_ace_fnc_commonObjectActions
+ * [someObject, someOtherObject] call sia3f_ace_fnc_commonObjectActions
 */
 
 params [
