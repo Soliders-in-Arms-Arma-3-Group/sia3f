@@ -15,7 +15,7 @@
 */
 
 params [
-	["_objects", [], [[]]]
+	["_objects", [], [[objNull]]]
 ];
 
 if (!GET_CONFIG(enableTPToSquad,true) || _objects isEqualTo []) exitWith {
