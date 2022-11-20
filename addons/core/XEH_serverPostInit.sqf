@@ -1,7 +1,5 @@
 #include "script_component.hpp"
 
-#define SAFESTART_HINT_REFRESH 30; 
-
 if (
 	allDisplays isEqualTo [findDisplay 0] ||
 	is3DEN ||
@@ -31,13 +29,8 @@ if (!isNil QEGVAR(configuration,buttons)) then {
 };
 
 // Safe Start
-if (GET_CONFIG(showSafestartHint,true)) then {
-	[] spawn {
-		while { !(missionNamespace getVariable [QGVAR(missionStarted), false]) } do {
-			remoteExec [QFUNC(hint)];
-			sleep SAFESTART_HINT_REFRESH;
-		};
-	};
+if (GET_CONFIG(showSafestartHint,true)) then { // To-do: Pass as param along with safety enabled.
+	call FUNC(safeStartInit);
 };
 
 // Mission End
