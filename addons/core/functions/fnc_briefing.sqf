@@ -21,10 +21,6 @@ private _executionText = [GET_CONFIG(execTabText,"")] call FUNC(formatBriefing);
 private _supportText = [GET_CONFIG(supportTabText,"")] call FUNC(formatBriefing);
 private _signalText = [GET_CONFIG(signalTabText,"")] call FUNC(formatBriefing);
 
-{
-	if (_x == "") then { ERROR_MSG_1("%1 briefing text not found.",[ARR_5("Situation","Mission","Execution","Support","Signal")] select _forEachIndex); };
-} forEach [_situationText, _missionText, _executionText, _supportText, _signalText];
-
 TRACE_5("briefing content",_situationText,_missionText,_executionText,_supportText,_signalText);
 
 player createDiaryRecord ["Diary", [GET_CONFIG(signalTabName,"Signal"), _signalText]];

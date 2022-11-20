@@ -10,3 +10,4 @@ if (
 
 // Player Self Actions
 call FUNC(playerActions);
+call FUNC(zeusActions);
