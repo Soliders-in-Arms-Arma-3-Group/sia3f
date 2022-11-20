@@ -116,7 +116,7 @@ switch (_mode) do {
 				private _action = ["TPD", "Open Teleport Menu", "\a3\modules_f_curator\data\portraitobjectivemove_ca.paa", { [] spawn { findDisplay 46 createDisplay QGVAR(TPD_Teleport) } }, { true }] call ace_interact_menu_fnc_createAction;
 				{ [_x, 0, ["ACE_MainActions"], _action, true] call ace_interact_menu_fnc_addActionToObject; } forEach _parameters;
 			} else {
-				{ _x addAction [_x, ["<img image='\a3\modules_f_curator\data\portraitobjectivemove_ca.paa'/> Select Teleport Location", { findDisplay 46 createDisplay QGVAR(TPD_Teleport) }, nil, 6, true, true, "", "true", 4]] } forEach _parameters;
+				{ _x addAction ["<img image='\a3\modules_f_curator\data\portraitobjectivemove_ca.paa'/> Select Teleport Location", { findDisplay 46 createDisplay QGVAR(TPD_Teleport) }, nil, 6, true, true, "", "true", 4] } forEach _parameters;
 			};
 	};
 

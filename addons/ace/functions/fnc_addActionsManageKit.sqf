@@ -55,10 +55,11 @@ if ("@ace" call EFUNC(core,checkModPresence)) then {
 
 } else {
 	{
-		_x addAction ["Save Current Kit", _statementKitSave];
-		_x addAction ["Load Saved Kit", _statementKitLoad];
-		_x addAction ["Remove Saved Kit", _statementKitClear];
 		_x addAction ["----------", {}]; // 10 indents for spacing
+		_x addAction ["<img image='\A3\Ui_F\Data\GUI\Rsc\RscDisplayArcadeMap\icon_save_ca.paa'/> Save Current Kit", _statementKitSave];
+		_x addAction ["<img image='\A3\Ui_F\Data\IGUI\Cfg\Actions\reammo_ca.paa'/> Load Saved Kit", _statementKitLoad];
+		_x addAction ["<img image='\A3\Ui_F\Data\IGUI\Cfg\Actions\gear_ca.paa'/> Remove Saved Kit", _statementKitClear];
+		_x addAction ["----------", {}];
 	} forEach _objects;
 };
 

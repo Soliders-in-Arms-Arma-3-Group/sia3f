@@ -30,8 +30,7 @@ if ("@ace" call EFUNC(core,checkModPresence)) then {
 	{ [_x, 0, ["ACE_MainActions"], _tpToSquadAction, true] call ace_interact_menu_fnc_addActionToObject; } forEach _objects;
 } else {
 	{ 
-		_x addAction ["Teleport to Squad", { [] spawn EFUNC(core,teleportToSquad); }];
-		_x addAction ["----------", {}]; // 10 indents for spacing
+		_x addAction ["<img image='\A3\Ui_F\Data\IGUI\Cfg\simpleTasks\types\meet_ca.paa'/> Teleport to Squad", { [] spawn EFUNC(core,teleportToSquad); }];
 	} forEach _objects;
 };
 
