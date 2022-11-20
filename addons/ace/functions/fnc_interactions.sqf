@@ -1,4 +1,4 @@
-#include "script_component";
+#include "script_component.hpp"
 
 /*
  * Author: Siege
@@ -28,7 +28,8 @@ _commonObjects = _commonObjects arrayIntersect _commonObjects;
 TRACE_3("interaction objects",_buttons,_arsenals,_commonObjects);
 
 // Arsenal/Button Actions
-[_buttons] call FUNC(buttonActions);
-[_commonObjects] call FUNC(commonObjectActions);
+[_buttons] call FUNC(addActionsTPToSquad);
+[_commonObjects] call FUNC(addActionsManageKit);
+["addActions", _buttons] call EFUNC(core,teleport);
 
 LOG_FUNC_END;
