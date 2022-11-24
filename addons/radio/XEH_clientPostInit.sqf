@@ -3,7 +3,13 @@
 #define PERSONAL_RADIO_CLASSNAME missionNameSpace getVariable [QGVAR(personalRadio), "ACRE_PRC343"]
 // should behave identically to initPlayerLocal
 
-if (!GET_CONFIG(acreEnabled,true) || !("@ACRE2" call EFUNC(core,checkModPresence)) || (allDisplays isEqualTo [findDisplay 0]) || is3DEN) exitWith {};
+if (
+	!GET_CONFIG(acreEnabled,true) ||
+	!("@ACRE2" call EFUNC(core,checkModPresence)) ||
+	allDisplays isEqualTo [findDisplay 0] ||
+	is3DEN ||
+	!GET_CONFIG(frameworkInit,false)
+) exitWith {};
 
 call FUNC(giveRadios);
 
@@ -19,9 +25,9 @@ player addEventHandler ["Respawn", {
 
 if ("@ace" call EFUNC(core,checkModPresence)) then {
 	["ace_arsenal_displayClosed", {
-		private _personalRadioClassname = PERSONAL_RADIO_CLASSNAME;
+		// private _personalRadioClassname = ;
 		[] spawn FUNC(loadDefaultSpatial);
-		[_personalRadioClassname] spawn FUNC(reorderMPTT);
+		[PERSONAL_RADIO_CLASSNAME] spawn FUNC(reorderMPTT);
 		[((group player) getVariable [QEGVAR(configuration,radioChannel), 1]), _personalRadioClassname] spawn FUNC(setRadioChannel);
 	}] call CBA_fnc_addEventHandler;
 };

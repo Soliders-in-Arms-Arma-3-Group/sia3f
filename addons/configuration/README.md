@@ -1,6 +1,6 @@
 # configuration
 
-Handles all functionality in the Eden Editor.
+Handles all functionality in the Eden Editor.  (Note: The expression attribute for objects is only executed on the server.  I do not fully understand this, but I *think* that it works on local MP and singleplayer, but only on the server for dedicated MP.)
 
 ## Config Definitions
 This will define all of the variables that can be used with ``GET_CONFIG(var,default)``.  The following table lists the variable name, in-game name, description , and type of  every config value.  Ordered in the same way it is in-game.

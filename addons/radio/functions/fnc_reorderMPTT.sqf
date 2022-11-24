@@ -19,10 +19,15 @@ if (!GET_CONFIG(acreEnabled,true) || !hasInterface || !("@ACRE2" call EFUNC(core
 }; // Exit if not player or if ACRE is disabled/not loaded.
 
 params [
-	["_radioType", missionNameSpace getVariable [QGVAR(personalRadio), "ACRE_PRC343"], ""]
+	["_radioType", missionNamespace getVariable [QGVAR(personalRadio), "ACRE_PRC343"], [""]]
 ];
 
+if (isNil "_radioType" || _radioType == "") exitWith {
+	LOG_FUNC_END_ERROR("radioType nil or empty");
+};
+
 LOG_FUNC_START;
+TRACE_1("params",_radioType);
 
 waitUntil { ([] call acre_api_fnc_isInitialized) }; // Wait until player's radios are initialized.
 

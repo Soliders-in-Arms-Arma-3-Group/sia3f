@@ -846,7 +846,7 @@ def main(argv):
     arg_modules = False # Only build modules on command line?
     use_pboproject = True # Default to pboProject build tool
     make_target = "DEFAULT" # Which section in make.cfg to use for the build
-    new_key = True # Make a new key and use it to sign?
+    new_key = False # Make a new key and use it to sign?
     quiet = False # Suppress output from build tool?
     sqfc_compiling = True
 
@@ -1009,7 +1009,10 @@ See the make.cfg file for additional build options.
 
         commit_id = get_commit_ID()
         get_project_version(version_increments)
-        key_name = versionStamp = get_private_keyname(commit_id)
+        key_name = key[key.find(private_key_path) + len("{}\\".format(private_key_path)):key.find(".biprivatekey")]
+        if not (os.path.exists(os.path.join(private_key_path, key_name + ".biprivatekey")) and os.path.exists(os.path.join(private_key_path, key_name + ".bikey"))):
+            key_name = versionStamp = get_private_keyname(commit_id)
+            new_key = True
         print_green ("module_root: {}".format(module_root))
 
         if (os.path.isdir(optionals_root)):
@@ -1167,6 +1170,9 @@ See the make.cfg file for additional build options.
                 raise
 
             key = os.path.join(private_key_path, "{}.biprivatekey".format(key_name))
+        else:
+            print_green("\nNote: Using key {}".format(key))
+            shutil.copyfile(os.path.join(private_key_path, key_name + ".bikey"), os.path.join(module_root, release_dir, project, "keys", "{}.bikey".format(key_name)))
 
         # Remove any obsolete files.
         print_blue("\nChecking for obsolete files...")

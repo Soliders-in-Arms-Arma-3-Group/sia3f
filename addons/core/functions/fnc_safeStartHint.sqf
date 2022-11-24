@@ -23,7 +23,7 @@
  * None
  *
  * Example:
- * call sia3f_core_fnc_hint
+ * call sia3f_core_fnc_safeStartHint
 */
 
 if (!hasInterface || !(player getVariable [QGVAR(safeStartHintEnabled), true])) exitWith {
@@ -46,7 +46,7 @@ private _txtSetupPhase = text (missionNamespace getVariable [QGVAR(safeStart_pha
 _txtSetupPhase setAttributes ["align", "right", "font", FONT_HEADER];
 
 private _txtLocation = text (GET_CONFIG(missionLocationName, worldName) + "     " + str (date select 1) + "-" + str (date select 2) + "-" + str (date select 0) + "     " + ([daytime, "HH:MM"] call BIS_fnc_timeToString));
-_txtLocation setAttributes ["center", "left", "color", HEX_SECONDARY, "font", FONT_PRIMARY, "size", "0.8"];
+_txtLocation setAttributes ["align", "center", "color", HEX_SECONDARY, "font", FONT_PRIMARY, "size", "0.8"];
 
 private _txtSystemTime = text "System Time:";
 _txtSystemTime setAttributes ["align", "left", "font", FONT_HEADER];
