@@ -35,10 +35,10 @@ int __stdcall RVExtensionArgs(char* output, int outputSize, const char* function
 	filePath.append("description.ext"); // file name
 	
 	// check if file exists, should be the most efficient method (https://stackoverflow.com/a/12774387/16277419)
-	struct stat buffer;
+/* 	struct stat buffer;
 	if (stat(filePath.c_str(), &buffer) != 0) {
 		return 1;
-	}
+	} */
 
 	// create file and insert content
 	std::ofstream file(filePath); // create file
