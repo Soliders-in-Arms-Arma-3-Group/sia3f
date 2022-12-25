@@ -49,7 +49,7 @@ private _actionPhaseStandby = [QGVAR(safeStart_phaseStandby), "Stand By", "\A3\u
 
 // Start Mission Action + Confirmation
 private _actionMissionStart = [QGVAR(safeStart_missionStart), "Start Mission", "\A3\ui_f\data\IGUI\Cfg\simpleTasks\types\getin_ca.paa", {}, { !(missionNamespace getVariable [QEGVAR(core,missionStarted), false]) }] call ace_interact_menu_fnc_createAction;
-private _actionConfirm = [QGVAR(safeStart_missionStartConfirm), "Confirm", "", { remoteExecCall EFUNC(core,startMission); }, { !(missionNamespace getVariable [QEGVAR(core,missionStarted), false]) }] call ace_interact_menu_fnc_createAction;
+private _actionConfirm = [QGVAR(safeStart_missionStartConfirm), "Confirm", "", { remoteExecCall [EFUNC(core,startMission)]; }, { !(missionNamespace getVariable [QEGVAR(core,missionStarted), false]) }] call ace_interact_menu_fnc_createAction;
 
 [["ACE_ZeusActions"], _actionMissionStart] call ace_interact_menu_fnc_addActionToZeus;
 [["ACE_ZeusActions", QGVAR(safeStart_missionStart)], _actionConfirm] call ace_interact_menu_fnc_addActionToZeus;
