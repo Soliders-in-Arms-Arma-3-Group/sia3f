@@ -14,15 +14,15 @@
  * Example:
  * call sia3f_core_fnc_safeStartLoop
 */
-INFO("fnc_safeStartLoop.sqf started.");
 
+LOG_FUNC_START;
 params [
    [ "_unit", player]
 ];
 
 _unit allowDamage false; // Make the zeus(es) invincible.
 
-if (_unit in (allCurators apply { getAssignedCuratorUnit _x })) exitWith { LOG("fnc_safeStartLoop.sqf was exited: unit is a curator.") };
+if (_unit in (allCurators apply { getAssignedCuratorUnit _x })) exitWith { LOG_FUNC_END_ERROR("unit is a curator (zeus)"); };
 
 { [_unit, _x, true] call ace_safemode_fnc_setWeaponSafety } forEach (weapons _unit);
 _unit setVariable ["ace_common_effect_blockThrow", 1]; // force use vanilla throwing so the event handler works (need to make ensure that another function doesn't set it to 0)
@@ -50,4 +50,4 @@ _unit setVariable ["ace_common_effect_blockThrow", 0];
 _unit setVariable ["ace_explosives_PlantingExplosive", false];
 _unit removeEventHandler ["FiredMan", _FiredMan_EH];
 
-INFO("fnc_safeStartLoop.sqf fully executed.");
+LOG_FUNC_END;

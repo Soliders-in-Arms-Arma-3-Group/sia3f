@@ -27,11 +27,6 @@ if (!isNil QEGVAR(configuration,buttons)) then {
 	};
 };
 
-// Safe Start
-if (GET_CONFIG(showSafestartHint,true)) then { // To-do: Pass as param along with safety enabled.
-	call FUNC(safeStartInit);
-};
-
 // Mission End
 addMissionEventHandler ["MPEnded", {
 	call FUNC(onMissionEnd);

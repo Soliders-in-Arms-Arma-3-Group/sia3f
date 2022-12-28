@@ -9,3 +9,6 @@ if (
 call FUNC(loadoutNotes);
 call FUNC(briefing);
 call FUNC(orbat);
+
+// Safe Start
+[GET_CONFIG(showSafestartHint,true)] call FUNC(safeStartInit);
