@@ -15,7 +15,7 @@ missionNamespace setVariable [QGVAR(missionStarted), false, true];
 
 if (!isNil QEGVAR(configuration,arsenals) && "@ace" call EFUNC(core,checkModPresence)) then {
 	call FUNC(setupGlobalArsenal);
-	call EFUNC(ace,initLocalArsenal);
+	[EGVAR(configuration,arsenals)] remoteExecCall [QEFUNC(ace,initLocalArsenal), 0, true];
 };
 
 if (!isNil QEGVAR(configuration,buttons)) then {
