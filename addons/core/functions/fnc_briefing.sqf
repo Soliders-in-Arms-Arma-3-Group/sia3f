@@ -43,4 +43,3 @@ _supportText = _supportText + "<br></br><br></br><font face='PuristaBold' color=
 player setDiaryRecordText [["Diary", _record], [GET_CONFIG(supportTabName,"Support"), _supportText]];
 
 LOG_FUNC_END;
-
