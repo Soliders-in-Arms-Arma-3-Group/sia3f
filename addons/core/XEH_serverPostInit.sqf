@@ -32,3 +32,6 @@ addMissionEventHandler ["MPEnded", {
 	call FUNC(onMissionEnd);
 	call FUNC(exportScoreboard);
 }];
+
+
+[EGVAR(configuration,supportObjects)] remoteExecCall [QFUNC(briefing), 0, true];
