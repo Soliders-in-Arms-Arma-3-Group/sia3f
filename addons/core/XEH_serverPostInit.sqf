@@ -33,5 +33,16 @@ addMissionEventHandler ["MPEnded", {
 	call FUNC(exportScoreboard);
 }];
 
-
+// Call briefing
 [EGVAR(configuration,supportObjects)] remoteExecCall [QFUNC(briefing), 0, true];
+
+// Create respawn markers
+{
+	if (!isNil (_x select 1)) then {
+		if (getMarkerType (_x select 1) == "") then { createMarker [(_x select 1), position (_x select 0)] }; // Use any exisiting respawn markers, otherwise create a new one.
+		(_x select 1) setMarkerPos (getPosASL (_x select 0));
+	} else {
+		ERROR_1("object not found: %1",(_x select 0)); // Error module not found.
+	}
+} forEach [[respawn_west, "respawn_west"], [respawn_east, "respawn_east"], [respawn_guerrila, "respawn_guerrila"], [respawn_civilian, "respawn_civilian"]];
+
