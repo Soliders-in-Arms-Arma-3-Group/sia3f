@@ -23,7 +23,7 @@
 */
 
 if (!hasInterface || !GET_CONFIG(briefOrbat,true)) exitWith {
-	LOG_FUNC_END_ERROR("function disabled or ran on server")
+	LOG_FUNC_END_ERROR("function disabled or ran on server");
 }; // Exit if not a player.
 LOG_FUNC_START;
 

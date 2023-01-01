@@ -515,7 +515,7 @@ class GVAR(additionalItemsEditor) {
 		class export: ctrlButton
 		{
 			idc = 1608;
-			action = QUOTE(copyToClipboard str (uiNamespace getVariable [ARR_2(QQGVAR(roleItems),[])]););
+			action = QUOTE(copyToClipboard str (uiNamespace getVariable [ARR_2(QQGVAR(additionalItems),[])]););
 			text = "EXPORT";
 			x = CENTERED_X(DIALOG_W) + CTRL_DEFAULT_W * 8.25;
 			y = DIALOG_TOP + 2 * CTRL_DEFAULT_H + GRID_H;

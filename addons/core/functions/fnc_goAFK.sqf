@@ -45,6 +45,7 @@ if ("@ace" call FUNC(checkModPresence)) then {
 	_unit setVariable [QGVAR(serializedMedStatus), [_unit] call ace_medical_fnc_serializeState];
 	[objNull, _unit] call ace_medical_treatment_fnc_fullHeal;
 };
+_unit allowDamage false;
 _unit setVariable [QGVAR(isAFK), true];
 LOG("player set to AFK.");
 

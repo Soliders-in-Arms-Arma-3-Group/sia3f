@@ -11,7 +11,7 @@
  * None
  *
  * Example:
- * call sia3f_core_fnc_onMissionEnd
+ * call sia3f_core_fnc_exportOCAP
 */
 
 LOG_FUNC_START;

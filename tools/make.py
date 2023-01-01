@@ -1004,8 +1004,14 @@ See the make.cfg file for additional build options.
         if (os.path.isdir(module_root)):
             os.chdir(module_root)
         else:
-            print_error ("Directory {} does not exist.".format(module_root))
-            sys.exit(1)
+            workdrive_path = os.path.join(arma3tools_path, "WorkDrive")
+            os.chdir(workdrive_path)
+            os.system("workDrive.exe /mount")
+            if (os.path.isdir(module_root)):
+                os.chdir(module_root)
+            else:
+                print_error ("Directory {} does not exist.".format(module_root))
+                sys.exit(1)
 
         commit_id = get_commit_ID()
         get_project_version(version_increments)

@@ -5,7 +5,7 @@
  * Inits player's local arsenal depending on role.  Execute locally.
  *
  * Arguments:
- * None
+ * 0: Arsenals <ARRAY of OBJECT>
  *
  * Return Value:
  * None
@@ -15,14 +15,17 @@
 */
 
 if (!hasInterface) exitWith {
-	LOG_FUNC_END_ERROR("executed on server machine");
+	LOG_FUNC_END_ERROR("function ran on server");
 }; // exit if executed on non client machine
+
+params [
+	["_arsenals", [], [[]]]
+];
+
 LOG_FUNC_START;
 
 // add player's loadout to arsenal
-private _loadout = getUnitLoadout player;
-_loadout = (str _loadout splitString "[],") joinString ",";
-_loadout = parseSimpleArray ("[" + _loadout + "]");
+private _loadout = flatten (getUnitLoadout player);
 _loadout = _loadout arrayIntersect _loadout select { _x isEqualType "" && { _x != "" } };
 
 // get role items
@@ -46,5 +49,5 @@ private _commonItems = +_loadout + _roleItems + _groupItems;
 _commonItems = _commonItems arrayIntersect _commonItems;
 TRACE_1("local arsenal added items",_commonItems);
 
-{ [_x, _commonItems, false] call ace_arsenal_fnc_addVirtualItems } forEach EGVAR(configuration,arsenals);
+{ [_x, _commonItems, false] call ace_arsenal_fnc_addVirtualItems } forEach _arsenals;
 LOG_FUNC_END;
