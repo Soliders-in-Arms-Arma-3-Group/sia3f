@@ -43,4 +43,4 @@ private _returnStr = format [
 TRACE_1("string returned",_returnStr);
 LOG_FUNC_END;
 
-_returnStr;
+_returnStr

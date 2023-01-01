@@ -21,17 +21,18 @@
 	1,000 characters: 1 ms
 */
 
+
 params [
 	["_str", "", [""]]
 ];
-LOG_FUNC_START;
-TRACE_1("input string",_str);
 
 if (_str == "") exitWith { 
 	LOG_FUNC_END_ERROR("found and returned an empty string");
 	_str
 };
+TRACE_1("input string",_str);
 
+LOG_FUNC_START;
 // replace newline with '<br/>'
 private _newlineChar = "
 ";
