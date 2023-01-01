@@ -21,7 +21,6 @@
 	1,000 characters: 1 ms
 */
 
-
 params [
 	["_str", "", [""]]
 ];

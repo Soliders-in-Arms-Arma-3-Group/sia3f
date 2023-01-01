@@ -1,6 +1,7 @@
 PREP(briefing);
 PREP(checkModPresence);
 PREP(exitAFK);
+PREP(exportOCAP);
 PREP(exportScoreboard);
 PREP(formatBriefing);
 PREP(goAFK);
@@ -10,7 +11,6 @@ PREP(loadoutNotesDataToText);
 PREP(loadoutNotesGetLoadout);
 PREP(loadoutNotesName);
 PREP(loadoutNotesWepMags);
-PREP(onMissionEnd);
 PREP(orbat);
 PREP(safeStartHint);
 PREP(safeStartInit);

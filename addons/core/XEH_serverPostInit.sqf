@@ -7,6 +7,8 @@ if (
 ) exitWith {};
 // basically initServer.sqf
 
+private _remoteExecTarget = [0, -2] select isDedicated;
+
 GVAR(startTime) = date;
 setTimeMultiplier 0.1;
 
@@ -15,7 +17,7 @@ missionNamespace setVariable [QGVAR(missionStarted), false, true];
 
 if (!isNil QEGVAR(configuration,arsenals) && "@ace" call EFUNC(core,checkModPresence)) then {
 	call FUNC(setupGlobalArsenal);
-	[EGVAR(configuration,arsenals)] remoteExecCall [QEFUNC(ace,initLocalArsenal), 0, true];
+	[EGVAR(configuration,arsenals)] remoteExecCall [QEFUNC(ace,initLocalArsenal), _remoteExecTarget, true];
 };
 
 if (!isNil QEGVAR(configuration,buttons)) then {
@@ -29,12 +31,12 @@ if (!isNil QEGVAR(configuration,buttons)) then {
 
 // Mission End
 addMissionEventHandler ["MPEnded", {
-	call FUNC(onMissionEnd);
+	call FUNC(exportOCAP);
 	call FUNC(exportScoreboard);
 }];
 
 // Call briefing
-[EGVAR(configuration,supportObjects)] remoteExecCall [QFUNC(briefing), 0, true];
+[EGVAR(configuration,supportObjects)] remoteExecCall [QFUNC(briefing), _remoteExecTarget, true];
 
 // Create respawn markers
 {
