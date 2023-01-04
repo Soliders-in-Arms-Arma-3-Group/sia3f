@@ -35,6 +35,7 @@ private _safeStartToggleAction = [QGVAR(safeStartHintToggle), "Toggle Setup Hint
 		hint "Setup Hint is now DISABLED";
 	} else {
 		player setVariable [QEGVAR(core,safeStartHintEnabled), true];
+		call EFUNC(core,hint);
 		hint "Setup Hint is now ENABLED";
 	};
 }, { !(missionNamespace getVariable [QEGVAR(core,missionStarted), false]) }] call ace_interact_menu_fnc_createAction;
