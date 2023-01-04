@@ -7,6 +7,8 @@ if (
 ) exitWith {};
 // basically initServer.sqf
 
+private _remoteExecTarget = [0, -2] select isDedicated;
+
 GVAR(startTime) = date;
 setTimeMultiplier 0.1;
 
@@ -15,7 +17,7 @@ missionNamespace setVariable [QGVAR(missionStarted), false, true];
 
 if (!isNil QEGVAR(configuration,arsenals) && "@ace" call EFUNC(core,checkModPresence)) then {
 	call FUNC(setupGlobalArsenal);
-	[EGVAR(configuration,arsenals)] remoteExecCall [QEFUNC(ace,initLocalArsenal), 0, true];
+	[EGVAR(configuration,arsenals)] remoteExecCall [QEFUNC(ace,initLocalArsenal), _remoteExecTarget, true];
 };
 
 if (!isNil QEGVAR(configuration,buttons)) then {
@@ -29,20 +31,20 @@ if (!isNil QEGVAR(configuration,buttons)) then {
 
 // Mission End
 addMissionEventHandler ["MPEnded", {
-	call FUNC(onMissionEnd);
+	call FUNC(exportOCAP);
 	call FUNC(exportScoreboard);
 }];
 
 // Call briefing
-[EGVAR(configuration,supportObjects)] remoteExecCall [QFUNC(briefing), 0, true];
+[EGVAR(configuration,supportObjects)] remoteExecCall [QFUNC(briefing), _remoteExecTarget, true];
 
 // Create respawn markers
 {
-	if (!isNil (_x select 1)) then {
-		if (getMarkerType (_x select 1) == "") then { createMarker [(_x select 1), position (_x select 0)] }; // Use any exisiting respawn markers, otherwise create a new one.
-		(_x select 1) setMarkerPos (getPosASL (_x select 0));
+	private _obj = missionNamespace getVariable [_x, objNull];
+	if !(isNull _obj) then {
+		if (getMarkerType _x == "") then { createMarker [_x, position _obj]; }; // Use any existing respawn markers, otherwise create a new one.
+		_x setMarkerPos (getPosASL _obj);
 	} else {
-		ERROR_1("object not found: %1",(_x select 0)); // Error module not found.
+		ERROR_1("object not found: %1",_x); // Error module not found.
 	}
-} forEach [[respawn_west, "respawn_west"], [respawn_east, "respawn_east"], [respawn_guerrila, "respawn_guerrila"], [respawn_civilian, "respawn_civilian"]];
-
+} forEach ["respawn_west", "respawn_east", "respawn_guerrila", "respawn_civilian"];

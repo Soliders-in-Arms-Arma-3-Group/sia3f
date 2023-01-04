@@ -15,7 +15,7 @@
 */
 
 if (!hasInterface) exitWith {
-	LOG_FUNC_END_ERROR("executed on server machine");
+	LOG_FUNC_END_ERROR("function ran on server");
 }; // exit if executed on non client machine
 
 params [
