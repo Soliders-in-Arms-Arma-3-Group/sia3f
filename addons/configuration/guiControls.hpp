@@ -212,9 +212,9 @@ class GVAR(editRole) {
 			idc = 1601;
 			action = QUOTE( \
 				private _rolesHash = uiNamespace getVariable [ARR_2(QQGVAR(roles), createHashMap)]; \
-				private _groupsHash = uiNamespace getVariable [ARR_2(QQGVAR(groups), createHashMap)]; \
+				private _groupsHash = uiNamespace getVariable [ARR_2(QQGVAR(roleGroups), createHashMap)]; \
 				QQGVAR(hiddenConfigValues) set3DENMissionAttribute [ARR_2(QQGVAR(roles), _rolesHash)]; \
-				QQGVAR(hiddenConfigValues) set3DENMissionAttribute [ARR_2(QQGVAR(groups), _groupsHash)]; \
+				QQGVAR(hiddenConfigValues) set3DENMissionAttribute [ARR_2(QQGVAR(roleGroups), _groupsHash)]; \
 				do3DENAction ""MissionSave""; \
 				(findDisplay 8501) closeDisplay 2; \
 			);
@@ -688,9 +688,9 @@ class GVAR(editGroups) {
 			idc = 1613;
 			action = QUOTE( \
 				private _rolesHash = uiNamespace getVariable [ARR_2(QQGVAR(roles), createHashMap)]; \
-				private _groupsHash = uiNamespace getVariable [ARR_2(QQGVAR(groups), createHashMap)]; \
+				private _groupsHash = uiNamespace getVariable [ARR_2(QQGVAR(roleGroups), createHashMap)]; \
 				QQGVAR(hiddenConfigValues) set3DENMissionAttribute [ARR_2(QQGVAR(roles), _rolesHash)]; \
-				QQGVAR(hiddenConfigValues) set3DENMissionAttribute [ARR_2(QQGVAR(groups), _groupsHash)]; \
+				QQGVAR(hiddenConfigValues) set3DENMissionAttribute [ARR_2(QQGVAR(roleGroups), _groupsHash)]; \
 				do3DENAction ""MissionSave""; \
 				(findDisplay 8503) closeDisplay 2; \
 			);
@@ -782,7 +782,7 @@ class GVAR(editGroups) {
 				private _role = _listbox lnbText [ARR_2(_row, 0)]; \
 				private _group = ((findDisplay 8503) displayCtrl 1500) lbText (lbCurSel ((findDisplay 8503) displayCtrl 1500)); \
 				if (_group == """") exitWith {}; \
-				private _addItem = _role in ((uiNamespace getVariable [ARR_2(QQGVAR(groups),createHashmap)]) getOrDefault [ARR_2(_group, [])]) # 5; \
+				private _addItem = _role in ((uiNamespace getVariable [ARR_2(QQGVAR(roleGroups),createHashmap)]) getOrDefault [ARR_2(_group, [])]) # 5; \
 				[!_addItem] call FUNC(editGroupsSelect); \
 			);
 			onSetFocus = QUOTE(uiNamespace setVariable [ARR_2(QQGVAR(listboxHasFocus),true)];);
@@ -952,9 +952,9 @@ class GVAR(editGroupsSettings) {
 			idc = 1613;
 			action = QUOTE( \
 				private _rolesHash = uiNamespace getVariable [ARR_2(QQGVAR(roles), createHashMap)]; \
-				private _groupsHash = uiNamespace getVariable [ARR_2(QQGVAR(groups), createHashMap)]; \
+				private _groupsHash = uiNamespace getVariable [ARR_2(QQGVAR(roleGroups), createHashMap)]; \
 				QQGVAR(hiddenConfigValues) set3DENMissionAttribute [ARR_2(QQGVAR(roles), _rolesHash)]; \
-				QQGVAR(hiddenConfigValues) set3DENMissionAttribute [ARR_2(QQGVAR(groups), _groupsHash)]; \
+				QQGVAR(hiddenConfigValues) set3DENMissionAttribute [ARR_2(QQGVAR(roleGroups), _groupsHash)]; \
 				do3DENAction ""MissionSave""; \
 				(findDisplay 8504) closeDisplay 2; \
 			);

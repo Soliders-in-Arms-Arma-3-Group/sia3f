@@ -35,9 +35,9 @@ private _roleItems = _roleValues # 4;
 
 // get group items if role is in a group
 private _groupItems = [];
-if (({ _x in EGVAR(core,groups) } count _roleValues # 5) > 0) then {
+if (({ _x in EGVAR(core,roleGroups) } count _roleValues # 5) > 0) then {
 	{
-		_groupItems append ((EGVAR(core,groups) get _x) # 4);
+		_groupItems append ((EGVAR(core,roleGroups) get _x) # 4);
 	} forEach _roleValues # 5;
 	
 	_groupItems = _groupItems arrayIntersect _groupItems;

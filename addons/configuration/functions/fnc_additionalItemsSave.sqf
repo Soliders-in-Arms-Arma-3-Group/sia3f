@@ -16,7 +16,7 @@
 
 private _name = uiNamespace getVariable [QGVAR(additionalItemsName), ""];
 private _isGroup = uiNamespace getVariable [QGVAR(additionalItemsIsGroup), false];
-private _hash = uiNamespace getVariable [[QGVAR(roles), QGVAR(groups)] select _isGroup, createHashMap];
+private _hash = uiNamespace getVariable [[QGVAR(roles), QGVAR(roleGroups)] select _isGroup, createHashMap];
 
 if (_name == "" || !(_name in _hash)) exitWith {
 	LOG_FUNC_END_ERROR("role/group not found");

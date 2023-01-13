@@ -30,7 +30,7 @@ if (_roleName in _roles) exitWith {
 	LOG_FUNC_END_ERROR("role already exists");
 };
 
-// create role, value array is [isMedic, isEngineer, hasHandheldRadio, hasManpackRadio, additionalItems, groups]
+// create role, value array is [isMedic, isEngineer, hasHandheldRadio, hasManpackRadio, additionalItems, roleGroups]
 _roles set [_roleName, [false, false, false, false, [], []]];
 uiNamespace setVariable [QGVAR(roles), _roles];
 [-1] call FUNC(editRolesRefresh);

@@ -20,9 +20,9 @@ class GVAR(hiddenConfigValues) {
 					defaultValue = createHashMap;
 				};
 
-				class GVAR(groups) {
-					displayName = "Groups";
-					property = QGVAR(groups);
+				class GVAR(roleGroups) { // used to be GVAR(groups), might have missed some entries
+					displayName = "Role Groups";
+					property = QGVAR(roleGroups);
 					defaultValue = createHashMap;
 				};
 			};

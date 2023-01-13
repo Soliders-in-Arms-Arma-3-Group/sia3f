@@ -28,7 +28,7 @@ if (floor _index != _index) exitWith {
 
 private _mode = uiNamespace getVariable [QGVAR(editGroupsCurrentMode), 0];
 private _groupsLbCtrl = CTRL(1500);
-private _groups = uiNamespace getVariable [QGVAR(groups), GET_CONFIG(groups,createHashMap)];
+private _groups = uiNamespace getVariable [QGVAR(roleGroups), GET_CONFIG(roleGroups,createHashMap)];
 
 if (_groups isEqualTo createHashMap) then {
 	private _defaultGroups = [
@@ -89,4 +89,4 @@ if (_mode == 0) then {
 	CTRL(2804) cbSetChecked (_groupValue # 3); // hasManpack
 };
 
-uiNamespace setVariable [QGVAR(groups), _groups]; // needed if the GET_CONFIG thing is used on _groups initialization; there might be a better solution
+uiNamespace setVariable [QGVAR(roleGroups), _groups]; // needed if the GET_CONFIG thing is used on _groups initialization; there might be a better solution

@@ -42,14 +42,14 @@ if (_roles isEqualTo createHashMap) then {
 	LOG("default roles created");
 };
 
-private _groups = GET_CONFIG(groups,createHashMap);
+private _groups = GET_CONFIG(roleGroups,createHashMap);
 if (_groups isEqualTo createHashMap) then {
 	private _defaultGroups = [
 		["leadership", [false, false, true, false, [], ["team leader","squad leader","platoon leader"]]]
 	];
 
 	{ _groups set [(_x select 0), (_x select 1)] } forEach _defaultGroups;
-	SET_CONFIG(hiddenConfigValues,groups,_groups);
+	SET_CONFIG(hiddenConfigValues,roleGroups,_groups);
 	LOG("default group created");
 };
 

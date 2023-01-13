@@ -19,7 +19,7 @@ LOG_FUNC_START;
 	uiNamespace setVariable [_x, nil];
 } forEach [
 	QGVAR(roles),
-	QGVAR(groups),
+	QGVAR(roleGroups),
 	QGVAR(editGroupsCurrentMode),
 	QGVAR(additionalItems),
 	QGVAR(additionalItemsName),

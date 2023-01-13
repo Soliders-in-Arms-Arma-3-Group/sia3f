@@ -22,7 +22,7 @@ if (_groupName == "") exitWith {
 	LOG_FUNC_END_ERROR("empty group name");
 };
 
-private _groups = uiNamespace getVariable [QGVAR(groups), createHashMap];
+private _groups = uiNamespace getVariable [QGVAR(roleGroups), createHashMap];
 
 if !(_groupName in _groups) exitWith {
 	systemChat "Invalid group name";
@@ -32,6 +32,6 @@ LOG_FUNC_START;
 
 _groups deleteAt _groupName;
 
-uiNamespace setVariable [QGVAR(groups), _groups];
+uiNamespace setVariable [QGVAR(roleGroups), _groups];
 [-1] call FUNC(editGroupsRefresh);
 LOG_FUNC_END;

@@ -47,8 +47,9 @@ This will define all of the variables that can be used with ``GET_CONFIG(var,def
 |-------------|-----------|----|-------------|
 |**Initialization Values**|
 |frameworkInit|Should only be true if the ``initFramework`` function has been executed successfully.|Boolean|False|
+|**Roles Organization**|
 |roles|Hashmap of roles and all of their properties.  Value array is ``[isMedic, isEngineer, hasHandheldRadio, hasManpackRadio, [additional items]]``.|Hashmap|createHashMap|
-|groups|Hashmap of roles and all of their properties.  Value array is ``[isMedic, isEngineer, hasHandheldRadio, hasManpackRadio, [additional items], [roles in group]]``|Hashmap|createHashMap|
+|roleGroups|Hashmap of roles and all of their properties.  Value array is ``[isMedic, isEngineer, hasHandheldRadio, hasManpackRadio, [additional items], [roles in group]]``|Hashmap|createHashMap|
 
 ## Macro Definitions
 This module's custom macros are defined here.  They cannot be used outside of this module.

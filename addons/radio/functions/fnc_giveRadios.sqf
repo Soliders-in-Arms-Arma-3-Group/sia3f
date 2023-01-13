@@ -37,7 +37,7 @@ private _rolesManpackRadio = [];
 	if (_y # 3) then {
 		{ _rolesManpackRadio pushBackUnique _x } forEach _y # 5;
 	};
-} forEach EGVAR(core,groups);
+} forEach EGVAR(core,roleGroups);
 TRACE_2("Radio roles",_rolesHandheldRadio,_rolesManpackRadio);
 
 private _personalRadioClassname = missionNameSpace getVariable [QGVAR(personalRadio), "ACRE_PRC343"];
