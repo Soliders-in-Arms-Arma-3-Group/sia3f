@@ -25,6 +25,12 @@ class GVAR(hiddenConfigValues) {
 					property = QGVAR(roleGroups);
 					defaultValue = createHashMap;
 				};
+
+				class GVAR(dynamicGroups) {
+					displayName = "Dynamic Groups";
+					property = QGVAR(dynamicGroups);
+					defaultValue = "";
+				};
 			};
 		};
 	};
