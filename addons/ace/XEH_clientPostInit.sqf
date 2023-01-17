@@ -11,3 +11,10 @@ if (
 // Player Self Actions
 call FUNC(playerActions);
 call FUNC(zeusActions);
+
+GVAR(arsenalClosedEH) = ["ace_arsenal_displayClosed", {
+	if (isNil QGVAR(savedLoadout)) {
+		player setVariable [QEGVAR(core,savedLoadout), getUnitLoadout player];
+		hint "Kit saved automatically. Will be loaded on respawn.";
+	};
+}] call CBA_fnc_addEventHandler;
