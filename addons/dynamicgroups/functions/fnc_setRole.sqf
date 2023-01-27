@@ -11,5 +11,5 @@
  * None
  *
  * Example:
- * call sia3f_dynamicGroups_fnc_setRole
+ * call sia3f_dynamicgroups_fnc_setRole
 */

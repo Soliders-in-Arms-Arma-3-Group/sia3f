@@ -1,5 +1,5 @@
-#define COMPONENT orbat
-#define COMPONENT_BEAUTIFIED ORBAT
+#define COMPONENT dynamicgroups
+#define COMPONENT_BEAUTIFIED Dynamic Groups
 #include "\z\sia3f\addons\main\script_mod.hpp"
 
 #define DEBUG_MODE_FULL
