@@ -13,7 +13,7 @@ call FUNC(playerActions);
 call FUNC(zeusActions);
 
 GVAR(arsenalClosedEH) = ["ace_arsenal_displayClosed", {
-	if (isNil QGVAR(savedLoadout)) {
+	if (isNil QGVAR(savedLoadout)) then {
 		player setVariable [QEGVAR(core,savedLoadout), getUnitLoadout player];
 		hint "Kit saved automatically. Will be loaded on respawn.";
 	};
