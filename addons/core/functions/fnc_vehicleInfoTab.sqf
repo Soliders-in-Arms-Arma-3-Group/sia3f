@@ -75,5 +75,6 @@ if (!(player diarySubjectExists _newDiarySubject)) then { player createDiarySubj
 
 TRACE_3("diary record values"_displayName,_text,_icon);
 private _retValue = player createDiaryRecord ["vehicleInfo", [_displayName, _text, _icon]];
+
 LOG_FUNC_END;
 _retValue

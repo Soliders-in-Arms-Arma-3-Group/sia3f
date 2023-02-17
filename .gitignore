@@ -9,6 +9,7 @@ texHeaders.bin
 Thumbs.db
 ArmaScriptCompiler.exe
 hemtt.exe
+*.env
 
 # VS extraneous build shit
 extensions/builds/*.exp
