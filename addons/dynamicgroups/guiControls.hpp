@@ -276,3 +276,12 @@ class GVAR(roleSelect1) {
 		};
 	};
 };
+
+class GVAR(roleSelect2) {
+	idd = 8503;
+	onLoad = QUOTE(call FUNC(roleSelectOnLoad));
+
+	class controls {
+
+	};
+};
