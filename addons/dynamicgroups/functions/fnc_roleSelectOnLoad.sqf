@@ -5,18 +5,35 @@
  * Initializes the select role GUI.
  * 
  * Arguments:
- * None
+ * 1: Arsenal display <DISPLAY>
  *
  * Return Value:
  * None
  *
  * Example:
- * call sia3f_dynamicgroups_fnc_roleSelectOnLoad
+ * [displayNull] call sia3f_dynamicgroups_fnc_roleSelectOnLoad
 */
+
+params ["_display"];
 
 GVAR(mouseButtonState) = [[], []];
 
-// init camera - modified from ace_arsenal_fnc_onArsenalOpen
+// modified from ace_arsenal_fnc_onArsenalOpen by Alganthe:
+
+// Camera prep
+cutText ["", "plain"];
+showCommandingMenu "";
+
+GVAR(cameraView) = cameraView;
+player switchCamera "internal";
+if ("@ace" call EFUNC(core,checkModPresence)) then {
+	[QUOTE(ADDON), [false, true, true, true, true, true, true, false, true, true]] call ace_common_fnc_showHud;
+}; // ToDo: replicate showHud function for missions w/o ace
+
+private _mouseAreaCtrl = _display displayCtrl 1200;
+ctrlSetFocus _mouseAreaCtrl;
+
+// init camera
 
 if (isNil QGVAR(cameraPosition)) then {
 	GVAR(cameraPosition) = [5, 0, 0, [0, 0, 0.85]];

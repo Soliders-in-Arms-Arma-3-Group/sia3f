@@ -279,7 +279,23 @@ class GVAR(roleSelect1) {
 
 class GVAR(roleSelect2) {
 	idd = 8503;
-	onLoad = QUOTE(call FUNC(roleSelectOnLoad));
+	onLoad = QUOTE(_this call FUNC(roleSelectOnLoad));
+	onMouseButtonDown = QUOTE([ARR_3(_this # 1, _this # 2, _this # 3)] call FUNC(roleSelectOnMBDown););
+	onMouseButtonUp = QUOTE(_this # 1 call FUNC(roleSelectOnMBUp););
+
+	class ControlsBackground {
+		class mouseArea: ctrlStatic {
+			idc = IDC_mouseArea;
+			style = 16;
+			onMouseMoving = QUOTE(_this call FUNC(handleMouse););
+			onMouseHolding = QUOTE(_this call FUNC(handleMouse););
+			onMouseZChanged = QUOTE(_this call FUNC(handleScrollWheel););
+			x = QUOTE(safezoneX);
+			y = QUOTE(safezoneY);
+			w = QUOTE(safezoneW);
+			h = QUOTE(safezoneH);
+		};
+	};
 
 	class controls {
 
