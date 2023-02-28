@@ -289,7 +289,7 @@ class GVAR(roleSelect2) {
 			style = 16;
 			onMouseMoving = QUOTE(_this call FUNC(handleMouse););
 			onMouseHolding = QUOTE(_this call FUNC(handleMouse););
-			onMouseZChanged = QUOTE(_this call FUNC(handleScrollWheel););
+			onMouseZChanged = QUOTE(_this # 1 call FUNC(handleScrollWheel););
 			x = QUOTE(safezoneX);
 			y = QUOTE(safezoneY);
 			w = QUOTE(safezoneW);

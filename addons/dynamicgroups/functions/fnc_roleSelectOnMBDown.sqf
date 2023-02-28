@@ -18,6 +18,4 @@
 
 params ["_buttonPressed", "_xPos", "_yPos"];
 
-systemChat str _buttonPressed;
-
 GVAR(mouseButtonState) set [_buttonPressed, [_xPos, _yPos]];
