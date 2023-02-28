@@ -29,7 +29,7 @@ if (count _LMB > 0) then {
 	private _centerBox = boundingBoxReal player;
 	private _centerSizeBottom = _centerBox select 0 select 2;
 	private _centerSizeUp = _centerBox select 1 select 2;
-	private _centerSize = sqrt ([_centerBox select 0 select 0,_centerBox select 0 select 1] distance [_centerBox select 1 select 0,_centerBox select 1 select 1]);
+	private _centerSize = sqrt ([_centerBox select 0 select 0, _centerBox select 0 select 1] distance [_centerBox select 1 select 0, _centerBox select 1 select 1]);
 
 	_helperPos = [_helperPos, _dX * _centerSize, _dirH - 90] call BIS_fnc_relPos;
 	_helperPos = [

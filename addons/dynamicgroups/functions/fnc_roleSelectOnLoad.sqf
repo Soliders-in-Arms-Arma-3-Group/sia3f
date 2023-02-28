@@ -36,7 +36,7 @@ ctrlSetFocus _mouseAreaCtrl;
 // init camera
 
 if (isNil QGVAR(cameraPosition)) then {
-	GVAR(cameraPosition) = [5, 0, 0, [0, 0, 0.85]];
+	GVAR(cameraPosition) = [5, 0, 0, [0, 0, 0.85]]; // distance, dirH, dirV, helperPos
 };
 
 // Save curator camera state so camera position and direction are not modified while using arsenal
