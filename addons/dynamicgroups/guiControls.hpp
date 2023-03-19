@@ -277,6 +277,8 @@ class GVAR(roleSelect1) {
 	};
 };
 
+// $[1.063,["roleSelectTest",[[0,0,1,1],0.025,0.04,"GUI_GRID"],2,0,0],[1200,"header_background",[1,"#(argb,8,8,3)color(0,0,0,0.5)",["0 * safezoneW + safezoneX","0 * safezoneH + safezoneY","1 * safezoneW","0.1 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],[1100,"header_opName",[1,"",["0.0410937 * safezoneW + safezoneX","0.016 * safezoneH + safezoneY","0.366094 * safezoneW","0.066 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],[1101,"header_factionName",[1,"",["0.587656 * safezoneW + safezoneX","0.016 * safezoneH + safezoneY","0.366094 * safezoneW","0.066 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],[1201,"squadSelect_background",[1,"#(argb,8,8,3)color(0,0,0,0.5)",["0.0153125 * safezoneW + safezoneX","0.17 * safezoneH + safezoneY","0.221719 * safezoneW","0.737 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],[1000,"squadSelect_text",[1,"SQUADS",["0.0116562 * safezoneW + safezoneX","0.137 * safezoneH + safezoneY","0.221719 * safezoneW","0.033 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","1.25"],[]],[1003,"squadSelect: RscTree",[1,"",["0.025625 * safezoneW + safezoneX","0.192 * safezoneH + safezoneY","0.201094 * safezoneW","0.693 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],[1202,"roleSelect_background",[1,"#(argb,8,8,3)color(0,0,0,0.5)",["0.248344 * safezoneW + safezoneX","0.17 * safezoneH + safezoneY","0.185625 * safezoneW","0.737 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],[1001,"roleSelect_text",[1,"ROLE SELECT",["0.244187 * safezoneW + safezoneX","0.137 * safezoneH + safezoneY","0.185625 * safezoneW","0.033 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","1.25"],[]],[1500,"roleSelect",[1,"",["0.257656 * safezoneW + safezoneX","0.192 * safezoneH + safezoneY","0.165 * safezoneW","0.693 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],[1203,"loadout_background",[1,"#(argb,8,8,3)color(0,0,0,0.5)",["0.443281 * safezoneW + safezoneX","0.17 * safezoneH + safezoneY","0.273281 * safezoneW","0.737 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],[1002,"loadout_text",[1,"LOADOUT - ROLE NAME",["0.439325 * safezoneW + safezoneX","0.137 * safezoneH + safezoneY","0.273281 * safezoneW","0.033 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","1.25"],[]],[1102,"loadout",[1,"",["0.453594 * safezoneW + safezoneX","0.192 * safezoneH + safezoneY","0.252656 * safezoneW","0.693 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],[2700,"cancel",[1,"",["0.0153125 * safezoneW + safezoneX","0.929 * safezoneH + safezoneY","0.0773437 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],[2600,"selectRole",[1,"SELECT ROLE",["0.907344 * safezoneW + safezoneX","0.929 * safezoneH + safezoneY","0.0773437 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]]]
+
 class GVAR(roleSelect2) {
 	idd = 8503;
 	onLoad = QUOTE(_this call FUNC(roleSelectOnLoad));
@@ -298,6 +300,126 @@ class GVAR(roleSelect2) {
 	};
 
 	class controls {
-
+		class header_background: RscPicture
+		{
+			idc = 1200;
+			text = "#(argb,8,8,3)color(0,0,0,0.5)";
+			x = 0 * safezoneW + safezoneX;
+			y = 0 * safezoneH + safezoneY;
+			w = 1 * safezoneW;
+			h = 0.1 * safezoneH;
+		};
+		class header_opName: RscStructuredText
+		{
+			idc = 1100;
+			x = 0.0410937 * safezoneW + safezoneX;
+			y = 0.016 * safezoneH + safezoneY;
+			w = 0.366094 * safezoneW;
+			h = 0.066 * safezoneH;
+		};
+		class header_factionName: RscStructuredText
+		{
+			idc = 1101;
+			x = 0.587656 * safezoneW + safezoneX;
+			y = 0.016 * safezoneH + safezoneY;
+			w = 0.366094 * safezoneW;
+			h = 0.066 * safezoneH;
+		};
+		class squadSelect_background: RscPicture
+		{
+			idc = 1201;
+			text = "#(argb,8,8,3)color(0,0,0,0.5)";
+			x = 0.0153125 * safezoneW + safezoneX;
+			y = 0.17 * safezoneH + safezoneY;
+			w = 0.221719 * safezoneW;
+			h = 0.737 * safezoneH;
+		};
+		class squadSelect_text: RscText
+		{
+			idc = 1000;
+			text = "SQUADS"; //--- ToDo: Localize;
+			x = 0.0116562 * safezoneW + safezoneX;
+			y = 0.137 * safezoneH + safezoneY;
+			w = 0.221719 * safezoneW;
+			h = 0.033 * safezoneH;
+			sizeEx = 1.25 * GUI_GRID_H;
+		};
+		class squadSelect: RscTree
+		{
+			idc = 1003;
+			x = 0.025625 * safezoneW + safezoneX;
+			y = 0.192 * safezoneH + safezoneY;
+			w = 0.201094 * safezoneW;
+			h = 0.693 * safezoneH;
+		};
+		class roleSelect_background: RscPicture
+		{
+			idc = 1202;
+			text = "#(argb,8,8,3)color(0,0,0,0.5)";
+			x = 0.248344 * safezoneW + safezoneX;
+			y = 0.17 * safezoneH + safezoneY;
+			w = 0.185625 * safezoneW;
+			h = 0.737 * safezoneH;
+		};
+		class roleSelect_text: RscText
+		{
+			idc = 1001;
+			text = "ROLE SELECT"; //--- ToDo: Localize;
+			x = 0.244187 * safezoneW + safezoneX;
+			y = 0.137 * safezoneH + safezoneY;
+			w = 0.185625 * safezoneW;
+			h = 0.033 * safezoneH;
+			sizeEx = 1.25 * GUI_GRID_H;
+		};
+		class roleSelect: RscListbox
+		{
+			idc = 1500;
+			x = 0.257656 * safezoneW + safezoneX;
+			y = 0.192 * safezoneH + safezoneY;
+			w = 0.165 * safezoneW;
+			h = 0.693 * safezoneH;
+		};
+		class loadout_background: RscPicture
+		{
+			idc = 1203;
+			text = "#(argb,8,8,3)color(0,0,0,0.5)";
+			x = 0.443281 * safezoneW + safezoneX;
+			y = 0.17 * safezoneH + safezoneY;
+			w = 0.273281 * safezoneW;
+			h = 0.737 * safezoneH;
+		};
+		class loadout_text: RscText
+		{
+			idc = 1002;
+			text = "LOADOUT - ROLE NAME"; //--- ToDo: Localize;
+			x = 0.439325 * safezoneW + safezoneX;
+			y = 0.137 * safezoneH + safezoneY;
+			w = 0.273281 * safezoneW;
+			h = 0.033 * safezoneH;
+			sizeEx = 1.25 * GUI_GRID_H;
+		};
+		class loadout: RscStructuredText
+		{
+			idc = 1102;
+			x = 0.453594 * safezoneW + safezoneX;
+			y = 0.192 * safezoneH + safezoneY;
+			w = 0.252656 * safezoneW;
+			h = 0.693 * safezoneH;
+		};
+		class cancel: RscButtonMenuCancel
+		{
+			x = 0.0153125 * safezoneW + safezoneX;
+			y = 0.929 * safezoneH + safezoneY;
+			w = 0.0773437 * safezoneW;
+			h = 0.022 * safezoneH;
+		};
+		class selectRole: RscButtonMenuOK
+		{
+			text = "SELECT ROLE"; //--- ToDo: Localize;
+			x = 0.907344 * safezoneW + safezoneX;
+			y = 0.929 * safezoneH + safezoneY;
+			w = 0.0773437 * safezoneW;
+			h = 0.022 * safezoneH;
+		};
 	};
 };
