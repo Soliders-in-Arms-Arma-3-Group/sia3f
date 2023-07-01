@@ -15,6 +15,10 @@
 */
 
 params ["_display"];
+ 
+if (isNil QGVAR(center)) then {
+    GVAR(center) = player; // ToDo maybe?
+};
 
 GVAR(mouseButtonState) = [[], []];
 
@@ -34,8 +38,7 @@ private _mouseAreaCtrl = _display displayCtrl 1200;
 ctrlSetFocus _mouseAreaCtrl;
 
 // init camera
-
-if (isNil QGVAR(cameraPosition)) then {
+if (isNil QGVAR(cameraPosition)) then { // ToDo: update to put player on the right side (also see 59)
 	GVAR(cameraPosition) = [5, 0, 0, [0, 0, 0.85]]; // distance, dirH, dirV, helperPos
 };
 
