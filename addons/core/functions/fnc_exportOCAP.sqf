@@ -16,8 +16,8 @@
 
 LOG_FUNC_START;
 
-if (isNil "ocap_fnc_exportData") exitWith {
-	LOG_FUNC_END_ERROR("ocap_fnc_exportData function not found");
+if (isNil "OCAP_recorder_fnc_exportData") exitWith {
+	LOG_FUNC_END_ERROR("OCAP_recorder_fnc_exportData function not found");
 };
 
 private _weekday = [systemTime] call CBA_fnc_weekDay;
