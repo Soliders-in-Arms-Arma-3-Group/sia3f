@@ -22,6 +22,7 @@ params [
 
 if (_vehicles isEqualTo []) exitWith {
 	LOG_FUNC_END_ERROR("invalid parameters or no vehicles to add");
+	""
 }; // Exit if array not given.
 LOG_FUNC_START;
 

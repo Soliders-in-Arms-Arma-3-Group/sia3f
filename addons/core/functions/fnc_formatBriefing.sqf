@@ -45,7 +45,6 @@ private _strArr = _str splitString "";
 {
 	if (_x == _newlineChar) then {
 		_strArr set [_forEachIndex, "<br></br>"];
-		TRACE_2("character replaced with newline",_forEachIndex,_x);
 	};
 } forEach _strArr; // there should be a more efficient way to do this than iterating through the entire array, which could possibly have thousands of indexes elements.
 
@@ -53,5 +52,6 @@ private _strArr = _str splitString "";
 private _returnStr = _strArr joinString "";
 TRACE_1("string returned",_returnStr);
 INFO("fnc_formatBriefing.sqf fully executed.");
+
 LOG_FUNC_END;
 _returnStr
