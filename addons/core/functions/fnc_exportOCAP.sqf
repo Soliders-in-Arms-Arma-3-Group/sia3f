@@ -35,6 +35,6 @@ if (_weekday >= 0) then {
 };
 
 TRACE_2("ocap export data",_weekday,_outcome,_opType);
-[_side, _outcome, _opType] call ocap_fnc_exportData;
+[_side, _outcome, _opType] call OCAP_recorder_fnc_exportData;
 
 LOG_FUNC_END;
