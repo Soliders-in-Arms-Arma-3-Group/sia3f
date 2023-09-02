@@ -17,8 +17,8 @@ class GVAR(objectSettings) {
 			);
 			defaultValue = false;
 
-			// condition should be objectSimulated && !objectControllable && !logicModule
-			condition = "objectSimulated * (1 - objectControllable) * (1 - logicModule)"; // https://community.bistudio.com/wiki/Eden_Editor:_Configuring_Attributes#Condition
+			// condition should be (objectSimulated && !objectControllable && !logicModule) || objectHasInventoryCargo
+			condition = "(objectSimulated * (1 - objectControllable) * (1 - logicModule)) max objectHasInventoryCargo"; // https://community.bistudio.com/wiki/Eden_Editor:_Configuring_Attributes#Condition
 		};
 
 		class GVAR(isButton) {
