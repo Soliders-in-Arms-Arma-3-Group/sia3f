@@ -1,32 +1,33 @@
 #include "script_component.hpp"
 
 /*
- * Author: McKendrick
- * Credits: F3 - Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
- * Safe Start, Safety and Invicibility Toggle
+ * Author: McKendrick, Siege
+ * Make player invincible and stop them from shooting, throwing grenades, and planting explosives until mission start.
  *
  * Arguments:
- * 0: ID of "FiredMan" safety event handler <NUMBER>.
+ * 0: Player <OBJECT>.
  *
  * Return Value:
  * None
  *
  * Example:
- * call sia3f_core_fnc_safeStartLoop
+ * [player] call sia3f_core_fnc_safeStartLoop
 */
 
 LOG_FUNC_START;
 params [
-   [ "_unit", player]
+   ["_unit", player, [objNull]]
 ];
 
-_unit allowDamage false; // Make the zeus(es) invincible.
+_unit allowDamage false;
 
 if (_unit in (allCurators apply { getAssignedCuratorUnit _x })) exitWith { LOG_FUNC_END_ERROR("unit is a curator (zeus)"); };
 
-{ [_unit, _x, true] call ace_safemode_fnc_setWeaponSafety } forEach (weapons _unit);
-_unit setVariable ["ace_common_effect_blockThrow", 1]; // force use vanilla throwing so the event handler works (need to make ensure that another function doesn't set it to 0)
-_unit setVariable ["ace_explosives_PlantingExplosive", true]; // This is the only way to stop planting of explosives that I could find
+if ("@ace" call FUNC(checkModPresence)) then {
+	{ [_unit, _x, true] call ace_safemode_fnc_setWeaponSafety } forEach (weapons _unit);
+	_unit setVariable ["ace_common_effect_blockThrow", 1]; // force use vanilla throwing so the event handler works (need to make ensure that another function doesn't set it to 0)
+	_unit setVariable ["ace_explosives_PlantingExplosive", true]; // This is the only way to stop planting of explosives that I could find
+};
 
 private _FiredMan_EH = _unit addEventHandler ["FiredMan", {
 	deleteVehicle (_this # 6);
@@ -36,18 +37,25 @@ private _FiredMan_EH = _unit addEventHandler ["FiredMan", {
 	};
 }];
 
-while { !(missionNamespace getVariable [QGVAR(missionStarted), false]) } do { 
-	waitUntil { (_unit getVariable ["ace_safemode_safedWeapons", []]) isNotEqualTo (weapons _unit) || (missionNamespace getVariable [QGVAR(missionStarted), false]) };
-	if (!(missionNamespace getVariable [QGVAR(missionStarted), false])) then {
-		{ [_unit, _x, true] call ace_safemode_fnc_setWeaponSafety } forEach ((weapons _unit) - (_unit getVariable "ace_safemode_safedWeapons"));
+if ("@ace" call FUNC(checkModPresence)) then {
+	while { !(missionNamespace getVariable [QGVAR(missionStarted), false]) } do { 
+		waitUntil { (_unit getVariable ["ace_safemode_safedWeapons", []]) isNotEqualTo (weapons _unit) || (missionNamespace getVariable [QGVAR(missionStarted), false]) };
+		if (!(missionNamespace getVariable [QGVAR(missionStarted), false])) then {
+			{ [_unit, _x, true] call ace_safemode_fnc_setWeaponSafety } forEach ((weapons _unit) - (_unit getVariable "ace_safemode_safedWeapons"));
+		};
 	};
+} else {
+	waitUntil { missionNamespace getVariable [QGVAR(missionStarted), false] };
 };
 
 // reset everything to their proper states
 _unit allowDamage true;
-{ [_unit, _x, false] call ace_safemode_fnc_setWeaponSafety } forEach (weapons _unit);
-_unit setVariable ["ace_common_effect_blockThrow", 0];
-_unit setVariable ["ace_explosives_PlantingExplosive", false];
 _unit removeEventHandler ["FiredMan", _FiredMan_EH];
+
+if ("@ace" call FUNC(checkModPresence)) then {
+	{ [_unit, _x, false] call ace_safemode_fnc_setWeaponSafety } forEach (weapons _unit);
+	_unit setVariable ["ace_common_effect_blockThrow", 0];
+	_unit setVariable ["ace_explosives_PlantingExplosive", false];
+};
 
 LOG_FUNC_END;
