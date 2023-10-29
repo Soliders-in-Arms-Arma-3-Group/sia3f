@@ -38,8 +38,10 @@ private _mouseAreaCtrl = _display displayCtrl 1200;
 ctrlSetFocus _mouseAreaCtrl;
 
 // init camera
-if (isNil QGVAR(cameraPosition)) then { // ToDo: update to put player on the right side (also see 59)
-	GVAR(cameraPosition) = [5, 0, 0, [0, 0, 0.85]]; // distance, dirH, dirV, helperPos
+if (isNil QGVAR(cameraPosition)) then { // ToDo: restrict camera view to right side
+	private _centerBox = boundingBoxReal player;
+	private _centerSize = sqrt ([_centerBox select 0 select 0, _centerBox select 0 select 1] distance [_centerBox select 1 select 0, _centerBox select 1 select 1]);
+	GVAR(cameraPosition) = [5, 0, 0, [_centerSize, 0, 0.85]]; // distance, dirH, dirV, helperPos
 };
 
 // Save curator camera state so camera position and direction are not modified while using arsenal

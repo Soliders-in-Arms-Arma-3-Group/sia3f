@@ -40,7 +40,7 @@ if (count _LMB > 0) then {
 
 	_helperPos set [2, (_helperPos select 2) max ((boundingBoxReal player select 0 select 2) + 0.2)];
 
-	GVAR(cameraPosition) set [3,_helperPos];
+	GVAR(cameraPosition) set [3, _helperPos];
 };
 
 if (count _RMB > 0) then {
