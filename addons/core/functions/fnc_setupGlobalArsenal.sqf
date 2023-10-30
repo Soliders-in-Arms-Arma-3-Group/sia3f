@@ -28,7 +28,9 @@ TRACE_1("arsenals",_arsenals);
 
 	[_x, false] remoteExecCall ["ace_dragging_fnc_setDraggable"];
 	[_x, false] remoteExecCall ["ace_dragging_fnc_setCarryable"];
-	[_x, false] call ace_arsenal_fnc_initBox;
+	if ((_x call ace_arsenal_fnc_getVirtualItems) isEqualTo []) then { // make sure box isn't already an arsenal, I think init will wipe box
+		[_x, false] call ace_arsenal_fnc_initBox;	
+	};
 
 	private _globalItems = [];
 
