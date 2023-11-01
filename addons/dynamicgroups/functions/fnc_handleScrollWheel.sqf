@@ -22,3 +22,4 @@ private _distance = GVAR(cameraPosition) select 0;
 
 _distance = (_distance - (_zPos / 10)) max _distanceMin min _distanceMax;
 GVAR(cameraPosition) set [0, _distance];
+// ToDo: shift camera bounds to the right as camera zooms in
