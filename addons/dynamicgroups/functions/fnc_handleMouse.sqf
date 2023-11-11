@@ -34,9 +34,9 @@ if (count _LMB > 0) then {
 
 	_helperPos = [_helperPos, _dX * _centerSize, _dirH - 90] call BIS_fnc_relPos;
 	_helperPos = [
-		[GVAR(cameraOffset) * cos (_dirH % 360), -1 * GVAR(cameraOffset) * sin (_dirH % 360), ((_helperPos select 2) - _dY * _centerSize) max _centerSizeBottom min _centerSizeUp],
-		([GVAR(cameraOffset) * cos (_dirH % 360), -1 * GVAR(cameraOffset) * sin (_dirH % 360), 0] distance2D _helperPos) min _centerSize,
-		[GVAR(cameraOffset) * cos (_dirH % 360), -1 * GVAR(cameraOffset) * sin (_dirH % 360), 0] getDir _helperPos
+		[GVAR(cameraOffset) * cos _dirH, -1 * GVAR(cameraOffset) * sin _dirH, ((_helperPos select 2) - _dY * _centerSize) max _centerSizeBottom min _centerSizeUp],
+		([GVAR(cameraOffset) * cos _dirH, -1 * GVAR(cameraOffset) * sin _dirH, 0] distance2D _helperPos) min _centerSize,
+		[GVAR(cameraOffset) * cos _dirH, -1 * GVAR(cameraOffset) * sin _dirH, 0] getDir _helperPos
 	] call BIS_fnc_relPos;
 
 	_helperPos set [2, (_helperPos select 2) max ((boundingBoxReal player select 0 select 2) + 0.2)];
@@ -49,9 +49,9 @@ if (count _RMB > 0) then {
 	private _dX = (_RMBcursorX - _mouseX) * 0.75;
 	private _dY = (_RMBcursorY - _mouseY) * 0.75;
 	_helperPos = [
-		[GVAR(cameraOffset) * cos (_dirH % 360), -1 * GVAR(cameraOffset) * sin (_dirH % 360), _helperPos select 2],
-		([GVAR(cameraOffset) * cos (_dirH % 360), -1 * GVAR(cameraOffset) * sin (_dirH % 360), 0] distance2D _helperPos) min _centerSize,
-		([GVAR(cameraOffset) * cos (_dirH % 360), -1 * GVAR(cameraOffset) * sin (_dirH % 360), 0] getDir _helperPos) - _dX * 360
+		[GVAR(cameraOffset) * cos _dirH, -1 * GVAR(cameraOffset) * sin _dirH, _helperPos select 2],
+		([GVAR(cameraOffset) * cos _dirH, -1 * GVAR(cameraOffset) * sin _dirH, 0] distance2D _helperPos) min _centerSize,
+		([GVAR(cameraOffset) * cos _dirH, -1 * GVAR(cameraOffset) * sin _dirH, 0] getDir _helperPos) - _dX * 360
 	] call BIS_fnc_relPos;
 
 	GVAR(cameraPosition) set [1, (_dirH - _dX * 360)];
