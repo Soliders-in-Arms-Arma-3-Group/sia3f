@@ -39,8 +39,8 @@ ctrlSetFocus _mouseAreaCtrl;
 
 // init camera
 private _centerBox = boundingBoxReal player;
-GVAR(cameraOffset) = sqrt ([_centerBox select 0 select 0, _centerBox select 0 select 1] distance [_centerBox select 1 select 0, _centerBox select 1 select 1]);
-GVAR(cameraOffset) = GVAR(cameraOffset) - (GVAR(cameraOffset) / 8); // make offset the middle of the right side of screen instead of rightmost position
+GVAR(cameraOffsetInitial) = sqrt ([_centerBox select 0 select 0, _centerBox select 0 select 1] distance [_centerBox select 1 select 0, _centerBox select 1 select 1]);
+GVAR(cameraOffset) = GVAR(cameraOffsetInitial) - (GVAR(cameraOffsetInitial) / 5); // make offset the middle of the right side of screen instead of rightmost position
 
 if (isNil QGVAR(cameraPosition)) then { // ToDo: restrict camera view to right side
 	GVAR(cameraPosition) = [5, 0, 0, [GVAR(cameraOffset), 0, 0.85]]; // distance, dirH, dirV, helperPos
@@ -64,5 +64,5 @@ showCinemaBorder false;
 ["#(argb,8,8,3)color(0,0,0,1)", false, nil, 0, [0, 0.5]] call BIS_fnc_textTiles;
 
 //--------------- Reset camera pos
-[nil, [controlNull, 0, 0]] call FUNC(handleMouse);
+[controlNull, 0, 0] call FUNC(handleMouse);
 GVAR(camPosUpdateHandle) = addMissionEventHandler ["draw3D", { [] call FUNC(updateCamPos) }];

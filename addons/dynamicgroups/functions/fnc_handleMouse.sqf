@@ -39,7 +39,7 @@ if (count _LMB > 0) then {
 		[GVAR(cameraOffset) * cos _dirH, -1 * GVAR(cameraOffset) * sin _dirH, 0] getDir _helperPos
 	] call BIS_fnc_relPos;
 
-	_helperPos set [2, (_helperPos select 2) max ((boundingBoxReal player select 0 select 2) + 0.2)];
+	_helperPos set [2, (_helperPos select 2) max (_centerSizeBottom + 0.2)];
 
 	GVAR(cameraPosition) set [3, _helperPos];
 };
