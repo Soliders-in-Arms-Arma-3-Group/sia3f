@@ -32,14 +32,14 @@ if (_distance >= 1) then {
 
 	// practically identical to fnc_handleMouse LMB case with irrelevant lines removed
 	private _centerBox = boundingBoxReal player;
-	private _centerSize = (sqrt ([_centerBox select 0 select 0, _centerBox select 0 select 1] distance [_centerBox select 1 select 0, _centerBox select 1 select 1])) / 4; // ToDo: adjust size so that it gets smaller as you zoom in.
+	private _centerSize = (sqrt ([_centerBox select 0 select 0, _centerBox select 0 select 1] distance [_centerBox select 1 select 0, _centerBox select 1 select 1])) / 4; // ToDo: adjust size so that it gets smaller as you zoom in.  Remember to adjust the move camera command value too.
 	private _centerSizeBottom = _centerBox select 0 select 2;
 	private _centerSizeUp = _centerBox select 1 select 2;
 
 	private _helperPos = GVAR(cameraPosition) # 3;
 	
-	// ToDo: improve this shit:
-	_helperPos = [_helperPos, _dX * _centerSize, _dirH - 90] call BIS_fnc_relPos; // move camera to correct zoom
+	// this still isn't perfect, but I think good enough once we get the bounds fixed:
+	_helperPos = [_helperPos, _dX * _centerSize * 4, _dirH - 90] call BIS_fnc_relPos; // move camera to correct zoom
 	_helperPos = [
 		[GVAR(cameraOffset) * cos _dirH, -1 * GVAR(cameraOffset) * sin _dirH, (_helperPos select 2) max _centerSizeBottom min _centerSizeUp],
 		([GVAR(cameraOffset) * cos _dirH, -1 * GVAR(cameraOffset) * sin _dirH, 0] distance2D _helperPos) min _centerSize,
