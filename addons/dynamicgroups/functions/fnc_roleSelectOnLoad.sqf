@@ -38,12 +38,8 @@ private _mouseAreaCtrl = _display displayCtrl 1200;
 ctrlSetFocus _mouseAreaCtrl;
 
 // init camera
-private _centerBox = boundingBoxReal player;
-GVAR(cameraOffsetInitial) = sqrt ([_centerBox select 0 select 0, _centerBox select 0 select 1] distance [_centerBox select 1 select 0, _centerBox select 1 select 1]);
-GVAR(cameraOffset) = GVAR(cameraOffsetInitial) - (GVAR(cameraOffsetInitial) / 5); // make offset the middle of the right side of screen instead of rightmost position
-
 if (isNil QGVAR(cameraPosition)) then {
-	GVAR(cameraPosition) = [5, 0, 0, [GVAR(cameraOffset), 0, 0.85]]; // distance, dirH, dirV, helperPos
+	GVAR(cameraPosition) = [5, 0, 0, [0, 0, 0.85]]; // distance, dirH, dirV, helperPos
 };
 
 // Save curator camera state so camera position and direction are not modified while using arsenal
