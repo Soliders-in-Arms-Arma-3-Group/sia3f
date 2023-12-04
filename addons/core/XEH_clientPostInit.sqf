@@ -54,7 +54,7 @@ player addEventHandler ["Respawn", {
 
 
 private _role = player getVariable [QEGVAR(configuration,role), "default"];
-private _roleValues = GVAR(roles) getOrDefault [_role, [false, false, false, false, [], []]];
+private _roleValues = GVAR(roles) getOrDefault [_role, [false, false, false, false, [], []]]; // [isMedic, isEngineer, hasHandheldRadio, hasManpackRadio, roleItems, roleGroups]
 
 // account for roles in groups (group setting only applies if role setting is false)
 if (({ _x in GVAR(groups) } count _roleValues # 5) > 0) then {

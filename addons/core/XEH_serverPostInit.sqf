@@ -14,8 +14,8 @@ setTimeMultiplier 0.1;
 missionNamespace setVariable [QGVAR(safeStart_phase), "Waiting", true];
 missionNamespace setVariable [QGVAR(missionStarted), false, true];
 
-if (!isNil QEGVAR(configuration,arsenals) && "@ace" call EFUNC(core,checkModPresence)) then {
-	call FUNC(setupGlobalArsenal);
+if (!isNil QEGVAR(configuration,arsenals) && "@ace" call FUNC(checkModPresence)) then {
+	call EFUNC(ace,setupGlobalArsenal);
 	[EGVAR(configuration,arsenals)] remoteExecCall [QEFUNC(ace,initLocalArsenal), _remoteExecTarget, true];
 };
 

@@ -15,7 +15,6 @@ PREP(orbat);
 PREP(safeStartHint);
 PREP(safeStartInit);
 PREP(safeStartLoop);
-PREP(setupGlobalArsenal);
 PREP(startMission);
 PREP(teleport);
 PREP(teleportToSquad);
