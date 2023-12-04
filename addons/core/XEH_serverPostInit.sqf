@@ -5,7 +5,6 @@ if (
 	is3DEN ||
 	!GET_CONFIG(frameworkInit,false)
 ) exitWith {};
-// basically initServer.sqf
 
 private _remoteExecTarget = [0, -2] select isDedicated;
 

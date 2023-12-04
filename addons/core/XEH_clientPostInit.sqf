@@ -1,5 +1,4 @@
 #include "script_component.hpp"
-// should behave identically to initPlayerLocal
 
 if (
 	allDisplays isEqualTo [findDisplay 0] ||
