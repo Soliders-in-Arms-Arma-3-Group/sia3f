@@ -1,4 +1,5 @@
 PREP(briefing);
+PREP(canOverwriteArsenal);
 PREP(checkModPresence);
 PREP(exitAFK);
 PREP(exportOCAP);

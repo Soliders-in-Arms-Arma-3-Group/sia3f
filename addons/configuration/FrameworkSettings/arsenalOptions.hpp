@@ -2,15 +2,13 @@ class GVAR(arsenalOptions) {
 	collapsed = 1;
 	displayName = "Arsenal Options";
 	class Attributes {
-		/*
 		class GVAR(disableArsenalOnRespawn) {
 			displayName = "Disable Arsenal On Respawn";
-			tooltip = "Currently no functionality";
+			tooltip = "Enforces one-time use of the arsenal\nWith Zeus Enhanced loaded, right click on a player to reenable the arsenal";
 			property = QGVAR(disableArsenalOnRespawn);
 			control = "Checkbox";
 			defaultValue = false;
 		};
-		*/
 
 		class GVAR(haveBasics) {
 			displayName = "Add Basics";

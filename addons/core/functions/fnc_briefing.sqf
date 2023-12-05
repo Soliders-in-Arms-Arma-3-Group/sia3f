@@ -5,13 +5,13 @@
  * Adds all briefing elements (situation, mission, execution, support, signal) to the player's diary with automatic html formatting.  Execute locally.
  *
  * Arguments:
- * 0: Arsenals <ARRAY of OBJECT>
+ * 0: Vehicles <ARRAY of OBJECT>
  *
  * Return Value:
  * None
  *
  * Example:
- * call sia3f_core_fnc_briefing
+ * [someVehicle, anotherVehicle] call sia3f_core_fnc_briefing
 */
 
 if (!hasInterface) exitWith {
