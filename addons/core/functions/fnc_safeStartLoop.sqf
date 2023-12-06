@@ -31,9 +31,9 @@ if ("@ace" call FUNC(checkModPresence)) then {
 
 private _FiredMan_EH = _unit addEventHandler ["FiredMan", {
 	deleteVehicle (_this # 6);
-	
+
 	if (_this # 1 == "Throw") then {
-		(_this # 0) addItem (_this # 4); // replace lost grenades, smokes, etc.
+		(_this # 0) addItem (_this # 5); // replace lost grenades, smokes, etc.
 	};
 }];
 
