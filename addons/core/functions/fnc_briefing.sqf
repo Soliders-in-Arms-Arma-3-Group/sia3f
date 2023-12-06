@@ -11,7 +11,7 @@
  * None
  *
  * Example:
- * [someVehicle, anotherVehicle] call sia3f_core_fnc_briefing
+ * [_vehicles] call sia3f_core_fnc_briefing
 */
 
 if (!hasInterface) exitWith {

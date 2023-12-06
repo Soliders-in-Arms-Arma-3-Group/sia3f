@@ -15,6 +15,12 @@ player addEventHandler ["Killed", {
 	if ("@ace" call FUNC(checkModPresence)) then {
 		GVAR(hadEarplugsIn) = [_unit] call ace_hearing_fnc_hasEarPlugsIn; 
 		[_unit, 4] call ace_medical_treatment_fnc_setTriageStatus; // Set player's corpse triage to "Deceased"
+
+		// disable arsenal on respawn
+		if (GET_CONFIG(disableArsenalOnRespawn,false) && isNil QGVAR(arsenalContents) && (missionNamespace getVariable [QGVAR(missionStarted), false])) then {
+			GVAR(arsenalContents) = keys ([EGVAR(configuration,arsenals) # 0] call ace_arsenal_fnc_getVirtualItems); // save arsenal contents in case it is reenabled
+			{ [_x] call ace_arsenal_fnc_removeBox; } forEach EGVAR(configuration,arsenals);
+		};
 	};
 }];
 

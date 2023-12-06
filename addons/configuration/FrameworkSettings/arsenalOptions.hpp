@@ -4,7 +4,7 @@ class GVAR(arsenalOptions) {
 	class Attributes {
 		class GVAR(disableArsenalOnRespawn) {
 			displayName = "Disable Arsenal On Respawn";
-			tooltip = "Enforces one-time use of the arsenal\nWith Zeus Enhanced loaded, right click on a player to reenable the arsenal";
+			tooltip = "Enforces one-time use of the arsenal.\nWith Zeus Enhanced loaded, right click on a player to reenable the arsenal.\nNote: Players will still be able to save and (more importantly) load kits if the Kit Manager setting is not disabled in the Ace Action Options tab.";
 			property = QGVAR(disableArsenalOnRespawn);
 			control = "Checkbox";
 			defaultValue = false;

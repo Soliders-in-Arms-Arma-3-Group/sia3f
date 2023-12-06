@@ -13,6 +13,7 @@ PREP(loadoutNotesGetLoadout);
 PREP(loadoutNotesName);
 PREP(loadoutNotesWepMags);
 PREP(orbat);
+PREP(overwriteArsenal);
 PREP(safeStartHint);
 PREP(safeStartInit);
 PREP(safeStartLoop);

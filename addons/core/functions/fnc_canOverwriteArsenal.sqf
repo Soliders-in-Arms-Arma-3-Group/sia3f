@@ -11,7 +11,11 @@
  * True if disable arsenal on respawn is enabled and selected object is a player <BOOLEAN>
  *
  * Example:
- * call sia3f_core_fnc_canOverwriteArsenal
+ * [_objects] call sia3f_core_fnc_canOverwriteArsenal
 */
 
-GET_CONFIG(disableArsenalOnRespawn,false) && (_this findIf {alive _x && {_x isKindOf 'CAManBase'}} != -1)
+params [
+	["_objects", [], [[]]]
+];
+
+GET_CONFIG(disableArsenalOnRespawn,false) && !isNil QGVAR(arsenalContents) && (_objects findIf {alive _x && {_x isKindOf 'CAManBase'}} != -1)
