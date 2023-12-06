@@ -11,12 +11,3 @@ if (
 // Player Self Actions
 call FUNC(playerActions);
 call FUNC(zeusActions);
-
-if (GET_CONFIG(enableManageKit,true) && GET_CONFIG(enableKitAutosave,true)) then {
-	GVAR(arsenalClosedEH) = ["ace_arsenal_displayClosed", {
-		if ((player getVariable [QEGVAR(core,savedLoadout), []]) isEqualTo []) then {
-			player setVariable [QEGVAR(core,savedLoadout), getUnitLoadout player];
-			hint "Kit saved automatically. Will be loaded on respawn.";
-		};
-	}] call CBA_fnc_addEventHandler;
-};

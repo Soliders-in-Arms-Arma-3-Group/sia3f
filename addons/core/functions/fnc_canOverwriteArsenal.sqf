@@ -18,4 +18,9 @@ params [
 	["_objects", [], [[]]]
 ];
 
-GET_CONFIG(disableArsenalOnRespawn,false) && !isNil QGVAR(arsenalContents) && (_objects findIf {alive _x && {_x isKindOf 'CAManBase'}} != -1)
+LOG_FUNC_START;
+private _return = GET_CONFIG(disableArsenalOnRespawn,false) && !isNil QGVAR(arsenalContents) && (_objects findIf {alive _x && {_x isKindOf 'CAManBase'}} != -1);
+TRACE_2("canOverwriteArsenal returned",_objects,_return);
+LOG_FUNC_END;
+
+_return

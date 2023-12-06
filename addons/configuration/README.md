@@ -29,7 +29,6 @@ This will define all of the variables that can be used with ``GET_CONFIG(var,def
 |enableTPMenu|Teleport Menu|If checked, the teleport menu will be enabled on the ACE Buttons, allowing players to teleport to any other player on their side.|Boolean|True|
 |enableTPToSquad|Teleport to Squad|If checked, players can TP to their squad member (leader if available, then random-ish) via the ACE Buttons.|Boolean|True|
 |enableManageKit|Kit Manager|If checked, players can save/load their kits on ACE Buttons, which are then loaded on respawn.|Boolean|True|
-|enableKitAutosave|Loadout Autosave|If checked, the player's loadout will be automatically saved upon exiting the arsenal.  Will not overwrite a saved kit.|Boolean|True|
 |enableLoadoutInfo|Loadout Information|Enables players to update the briefing loadout info on ACE Buttons.|Boolean|True|
 |enableGoAFK|Go AFK|Enables players to go AFK via the self-interact menu.|Boolean|True|
 |**Briefing Additional Settings**|

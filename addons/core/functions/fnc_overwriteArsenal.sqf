@@ -18,8 +18,11 @@ params [
 	["_objects", [], [[]]]
 ];
 
+LOG_FUNC_START;
+
 {
 	{ [_x, missionNamespace getVariable [QGVAR(arsenalContents), false]] call ace_arsenal_fnc_initBox; } forEach EGVAR(configuration,arsenals);
 	GVAR(arsenalContents) = nil;
-} remoteExec ["call", _objects]; 
- 
+} remoteExec ["call", _objects];
+
+LOG_FUNC_END;

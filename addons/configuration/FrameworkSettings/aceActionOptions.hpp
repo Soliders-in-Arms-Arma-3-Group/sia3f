@@ -26,14 +26,6 @@ class GVAR(aceActionOptions) {
 			defaultValue = true;
 		};
 
-		class GVAR(enableKitAutosave) {
-			displayName = "Loadout Autosave";
-			tooltip = "Autosave player loadout when exiting arsenal";
-			property = QGVAR(enableKitAutosave);
-			control = "Checkbox";
-			defaultValue = true;
-		};
-
 		class GVAR(enableLoadoutInfo) {
 			displayName = "Loadout Information";
 			tooltip = "Enable 'Update Loadout Info' on ACE Buttons";
