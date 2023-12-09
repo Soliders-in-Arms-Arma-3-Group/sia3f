@@ -1,5 +1,4 @@
 #include "script_component.hpp"
-// should behave identically to initPlayerLocal
 
 if (
 	allDisplays isEqualTo [findDisplay 0] ||
@@ -16,6 +15,12 @@ player addEventHandler ["Killed", {
 	if ("@ace" call FUNC(checkModPresence)) then {
 		GVAR(hadEarplugsIn) = [_unit] call ace_hearing_fnc_hasEarPlugsIn; 
 		[_unit, 4] call ace_medical_treatment_fnc_setTriageStatus; // Set player's corpse triage to "Deceased"
+
+		// disable arsenal on respawn
+		if (GET_CONFIG(disableArsenalOnRespawn,false) && isNil QGVAR(arsenalContents) && (missionNamespace getVariable [QGVAR(missionStarted), false])) then {
+			GVAR(arsenalContents) = keys ([EGVAR(configuration,arsenals) # 0] call ace_arsenal_fnc_getVirtualItems); // save arsenal contents in case it is reenabled
+			{ [_x] call ace_arsenal_fnc_removeBox; } forEach EGVAR(configuration,arsenals);
+		};
 	};
 }];
 
@@ -55,7 +60,7 @@ player addEventHandler ["Respawn", {
 
 
 private _role = player getVariable [QEGVAR(configuration,role), "default"];
-private _roleValues = GVAR(roles) getOrDefault [_role, [false, false, false, false, [], []]];
+private _roleValues = GVAR(roles) getOrDefault [_role, [false, false, false, false, [], []]]; // [isMedic, isEngineer, hasHandheldRadio, hasManpackRadio, roleItems, roleGroups]
 
 // account for roles in groups (group setting only applies if role setting is false)
 if (({ _x in GVAR(groups) } count _roleValues # 5) > 0) then {

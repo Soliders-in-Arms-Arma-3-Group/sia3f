@@ -37,6 +37,12 @@ if (!_hasRadio) exitWith {
 };
 
 private _radio = [_radioType] call acre_api_fnc_getRadioByType;
+
+if (isNil "_radio") exitWith {
+	LOG_FUNC_END_ERROR("radio could not be found");
+	ERROR_1("%1 radio type could not be found on player",_radioType);
+};
+
 private _mptt = [] call acre_api_fnc_getMultiPushToTalkAssignment;
 private _index = _mptt find _radio;
 TRACE_3("ACRE Reorder MPTT vars",_radio,_mptt,_index);

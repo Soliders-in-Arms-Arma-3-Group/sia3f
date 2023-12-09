@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import os
+from dotenv import load_dotenv
 
 from pygithub3 import Github
 
@@ -51,8 +52,9 @@ def formatMessage(files, oldMessage):
     return newMessage
 
 def main():
+    load_dotenv()
     files = get_files()
-    gh = Github(login_or_token=os.environ("GITHUB_TOKEN"))
+    gh = Github(login_or_token=os.getenv("GITHUB_TOKEN"))
 
     issue = gh.get_repo(488816799).get_issue(12)
     currentMessage = issue.body

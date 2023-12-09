@@ -1,4 +1,5 @@
 PREP(briefing);
+PREP(canOverwriteArsenal);
 PREP(checkModPresence);
 PREP(exitAFK);
 PREP(exportOCAP);
@@ -12,10 +13,10 @@ PREP(loadoutNotesGetLoadout);
 PREP(loadoutNotesName);
 PREP(loadoutNotesWepMags);
 PREP(orbat);
+PREP(overwriteArsenal);
 PREP(safeStartHint);
 PREP(safeStartInit);
 PREP(safeStartLoop);
-PREP(setupGlobalArsenal);
 PREP(startMission);
 PREP(teleport);
 PREP(teleportToSquad);

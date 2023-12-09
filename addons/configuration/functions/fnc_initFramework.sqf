@@ -28,7 +28,7 @@ TRACE_1("extension callback",_callback);
 private _roles = GET_CONFIG(roles,createHashMap);
 if (_roles isEqualTo createHashMap) then {
 	private _defaultRoles = [
-		["default", [false, false, false, false, [], []]],
+		["default", [false, false, false, false, [], []]], // [isMedic, isEngineer, hasHandheldRadio, hasManpackRadio, roleItems, roleGroups]
 		["rifleman", [false, false, false, false, [], []]],
 		["team leader", [false, false, true, false, [], ["leadership"]]],
 		["squad leader", [false, false, true, false, [], ["leadership"]]],

@@ -33,6 +33,27 @@ private _role = player getVariable [QEGVAR(configuration,role), "default"];
 private _roleValues = EGVAR(core,roles) getOrDefault [_role, [false, false, false, false, [], []]];
 private _roleItems = _roleValues # 4;
 
+// get radios
+private _acreRadios = ([] call acre_api_fnc_getAllRadios) select 0;
+if (_roleValues # 2) then {
+	if (EGVAR(radio,handheldRadio) != "NONE") then {
+		if (EGVAR(radio,handheldRadio) in _acreRadios) then {
+			_roleItems pushBackUnique EGVAR(radio,handheldRadio);
+		} else {
+			ERROR_1("Init Local Arsenal radios, invalid handheld radio type: %1",EGVAR(radio,handheldRadio));
+		};
+	};
+};
+if (_roleValues # 3) then {
+	if (EGVAR(radio,manpackRadio) != "NONE") then {
+		if (EGVAR(radio,manpackRadio) in _acreRadios) then {
+			_roleItems pushBackUnique EGVAR(radio,manpackRadio);
+		} else {
+			ERROR_1("Init Local Arsenal radios, invalid manpack radio type: %1",EGVAR(radio,manpackRadio));
+		};
+	};
+};
+
 // get group items if role is in a group
 private _groupItems = [];
 if (({ _x in EGVAR(core,groups) } count _roleValues # 5) > 0) then {
