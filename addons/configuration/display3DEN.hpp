@@ -53,7 +53,7 @@ class display3DEN { // https://community.bistudio.com/wiki/Eden_Editor:_Configur
 				};
 
 				class GVAR(frameworkMeta) {
-					text = "Framework Version 1.0.2";
+					text = "Framework Version 1.0.3";
 					picture = "\a3\3DEN\Data\Controls\ctrlMenu\link_ca.paa";
 					weblink = "https://github.com/Soliders-in-Arms-Arma-3-Group/sia3f";
 					opensNewWindow = 1;
