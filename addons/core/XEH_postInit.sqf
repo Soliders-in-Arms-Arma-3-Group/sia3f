@@ -6,6 +6,7 @@ if (
 	!GET_CONFIG(frameworkInit,false)
 ) exitWith {};
 
+call FUNC(weatherNotes);
 call FUNC(loadoutNotes);
 call FUNC(orbat);
 
