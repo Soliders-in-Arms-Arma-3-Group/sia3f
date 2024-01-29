@@ -60,7 +60,7 @@ TRACE_1("arsenals",_arsenals);
 	switch (GET_CONFIG(haveKATMedical,2)) do {
 		// KAT Medical items
 		case 2: {
-			_globalItems append ["kat_aatKit", "kat_accuvac", "kat_guedel", "kat_AED", "kat_X_AED", "kat_larynx", "kat_Pulseoximeter", "kat_chestSeal", "kat_Painkiller", "kat_stretcherBag", "Attachable_Helistretcher", "kat_stethoscope", "KAT_Empty_bloodIV_500", "KAT_Empty_bloodIV_250", "kat_IV_16", "kat_IO_FAST", "kat_amiodarone", "kat_atropine", "kat_lidocaine", "kat_naloxone", "kat_nitroglycerin", "kat_norepinephrine", "kat_phenylephrine", "kat_TXA"];
+			_globalItems append ["kat_aatKit", "kat_accuvac", "kat_guedel", "kat_AED", "kat_X_AED", "kat_larynx", "kat_Pulseoximeter", "kat_chestSeal", "kat_Painkiller", "kat_stretcherBag", "Attachable_Helistretcher", "kat_stethoscope", "KAT_Empty_bloodIV_500", "KAT_Empty_bloodIV_250", "kat_IV_16", "kat_IO_FAST", "kat_amiodarone", "kat_atropine", "kat_lidocaine", "kat_naloxone", "kat_nitroglycerin", "kat_norepinephrine", "kat_phenylephrine", "kat_TXA", "kat_AFAK", "kat_IFAK", "kat_MFAK", "kat_BVM", "kat_pocketBVM", "kat_Carbonate", "kat_oxygenTank_150", "kat_oxygenTank_300", "kat_flumazenil"];
 		};
 
 		case 1:
