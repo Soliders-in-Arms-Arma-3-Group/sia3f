@@ -21,8 +21,12 @@ if (isNil "OCAP_recorder_fnc_exportData") exitWith {
 };
 
 private _weekday = [systemTime] call CBA_fnc_weekDay;
-private _outcome = "Mission Completed"; // ToDo: Add functionality to determine if mission failed.
+private _outcome = "Mission Completed";
 private _opType = "UNK";
+
+if (!isNil QGVAR(missionLost)) then {
+	_outcome = "Mission Failed";
+};
 
 if (_weekday >= 0) then {
 	switch (_weekday) do {
