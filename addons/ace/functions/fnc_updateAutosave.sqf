@@ -16,7 +16,7 @@
 
 LOG_FUNC_START;
 
-if (GET_CONFIG(enableManageKit,true)) then {
+if (GET_CONFIG(enableManageKit,false)) then {
 	if (_this) then {
 		GVAR(arsenalClosedEH) = ["ace_arsenal_displayClosed", {
 			if ((player getVariable [QEGVAR(core,savedLoadout), []]) isEqualTo []) then {
