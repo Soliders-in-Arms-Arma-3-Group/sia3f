@@ -14,6 +14,10 @@
  * [player] call sia3f_core_fnc_safeStartLoop
 */
 
+if (!GET_CONFIG(enableSafestartSafety,true)) exitWith {
+	LOG_FUNC_END_ERROR("function disabled by mission settings");
+};
+
 LOG_FUNC_START;
 params [
    ["_unit", player, [objNull]]
@@ -37,6 +41,9 @@ private _FiredMan_EH = _unit addEventHandler ["FiredMan", {
 	};
 }];
 
+//temp fix to ACE safety issue
+waitUntil { missionNamespace getVariable [QGVAR(missionStarted), false] };
+/*
 if ("@ace" call FUNC(checkModPresence)) then {
 	while { !(missionNamespace getVariable [QGVAR(missionStarted), false]) } do { 
 		waitUntil { (_unit getVariable ["ace_safemode_safedWeapons", []]) isNotEqualTo (weapons _unit) || (missionNamespace getVariable [QGVAR(missionStarted), false]) };
@@ -47,6 +54,7 @@ if ("@ace" call FUNC(checkModPresence)) then {
 } else {
 	waitUntil { missionNamespace getVariable [QGVAR(missionStarted), false] };
 };
+*/
 
 // reset everything to their proper states
 _unit allowDamage true;

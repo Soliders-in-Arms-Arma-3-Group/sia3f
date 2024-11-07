@@ -14,6 +14,7 @@ This will define all of the variables that can be used with ``GET_CONFIG(var,def
 |independentFactionName|Independent Faction Name|The Independent side's name (e.g, Altis Armed Forces).  Used in persistent hint and intro text scroll.|String|""|
 |eastFactionName|Opfor Faction Name|The Opfor side's name (e.g, Kazerghastan Royal Guard).  Used in persistent hint and intro text scroll.|String|""|
 |showSafestartHint|Show SafeStart Hint|If checked, the status hint will be shown by default.  If not, the status hint will be hidden by default.  Either way, it can still be toggled by the player.|Boolean|True|
+|enableSafestartSafety|Enable SafeStart Safety|If checked, the safety system will be enabled.  If not, it will be disabled. |Boolean|True|
 |showIntroText|Show Intro Text|Shows intro text if checked, does not if it is not checked.|Boolean|True|
 |**Arsenal Options**|
 |disableArsenalOnRespawn|Disable Arsenal On Respawn|*Currently no functionality.*  In the future, if checked it will disable the arsenal for the player after they respawn.|Boolean|False|
