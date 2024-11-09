@@ -21,6 +21,10 @@ This will define all of the variables that can be used with ``GET_CONFIG(var,def
 |haveBasics|Add Basics|If checked, basic items such as compasses, maps, and first aid supplies will be added.|Boolean|True|
 |haveCTab|Add CTab|If checked and if CTab is loaded in the mission, CTab items such as the helmet camera and rugged tablet will be added.|Boolean|True|
 |haveKATMedical|KAT Medical Availability|Options are "FULL" (2), "LIMITED" (1), or "NONE" (0).  Full will add all KAT items, Limited will add some KAT items (e.g, guedel tube, chest Seal, painkillers, etc.), and None will add no KAT items.|Integer<0, 1, 2>|2|
+|customItems|Custom Global Arsenal Items|Array of classnames added to all framework arsenals|
+|basicsItems|Basics Preset|Array of classnames added to framework arsenals if 'Add Basics' is enabled.
+|cTabItems|CTab Items Preset|Array of classnames added to framework arsenals if 'Add CTab' is enabled.
+|KATMedicalItems|KAT Medical Items Preset|Array of classnames added to framework arsenals if 'KAT Medical Availability' is set to FULL.
 |**ACRE Radio Options**|
 |acreEnabled|ACRE Enabled|To be changed to "Radio Enabled".  If checked and if ACRE is loaded in the mission, radio ACE Options and arsenal items will be added.|Boolean|True|
 |personalRadio|Personal Radio|Option of what the personal radio is (added to all units).  Options are "AN/PRC-343" (0) or "Beofeng 888S" (1).|Integer<0, 1>|0|
