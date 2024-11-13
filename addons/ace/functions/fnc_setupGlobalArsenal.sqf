@@ -68,29 +68,46 @@ if (!(_customItems isEqualType [])) then {
 	{ _globalItems pushBackUnique _x } forEach _customItems;
 };
 
-{
-	clearBackpackCargoGlobal _x;
-	clearMagazineCargoGlobal _x;
-	clearWeaponCargoGlobal _x;
-	clearItemCargoGlobal _x;
+ private _fnc_setupArsenal = {
+	params ["_arsenal", "_itemsToAdd"];
+	diag_log format ["_fnc_setupArsenal started with params: %1 and %2",_arsenal,_itemsToAdd];
 
-	[_x, false] remoteExecCall ["ace_dragging_fnc_setDraggable"];
-	[_x, false] remoteExecCall ["ace_dragging_fnc_setCarryable"];
+ 	clearBackpackCargoGlobal _arsenal;
+	clearMagazineCargoGlobal _arsenal;
+	clearWeaponCargoGlobal _arsenal;
+	clearItemCargoGlobal _arsenal;
 
+	[_arsenal, false] remoteExecCall ["ace_dragging_fnc_setDraggable"];
+	[_arsenal, false] remoteExecCall ["ace_dragging_fnc_setCarryable"];
+	
+	// wait till object is ready
+	private _localItemsToAdd = + _itemsToAdd; // use deep copy to avoid bleeding values
+	[
+		{ ((_this select 0) call ace_arsenal_fnc_getVirtualItems) isEqualType createHashMap },
+		{ 
+			params ["_arsenal", "_items"];
+			private _hashVirtualItems = _arsenal call ace_arsenal_fnc_getVirtualItems;
+			
+			// make sure box isn't already an arsenal
+			if (_hashVirtualItems isEqualTo createHashMap) then {
+				[_arsenal, _items, true] call ace_arsenal_fnc_initBox;
+			} else {
+				// only add items not already in virtual arsenal
+				{ _items pushBackUnique _x } forEach ((toArray _hashVirtualItems) select 0);
+				[_arsenal, _items, true] call ace_arsenal_fnc_addVirtualItems;
+			};
+			diag_log format ["items added to global arsenal: %1 on object %2",_items,_arsenal];
+		},
+		[_arsenal, _localItemsToAdd],
+		1,
+		{ 
+			params ["_arsenal", "_itemsToAdd"];
+			[_arsenal, false, true] call ace_arsenal_fnc_initBox;
+			["Arsenal on object failed to initialize: %1", _arsenal] call BIS_fnc_error;
+		}
+	] call CBA_fnc_waitUntilAndExecute;
+};
 
-	private _itemsToAdd = _globalItems;
-
-	/* Not applicable due to ACE BUG 
-	private _hashVirtualItems = _x call ace_arsenal_fnc_getVirtualItems;
-	if (_hashVirtualItems isEqualTo createHashMap) then { // make sure box isn't already an arsenal, I think init will wipe box
-		[_x, false] call ace_arsenal_fnc_initBox;
-	}
-	*/
-
-	[_x, false] call ace_arsenal_fnc_initBox; // To-do: replace with code above when fixed
-
-	diag_log format ["items added to global arsenal: %1",_itemsToAdd];
-	[_x, _itemsToAdd, true] call ace_arsenal_fnc_addVirtualItems;
-} forEach _arsenals;
+{ [_x, _globalItems] call _fnc_setupArsenal } forEach _arsenals;
 
 LOG_FUNC_END;
