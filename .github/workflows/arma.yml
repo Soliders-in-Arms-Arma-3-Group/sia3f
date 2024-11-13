@@ -32,7 +32,7 @@ jobs:
       with:
         command: build --release --ci
     - name: Upload Artifact
-      uses: actions/upload-artifact@v2-preview
+      uses: actions/upload-artifact@v4
       with:
         name: sia3f-${{ github.sha }}-nobin
         path: releases/sia3f_*.zip
