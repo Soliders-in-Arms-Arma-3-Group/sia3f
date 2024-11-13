@@ -73,7 +73,7 @@ jobs:
         name: logs
         path: temp/*.log
     - name: Archive @ace
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: '@ace3-${{ github.sha }}'
         path: z\ace\release\@ace
