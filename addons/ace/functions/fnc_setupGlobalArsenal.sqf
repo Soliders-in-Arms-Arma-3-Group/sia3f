@@ -16,7 +16,7 @@
 
 LOG_FUNC_START;
 private _arsenals = EGVAR(configuration,arsenals);
-diag_log format ["arsenals: %1",_arsenals];
+TRACE_1("arsenals",_arsenals);
 
 if !("@ace" call EFUNC(core,checkModPresence)) exitWith {};
 
@@ -62,8 +62,8 @@ if ("@KAT - Advanced Medical" call EFUNC(core,checkModPresence)) then {
 };
 
 private _customItems = (parseSimpleArray GET_CONFIG(customItems,"[]"));
-if (!(_customItems isEqualType [])) then { 
-	["Bad array of custom global arsenal items: %1",_customItems] call BIS_fnc_error;
+if (!(_customItems isEqualType "")) then { 
+	ERROR_MSG_1("Bad array of custom global arsenal items: %1",_customItems);
 } else {
 	{ _globalItems pushBackUnique _x } forEach _customItems;
 };
