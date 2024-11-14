@@ -42,6 +42,14 @@ class GVAR(missionInfo) {
 			defaultValue = true;
 		};
 
+		class GVAR(enableSafestartSafety) {
+			displayName = "Enable SafeStart Safety";
+			tooltip = "Toggle the weapon, throwable, and explosive safety system";
+			property = QGVAR(enableSafestartSafety);
+			control = "Checkbox";
+			defaultValue = true;
+		};
+
 		class GVAR(showIntroText) {
 			displayName = "Show Intro Text";
 			tooltip = "Show cinematic intro text on mission start";

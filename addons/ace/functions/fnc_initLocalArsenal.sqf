@@ -70,5 +70,22 @@ private _commonItems = +_loadout + _roleItems + _groupItems;
 _commonItems = _commonItems arrayIntersect _commonItems;
 TRACE_1("local arsenal added items",_commonItems);
 
-{ [_x, _commonItems, false] call ace_arsenal_fnc_addVirtualItems } forEach _arsenals;
+{ 
+	[
+		{ (((_this select 0) call ace_arsenal_fnc_getVirtualItems) isEqualType createHashMap) && (count ((_this select 0) call ace_arsenal_fnc_getVirtualItems) > 0) },
+		{ 
+			params ["_arsenal", "_itemsToAdd"];
+			[_arsenal, _itemsToAdd, false] call ace_arsenal_fnc_addVirtualItems
+			TRACE_1("arsenal successfully updated locally with items",_itemsToAdd);
+		},
+		[_x, _commonItems],
+		1,
+		{ 
+			params ["_arsenal", "_itemsToAdd"];
+			[_arsenal, _itemsToAdd, false] call ace_arsenal_fnc_addVirtualItems;
+			["Arsenal on object failed to initialize in time for local arsenal: %1", _arsenal] call BIS_fnc_error;
+		}
+	] call CBA_fnc_waitUntilAndExecute;
+ } forEach _arsenals;
 LOG_FUNC_END;
+	

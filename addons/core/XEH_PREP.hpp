@@ -22,3 +22,4 @@ PREP(teleport);
 PREP(teleportToSquad);
 PREP(vehicleInfo);
 PREP(vehicleInfoTab);
+PREP(weatherNotes);

@@ -23,12 +23,12 @@ params [
 
 /* Safe Start Hint */
 if (_safeStartHintEnabled && isServer) then {
-    [] spawn {
-        while { !(missionNamespace getVariable [QGVAR(missionStarted), false]) } do {
-            remoteExec [QFUNC(safeStartHint), [0, -2] select isDedicated];
-            sleep SAFESTART_HINT_REFRESH;
-        };
-    };
+	[] spawn {
+		while { !(missionNamespace getVariable [QGVAR(missionStarted), false]) } do {
+			remoteExec [QFUNC(safeStartHint), [0, -2] select isDedicated];
+			sleep SAFESTART_HINT_REFRESH;
+		};
+	};
 };
 
 /* Safe Start Safety */
