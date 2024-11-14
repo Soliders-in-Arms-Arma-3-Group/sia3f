@@ -51,5 +51,37 @@ class GVAR(arsenalOptions) {
 				};
 			};
 		};
+
+		class GVAR(basicsItems) {
+			displayName = "Basics Items Preset";
+			tooltip = "Array of classnames added to framework arsenals if 'Add Basics' is enabled";
+			property = QGVAR(basicsItems);
+			control = "EditCode";
+			defaultValue = "['ACE_fieldDressing', 'ACE_elasticBandage', 'ACE_packingBandage', 'ACE_quikclot', 'ACE_plasmaIV', 'ACE_plasmaIV_250', 'ACE_plasmaIV_500', 'ACE_CableTie', 'ACE_Chemlight_Shield', 'ACE_EarPlugs', 'ACE_epinephrine', 'ACE_MapTools', 'ACE_morphine', 'ACE_RangeCard', 'ACE_splint', 'ACE_tourniquet', 'ACE_surgicalKit', 'ACE_salineIV', 'ACE_salineIV_250', 'ACE_salineIV_500', 'ACE_painkillers', 'ToolKit', 'ACE_artilleryTable', 'Chemlight_blue', 'Chemlight_green', 'Chemlight_red', 'Chemlight_yellow', 'ItemWatch', 'ItemCompass', 'ItemMap', 'ACE_Canteen', 'ACE_WaterBottle', 'ACE_SpareBarrel', 'acex_intelitems_notepad', 'ACE_wirecutter']";
+		};
+
+		class GVAR(cTabItems) {
+			displayName = "CTab Items Preset";
+			tooltip = "Array of classnames added to framework arsenals if 'Add CTab' is enabled";
+			property = QGVAR(cTabItems);
+			control = "EditCode";
+			defaultValue = "['ItemMicroDAGR', 'ItemcTabHCam', 'ItemAndroid', 'ItemcTab']";
+		};
+
+		class GVAR(KATMedicalItems) {
+			displayName = "KAT Medical Items Preset";
+			tooltip = "Array of classnames added to framework arsenals if 'KAT Medical Availability' is set to FULL";
+			property = QGVAR(KATMedicalItems);
+			control = "EditCode";
+			defaultValue = "['kat_aatKit', 'kat_accuvac', 'kat_guedel', 'kat_AED', 'kat_X_AED', 'kat_larynx', 'kat_Pulseoximeter', 'kat_chestSeal', 'kat_Painkiller', 'kat_stretcherBag', 'Attachable_Helistretcher', 'kat_stethoscope', 'KAT_Empty_bloodIV_500', 'KAT_Empty_bloodIV_250', 'kat_IV_16', 'kat_IO_FAST', 'kat_amiodarone', 'kat_atropine', 'kat_lidocaine', 'kat_naloxone', 'kat_nitroglycerin', 'kat_norepinephrine', 'kat_phenylephrine', 'kat_TXA', 'kat_AFAK', 'kat_IFAK', 'kat_MFAK', 'kat_BVM', 'kat_pocketBVM', 'kat_Carbonate', 'kat_oxygenTank_150', 'kat_oxygenTank_300', 'kat_flumazenil']";
+		};
+
+		class GVAR(customItems) {
+			displayName = "Custom Global Arsenal Items";
+			tooltip = "Array of classnames added to all framework arsenals. This works with the export from an Object: ACE Arsenal attributes.";
+			property = QGVAR(customItems);
+			control = "EditCode";
+			defaultValue = "[]";
+		};
 	};
 };
