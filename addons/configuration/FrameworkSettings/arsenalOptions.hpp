@@ -57,7 +57,7 @@ class GVAR(arsenalOptions) {
 			tooltip = "Array of classnames added to framework arsenals if 'Add Basics' is enabled";
 			property = QGVAR(basicsItems);
 			control = "EditCode";
-			defaultValue = "['ACE_fieldDressing', 'ACE_elasticBandage', 'ACE_packingBandage', 'ACE_quikclot', 'ACE_bloodIV', 'ACE_bloodIV_250', 'ACE_bloodIV_500', 'ACE_CableTie', 'ACE_Chemlight_Shield', 'ACE_EarPlugs', 'ACE_epinephrine', 'ACE_MapTools', 'ACE_morphine', 'ACE_RangeCard', 'ACE_splint', 'ACE_tourniquet', 'ACE_surgicalKit', 'ACE_salineIV', 'ACE_salineIV_250', 'ACE_salineIV_500', 'ACE_painkillers', 'ToolKit', 'ACE_artilleryTable', 'Chemlight_blue', 'Chemlight_green', 'Chemlight_red', 'Chemlight_yellow', 'ItemWatch', 'ItemCompass', 'ItemMap', 'ACE_Canteen', 'ACE_WaterBottle']";
+			defaultValue = "['ACE_fieldDressing', 'ACE_elasticBandage', 'ACE_packingBandage', 'ACE_quikclot', 'ACE_plasmaIV', 'ACE_plasmaIV_250', 'ACE_plasmaIV_500', 'ACE_CableTie', 'ACE_Chemlight_Shield', 'ACE_EarPlugs', 'ACE_epinephrine', 'ACE_MapTools', 'ACE_morphine', 'ACE_RangeCard', 'ACE_splint', 'ACE_tourniquet', 'ACE_surgicalKit', 'ACE_salineIV', 'ACE_salineIV_250', 'ACE_salineIV_500', 'ACE_painkillers', 'ToolKit', 'ACE_artilleryTable', 'Chemlight_blue', 'Chemlight_green', 'Chemlight_red', 'Chemlight_yellow', 'ItemWatch', 'ItemCompass', 'ItemMap', 'ACE_Canteen', 'ACE_WaterBottle', 'ACE_SpareBarrel', 'acex_intelitems_notepad', 'ACE_wirecutter']";
 		};
 
 		class GVAR(cTabItems) {

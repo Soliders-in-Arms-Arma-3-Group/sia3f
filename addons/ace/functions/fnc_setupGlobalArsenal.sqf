@@ -24,7 +24,7 @@ private _globalItems = [];
 
 if (GET_CONFIG(haveBasics,true)) then {
 	// basic items
-	private _defaultList = "['ACE_fieldDressing', 'ACE_elasticBandage', 'ACE_packingBandage', 'ACE_quikclot', 'ACE_bloodIV', 'ACE_bloodIV_250', 'ACE_bloodIV_500', 'ACE_CableTie', 'ACE_Chemlight_Shield', 'ACE_EarPlugs', 'ACE_epinephrine', 'ACE_MapTools', 'ACE_morphine', 'ACE_RangeCard', 'ACE_splint', 'ACE_tourniquet', 'ACE_surgicalKit', 'ACE_salineIV', 'ACE_salineIV_250', 'ACE_salineIV_500', 'ACE_painkillers', 'ToolKit', 'ACE_artilleryTable', 'Chemlight_blue', 'Chemlight_green', 'Chemlight_red', 'Chemlight_yellow', 'ItemWatch', 'ItemCompass', 'ItemMap', 'ACE_Canteen', 'ACE_WaterBottle']";
+	private _defaultList = "['ACE_fieldDressing', 'ACE_elasticBandage', 'ACE_packingBandage', 'ACE_quikclot', 'ACE_plasmaIV', 'ACE_plasmaIV_250', 'ACE_plasmaIV_500', 'ACE_CableTie', 'ACE_Chemlight_Shield', 'ACE_EarPlugs', 'ACE_epinephrine', 'ACE_MapTools', 'ACE_morphine', 'ACE_RangeCard', 'ACE_splint', 'ACE_tourniquet', 'ACE_surgicalKit', 'ACE_salineIV', 'ACE_salineIV_250', 'ACE_salineIV_500', 'ACE_painkillers', 'ToolKit', 'ACE_artilleryTable', 'Chemlight_blue', 'Chemlight_green', 'Chemlight_red', 'Chemlight_yellow', 'ItemWatch', 'ItemCompass', 'ItemMap', 'ACE_Canteen', 'ACE_WaterBottle', 'ACE_SpareBarrel', 'acex_intelitems_notepad', 'ACE_wirecutter']";
 	_globalItems append (parseSimpleArray GET_CONFIG(basicsItems,_defaultList));
 };
 
@@ -83,11 +83,11 @@ if (!(_customItems isEqualType [])) then {
 	// wait till object is ready
 	private _localItemsToAdd = + _itemsToAdd; // use deep copy to avoid bleeding values
 	[
-		{ ((_this select 0) call ace_arsenal_fnc_getVirtualItems) isEqualType createHashMap },
+		{ (((_this select 0) call ace_arsenal_fnc_getVirtualItems) isEqualType createHashMap) && (count ((_this select 0) call ace_arsenal_fnc_getVirtualItems) > 0)},
 		{ 
 			params ["_arsenal", "_items"];
 			private _hashVirtualItems = _arsenal call ace_arsenal_fnc_getVirtualItems;
-			
+
 			// make sure box isn't already an arsenal
 			if (_hashVirtualItems isEqualTo createHashMap) then {
 				[_arsenal, _items, true] call ace_arsenal_fnc_initBox;
@@ -99,11 +99,11 @@ if (!(_customItems isEqualType [])) then {
 			diag_log format ["items added to global arsenal: %1 on object %2",_items,_arsenal];
 		},
 		[_arsenal, _localItemsToAdd],
-		1,
+		0,
 		{ 
 			params ["_arsenal", "_itemsToAdd"];
-			[_arsenal, false, true] call ace_arsenal_fnc_initBox;
-			["Arsenal on object failed to initialize: %1", _arsenal] call BIS_fnc_error;
+			[_arsenal, _itemsToAdd, true] call ace_arsenal_fnc_initBox;
+			diag_log format ["arsenal object empty or failed to fully initialize in time: %1", _arsenal];
 		}
 	] call CBA_fnc_waitUntilAndExecute;
 };
