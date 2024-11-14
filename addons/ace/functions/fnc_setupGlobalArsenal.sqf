@@ -62,7 +62,7 @@ if ("@KAT - Advanced Medical" call EFUNC(core,checkModPresence)) then {
 };
 
 private _customItems = (parseSimpleArray GET_CONFIG(customItems,"[]"));
-if (!(_customItems isEqualType "")) then { 
+if (!(_customItems isEqualType [])) then { 
 	ERROR_MSG_1("Bad array of custom global arsenal items: %1",_customItems);
 } else {
 	{ _globalItems pushBackUnique _x } forEach _customItems;
