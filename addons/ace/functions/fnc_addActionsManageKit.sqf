@@ -28,7 +28,7 @@ TRACE_1("params",_objects);
 // Manage Loadouts Expressions
 private _statementKitSave = {
 	player setVariable [QEGVAR(core,savedLoadout), getUnitLoadout player];
-	hint "Kit saved. Will be loaded on respawn.";
+	hint "Kit quicksaved. Will be loaded on respawn.";
 };
 
 private _statementKitLoad = {
@@ -43,9 +43,9 @@ private _statementKitClear = {
 
 if ("@ace" call EFUNC(core,checkModPresence)) then {
 	private _mainAction = [QGVAR(kit), "Save/Manage Kit", "\A3\Ui_F\Data\IGUI\Cfg\Actions\gear_ca.paa", _statementKitSave, { true }] call ace_interact_menu_fnc_createAction;
-	private _saveAction = [QGVAR(kitSave), "Save Current Kit", "\A3\Ui_F\Data\GUI\Rsc\RscDisplayArcadeMap\icon_save_ca.paa", _statementKitSave, { true }] call ace_interact_menu_fnc_createAction;
-	private _loadAction = [QGVAR(kitLoad), "Load Saved Kit", "\A3\Ui_F\Data\IGUI\Cfg\Actions\reammo_ca.paa", _statementKitLoad, { true }] call ace_interact_menu_fnc_createAction;
-	private _clearAction = [QGVAR(kitClear), "Remove Saved Kit", "z\ace\addons\arsenal\data\iconClearContainer.paa", _statementKitClear, { true }] call ace_interact_menu_fnc_createAction;
+	private _saveAction = [QGVAR(kitSave), "Quicksave Current Kit", "\A3\Ui_F\Data\GUI\Rsc\RscDisplayArcadeMap\icon_save_ca.paa", _statementKitSave, { true }] call ace_interact_menu_fnc_createAction;
+	private _loadAction = [QGVAR(kitLoad), "Load Quicksaved Kit", "\A3\Ui_F\Data\IGUI\Cfg\Actions\reammo_ca.paa", _statementKitLoad, { true }] call ace_interact_menu_fnc_createAction;
+	private _clearAction = [QGVAR(kitClear), "Remove Quicksaved Kit", "z\ace\addons\arsenal\data\iconClearContainer.paa", _statementKitClear, { true }] call ace_interact_menu_fnc_createAction;
 
 	{
 		private _y = _x;
@@ -56,9 +56,9 @@ if ("@ace" call EFUNC(core,checkModPresence)) then {
 } else {
 	{
 		_x addAction ["----------", {}]; // 10 indents for spacing
-		_x addAction ["<img image='\A3\Ui_F\Data\GUI\Rsc\RscDisplayArcadeMap\icon_save_ca.paa'/> Save Current Kit", _statementKitSave];
-		_x addAction ["<img image='\A3\Ui_F\Data\IGUI\Cfg\Actions\reammo_ca.paa'/> Load Saved Kit", _statementKitLoad];
-		_x addAction ["<img image='\A3\Ui_F\Data\IGUI\Cfg\Actions\gear_ca.paa'/> Remove Saved Kit", _statementKitClear];
+		_x addAction ["<img image='\A3\Ui_F\Data\GUI\Rsc\RscDisplayArcadeMap\icon_save_ca.paa'/> Quicksave Current Kit", _statementKitSave];
+		_x addAction ["<img image='\A3\Ui_F\Data\IGUI\Cfg\Actions\reammo_ca.paa'/> Load Quicksaved Kit", _statementKitLoad];
+		_x addAction ["<img image='\A3\Ui_F\Data\IGUI\Cfg\Actions\gear_ca.paa'/> Remove Quicksaved Kit", _statementKitClear];
 		_x addAction ["----------", {}];
 	} forEach _objects;
 };
